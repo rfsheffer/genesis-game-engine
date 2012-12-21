@@ -1,0 +1,67 @@
+//
+//  This is the pre-compiled header which should be used by all projects
+//  connected to the game. It sets up all the generic systems which are
+//  used throughout the game.
+//
+
+// Standard C Libraries
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <float.h>
+
+// C++ Libraries
+#include <new>
+
+
+#ifdef _MAC
+
+// Objective-C headers go here
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+#endif
+
+#include <CoreFoundation/CoreFoundation.h>
+#include <CoreServices/CoreServices.h>
+
+// Carbon, the low level graphics API for MAC
+#include <Carbon/Carbon.h>
+
+// Unix Dynamic Linker
+#include <dlfcn.h>
+
+// OpenGL specific
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <OpenGL/glext.h>
+
+#endif
+
+// Platform macros and defines
+#include "platform.h"
+#include "types.h"
+
+// Debug specific stuff like ASSERTION
+#include "debug.h"
+
+namespace MathLib
+{
+    // The start of the mathlib namespace.
+}
+
+// Math Specific
+using namespace MathLib;
+#include "math_constants.h"
+#include "math_types.h"
+#include "math_common.h"
+#include "math_asm.h"
+#include "math_vector.h"
+#include "math_angle.h"
+#include "math_matrix.h"
+#include "math_plane.h"
+#include "math_frustum.h"
+
+// Utilities
+#include "util_vector.h"
