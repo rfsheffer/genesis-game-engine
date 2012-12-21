@@ -59,7 +59,8 @@ MemoryPool::~MemoryPool()
 			{
 				char buf[256];
 
-				sprintf(buf, "Memory Not Freed: Pool %d, alloc of %d bytes in %s at %d!\n",
+				sprintf(buf, "Memory Not Freed: Pool %d,"
+                        " alloc of %d bytes in %s at %d!\n",
                           i + 1,
                           bytes,
                           PoolInfo.m_debugInfo[curDebugInfo].file,
@@ -149,7 +150,7 @@ void MemoryPool::ClearPool(unsigned int pool)
 //-----------------------------------------------------------------------------
 // Purpose: Finds a pool by name and returns its pool index
 //-----------------------------------------------------------------------------
-unsigned int MemoryPool::PoolIndexByName(const char *pName)
+unsigned int MemoryPool::PoolIndexByName(const char *pName) const
 {
 	if(!pName)
 		return -1;
@@ -166,7 +167,10 @@ unsigned int MemoryPool::PoolIndexByName(const char *pName)
 //-----------------------------------------------------------------------------
 // Purpose: Allocates new memory
 //-----------------------------------------------------------------------------
-void *MemoryPool::MemAlloc(unsigned int bytes, unsigned int pool, const char *file, int line)
+void *MemoryPool::MemAlloc(unsigned int bytes,
+                           unsigned int pool,
+                           const char *file,
+                           int line)
 {
 	if(bytes == 0 || pool >= m_PoolInfo.size())
 		return NULL;
@@ -179,8 +183,12 @@ void *MemoryPool::MemAlloc(unsigned int bytes, unsigned int pool, const char *fi
 	if((PoolInfo.m_iCurWritePos + alloc_size) >= PoolInfo.m_numBytes)
 		return NULL;
 
-	unsigned int *pAlloc = (unsigned int *)((byte *)m_Pool + PoolInfo.m_iPoolStart + PoolInfo.m_iCurWritePos);
-	*pAlloc = (bytes << NUM_MEM_INFO_BITS) | MEM_INFO_INUSE_BIT; // Squish in the size and the info bits
+	unsigned int *pAlloc = (unsigned int *)((byte *)m_Pool +
+                                            PoolInfo.m_iPoolStart +
+                                            PoolInfo.m_iCurWritePos);
+    
+    // Squish in the size and the info bits
+	*pAlloc = (bytes << NUM_MEM_INFO_BITS) | MEM_INFO_INUSE_BIT;
 
 	PoolInfo.m_iCurWritePos += alloc_size;
 
@@ -228,7 +236,7 @@ bool MemoryPool::FreeAlloc(void *pMem)
 //-----------------------------------------------------------------------------
 // Purpose: Returns true if this memory is within the memory pool
 //-----------------------------------------------------------------------------
-bool MemoryPool::IsPoolAlloc(void *pMem)
+bool MemoryPool::IsPoolAlloc(void *pMem) const
 {
 	if(!IS_IN_POOL(pMem))
 		return false;
@@ -270,7 +278,7 @@ void MemoryPool::UnlockAlloc(void *pMem)
 //-----------------------------------------------------------------------------
 // Purpose: Locks an allocation
 //-----------------------------------------------------------------------------
-bool MemoryPool::IsAllocLocked(void *pMem)
+bool MemoryPool::IsAllocLocked(void *pMem) const
 {
 	if(!IS_IN_POOL(pMem))
 		return false;
@@ -283,7 +291,7 @@ bool MemoryPool::IsAllocLocked(void *pMem)
 //-----------------------------------------------------------------------------
 // Purpose: Dumps all memory to a file
 //-----------------------------------------------------------------------------
-void MemoryPool::DumpMemory(void)
+void MemoryPool::DumpMemory(void) const
 {
     // TODO: Run this through the file system
 	FILE *pFile = NULL;
