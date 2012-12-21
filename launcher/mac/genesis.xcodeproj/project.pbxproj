@@ -19,6 +19,7 @@
 		BD2BD6931621FAAF00A8AD24 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2BD6921621FAAF00A8AD24 /* OpenGL.framework */; };
 		BD2BD69B1621FC6D00A8AD24 /* COGLCocoaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6961621FC6D00A8AD24 /* COGLCocoaWrapper.mm */; };
 		BD2BD69C1621FC6D00A8AD24 /* COGLRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6971621FC6D00A8AD24 /* COGLRender.cpp */; };
+		BD336C5716840A5B00BA4203 /* util_mempool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD336C5516840A5B00BA4203 /* util_mempool.cpp */; };
 		BD7FE31D16504CA100781DD8 /* math_frustum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE31B16504CA100781DD8 /* math_frustum.cpp */; };
 		BD7FE3211651791600781DD8 /* math_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE31F1651791600781DD8 /* math_screen.cpp */; };
 		BD7FE32316518FCD00781DD8 /* math_angle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE32216518FCD00781DD8 /* math_angle.cpp */; };
@@ -71,6 +72,8 @@
 		BD2BD6971621FC6D00A8AD24 /* COGLRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = COGLRender.cpp; path = ../../render/opengl/COGLRender.cpp; sourceTree = SOURCE_ROOT; };
 		BD2BD6981621FC6D00A8AD24 /* COGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COGLContext.h; path = ../../render/opengl/COGLContext.h; sourceTree = SOURCE_ROOT; };
 		BD2BD69A1621FC6D00A8AD24 /* render_globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_globals.h; path = ../../render/render_globals.h; sourceTree = SOURCE_ROOT; };
+		BD336C5516840A5B00BA4203 /* util_mempool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_mempool.cpp; path = ../../utilities/util_mempool.cpp; sourceTree = SOURCE_ROOT; };
+		BD336C5616840A5B00BA4203 /* util_mempool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_mempool.h; path = ../../utilities/util_mempool.h; sourceTree = SOURCE_ROOT; };
 		BD72E146163D9E09004F7CF7 /* math_angle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_angle.h; path = ../../math/math_angle.h; sourceTree = SOURCE_ROOT; };
 		BD72E147163D9E09004F7CF7 /* math_asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_asm.h; path = ../../math/math_asm.h; sourceTree = SOURCE_ROOT; };
 		BD72E148163D9E09004F7CF7 /* math_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_common.h; path = ../../math/math_common.h; sourceTree = SOURCE_ROOT; };
@@ -211,6 +214,8 @@
 		BD1C29D71658357B00E9D8EF /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BD336C5516840A5B00BA4203 /* util_mempool.cpp */,
+				BD336C5616840A5B00BA4203 /* util_mempool.h */,
 				BD1C29D8165835AC00E9D8EF /* util_time.cpp */,
 			);
 			name = utilities;
@@ -490,6 +495,7 @@
 				BD990949167530B600E8CAC9 /* COGLDevice.cpp in Sources */,
 				BD99094C1675324000E8CAC9 /* COGLContext.cpp in Sources */,
 				BD960F2716801FA70030CC84 /* materials.cpp in Sources */,
+				BD336C5716840A5B00BA4203 /* util_mempool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

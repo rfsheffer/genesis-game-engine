@@ -13,7 +13,7 @@
 
 // C++ Libraries
 #include <new>
-
+#include <vector> // TODO: Get rid of me!
 
 #ifdef _MAC
 
