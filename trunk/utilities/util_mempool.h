@@ -73,21 +73,27 @@ public:
 	// Creation of pools
 	unsigned int 	CreatePool(const char *pName, unsigned int size);
 	void			ClearPool(unsigned int pool);
-	unsigned int	PoolIndexByName(const char *pName);
-	unsigned int	GetNumberOfPools(void){ return (unsigned int)m_PoolInfo.size(); }
+	unsigned int	PoolIndexByName(const char *pName) const;
+	unsigned int	GetNumberOfPools(void) const
+    {
+        return (unsigned int)m_PoolInfo.size();
+    }
 
-	void		*MemAlloc(unsigned int bytes, unsigned int pool, const char *file, int line);
+	void		*MemAlloc(unsigned int bytes,
+                          unsigned int pool,
+                          const char *file,
+                          int line);
 
 	bool		FreeAlloc(void *pMem);
 
-	bool		IsPoolAlloc(void *pMem);
+	bool		IsPoolAlloc(void *pMem) const;
 
 	// Memory Locking
 	void		LockAlloc(void *pMem);
 	void		UnlockAlloc(void *pMem);
-	bool		IsAllocLocked(void *pMem);
+	bool		IsAllocLocked(void *pMem) const;
 
-	void		DumpMemory(void);
+	void		DumpMemory(void) const;
 
 private:
 
