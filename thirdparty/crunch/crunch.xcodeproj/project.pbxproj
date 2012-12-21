@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD336C501684088C00BA4203 /* libcrnlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD336C4F1684088C00BA4203 /* libcrnlib.a */; };
 		BDB9959B167D67BA008C9675 /* crunch.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDB9959A167D67BA008C9675 /* crunch.1 */; };
 		BDDC64ED167D68250085B093 /* crunch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDDC64EC167D68250085B093 /* crunch.cpp */; };
-		BDDC64F0167D68C70085B093 /* libcrnlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDC64EF167D68C70085B093 /* libcrnlib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,10 +26,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD336C4F1684088C00BA4203 /* libcrnlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrnlib.a; path = libs/libcrnlib.a; sourceTree = "<group>"; };
 		BDB99594167D67BA008C9675 /* crunch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = crunch; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB9959A167D67BA008C9675 /* crunch.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = crunch.1; sourceTree = "<group>"; };
 		BDDC64EC167D68250085B093 /* crunch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crunch.cpp; sourceTree = "<group>"; };
-		BDDC64EF167D68C70085B093 /* libcrnlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrnlib.a; path = libs/libcrnlib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDDC64F0167D68C70085B093 /* libcrnlib.a in Frameworks */,
+				BD336C501684088C00BA4203 /* libcrnlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +73,7 @@
 		BDDC64F1167D68D70085B093 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				BDDC64EF167D68C70085B093 /* libcrnlib.a */,
+				BD336C4F1684088C00BA4203 /* libcrnlib.a */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -206,6 +206,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs\"",
+					"\"$(SRCROOT)/../../libs\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -223,6 +224,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs\"",
+					"\"$(SRCROOT)/../../libs\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
