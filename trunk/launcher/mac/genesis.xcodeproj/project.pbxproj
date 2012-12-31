@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BD0159B4163C8A880096512C /* file_smd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0159B2163C8A880096512C /* file_smd.cpp */; };
 		BD0159B8163C8F400096512C /* CGameInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0159B6163C8F400096512C /* CGameInterface.cpp */; };
-		BD0159C2163CC3410096512C /* zenlil_ext_ref.SMD in Resources */ = {isa = PBXBuildFile; fileRef = BD0159C1163CC3410096512C /* zenlil_ext_ref.SMD */; };
 		BD1C29DA165835AC00E9D8EF /* util_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD1C29D8165835AC00E9D8EF /* util_time.cpp */; };
 		BD2BD65D1621F90D00A8AD24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2BD65C1621F90D00A8AD24 /* Cocoa.framework */; };
 		BD2BD6671621F90D00A8AD24 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD2BD6651621F90D00A8AD24 /* InfoPlist.strings */; };
@@ -26,7 +25,6 @@
 		BD7FE32616522FD500781DD8 /* math_sincos_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE32416522FD400781DD8 /* math_sincos_table.cpp */; };
 		BD7FE32A1653693800781DD8 /* math_splines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE3291653693800781DD8 /* math_splines.cpp */; };
 		BD960F2716801FA70030CC84 /* materials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD960F2616801FA70030CC84 /* materials.cpp */; };
-		BD960F29168020300030CC84 /* test.crn in Resources */ = {isa = PBXBuildFile; fileRef = BD960F28168020300030CC84 /* test.crn */; };
 		BD990949167530B600E8CAC9 /* COGLDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD990947167530B600E8CAC9 /* COGLDevice.cpp */; };
 		BD99094C1675324000E8CAC9 /* COGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD99094B1675324000E8CAC9 /* COGLContext.cpp */; };
 		BD990951167BCEBE00E8CAC9 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD990950167BCEBE00E8CAC9 /* Carbon.framework */; };
@@ -47,7 +45,6 @@
 		BD0159B9163C92710096512C /* IGraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGraphicsContext.h; path = ../../interfaces/IGraphicsContext.h; sourceTree = SOURCE_ROOT; };
 		BD0159BB163C94E60096512C /* util_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_vector.h; path = ../../utilities/container/util_vector.h; sourceTree = SOURCE_ROOT; };
 		BD0159BC163C9C550096512C /* type_dynmesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = type_dynmesh.h; path = ../../mesh/type_dynmesh.h; sourceTree = SOURCE_ROOT; };
-		BD0159C1163CC3410096512C /* zenlil_ext_ref.SMD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = zenlil_ext_ref.SMD; path = ../../game/models/zenlil_ext_ref.SMD; sourceTree = SOURCE_ROOT; };
 		BD1C29D8165835AC00E9D8EF /* util_time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_time.cpp; path = ../../utilities/util_time.cpp; sourceTree = SOURCE_ROOT; };
 		BD1C29D9165835AC00E9D8EF /* util_time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_time.h; path = ../../utilities/util_time.h; sourceTree = SOURCE_ROOT; };
 		BD1C29DB1658C43600E9D8EF /* util_simple_timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = util_simple_timer.h; path = ../../utilities/util_simple_timer.h; sourceTree = SOURCE_ROOT; };
@@ -92,7 +89,6 @@
 		BD960F2316801C920030CC84 /* materials.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = materials.h; path = ../../render/materials.h; sourceTree = SOURCE_ROOT; };
 		BD960F2516801ED50030CC84 /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = texture.h; path = ../../render/texture.h; sourceTree = SOURCE_ROOT; };
 		BD960F2616801FA70030CC84 /* materials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = materials.cpp; path = ../../render/materials.cpp; sourceTree = SOURCE_ROOT; };
-		BD960F28168020300030CC84 /* test.crn */ = {isa = PBXFileReference; lastKnownFileType = file; name = test.crn; path = ../../game/textures/test.crn; sourceTree = SOURCE_ROOT; };
 		BD990947167530B600E8CAC9 /* COGLDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = COGLDevice.cpp; path = ../../render/opengl/COGLDevice.cpp; sourceTree = SOURCE_ROOT; };
 		BD99094B1675324000E8CAC9 /* COGLContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = COGLContext.cpp; path = ../../render/opengl/COGLContext.cpp; sourceTree = SOURCE_ROOT; };
 		BD990950167BCEBE00E8CAC9 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -165,23 +161,6 @@
 				BD0159B7163C8F400096512C /* CGameInterface.h */,
 			);
 			name = game;
-			sourceTree = "<group>";
-		};
-		BD0159BF163CC31D0096512C /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				BDFF8CD816462C0B0047C3CB /* textures */,
-				BD0159C0163CC32D0096512C /* models */,
-			);
-			name = assets;
-			sourceTree = "<group>";
-		};
-		BD0159C0163CC32D0096512C /* models */ = {
-			isa = PBXGroup;
-			children = (
-				BD0159C1163CC3410096512C /* zenlil_ext_ref.SMD */,
-			);
-			name = models;
 			sourceTree = "<group>";
 		};
 		BD1C29D216582C7C00E9D8EF /* render */ = {
@@ -273,7 +252,6 @@
 		BD2BD6621621F90D00A8AD24 /* genesis */ = {
 			isa = PBXGroup;
 			children = (
-				BD0159BF163CC31D0096512C /* assets */,
 				BD2BD6911621FA7400A8AD24 /* Resources */,
 				BD2BD6901621FA5A00A8AD24 /* Headers */,
 				BD2BD6631621F90D00A8AD24 /* Source */,
@@ -401,14 +379,6 @@
 			name = mesh;
 			sourceTree = "<group>";
 		};
-		BDFF8CD816462C0B0047C3CB /* textures */ = {
-			isa = PBXGroup;
-			children = (
-				BD960F28168020300030CC84 /* test.crn */,
-			);
-			name = textures;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,8 +433,6 @@
 				BD2BD6671621F90D00A8AD24 /* InfoPlist.strings in Resources */,
 				BD2BD66D1621F90D00A8AD24 /* Credits.rtf in Resources */,
 				BD2BD6731621F90D00A8AD24 /* MainMenu.xib in Resources */,
-				BD0159C2163CC3410096512C /* zenlil_ext_ref.SMD in Resources */,
-				BD960F29168020300030CC84 /* test.crn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +507,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -569,6 +539,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -592,6 +564,7 @@
 					_DEBUG,
 					_MAC,
 					_MAC64,
+					_GENESIS,
 				);
 				HEADER_SEARCH_PATHS = (
 					../../interfaces,
@@ -614,6 +587,7 @@
 					_RELEASE,
 					_MAC,
 					_MAC64,
+					_GENESIS,
 				);
 				HEADER_SEARCH_PATHS = (
 					../../interfaces,

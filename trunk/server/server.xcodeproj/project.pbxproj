@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BDC78024169222BB00C3F72E /* server_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDC78022169222BB00C3F72E /* server_entity.cpp */; };
-		BDC78025169222BB00C3F72E /* server_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC78023169222BB00C3F72E /* server_entity.h */; };
+		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
+		BDFABFD31692345B001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD11692345B001C1E6A /* ent_base.h */; };
+		BDFABFDA16923F8B001C1E6A /* network_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD816923F8B001C1E6A /* network_base.cpp */; };
+		BDFABFDB16923F8B001C1E6A /* network_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD916923F8B001C1E6A /* network_base.h */; };
+		BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_buffer.cpp */; };
+		BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDD1692559F001C1E6A /* data_buffer.h */; };
+		BDFABFE31692559F001C1E6A /* data_structure.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDF1692559F001C1E6A /* data_structure.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDC78022169222BB00C3F72E /* server_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_entity.cpp; sourceTree = "<group>"; };
-		BDC78023169222BB00C3F72E /* server_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_entity.h; sourceTree = "<group>"; };
+		BDFABFD01692345B001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
+		BDFABFD11692345B001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
+		BDFABFD816923F8B001C1E6A /* network_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = network_base.cpp; path = ../shared/network_base.cpp; sourceTree = "<group>"; };
+		BDFABFD916923F8B001C1E6A /* network_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_base.h; path = ../shared/network_base.h; sourceTree = "<group>"; };
+		BDFABFDC1692559F001C1E6A /* data_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_buffer.cpp; path = ../shared/data_buffer.cpp; sourceTree = "<group>"; };
+		BDFABFDD1692559F001C1E6A /* data_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_buffer.h; path = ../shared/data_buffer.h; sourceTree = "<group>"; };
+		BDFABFDF1692559F001C1E6A /* data_structure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_structure.h; path = ../shared/data_structure.h; sourceTree = "<group>"; };
+		BDFABFE4169256DD001C1E6A /* data_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_types.h; path = ../common/data_types.h; sourceTree = "<group>"; };
+		BDFABFE516925A27001C1E6A /* entity_dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entity_dictionary.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				BDC78026169222C100C3F72E /* Source */,
+				BDFABFC916922B75001C1E6A /* Frameworks */,
 				BDC7800A1692213C00C3F72E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,10 +60,24 @@
 		BDC78026169222C100C3F72E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BDC78022169222BB00C3F72E /* server_entity.cpp */,
-				BDC78023169222BB00C3F72E /* server_entity.h */,
+				BDFABFDC1692559F001C1E6A /* data_buffer.cpp */,
+				BDFABFDD1692559F001C1E6A /* data_buffer.h */,
+				BDFABFDF1692559F001C1E6A /* data_structure.h */,
+				BDFABFE4169256DD001C1E6A /* data_types.h */,
+				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
+				BDFABFD11692345B001C1E6A /* ent_base.h */,
+				BDFABFD816923F8B001C1E6A /* network_base.cpp */,
+				BDFABFD916923F8B001C1E6A /* network_base.h */,
+				BDFABFE516925A27001C1E6A /* entity_dictionary.h */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		BDFABFC916922B75001C1E6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,7 +87,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDC78025169222BB00C3F72E /* server_entity.h in Headers */,
+				BDFABFD31692345B001C1E6A /* ent_base.h in Headers */,
+				BDFABFDB16923F8B001C1E6A /* network_base.h in Headers */,
+				BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */,
+				BDFABFE31692559F001C1E6A /* data_structure.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDC78024169222BB00C3F72E /* server_entity.cpp in Sources */,
+				BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */,
+				BDFABFDA16923F8B001C1E6A /* network_base.cpp in Sources */,
+				BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +210,7 @@
 		BDC7800E1692213C00C3F72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../common/allhead.pch;
@@ -185,6 +218,7 @@
 					_DEBUG,
 					_MAC,
 					_MAC64,
+					_SERVER,
 				);
 				HEADER_SEARCH_PATHS = (
 					../interfaces,
@@ -199,6 +233,7 @@
 		BDC7800F1692213C00C3F72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../common/allhead.pch;
@@ -206,6 +241,7 @@
 					_RELEASE,
 					_MAC,
 					_MAC64,
+					_SERVER,
 				);
 				HEADER_SEARCH_PATHS = (
 					../interfaces,
@@ -236,6 +272,7 @@
 				BDC7800F1692213C00C3F72E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
