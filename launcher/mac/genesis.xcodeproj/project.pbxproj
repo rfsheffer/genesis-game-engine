@@ -570,6 +570,7 @@
 					../../interfaces,
 					../../common,
 					"../../utilities/**",
+					../../shared,
 				);
 				INFOPLIST_FILE = "resources/genesis-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,6 +594,7 @@
 					../../interfaces,
 					../../common,
 					"../../utilities/**",
+					../../shared,
 				);
 				INFOPLIST_FILE = "resources/genesis-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
