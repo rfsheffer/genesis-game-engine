@@ -14,6 +14,7 @@
 		BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_buffer.cpp */; };
 		BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDD1692559F001C1E6A /* data_buffer.h */; };
 		BDFABFE31692559F001C1E6A /* data_structure.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDF1692559F001C1E6A /* data_structure.h */; };
+		BDFABFE716925EA5001C1E6A /* data_types.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFE616925EA5001C1E6A /* data_types.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +26,8 @@
 		BDFABFDC1692559F001C1E6A /* data_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_buffer.cpp; path = ../shared/data_buffer.cpp; sourceTree = "<group>"; };
 		BDFABFDD1692559F001C1E6A /* data_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_buffer.h; path = ../shared/data_buffer.h; sourceTree = "<group>"; };
 		BDFABFDF1692559F001C1E6A /* data_structure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_structure.h; path = ../shared/data_structure.h; sourceTree = "<group>"; };
-		BDFABFE4169256DD001C1E6A /* data_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_types.h; path = ../common/data_types.h; sourceTree = "<group>"; };
 		BDFABFE516925A27001C1E6A /* entity_dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entity_dictionary.h; sourceTree = "<group>"; };
+		BDFABFE616925EA5001C1E6A /* data_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_types.h; path = ../shared/data_types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +61,10 @@
 		BDC78026169222C100C3F72E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BDFABFE616925EA5001C1E6A /* data_types.h */,
 				BDFABFDC1692559F001C1E6A /* data_buffer.cpp */,
 				BDFABFDD1692559F001C1E6A /* data_buffer.h */,
 				BDFABFDF1692559F001C1E6A /* data_structure.h */,
-				BDFABFE4169256DD001C1E6A /* data_types.h */,
 				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
 				BDFABFD11692345B001C1E6A /* ent_base.h */,
 				BDFABFD816923F8B001C1E6A /* network_base.cpp */,
@@ -91,6 +92,7 @@
 				BDFABFDB16923F8B001C1E6A /* network_base.h in Headers */,
 				BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */,
 				BDFABFE31692559F001C1E6A /* data_structure.h in Headers */,
+				BDFABFE716925EA5001C1E6A /* data_types.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
