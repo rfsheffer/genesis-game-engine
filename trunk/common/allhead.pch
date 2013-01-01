@@ -32,6 +32,7 @@
 #include <dlfcn.h>
 
 // OpenGL specific
+// TODO: MOVE TO RENDER ONLY
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
@@ -65,3 +66,5 @@ using namespace MathLib;
 
 // Utilities
 #include "util_vector.h"
+
+#include "data_mapping.h"
