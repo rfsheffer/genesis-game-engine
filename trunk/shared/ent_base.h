@@ -17,8 +17,7 @@ class CEntityBase
 public:
     
     CEntityBase();
-    
-    //DECLARE_NETWORK_TABLE();
+
     DECLARE_DATAMAP();
     
     Vector3     m_vecOrigin;

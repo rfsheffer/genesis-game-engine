@@ -10,8 +10,6 @@
 		BDFABFC616922B3A001C1E6A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFABFC516922B3A001C1E6A /* OpenGL.framework */; };
 		BDFABFCE16923433001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFCC16923433001C1E6A /* ent_base.cpp */; };
 		BDFABFCF16923433001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFCD16923433001C1E6A /* ent_base.h */; };
-		BDFABFD616923793001C1E6A /* network_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD416923793001C1E6A /* network_base.cpp */; };
-		BDFABFD716923793001C1E6A /* network_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD516923793001C1E6A /* network_base.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,8 +17,6 @@
 		BDFABFC516922B3A001C1E6A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDFABFCC16923433001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDFABFCD16923433001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
-		BDFABFD416923793001C1E6A /* network_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = network_base.cpp; path = ../shared/network_base.cpp; sourceTree = "<group>"; };
-		BDFABFD516923793001C1E6A /* network_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_base.h; path = ../shared/network_base.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +53,6 @@
 			children = (
 				BDFABFCC16923433001C1E6A /* ent_base.cpp */,
 				BDFABFCD16923433001C1E6A /* ent_base.h */,
-				BDFABFD416923793001C1E6A /* network_base.cpp */,
-				BDFABFD516923793001C1E6A /* network_base.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -79,7 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFCF16923433001C1E6A /* ent_base.h in Headers */,
-				BDFABFD716923793001C1E6A /* network_base.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFCE16923433001C1E6A /* ent_base.cpp in Sources */,
-				BDFABFD616923793001C1E6A /* network_base.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +207,7 @@
 					../common,
 					"../utilities/**",
 					../math,
+					../shared,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -237,6 +230,7 @@
 					../common,
 					"../utilities/**",
 					../math,
+					../shared,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
