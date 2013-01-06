@@ -29,17 +29,29 @@ typedef className ThisClass;
 //************
 // Base Items
 //************
-#define _MAPOBJ( var_name, obj_type, count, flags ) { obj_type, #var_name, offsetof(classNameTypedef, var_name), count, sizeof(((classNameTypedef *)NULL)->var_name), flags, 0 }
+#define _MAPOBJ( var_name, obj_type, count, flags ) \
+{   obj_type, \
+    #var_name, \
+    offsetof(classNameTypedef, var_name), \
+    count, \
+    sizeof(((classNameTypedef *)NULL)->var_name), \
+    flags, \
+    0 \
+}
 
 //************
 // Item Types
 //************
 // NULLOBJ : Blank object, no data.
 #define DEFINE_NULLOBJ()  { DATA_VOID, 0, 0, 0, 0, 0, 0 },
+
 // MAPOBJ ( Name of Variable, Object Type, Flags )
-#define DEFINE_MAPOBJ( var_name, obj_type, flags )					_MAPOBJ( var_name, obj_type, 1, flags )
+#define DEFINE_MAPOBJ( var_name, obj_type, flags ) \
+                                _MAPOBJ( var_name, obj_type, 1, flags )
+
 // MAPOBJ ARRAY ( Name of Variable, Object Type, Object Count, Flags )
-#define DEFINE_MAPOBJ_ARRAY( var_name, obj_type, count, flags )		_MAPOBJ( var_name, obj_type, count, flags )
+#define DEFINE_MAPOBJ_ARRAY( var_name, obj_type, count, flags )	\
+                                _MAPOBJ( var_name, obj_type, count, flags )
 
 struct datamap_t;
 struct objdesc_t;
