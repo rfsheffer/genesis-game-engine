@@ -15,14 +15,6 @@
 
 #include "ent_base.h"
 
-// Easy way of getting basename, classname.
-#define DECLARE_CLASS( className, baseClassName ) \
-typedef className ThisClass; \
-typedef baseClassName BaseClass;
-
-#define DECLARE_CLASS_NO_BASE( className ) \
-typedef className ThisClass;
-
 class CEntityFactoryDictionary;
 CEntityFactoryDictionary *EntityFactoryDictionary();
 

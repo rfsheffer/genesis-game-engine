@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
 		BDFABFD31692345B001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD11692345B001C1E6A /* ent_base.h */; };
-		BDFABFDA16923F8B001C1E6A /* network_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD816923F8B001C1E6A /* network_base.cpp */; };
-		BDFABFDB16923F8B001C1E6A /* network_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD916923F8B001C1E6A /* network_base.h */; };
 		BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_buffer.cpp */; };
 		BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDD1692559F001C1E6A /* data_buffer.h */; };
 		BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDF1692559F001C1E6A /* data_mapping.h */; };
@@ -21,13 +19,12 @@
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFABFD01692345B001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDFABFD11692345B001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
-		BDFABFD816923F8B001C1E6A /* network_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = network_base.cpp; path = ../shared/network_base.cpp; sourceTree = "<group>"; };
-		BDFABFD916923F8B001C1E6A /* network_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = network_base.h; path = ../shared/network_base.h; sourceTree = "<group>"; };
 		BDFABFDC1692559F001C1E6A /* data_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_buffer.cpp; path = ../shared/data_buffer.cpp; sourceTree = "<group>"; };
 		BDFABFDD1692559F001C1E6A /* data_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_buffer.h; path = ../shared/data_buffer.h; sourceTree = "<group>"; };
-		BDFABFDF1692559F001C1E6A /* data_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_mapping.h; path = ../shared/data_mapping.h; sourceTree = "<group>"; };
+		BDFABFDF1692559F001C1E6A /* data_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_mapping.h; path = ../shared/data_mapping.h; sourceTree = "<group>"; wrapsLines = 0; };
 		BDFABFE516925A27001C1E6A /* entity_dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entity_dictionary.h; sourceTree = "<group>"; };
 		BDFABFE616925EA5001C1E6A /* data_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_types.h; path = ../shared/data_types.h; sourceTree = "<group>"; };
+		BDFABFE816926659001C1E6A /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = macros.h; path = ../common/macros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +64,8 @@
 				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
 				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
 				BDFABFD11692345B001C1E6A /* ent_base.h */,
-				BDFABFD816923F8B001C1E6A /* network_base.cpp */,
-				BDFABFD916923F8B001C1E6A /* network_base.h */,
 				BDFABFE516925A27001C1E6A /* entity_dictionary.h */,
+				BDFABFE816926659001C1E6A /* macros.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -89,7 +85,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFD31692345B001C1E6A /* ent_base.h in Headers */,
-				BDFABFDB16923F8B001C1E6A /* network_base.h in Headers */,
 				BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */,
 				BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */,
 				BDFABFE716925EA5001C1E6A /* data_types.h in Headers */,
@@ -148,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */,
-				BDFABFDA16923F8B001C1E6A /* network_base.cpp in Sources */,
 				BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +206,7 @@
 		BDC7800E1692213C00C3F72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -235,6 +230,7 @@
 		BDC7800F1692213C00C3F72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

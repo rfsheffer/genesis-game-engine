@@ -8,18 +8,14 @@
 
 #include "ent_base.h"
 
-//BEGIN_NETWORK_TABLE(CEntityBase);
-
-
-
-//END_NETWORK_TABLE();
-
-
+BEGIN_DATA_MAP_NO_BASE(CEntityBase)
+    DEFINE_MAPOBJ(m_iEntIndex, DATA_INTEGER, MAPOBJ_SAVED),
+END_DATA_MAP();
 
 //------------------------------------------------------------------------------
 // Constructor
 //------------------------------------------------------------------------------
 CEntityBase::CEntityBase()
 {
-    
+
 }
