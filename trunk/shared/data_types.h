@@ -22,7 +22,7 @@ enum data_map_types
 	DATA_CHARACTER,		// Note: Used for char arrays
 	DATA_VECTOR3,		// 3D Vector
     
-	DATA_COUNT,			// Number of Data Types that are mapable.
+	DATA_COUNT			// Number of Data Types that are mapable.
 };
 
 // Sizeof types

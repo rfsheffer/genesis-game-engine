@@ -43,6 +43,7 @@
 // Platform macros and defines
 #include "platform.h"
 #include "types.h"
+#include "macros.h"
 
 // Debug specific stuff like ASSERTION
 #include "debug.h"

@@ -72,7 +72,7 @@
 
 // Long is treated differently by MSVC and GCC so to prevent compatibility
 // problems I am disabling it.
-#define long        do_not_use_long_use_int32_or_int64_instead
+//#define long        do_not_use_long_use_int32_or_int64_instead
 
 //****************************************************
 // DLL Import / Export
@@ -150,6 +150,17 @@ enum MOUSE_CLICKS
 
 // highest possible value of an unsigned int, also the return of a not found string.
 static const size_t NPOS = -1;
+
+#if defined(__GNUC__)
+    #undef offsetof
+    // Note: can't use builtin offsetof because many use cases (esp. in templates) wouldn't compile due to restrictions on the builtin offsetof
+    //#define offsetof( type, var ) __builtin_offsetof( type, var )
+    #define offsetof(s,m)    ( (size_t)&(((s *)0x1000000)->m) - 0x1000000u )
+#else
+    #include <stddef.h>
+    #undef offsetof
+    #define offsetof(s,m)    (size_t)&(((s *)0)->m)
+#endif
 
 #endif // PLATFORM_H
 
