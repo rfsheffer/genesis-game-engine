@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
 		BDFABFD31692345B001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD11692345B001C1E6A /* ent_base.h */; };
 		BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_buffer.cpp */; };
@@ -17,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
+		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
 		BDFABFD01692345B001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDFABFD11692345B001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
 		BDFABFDC1692559F001C1E6A /* data_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_buffer.cpp; path = ../shared/data_buffer.cpp; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		BDC77FFE1692213C00C3F72E = {
 			isa = PBXGroup;
 			children = (
+				BDED315B16B37AD200B7E97B /* Headers */,
 				BDC78026169222C100C3F72E /* Source */,
 				BDFABFC916922B75001C1E6A /* Frameworks */,
 				BDC7800A1692213C00C3F72E /* Products */,
@@ -58,16 +62,25 @@
 		BDC78026169222C100C3F72E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BDFABFE616925EA5001C1E6A /* data_types.h */,
 				BDFABFDC1692559F001C1E6A /* data_buffer.cpp */,
+				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
+				BDED316116B37E0200B7E97B /* CServer.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		BDED315B16B37AD200B7E97B /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BDFABFE616925EA5001C1E6A /* data_types.h */,
 				BDFABFDD1692559F001C1E6A /* data_buffer.h */,
 				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
-				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
 				BDFABFD11692345B001C1E6A /* ent_base.h */,
 				BDFABFE516925A27001C1E6A /* entity_dictionary.h */,
 				BDFABFE816926659001C1E6A /* macros.h */,
+				BDED316016B37CD600B7E97B /* CServer.h */,
 			);
-			name = Source;
+			name = Headers;
 			sourceTree = "<group>";
 		};
 		BDFABFC916922B75001C1E6A /* Frameworks */ = {
@@ -144,6 +157,7 @@
 			files = (
 				BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */,
 				BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */,
+				BDED316216B37E0200B7E97B /* CServer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +174,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -206,8 +221,6 @@
 		BDC7800E1692213C00C3F72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../common/allhead.pch;
@@ -222,6 +235,7 @@
 					../common,
 					"../utilities/**",
 					../math,
+					../shared,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -230,8 +244,6 @@
 		BDC7800F1692213C00C3F72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../common/allhead.pch;
@@ -246,6 +258,7 @@
 					../common,
 					"../utilities/**",
 					../math,
+					../shared,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

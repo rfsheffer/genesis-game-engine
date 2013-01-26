@@ -11,11 +11,6 @@
 
 namespace ScriptParse
 {
-    // UPDATE THIS IF MORE OPERATORS ARE ADDED!
-    // Numbers from:
-    // http://en.cppreference.com/w/cpp/language/operator_precedence
-    int LexTokenOperator::opLevels[] = { 6, 6, 5, 5, 5, 2, 2 };
-    
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
     CScriptLexer::CScriptLexer() :  m_iNumTokens(0),
@@ -64,6 +59,7 @@ namespace ScriptParse
     {
         int iVarIndex = 0;
         char szVar[32];
+        bool bFloatingPoint = false; // TEMP HACK
         
         while(*pString != ASCII_NULL)
         {
@@ -71,6 +67,11 @@ namespace ScriptParse
             {
                 if(m_operatorTable[*pString] == LexTokenOperator::NUM_OPERATOR_TYPES)
                 {
+                    if(*pString == '.')
+                    {
+                        bFloatingPoint = true;
+                    }
+                    
                     // Variable Character
                     szVar[iVarIndex++] = *pString;
                 }
@@ -85,10 +86,11 @@ namespace ScriptParse
                     
                     // Push the Variable onto the token stack, then the operator
                     szVar[iVarIndex] = ASCII_NULL;
-                    PushVariable(szVar);
+                    PushVariable(szVar, bFloatingPoint);
                     PushOperator(pString);
                     
                     iVarIndex = 0;
+                    bFloatingPoint = false;
                 }
             }
             
@@ -98,7 +100,7 @@ namespace ScriptParse
         if(iVarIndex != 0)
         {
             szVar[iVarIndex] = ASCII_NULL;
-            PushVariable(szVar);
+            PushVariable(szVar, bFloatingPoint);
         }
         else
         {
@@ -109,21 +111,44 @@ namespace ScriptParse
     //--------------------------------------------------------------------------
     // Purpose: Pushes a variable onto the token stack
     //--------------------------------------------------------------------------
-    void CScriptLexer::PushVariable(const char *pszVariable)
+    void CScriptLexer::PushVariable(const char *pszVariable, bool bFloatingPoint)
     {
         // TODO: Determine the variable type
         m_tokenVariables[m_iCurVariable].tokenType = iLexToken::TOKEN_TYPE_VARIABLE;
         m_tokenVariables[m_iCurVariable].varType = LexTokenVariable::VAR_INT;
-        m_tokenVariables[m_iCurVariable].val = atoi(pszVariable);
+        
+        if(bFloatingPoint)
+        {
+            m_tokenVariables[m_iCurVariable].val = atof(pszVariable);
+        }
+        else
+        {
+            m_tokenVariables[m_iCurVariable].val = atoi(pszVariable);
+        }
+        
         m_pTokens[m_iNumTokens++] = &m_tokenVariables[m_iCurVariable];
         ++m_iCurVariable;
     }
     
     //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
-    CScriptParse::CScriptParse() : m_uiNumOnOperatorStack(0), m_uiNumInOutput(0)
+    CScriptParse::CScriptParse() : m_uiNumOnOperatorStack(0),
+                                    m_uiNumInOutput(0)
     {
         
+        // UPDATE THIS IF MORE OPERATORS ARE ADDED!
+        // Numbers from:
+        // http://en.cppreference.com/w/cpp/language/operator_precedence
+        
+        m_uiOpLevels[LexTokenOperator::OPERATOR_SUBTRACTION] = 6;
+        m_uiOpLevels[LexTokenOperator::OPERATOR_ADDITION] = 6;
+        
+        m_uiOpLevels[LexTokenOperator::OPERATOR_DIVISION] = 5;
+        m_uiOpLevels[LexTokenOperator::OPERATOR_MODULO] = 5;
+        m_uiOpLevels[LexTokenOperator::OPERATOR_MULTIPLICATION] = 5;
+        
+        m_uiOpLevels[LexTokenOperator::OPERATOR_RIGHT_BRACKET] = 2;
+        m_uiOpLevels[LexTokenOperator::OPERATOR_LEFT_BRACKET] = 2;
     }
     
     //--------------------------------------------------------------------------
@@ -160,7 +185,7 @@ namespace ScriptParse
         }
     }
     
-#   define OPLEVEL(opType)    LexTokenOperator::opLevels[opType]
+#   define OPLEVEL(opType)    m_uiOpLevels[opType]
     
     //--------------------------------------------------------------------------
     // Purpose: Adds the operator to the stack. If the operator being added has

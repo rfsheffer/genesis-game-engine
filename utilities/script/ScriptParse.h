@@ -9,14 +9,8 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-// REMOVE THESE HEADERS!
-#include <stdlib.h>
-#include <stdio.h>
-#include "util_vector.h"
-
 namespace ScriptParse
 {
-    
     // Defines how many ASCII characters are usable
 #define MAX_NUM_ASCII_CHARACTERS        128
     
@@ -82,8 +76,6 @@ namespace ScriptParse
             NUM_OPERATOR_TYPES
         };
         
-        static int opLevels[];
-        
         operator_type       opType;
         char                letter;
     };
@@ -114,7 +106,7 @@ namespace ScriptParse
         
     private:
         
-        void                    PushVariable(const char *pszVariable);
+        void                    PushVariable(const char *pszVariable, bool bFloatingPoint);
         inline void             PushOperator(const char *pOperator);
         
         unsigned int            m_iNumTokens;
@@ -173,6 +165,8 @@ namespace ScriptParse
         
         unsigned int            m_uiNumInOutput;
         iLexToken               *m_pOutput[MAX_NUM_VARIABLES + MAX_NUM_OPERATORS];
+        
+        unsigned int            m_uiOpLevels[LexTokenOperator::NUM_OPERATOR_TYPES];
     };
     
     //--------------------------------------------------------------------------

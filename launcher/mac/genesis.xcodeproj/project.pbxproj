@@ -32,6 +32,8 @@
 		BDB2AF83162399F5006F59F3 /* math_matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB2AF80162399F5006F59F3 /* math_matrix.cpp */; };
 		BDB2AF8D1623D291006F59F3 /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB2AF8C1623D291006F59F3 /* debug.cpp */; };
 		BDB3E21816237C4D00D011D9 /* math_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB3E21616237C4D00D011D9 /* math_vector.cpp */; };
+		BDED313E16B24E2900B7E97B /* ScriptParse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED313C16B24E2900B7E97B /* ScriptParse.cpp */; };
+		BDED316516B3805200B7E97B /* CExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316316B3805200B7E97B /* CExtensions.cpp */; };
 		BDFF8CD516422E6F0047C3CB /* file_tga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8CD416422E6F0047C3CB /* file_tga.cpp */; };
 		BDFF8CDD164F196F0047C3CB /* math_plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8CDB164F196F0047C3CB /* math_plane.cpp */; };
 /* End PBXBuildFile section */
@@ -40,8 +42,8 @@
 		BD0159B2163C8A880096512C /* file_smd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file_smd.cpp; path = ../../filetypes/file_smd.cpp; sourceTree = SOURCE_ROOT; };
 		BD0159B3163C8A880096512C /* file_smd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = file_smd.h; path = ../../filetypes/file_smd.h; sourceTree = SOURCE_ROOT; };
 		BD0159B5163C8C020096512C /* type_mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = type_mesh.h; path = ../../mesh/type_mesh.h; sourceTree = SOURCE_ROOT; };
-		BD0159B6163C8F400096512C /* CGameInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CGameInterface.cpp; path = ../../game/CGameInterface.cpp; sourceTree = SOURCE_ROOT; };
-		BD0159B7163C8F400096512C /* CGameInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGameInterface.h; path = ../../game/CGameInterface.h; sourceTree = SOURCE_ROOT; };
+		BD0159B6163C8F400096512C /* CGameInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CGameInterface.cpp; path = ../../interfaces/CGameInterface.cpp; sourceTree = SOURCE_ROOT; };
+		BD0159B7163C8F400096512C /* CGameInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGameInterface.h; path = ../../interfaces/CGameInterface.h; sourceTree = SOURCE_ROOT; };
 		BD0159B9163C92710096512C /* IGraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGraphicsContext.h; path = ../../interfaces/IGraphicsContext.h; sourceTree = SOURCE_ROOT; };
 		BD0159BB163C94E60096512C /* util_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_vector.h; path = ../../utilities/container/util_vector.h; sourceTree = SOURCE_ROOT; };
 		BD0159BC163C9C550096512C /* type_dynmesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = type_dynmesh.h; path = ../../mesh/type_dynmesh.h; sourceTree = SOURCE_ROOT; };
@@ -101,6 +103,11 @@
 		BDB3E21616237C4D00D011D9 /* math_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_vector.cpp; path = ../../math/math_vector.cpp; sourceTree = SOURCE_ROOT; };
 		BDB3E21916237FE100D011D9 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debug.h; path = ../../common/debug.h; sourceTree = SOURCE_ROOT; };
 		BDD1F2D5163D24F800326E49 /* math_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_vector.h; path = ../../math/math_vector.h; sourceTree = SOURCE_ROOT; };
+		BDED313C16B24E2900B7E97B /* ScriptParse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScriptParse.cpp; path = ../../utilities/script/ScriptParse.cpp; sourceTree = SOURCE_ROOT; };
+		BDED313D16B24E2900B7E97B /* ScriptParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScriptParse.h; path = ../../utilities/script/ScriptParse.h; sourceTree = "<group>"; };
+		BDED313F16B2504C00B7E97B /* ASCIITable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASCIITable.h; path = ../../common/ASCIITable.h; sourceTree = SOURCE_ROOT; };
+		BDED316316B3805200B7E97B /* CExtensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CExtensions.cpp; path = ../../interfaces/CExtensions.cpp; sourceTree = SOURCE_ROOT; };
+		BDED316416B3805200B7E97B /* CExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CExtensions.h; path = ../../interfaces/CExtensions.h; sourceTree = SOURCE_ROOT; };
 		BDFF8CD116422E340047C3CB /* file_tga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = file_tga.h; path = ../../filetypes/file_tga.h; sourceTree = SOURCE_ROOT; };
 		BDFF8CD416422E6F0047C3CB /* file_tga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file_tga.cpp; path = ../../filetypes/file_tga.cpp; sourceTree = SOURCE_ROOT; wrapsLines = 0; };
 		BDFF8CDB164F196F0047C3CB /* math_plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_plane.cpp; path = ../../math/math_plane.cpp; sourceTree = SOURCE_ROOT; };
@@ -151,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				BD0159B6163C8F400096512C /* CGameInterface.cpp */,
+				BDED316316B3805200B7E97B /* CExtensions.cpp */,
+				BDED316416B3805200B7E97B /* CExtensions.h */,
 			);
 			name = game;
 			sourceTree = "<group>";
@@ -193,8 +202,8 @@
 		BD1C29D71658357B00E9D8EF /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BDED313C16B24E2900B7E97B /* ScriptParse.cpp */,
 				BD336C5516840A5B00BA4203 /* util_mempool.cpp */,
-				BD336C5616840A5B00BA4203 /* util_mempool.h */,
 				BD1C29D8165835AC00E9D8EF /* util_time.cpp */,
 			);
 			name = utilities;
@@ -203,6 +212,8 @@
 		BD1C29DC1658C43E00E9D8EF /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BDED313D16B24E2900B7E97B /* ScriptParse.h */,
+				BD336C5616840A5B00BA4203 /* util_mempool.h */,
 				BD1C29D9165835AC00E9D8EF /* util_time.h */,
 				BD1C29DB1658C43600E9D8EF /* util_simple_timer.h */,
 				BD1C29DD16596B9600E9D8EF /* util_perf_timer.h */,
@@ -323,6 +334,7 @@
 		BDB2AF7A1623972F006F59F3 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				BDED313F16B2504C00B7E97B /* ASCIITable.h */,
 				BD990952167BD15000E8CAC9 /* platform.h */,
 				BDB3E1FE1623777100D011D9 /* types.h */,
 				BDB3E21916237FE100D011D9 /* debug.h */,
@@ -464,6 +476,8 @@
 				BD99094C1675324000E8CAC9 /* COGLContext.cpp in Sources */,
 				BD960F2716801FA70030CC84 /* materials.cpp in Sources */,
 				BD336C5716840A5B00BA4203 /* util_mempool.cpp in Sources */,
+				BDED313E16B24E2900B7E97B /* ScriptParse.cpp in Sources */,
+				BDED316516B3805200B7E97B /* CExtensions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +587,10 @@
 					../../shared,
 				);
 				INFOPLIST_FILE = "resources/genesis-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../game/bin\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -597,6 +615,10 @@
 					../../shared,
 				);
 				INFOPLIST_FILE = "resources/genesis-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../game/bin\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

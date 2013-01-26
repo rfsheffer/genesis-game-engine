@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDED316816B386D400B7E97B /* CClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316616B386D400B7E97B /* CClient.cpp */; };
+		BDED316916B386D400B7E97B /* CClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDED316716B386D400B7E97B /* CClient.h */; };
 		BDFABFC616922B3A001C1E6A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFABFC516922B3A001C1E6A /* OpenGL.framework */; };
 		BDFABFCE16923433001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFCC16923433001C1E6A /* ent_base.cpp */; };
 		BDFABFCF16923433001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFCD16923433001C1E6A /* ent_base.h */; };
@@ -14,6 +16,8 @@
 
 /* Begin PBXFileReference section */
 		BDC7801B1692215F00C3F72E /* libclient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDED316616B386D400B7E97B /* CClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CClient.cpp; sourceTree = "<group>"; };
+		BDED316716B386D400B7E97B /* CClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CClient.h; sourceTree = "<group>"; };
 		BDFABFC516922B3A001C1E6A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDFABFCC16923433001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDFABFCD16923433001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
@@ -34,6 +38,7 @@
 		BDC780101692215F00C3F72E = {
 			isa = PBXGroup;
 			children = (
+				BDED315E16B37C0600B7E97B /* Headers */,
 				BDC78027169222CE00C3F72E /* Source */,
 				BDFABFC816922B3F001C1E6A /* Frameworks */,
 				BDC7801C1692215F00C3F72E /* Products */,
@@ -53,8 +58,17 @@
 			children = (
 				BDFABFCC16923433001C1E6A /* ent_base.cpp */,
 				BDFABFCD16923433001C1E6A /* ent_base.h */,
+				BDED316616B386D400B7E97B /* CClient.cpp */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		BDED315E16B37C0600B7E97B /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BDED316716B386D400B7E97B /* CClient.h */,
+			);
+			name = Headers;
 			sourceTree = "<group>";
 		};
 		BDFABFC816922B3F001C1E6A /* Frameworks */ = {
@@ -73,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFCF16923433001C1E6A /* ent_base.h in Headers */,
+				BDED316916B386D400B7E97B /* CClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFCE16923433001C1E6A /* ent_base.cpp in Sources */,
+				BDED316816B386D400B7E97B /* CClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +196,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
