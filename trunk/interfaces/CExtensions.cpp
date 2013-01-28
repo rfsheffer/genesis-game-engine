@@ -1,54 +1,46 @@
 //
 //  CExtensions.cpp
-//  genesis
+//  Base Extension Manager
 //
 //  Created by Ryan Sheffer on 2013-01-25.
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
 #include "CExtensions.h"
+#include "CPlatform.h"
+
+// Adds an extension to the extension list, and initializes it.
+// Note: The order of added extensions is the order of extension execution.
+#define ADD_EXTENSION(name) \
+    pExtensions[m_uiNumExtensions++] = Get##name(); \
+    Get##name()->Initialize(this);
 
 //------------------------------------------------------------------------------
 // Purpose: Creates all extensions
 //------------------------------------------------------------------------------
 bool CExtensions::CreateAllExtensions(void)
 {
-    // Create the Server Extension
-    pServerHandle = dlopen("./bin/libserver.dylib", RTLD_NOW);
-    if(pServerHandle == NULL)
-    {
-        ASSERTION(pServerHandle, "Unable to connect to server extension!");
-        return false;
-    }
+    pPlatform = new CPlatform();
     
-    IServer     *(*CreateServer)(void);
-    *(void **)(&CreateServer) = dlsym(pServerHandle, "CreateServer");
+    DEFINE_IMPORT_EXTENSION("./bin/libserver.dylib", Server);
+    DEFINE_IMPORT_EXTENSION("./bin/libclient.dylib", Client);
     
-    if(CreateServer)
-    {
-        pServerExtension = (*CreateServer)();
-    }
-    
-    // Create the client extension
-    pClientHandle = dlopen("./bin/libclient.dylib", RTLD_NOW);
-    if(pClientHandle == NULL)
-    {
-        ASSERTION(pClientHandle, "Unable to connect to client extension!");
-        return false;
-    }
-    
-    IClient     *(*CreateClient)(void);
-    *(void **)(&CreateClient) = dlsym(pClientHandle, "CreateClient");
-    
-    if(CreateClient)
-    {
-        pClientExtension = (*CreateClient)();
-    }
-    
-    pServerExtension->Initialize(this);
-    pClientExtension->Initialize(this);
+    ADD_EXTENSION(Platform);
+    ADD_EXTENSION(Server);
+    ADD_EXTENSION(Client);
     
     return true;
+}
+
+//------------------------------------------------------------------------------
+// Purpose: Executes the extensions in the order of creation
+//------------------------------------------------------------------------------
+void CExtensions::RunExtensions(void)
+{
+    for(unsigned int i = 0; i < m_uiNumExtensions; ++i)
+    {
+        pExtensions[i]->Run();
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -56,9 +48,10 @@ bool CExtensions::CreateAllExtensions(void)
 //------------------------------------------------------------------------------
 void CExtensions::DestroyAllExtensions(void)
 {
-    pServerExtension->Shutdown();
-    pClientExtension->Shutdown();
+    GetServer()->Shutdown();
+    GetClient()->Shutdown();
+    GetPlatform()->Shutdown();
     
-    dlclose(pServerHandle);
-    dlclose(pClientHandle);
+    CLOSE_IMPORT_EXTENSION(Server);
+    CLOSE_IMPORT_EXTENSION(Client);
 }

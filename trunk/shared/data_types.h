@@ -21,6 +21,7 @@ enum data_map_types
 	DATA_SHORT,
 	DATA_CHARACTER,		// Note: Used for char arrays
 	DATA_VECTOR3,		// 3D Vector
+    DATA_ANGLE,
     
 	DATA_COUNT			// Number of Data Types that are mapable.
 };
@@ -32,6 +33,7 @@ enum data_map_types
 #define SHORT_SIZE		 sizeof( short )
 #define CHAR_SIZE		 sizeof( char )
 #define VECTOR3_SIZE	 sizeof( Vector3 )
+#define ANGLE_SIZE       sizeof( Angle )
 
 inline size_t GetDataSize(data_map_types obj)
 {
@@ -51,6 +53,8 @@ inline size_t GetDataSize(data_map_types obj)
 			return CHAR_SIZE;
 		case DATA_VECTOR3:
 			return VECTOR3_SIZE;
+        case DATA_ANGLE:
+			return ANGLE_SIZE;
 		default:
 			return 0;
 	};

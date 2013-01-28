@@ -9,13 +9,11 @@
 #ifndef I_CLIENT_H
 #define I_CLIENT_H
 
-class CExtensions;
+#include "iExtension.h"
 
-class IClient
-{
-public:
-    virtual void            Initialize(CExtensions *pExtensions) = 0;
-    virtual void            Shutdown() = 0;
-};
+#define CLIENT_EXTENSION_NAME     Client
+
+START_EXTENSION_INTERFACE(Client)
+END_EXTENSION_INTERFACE();
 
 #endif // I_CLIENT_H

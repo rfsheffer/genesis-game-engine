@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BD0159B4163C8A880096512C /* file_smd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0159B2163C8A880096512C /* file_smd.cpp */; };
-		BD0159B8163C8F400096512C /* CGameInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0159B6163C8F400096512C /* CGameInterface.cpp */; };
+		BD0A008816B5D64F0010FEF6 /* CPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0A008616B5D64F0010FEF6 /* CPlatform.cpp */; };
+		BD0A009216B5ECEC0010FEF6 /* CEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0A009016B5ECEC0010FEF6 /* CEngine.cpp */; };
 		BD1C29DA165835AC00E9D8EF /* util_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD1C29D8165835AC00E9D8EF /* util_time.cpp */; };
 		BD2BD65D1621F90D00A8AD24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2BD65C1621F90D00A8AD24 /* Cocoa.framework */; };
 		BD2BD6671621F90D00A8AD24 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD2BD6651621F90D00A8AD24 /* InfoPlist.strings */; };
@@ -16,7 +17,7 @@
 		BD2BD66D1621F90D00A8AD24 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD2BD66B1621F90D00A8AD24 /* Credits.rtf */; };
 		BD2BD6731621F90D00A8AD24 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD2BD6711621F90D00A8AD24 /* MainMenu.xib */; };
 		BD2BD6931621FAAF00A8AD24 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2BD6921621FAAF00A8AD24 /* OpenGL.framework */; };
-		BD2BD69B1621FC6D00A8AD24 /* COGLCocoaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6961621FC6D00A8AD24 /* COGLCocoaWrapper.mm */; };
+		BD2BD69B1621FC6D00A8AD24 /* CCocoaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6961621FC6D00A8AD24 /* CCocoaWrapper.mm */; };
 		BD2BD69C1621FC6D00A8AD24 /* COGLRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6971621FC6D00A8AD24 /* COGLRender.cpp */; };
 		BD336C5716840A5B00BA4203 /* util_mempool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD336C5516840A5B00BA4203 /* util_mempool.cpp */; };
 		BD7FE31D16504CA100781DD8 /* math_frustum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE31B16504CA100781DD8 /* math_frustum.cpp */; };
@@ -42,11 +43,16 @@
 		BD0159B2163C8A880096512C /* file_smd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file_smd.cpp; path = ../../filetypes/file_smd.cpp; sourceTree = SOURCE_ROOT; };
 		BD0159B3163C8A880096512C /* file_smd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = file_smd.h; path = ../../filetypes/file_smd.h; sourceTree = SOURCE_ROOT; };
 		BD0159B5163C8C020096512C /* type_mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = type_mesh.h; path = ../../mesh/type_mesh.h; sourceTree = SOURCE_ROOT; };
-		BD0159B6163C8F400096512C /* CGameInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CGameInterface.cpp; path = ../../interfaces/CGameInterface.cpp; sourceTree = SOURCE_ROOT; };
-		BD0159B7163C8F400096512C /* CGameInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGameInterface.h; path = ../../interfaces/CGameInterface.h; sourceTree = SOURCE_ROOT; };
 		BD0159B9163C92710096512C /* IGraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGraphicsContext.h; path = ../../interfaces/IGraphicsContext.h; sourceTree = SOURCE_ROOT; };
 		BD0159BB163C94E60096512C /* util_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_vector.h; path = ../../utilities/container/util_vector.h; sourceTree = SOURCE_ROOT; };
 		BD0159BC163C9C550096512C /* type_dynmesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = type_dynmesh.h; path = ../../mesh/type_dynmesh.h; sourceTree = SOURCE_ROOT; };
+		BD0A008616B5D64F0010FEF6 /* CPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CPlatform.cpp; path = ../../interfaces/CPlatform.cpp; sourceTree = SOURCE_ROOT; };
+		BD0A008716B5D64F0010FEF6 /* CPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPlatform.h; path = ../../interfaces/CPlatform.h; sourceTree = SOURCE_ROOT; };
+		BD0A008C16B5E2460010FEF6 /* IPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = ../../interfaces/IPlatform.h; sourceTree = SOURCE_ROOT; };
+		BD0A009016B5ECEC0010FEF6 /* CEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CEngine.cpp; path = ../../engine/CEngine.cpp; sourceTree = SOURCE_ROOT; };
+		BD0A009116B5ECEC0010FEF6 /* CEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngine.h; path = ../../engine/CEngine.h; sourceTree = SOURCE_ROOT; };
+		BD0A009516B5F6980010FEF6 /* iExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iExtension.h; path = ../../interfaces/iExtension.h; sourceTree = SOURCE_ROOT; };
+		BD0A009B16B665770010FEF6 /* PlatformWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlatformWrapper.h; path = ../../interfaces/PlatformWrapper.h; sourceTree = SOURCE_ROOT; };
 		BD1C29D8165835AC00E9D8EF /* util_time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_time.cpp; path = ../../utilities/util_time.cpp; sourceTree = SOURCE_ROOT; };
 		BD1C29D9165835AC00E9D8EF /* util_time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_time.h; path = ../../utilities/util_time.h; sourceTree = SOURCE_ROOT; };
 		BD1C29DB1658C43600E9D8EF /* util_simple_timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = util_simple_timer.h; path = ../../utilities/util_simple_timer.h; sourceTree = SOURCE_ROOT; };
@@ -66,8 +72,8 @@
 		BD2BD67A1621F90D00A8AD24 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		BD2BD6921621FAAF00A8AD24 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BD2BD6941621FC6D00A8AD24 /* allhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.pch; path = ../../common/allhead.pch; sourceTree = SOURCE_ROOT; };
-		BD2BD6951621FC6D00A8AD24 /* COGLCocoaWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLCocoaWrapper.h; sourceTree = SOURCE_ROOT; };
-		BD2BD6961621FC6D00A8AD24 /* COGLCocoaWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = COGLCocoaWrapper.mm; sourceTree = SOURCE_ROOT; usesTabs = 0; wrapsLines = 1; };
+		BD2BD6951621FC6D00A8AD24 /* CCocoaWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCocoaWrapper.h; sourceTree = SOURCE_ROOT; };
+		BD2BD6961621FC6D00A8AD24 /* CCocoaWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCocoaWrapper.mm; sourceTree = SOURCE_ROOT; usesTabs = 0; wrapsLines = 1; };
 		BD2BD6971621FC6D00A8AD24 /* COGLRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = COGLRender.cpp; path = ../../render/opengl/COGLRender.cpp; sourceTree = SOURCE_ROOT; };
 		BD2BD6981621FC6D00A8AD24 /* COGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COGLContext.h; path = ../../render/opengl/COGLContext.h; sourceTree = SOURCE_ROOT; };
 		BD2BD69A1621FC6D00A8AD24 /* render_globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_globals.h; path = ../../render/render_globals.h; sourceTree = SOURCE_ROOT; };
@@ -154,22 +160,40 @@
 			name = containers;
 			sourceTree = "<group>";
 		};
-		BD0159BD163C9F290096512C /* game */ = {
+		BD0159BD163C9F290096512C /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD0159B6163C8F400096512C /* CGameInterface.cpp */,
 				BDED316316B3805200B7E97B /* CExtensions.cpp */,
-				BDED316416B3805200B7E97B /* CExtensions.h */,
+				BD0A008616B5D64F0010FEF6 /* CPlatform.cpp */,
+				BD0A008716B5D64F0010FEF6 /* CPlatform.h */,
 			);
-			name = game;
+			name = extensions;
 			sourceTree = "<group>";
 		};
-		BD0159BE163C9F400096512C /* game */ = {
+		BD0159BE163C9F400096512C /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD0159B7163C8F400096512C /* CGameInterface.h */,
+				BDED316416B3805200B7E97B /* CExtensions.h */,
+				BD0A008C16B5E2460010FEF6 /* IPlatform.h */,
+				BD0A009516B5F6980010FEF6 /* iExtension.h */,
 			);
-			name = game;
+			name = extensions;
+			sourceTree = "<group>";
+		};
+		BD0A009316B5ED280010FEF6 /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				BD0A009116B5ECEC0010FEF6 /* CEngine.h */,
+			);
+			name = engine;
+			sourceTree = "<group>";
+		};
+		BD0A009416B5ED340010FEF6 /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				BD0A009016B5ECEC0010FEF6 /* CEngine.cpp */,
+			);
+			name = engine;
 			sourceTree = "<group>";
 		};
 		BD1C29D216582C7C00E9D8EF /* render */ = {
@@ -183,20 +207,21 @@
 			name = render;
 			sourceTree = "<group>";
 		};
-		BD1C29D316582C9000E9D8EF /* launcher */ = {
+		BD1C29D316582C9000E9D8EF /* platform */ = {
 			isa = PBXGroup;
 			children = (
-				BD2BD6961621FC6D00A8AD24 /* COGLCocoaWrapper.mm */,
+				BD2BD6961621FC6D00A8AD24 /* CCocoaWrapper.mm */,
 			);
-			name = launcher;
+			name = platform;
 			sourceTree = "<group>";
 		};
-		BD1C29D516582DFE00E9D8EF /* launcher */ = {
+		BD1C29D516582DFE00E9D8EF /* platform */ = {
 			isa = PBXGroup;
 			children = (
-				BD2BD6951621FC6D00A8AD24 /* COGLCocoaWrapper.h */,
+				BD2BD6951621FC6D00A8AD24 /* CCocoaWrapper.h */,
+				BD0A009B16B665770010FEF6 /* PlatformWrapper.h */,
 			);
-			name = launcher;
+			name = platform;
 			sourceTree = "<group>";
 		};
 		BD1C29D71658357B00E9D8EF /* utilities */ = {
@@ -273,10 +298,11 @@
 		BD2BD6631621F90D00A8AD24 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BD0A009416B5ED340010FEF6 /* engine */,
 				BD1C29D71658357B00E9D8EF /* utilities */,
-				BD1C29D316582C9000E9D8EF /* launcher */,
+				BD1C29D316582C9000E9D8EF /* platform */,
 				BD1C29D216582C7C00E9D8EF /* render */,
-				BD0159BD163C9F290096512C /* game */,
+				BD0159BD163C9F290096512C /* extensions */,
 				BD0159AF163C80150096512C /* filetypes */,
 				BDB2AF8E1623D2A8006F59F3 /* common */,
 				BDB3E21216237C1500D011D9 /* math */,
@@ -288,11 +314,12 @@
 		BD2BD6901621FA5A00A8AD24 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				BD0A009316B5ED280010FEF6 /* engine */,
 				BD1C29DC1658C43E00E9D8EF /* utilities */,
-				BD1C29D516582DFE00E9D8EF /* launcher */,
+				BD1C29D516582DFE00E9D8EF /* platform */,
 				BDDA1B00165828B900D6F5D8 /* mesh */,
 				BD72E14E163D9E10004F7CF7 /* math */,
-				BD0159BE163C9F400096512C /* game */,
+				BD0159BE163C9F400096512C /* extensions */,
 				BD0159BA163C94BC0096512C /* containers */,
 				BD0159B1163C80420096512C /* filetypes */,
 				BDB2AF7B1623974F006F59F3 /* render */,
@@ -456,14 +483,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD2BD6691621F90D00A8AD24 /* main.mm in Sources */,
-				BD2BD69B1621FC6D00A8AD24 /* COGLCocoaWrapper.mm in Sources */,
+				BD2BD69B1621FC6D00A8AD24 /* CCocoaWrapper.mm in Sources */,
 				BD2BD69C1621FC6D00A8AD24 /* COGLRender.cpp in Sources */,
 				BDB3E21816237C4D00D011D9 /* math_vector.cpp in Sources */,
 				BDB2AF781623920C006F59F3 /* math_common.cpp in Sources */,
 				BDB2AF83162399F5006F59F3 /* math_matrix.cpp in Sources */,
 				BDB2AF8D1623D291006F59F3 /* debug.cpp in Sources */,
 				BD0159B4163C8A880096512C /* file_smd.cpp in Sources */,
-				BD0159B8163C8F400096512C /* CGameInterface.cpp in Sources */,
 				BDFF8CD516422E6F0047C3CB /* file_tga.cpp in Sources */,
 				BDFF8CDD164F196F0047C3CB /* math_plane.cpp in Sources */,
 				BD7FE31D16504CA100781DD8 /* math_frustum.cpp in Sources */,
@@ -478,6 +504,8 @@
 				BD336C5716840A5B00BA4203 /* util_mempool.cpp in Sources */,
 				BDED313E16B24E2900B7E97B /* ScriptParse.cpp in Sources */,
 				BDED316516B3805200B7E97B /* CExtensions.cpp in Sources */,
+				BD0A008816B5D64F0010FEF6 /* CPlatform.cpp in Sources */,
+				BD0A009216B5ECEC0010FEF6 /* CEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +613,7 @@
 					../../common,
 					"../../utilities/**",
 					../../shared,
+					../../engine,
 				);
 				INFOPLIST_FILE = "resources/genesis-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -613,6 +642,7 @@
 					../../common,
 					"../../utilities/**",
 					../../shared,
+					../../engine,
 				);
 				INFOPLIST_FILE = "resources/genesis-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

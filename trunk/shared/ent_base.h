@@ -9,8 +9,6 @@
 #ifndef ENT_BASE_H
 #define ENT_BASE_H
 
-//#include "network_base.h"
-
 class CEntityBase
 {
     DECLARE_CLASS_NO_BASE(CEntityBase);

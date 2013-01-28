@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0A009916B5F7680010FEF6 /* IServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009816B5F7680010FEF6 /* IServer.h */; };
 		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
 		BDFABFD31692345B001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD11692345B001C1E6A /* ent_base.h */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD0A009816B5F7680010FEF6 /* IServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IServer.h; path = ../interfaces/IServer.h; sourceTree = "<group>"; };
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
 		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
@@ -41,6 +43,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD0A008D16B5E89F0010FEF6 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BDFABFE616925EA5001C1E6A /* data_types.h */,
+				BDFABFDD1692559F001C1E6A /* data_buffer.h */,
+				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		BD0A008F16B5E8C00010FEF6 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BDFABFDC1692559F001C1E6A /* data_buffer.cpp */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
 		BDC77FFE1692213C00C3F72E = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +82,7 @@
 		BDC78026169222C100C3F72E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BDFABFDC1692559F001C1E6A /* data_buffer.cpp */,
+				BD0A008F16B5E8C00010FEF6 /* data */,
 				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
 				BDED316116B37E0200B7E97B /* CServer.cpp */,
 			);
@@ -72,12 +92,11 @@
 		BDED315B16B37AD200B7E97B /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				BDFABFE616925EA5001C1E6A /* data_types.h */,
-				BDFABFDD1692559F001C1E6A /* data_buffer.h */,
-				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
+				BD0A008D16B5E89F0010FEF6 /* data */,
 				BDFABFD11692345B001C1E6A /* ent_base.h */,
 				BDFABFE516925A27001C1E6A /* entity_dictionary.h */,
 				BDFABFE816926659001C1E6A /* macros.h */,
+				BD0A009816B5F7680010FEF6 /* IServer.h */,
 				BDED316016B37CD600B7E97B /* CServer.h */,
 			);
 			name = Headers;
@@ -101,6 +120,7 @@
 				BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */,
 				BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */,
 				BDFABFE716925EA5001C1E6A /* data_types.h in Headers */,
+				BD0A009916B5F7680010FEF6 /* IServer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
