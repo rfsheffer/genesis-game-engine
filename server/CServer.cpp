@@ -8,15 +8,8 @@
 
 #include "CServer.h"
 
-//--------------------------------------------------------------------------
-// Purpose: Pushes a variable onto the token stack
-//--------------------------------------------------------------------------
-DLL_EXPORT
-IServer *CreateServer(void)
-{
-    return new CServer();
-}
-
+// Allow this extension to be used by the manager as an importable extension.
+SETUP_EXTENSION_LINK(Server);
 
 void CServer::Initialize(CExtensions *pExtensions)
 {

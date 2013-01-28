@@ -8,20 +8,21 @@
 
 #include "CClient.h"
 
-//--------------------------------------------------------------------------
-// Purpose: Pushes a variable onto the token stack
-//--------------------------------------------------------------------------
-DLL_EXPORT
-IClient *CreateClient(void)
-{
-    return new CClient();
-}
+// Allow this extension to be used by the manager as an importable extension.
+SETUP_EXTENSION_LINK(Client);
 
+//--------------------------------------------------------------------------
+// Purpose: Initialization of the client. This will happen after the extension
+// manager has been created.
+//--------------------------------------------------------------------------
 void CClient::Initialize(CExtensions *pExtensions)
 {
     m_pExtensions = pExtensions;
 }
 
+//--------------------------------------------------------------------------
+// Purpose: Called when the extension manager is told to shutdown
+//--------------------------------------------------------------------------
 void CClient::Shutdown()
 {
     

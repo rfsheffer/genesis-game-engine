@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0A009716B5F7570010FEF6 /* IClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009616B5F7570010FEF6 /* IClient.h */; };
 		BDED316816B386D400B7E97B /* CClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316616B386D400B7E97B /* CClient.cpp */; };
 		BDED316916B386D400B7E97B /* CClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDED316716B386D400B7E97B /* CClient.h */; };
 		BDFABFC616922B3A001C1E6A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFABFC516922B3A001C1E6A /* OpenGL.framework */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD0A009616B5F7570010FEF6 /* IClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IClient.h; path = ../interfaces/IClient.h; sourceTree = "<group>"; };
 		BDC7801B1692215F00C3F72E /* libclient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316616B386D400B7E97B /* CClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CClient.cpp; sourceTree = "<group>"; };
 		BDED316716B386D400B7E97B /* CClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CClient.h; sourceTree = "<group>"; };
@@ -57,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				BDFABFCC16923433001C1E6A /* ent_base.cpp */,
-				BDFABFCD16923433001C1E6A /* ent_base.h */,
 				BDED316616B386D400B7E97B /* CClient.cpp */,
 			);
 			name = Source;
@@ -66,6 +67,8 @@
 		BDED315E16B37C0600B7E97B /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				BD0A009616B5F7570010FEF6 /* IClient.h */,
+				BDFABFCD16923433001C1E6A /* ent_base.h */,
 				BDED316716B386D400B7E97B /* CClient.h */,
 			);
 			name = Headers;
@@ -88,6 +91,7 @@
 			files = (
 				BDFABFCF16923433001C1E6A /* ent_base.h in Headers */,
 				BDED316916B386D400B7E97B /* CClient.h in Headers */,
+				BD0A009716B5F7570010FEF6 /* IClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

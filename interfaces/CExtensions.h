@@ -11,24 +11,33 @@
 
 #include "IServer.h"
 #include "IClient.h"
+#include "IPlatform.h"
+#include "iExtension.h"
+
+#define MAX_BASE_EXTENSIONS         5
 
 class CExtensions
 {
 public:
+    CExtensions() : m_uiNumExtensions(0) {}
+    
+    DECLARE_IMPORT_EXTENSION(Server);
+    DECLARE_IMPORT_EXTENSION(Client);
+    
     bool        CreateAllExtensions(void);
     
-    IServer     *GetServer(){ return pServerExtension; }
-    IClient     *GetClient(){ return pClientExtension; }
+    void        RunExtensions(void);
     
     void        DestroyAllExtensions(void);
     
+    inline IPlatform   *GetPlatform(){ return pPlatform; }
+    
 private:
     
-    void        *pServerHandle;
-    IServer     *pServerExtension;
+    unsigned int    m_uiNumExtensions;
+    iExtension      *pExtensions[MAX_BASE_EXTENSIONS];
     
-    void        *pClientHandle;
-    IClient     *pClientExtension;
+    IPlatform       *pPlatform;
 };
 
 

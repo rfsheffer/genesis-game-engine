@@ -9,13 +9,11 @@
 #ifndef I_SERVER_H
 #define I_SERVER_H
 
-class CExtensions;
+#include "iExtension.h"
 
-class IServer
-{
-public:
-    virtual void            Initialize(CExtensions *pExtensions) = 0;
-    virtual void            Shutdown() = 0;
-};
+#define SERVER_EXTENSION_NAME     Server
+
+START_EXTENSION_INTERFACE(Server)
+END_EXTENSION_INTERFACE();
 
 #endif // I_SERVER_H
