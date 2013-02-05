@@ -14,8 +14,14 @@
 #include "IPlatform.h"
 #include "iExtension.h"
 
+/*! \def MAX_BASE_EXTENSIONS
+ \brief The max number of extensions which can be loaded at once.
+ 
+ Details.
+ */
 #define MAX_BASE_EXTENSIONS         5
 
+/*! An extension manager. */
 class CExtensions
 {
 public:
@@ -30,13 +36,28 @@ public:
     
     void        DestroyAllExtensions(void);
     
+    /**
+     * Get the platform interface. This interface gives the programmer a number
+     * of tools for file control, input, and other important platform systems.
+     */
     inline IPlatform   *GetPlatform(){ return pPlatform; }
     
 private:
     
+    /**
+     * Number of extensions currently loaded.
+     */
     unsigned int    m_uiNumExtensions;
+    
+    /**
+     * The extensions currently loaded.
+     * @see m_uiNumExtensions
+     */
     iExtension      *pExtensions[MAX_BASE_EXTENSIONS];
     
+    /**
+     * The platform extension.
+     */
     IPlatform       *pPlatform;
 };
 

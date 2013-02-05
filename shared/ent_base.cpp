@@ -14,10 +14,11 @@ BEGIN_DATA_MAP_NO_BASE(CEntityBase)
     DEFINE_MAPOBJ(m_angAngle, DATA_ANGLE, MAPOBJ_SAVED|MAPOBJ_NETWORKED),
 END_DATA_MAP();
 
-//------------------------------------------------------------------------------
-// Constructor
-//------------------------------------------------------------------------------
+/**
+ * Constructor
+ */
 CEntityBase::CEntityBase()
 {
-
+    m_vecOrigin.Init();
+    m_angAngle.Init();
 }

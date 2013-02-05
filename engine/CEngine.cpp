@@ -1,6 +1,7 @@
 //
 //  CEngine.cpp
-//  genesis
+//  The lowest level of a running game, works with the extensions manager to
+//  run the application as designed by the developer.
 //
 //  Created by Ryan Sheffer on 2013-01-27.
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.

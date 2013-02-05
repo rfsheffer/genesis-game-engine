@@ -8,9 +8,11 @@
 
 #include "CPlatform.h"
 
-//------------------------------------------------------------------------------
-// Purpose: Initialization
-//------------------------------------------------------------------------------
+/**
+ * Initialization of the platform. This will happen after the extension
+ * manager has been created.
+ * @param pExtensions The extension manager which created this extension.
+ */
 void CPlatform::Initialize(CExtensions *pExtensions)
 {
 #ifdef _MAC
@@ -20,10 +22,10 @@ void CPlatform::Initialize(CExtensions *pExtensions)
 #endif
 }
 
-//------------------------------------------------------------------------------
-// Purpose: Shutdown
-//------------------------------------------------------------------------------
-void CPlatform::Shutdown()
+/**
+ * Called usually at the end of program execution.
+ */
+void CPlatform::Shutdown(void)
 {
     
 }
