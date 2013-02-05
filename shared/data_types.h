@@ -1,6 +1,6 @@
 //
 //  data_types.h
-//  server
+//  Types of data allowed in the mapping system.
 //
 //  Created by Ryan Sheffer on 2012-12-31.
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.

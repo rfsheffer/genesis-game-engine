@@ -9,6 +9,7 @@
 
 #include "CServer.h"
 #include "ent_base.h"
+#include "data_networkpack.h"
 
 // Allow this extension to be used by the manager as an importable extension.
 SETUP_EXTENSION_LINK(Server);
@@ -40,7 +41,9 @@ void CServer::Initialize(CExtensions *pExtensions)
  */
 void CServer::Run(void)
 {
+    DataPacking::NetworkPackage     networkPackage(MAX_NUM_ENTITIES);
     
+    networkPackage.PackageEntities(m_pSharedEntities, MAX_NUM_ENTITIES);
 }
 
 /**

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BD0A009916B5F7680010FEF6 /* IServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009816B5F7680010FEF6 /* IServer.h */; };
 		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
+		BDF6753816C0DC9400966DB3 /* data_networkpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF6753716C0DC9400966DB3 /* data_networkpack.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
 		BDFABFD31692345B001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD11692345B001C1E6A /* ent_base.h */; };
 		BDFABFE01692559F001C1E6A /* data_pack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_pack.cpp */; };
@@ -22,6 +23,8 @@
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
 		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
+		BDF6753616C0DC5000966DB3 /* data_networkpack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_networkpack.h; path = ../shared/data_networkpack.h; sourceTree = "<group>"; };
+		BDF6753716C0DC9400966DB3 /* data_networkpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_networkpack.cpp; path = ../shared/data_networkpack.cpp; sourceTree = "<group>"; };
 		BDFABFD01692345B001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDFABFD11692345B001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
 		BDFABFDC1692559F001C1E6A /* data_pack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_pack.cpp; path = ../shared/data_pack.cpp; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 				BDFABFE616925EA5001C1E6A /* data_types.h */,
 				BDFABFDD1692559F001C1E6A /* data_pack.h */,
 				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
+				BDF6753616C0DC5000966DB3 /* data_networkpack.h */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -57,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				BDFABFDC1692559F001C1E6A /* data_pack.cpp */,
+				BDF6753716C0DC9400966DB3 /* data_networkpack.cpp */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */,
 				BDFABFE01692559F001C1E6A /* data_pack.cpp in Sources */,
 				BDED316216B37E0200B7E97B /* CServer.cpp in Sources */,
+				BDF6753816C0DC9400966DB3 /* data_networkpack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
