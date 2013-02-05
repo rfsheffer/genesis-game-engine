@@ -13,6 +13,9 @@
 #pragma once
 #endif
 
+namespace DataPacking
+{
+
 // little-endian "GECF" (Genesis Engine Chunk File)
 #define BUFFER_HEADER			(('F'<<24)+('C'<<16)+('E'<<8)+'G')
 
@@ -110,5 +113,7 @@ private:
 	int m_iAmountWritten;	// In bytes written.
 	int m_pWrittingblock;	// Current block being written to.
 };
+    
+} // DataPacking
 
 #endif

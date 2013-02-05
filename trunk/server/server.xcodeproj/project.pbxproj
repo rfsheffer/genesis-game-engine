@@ -11,8 +11,8 @@
 		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
 		BDFABFD31692345B001C1E6A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFD11692345B001C1E6A /* ent_base.h */; };
-		BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_buffer.cpp */; };
-		BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDD1692559F001C1E6A /* data_buffer.h */; };
+		BDFABFE01692559F001C1E6A /* data_pack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFDC1692559F001C1E6A /* data_pack.cpp */; };
+		BDFABFE11692559F001C1E6A /* data_pack.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDD1692559F001C1E6A /* data_pack.h */; };
 		BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFDF1692559F001C1E6A /* data_mapping.h */; };
 		BDFABFE716925EA5001C1E6A /* data_types.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFABFE616925EA5001C1E6A /* data_types.h */; };
 /* End PBXBuildFile section */
@@ -24,8 +24,8 @@
 		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
 		BDFABFD01692345B001C1E6A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDFABFD11692345B001C1E6A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
-		BDFABFDC1692559F001C1E6A /* data_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_buffer.cpp; path = ../shared/data_buffer.cpp; sourceTree = "<group>"; };
-		BDFABFDD1692559F001C1E6A /* data_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_buffer.h; path = ../shared/data_buffer.h; sourceTree = "<group>"; };
+		BDFABFDC1692559F001C1E6A /* data_pack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_pack.cpp; path = ../shared/data_pack.cpp; sourceTree = "<group>"; };
+		BDFABFDD1692559F001C1E6A /* data_pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_pack.h; path = ../shared/data_pack.h; sourceTree = "<group>"; };
 		BDFABFDF1692559F001C1E6A /* data_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_mapping.h; path = ../shared/data_mapping.h; sourceTree = "<group>"; wrapsLines = 0; };
 		BDFABFE516925A27001C1E6A /* entity_dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entity_dictionary.h; sourceTree = "<group>"; };
 		BDFABFE616925EA5001C1E6A /* data_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_types.h; path = ../shared/data_types.h; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				BDFABFE616925EA5001C1E6A /* data_types.h */,
-				BDFABFDD1692559F001C1E6A /* data_buffer.h */,
+				BDFABFDD1692559F001C1E6A /* data_pack.h */,
 				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
 			);
 			name = data;
@@ -56,7 +56,7 @@
 		BD0A008F16B5E8C00010FEF6 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				BDFABFDC1692559F001C1E6A /* data_buffer.cpp */,
+				BDFABFDC1692559F001C1E6A /* data_pack.cpp */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -117,7 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFD31692345B001C1E6A /* ent_base.h in Headers */,
-				BDFABFE11692559F001C1E6A /* data_buffer.h in Headers */,
+				BDFABFE11692559F001C1E6A /* data_pack.h in Headers */,
 				BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */,
 				BDFABFE716925EA5001C1E6A /* data_types.h in Headers */,
 				BD0A009916B5F7680010FEF6 /* IServer.h in Headers */,
@@ -176,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */,
-				BDFABFE01692559F001C1E6A /* data_buffer.cpp in Sources */,
+				BDFABFE01692559F001C1E6A /* data_pack.cpp in Sources */,
 				BDED316216B37E0200B7E97B /* CServer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
