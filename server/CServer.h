@@ -26,6 +26,8 @@ public:
      */
     CExtensions     *GetExtensions(void){ return m_pExtensions; }
     
+    void            RecvDataBuffer(DataPacking::DataBuffer *pBuffer);
+    
 private:
 
     /**

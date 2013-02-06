@@ -33,12 +33,34 @@ namespace DataPacking
         void        WriteTypeFromClass(CEntityBase *pBaseClass,
                                        objdesc_t *pObject, char *pBuffer);
         
+        /** The heading structure before an entities data map */
         struct networked_entity_header_t
         {
-            //char entityname[MAX_ENTITY_NAME];
-            //char classname[MAX_CLASS_NAME];		// Classname.
-            bool topclass;						// Is this the top most class in the class hierarchy?
-            short num_objs;						// Number of Saved Objects.
+            /** Network flag sent with each entity datamap */
+            enum net_ent_flags
+            {
+                /** Specifies an empty entity slot, will also destory any
+                 entity currently in the client slot. */
+                NET_FLAG_DEAD       =   0,
+                
+                /** Specifies that this data map is at the top class. */
+                NET_FLAG_TOPCLASS   =   0x01,
+                
+                /** Specifies that the entity is new. */
+                NET_FLAG_CREATE     =   0x02,
+                
+                /** Specifies that this data is an update for an old entity. */
+                NET_FLAG_UPDATE     =   0x04
+            };
+            
+            /** Number of Saved Objects. */
+            short num_objs;
+            
+            /** 
+             * Network flags
+             * @see net_ent_flags
+             */
+            short flags;
         };
     };
     

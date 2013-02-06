@@ -155,7 +155,7 @@
 		BDC780001692213C00C3F72E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Ryan Sheffer";
 			};
 			buildConfigurationList = BDC780031692213C00C3F72E /* Build configuration list for PBXProject "server" */;
@@ -247,6 +247,7 @@
 		BDC7800E1692213C00C3F72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../common/allhead.pch;
@@ -270,6 +271,7 @@
 		BDC7800F1692213C00C3F72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../common/allhead.pch;

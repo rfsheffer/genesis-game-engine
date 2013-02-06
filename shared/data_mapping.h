@@ -160,4 +160,18 @@ inline int num_saved_obj( datamap_t *p )
 	return num_saved;
 }
 
+inline int num_networked_obj( datamap_t *p )
+{
+	if( !p )
+		return 0;
+    
+	int num_networked = 0;
+	for( int i = 0; i < p->NumObjs; i++ )
+	{
+		if(p->objList[i].flags & MAPOBJ_NETWORKED)
+			num_networked++;
+	}
+	return num_networked;
+}
+
 #endif // DATA_MAPPING_H

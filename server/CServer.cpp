@@ -41,9 +41,11 @@ void CServer::Initialize(CExtensions *pExtensions)
  */
 void CServer::Run(void)
 {
+    // Package up the entities
     DataPacking::NetworkPackage     networkPackage(MAX_NUM_ENTITIES);
-    
     networkPackage.PackageEntities(m_pSharedEntities, MAX_NUM_ENTITIES);
+    
+    // Now send it off to the engine
 }
 
 /**
@@ -60,4 +62,15 @@ void CServer::Shutdown()
             m_pSharedEntities[i] = NULL;
         }
     }
+}
+
+/**
+ * Recieve a buffer from the extension manager
+ * @param pBuffer The buffer to recv
+ * @param pExtensionName The name of the specific system to give the data to.
+ */
+void CServer::RecvDataBuffer(DataPacking::DataBuffer *pBuffer)
+{
+    // This will be a small buffer from the clients which contains
+    // data such as input commands.
 }

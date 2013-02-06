@@ -42,6 +42,9 @@ public:
      */
     inline IPlatform   *GetPlatform(){ return pPlatform; }
     
+    void RecvDataBuffer(DataPacking::DataBuffer *pBuffer,
+                                    const char *pExtensionName);
+    
 private:
     
     /**
