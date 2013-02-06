@@ -59,3 +59,17 @@ void CExtensions::DestroyAllExtensions(void)
     CLOSE_IMPORT_EXTENSION(Server);
     CLOSE_IMPORT_EXTENSION(Client);
 }
+
+/**
+ * Recieve a buffer from the engine
+ * @param pBuffer The buffer to recv
+ * @param pExtensionName The name of the specific system to give the data to.
+ */
+void CExtensions::RecvDataBuffer(DataPacking::DataBuffer *pBuffer,
+                                            const char *pExtensionName)
+{
+    if(strcmp(pExtensionName, "Client") == 0)
+    {
+        
+    }
+}

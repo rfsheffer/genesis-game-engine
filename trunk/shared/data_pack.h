@@ -15,45 +15,28 @@
 
 namespace DataPacking
 {
-    
     // little-endian "GECF" (Genesis Engine Chunk File)
 #define BUFFER_HEADER			(('F'<<24)+('C'<<16)+('E'<<8)+'G')
     
     // Version for chunk pools saved in files
 #define BUFFER_FILE_VERSION		1
     
-    // Max name for data blocks
-#define MAX_DATA_BLOCK_NAME		16
-    
-    struct data_block
-    {
-        char name[MAX_DATA_BLOCK_NAME];
-        int size;
-        int offset;
-    };
-    
-    // Used for file saving.
+    /** Used for file saving. */
     struct buffer_header_t
     {
-        int id;
-        short version;
-        int Num_Blocks;
-        int	BufferSize;
+        int         id;
+        short       version;
+        int         Num_Blocks;
+        int         BufferSize;
     };
     
-    enum buffer_error
-    {
-        OKAY = 0,
-        INIT_ERROR
-    };
-    
-    
+    /** A class used to map and buffer data. */
     class DataBuffer
     {
     public:
         
         DataBuffer(unsigned int buffer_size = 0, unsigned int num_blocks = 0);
-        DataBuffer();
+        ~DataBuffer();
         
         /** Sets the rate of block growth when new blocks are needed. */
         inline void SetBlockGrowth(unsigned int size)
@@ -70,6 +53,17 @@ namespace DataPacking
         bool        ResizeBlockData(unsigned int newsize);
         bool        ResizeBufferData(unsigned int newsize);
         bool        SetBufferPos(unsigned int position);
+        
+        // Max name for data blocks
+#define MAX_DATA_BLOCK_NAME		16
+        
+        /** A data block header */
+        struct data_block
+        {
+            char name[MAX_DATA_BLOCK_NAME];
+            int size;
+            int offset;
+        };
         
         /** A pointer to the start of the block data */
         data_block  *m_pBlocks;
@@ -93,18 +87,25 @@ namespace DataPacking
         /** Total allocated memory for this buffer in bytes. */
         int			 m_iBufferSize;
         
-        /** Gets the current error level set by the buffer */
-        int GetError(void)
+        /** Error IDs for data buffer errors */
+        enum buffer_error
         {
-            int error = m_iError;
-            m_iError = 0;
+            BUFFER_OKAY = 0,
+            BUFFER_INIT_ERROR
+        };
+        
+        /** Gets the current error level set by the buffer */
+        buffer_error GetError(void)
+        {
+            buffer_error error = m_iError;
+            m_iError = BUFFER_OKAY;
             return error;
         }
         
     private:
         
         /** The error level */
-        int m_iError;
+        buffer_error m_iError;
         
         data_block *CreateBlock(const char *pName, unsigned int size = 0);
         

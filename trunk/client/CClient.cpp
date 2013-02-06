@@ -9,6 +9,7 @@
 //
 
 #include "CClient.h"
+#include "data_pack.h"
 
 // Allow this extension to be used by the manager as an importable extension.
 SETUP_EXTENSION_LINK(Client);
@@ -42,6 +43,16 @@ void CClient::Run(void)
  * server are being shutdown. The server is shutdown before the clients.
  */
 void CClient::Shutdown()
+{
+    
+}
+
+/**
+ * Recieve a buffer from the extension manager
+ * @param pBuffer The buffer to recv
+ * @param pExtensionName The name of the specific system to give the data to.
+ */
+void CClient::RecvDataBuffer(DataPacking::DataBuffer *pBuffer)
 {
     
 }

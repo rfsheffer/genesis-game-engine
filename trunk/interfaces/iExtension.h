@@ -15,6 +15,11 @@
  Details.
  */
 
+namespace DataPacking
+{
+    class DataBuffer;
+}
+
 /*! Extension Interface */
 class iExtension
 {
@@ -77,7 +82,8 @@ class I##name : public iExtension \
 { \
 public: \
     virtual void            Initialize(CExtensions *pExtensions) = 0; \
-    virtual void            Shutdown() = 0;
+    virtual void            Shutdown() = 0; \
+    virtual void            RecvDataBuffer(DataPacking::DataBuffer *pBuffer) = 0;
 
 /*! \def END_EXTENSION_INTERFACE()
  \brief A macro for ending a new extension.

@@ -22,25 +22,31 @@ namespace DataPacking
         
         if( buffer_size && !ResizeBufferData( buffer_size ) )
         {
-            m_iError = 1;
+            m_iError = BUFFER_INIT_ERROR;
         }
         
         if( num_blocks && !ResizeBlockData( num_blocks ) )
         {
-            m_iError = 1;
+            m_iError = BUFFER_INIT_ERROR;
         }
     }
     
     /**
      * Destructor
      */
-    DataBuffer::DataBuffer()
+    DataBuffer::~DataBuffer()
     {
         if( m_pBaseData )
+        {
             free( m_pBaseData );
+            m_pBaseData = NULL;
+        }
         
         if( m_pBlocks )
+        {
             free( m_pBlocks );
+            m_pBlocks = NULL;
+        }
     }
     
     /**
@@ -245,7 +251,8 @@ namespace DataPacking
      * @param pName The name of the block to create.
      * @param size The size to assign to the block.
      */
-    data_block *DataBuffer::CreateBlock(const char *pName, unsigned int size)
+    DataBuffer::data_block *DataBuffer::CreateBlock(const char *pName,
+                                                    unsigned int size)
     {
         // Alloc more space if needed.
         if( !m_pBlocks || ( m_iNum_Blocks == m_iCurrent_Block ) )

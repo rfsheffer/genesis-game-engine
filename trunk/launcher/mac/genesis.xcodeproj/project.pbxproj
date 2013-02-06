@@ -20,6 +20,7 @@
 		BD2BD69B1621FC6D00A8AD24 /* CCocoaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6961621FC6D00A8AD24 /* CCocoaWrapper.mm */; };
 		BD2BD69C1621FC6D00A8AD24 /* COGLRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6971621FC6D00A8AD24 /* COGLRender.cpp */; };
 		BD336C5716840A5B00BA4203 /* util_mempool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD336C5516840A5B00BA4203 /* util_mempool.cpp */; };
+		BD6C736716C2119700913D33 /* CEngineClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD6C736516C2119700913D33 /* CEngineClient.cpp */; };
 		BD7FE31D16504CA100781DD8 /* math_frustum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE31B16504CA100781DD8 /* math_frustum.cpp */; };
 		BD7FE3211651791600781DD8 /* math_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE31F1651791600781DD8 /* math_screen.cpp */; };
 		BD7FE32316518FCD00781DD8 /* math_angle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD7FE32216518FCD00781DD8 /* math_angle.cpp */; };
@@ -79,6 +80,8 @@
 		BD2BD69A1621FC6D00A8AD24 /* render_globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_globals.h; path = ../../render/render_globals.h; sourceTree = SOURCE_ROOT; };
 		BD336C5516840A5B00BA4203 /* util_mempool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_mempool.cpp; path = ../../utilities/util_mempool.cpp; sourceTree = SOURCE_ROOT; };
 		BD336C5616840A5B00BA4203 /* util_mempool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_mempool.h; path = ../../utilities/util_mempool.h; sourceTree = SOURCE_ROOT; };
+		BD6C736516C2119700913D33 /* CEngineClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CEngineClient.cpp; path = ../../engine/CEngineClient.cpp; sourceTree = SOURCE_ROOT; };
+		BD6C736616C2119700913D33 /* CEngineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngineClient.h; path = ../../engine/CEngineClient.h; sourceTree = SOURCE_ROOT; };
 		BD72E146163D9E09004F7CF7 /* math_angle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_angle.h; path = ../../math/math_angle.h; sourceTree = SOURCE_ROOT; };
 		BD72E147163D9E09004F7CF7 /* math_asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_asm.h; path = ../../math/math_asm.h; sourceTree = SOURCE_ROOT; };
 		BD72E148163D9E09004F7CF7 /* math_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_common.h; path = ../../math/math_common.h; sourceTree = SOURCE_ROOT; };
@@ -102,6 +105,7 @@
 		BD990950167BCEBE00E8CAC9 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		BD990952167BD15000E8CAC9 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform.h; path = ../../common/platform.h; sourceTree = SOURCE_ROOT; };
 		BDA7B635165F0E1300AE23A3 /* standard_meshes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = standard_meshes.h; path = ../../mesh/standard_meshes.h; sourceTree = SOURCE_ROOT; };
+		BDAA4E5616C21B11001B5EBD /* IEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IEngine.h; path = ../../interfaces/IEngine.h; sourceTree = SOURCE_ROOT; };
 		BDB2AF771623920C006F59F3 /* math_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_common.cpp; path = ../../math/math_common.cpp; sourceTree = SOURCE_ROOT; };
 		BDB2AF80162399F5006F59F3 /* math_matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_matrix.cpp; path = ../../math/math_matrix.cpp; sourceTree = SOURCE_ROOT; };
 		BDB2AF8C1623D291006F59F3 /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../../common/debug.cpp; sourceTree = SOURCE_ROOT; };
@@ -183,7 +187,9 @@
 		BD0A009316B5ED280010FEF6 /* engine */ = {
 			isa = PBXGroup;
 			children = (
+				BDAA4E5616C21B11001B5EBD /* IEngine.h */,
 				BD0A009116B5ECEC0010FEF6 /* CEngine.h */,
+				BD6C736616C2119700913D33 /* CEngineClient.h */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				BD0A009016B5ECEC0010FEF6 /* CEngine.cpp */,
+				BD6C736516C2119700913D33 /* CEngineClient.cpp */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -506,6 +513,7 @@
 				BDED316516B3805200B7E97B /* CExtensions.cpp in Sources */,
 				BD0A008816B5D64F0010FEF6 /* CPlatform.cpp in Sources */,
 				BD0A009216B5ECEC0010FEF6 /* CEngine.cpp in Sources */,
+				BD6C736716C2119700913D33 /* CEngineClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

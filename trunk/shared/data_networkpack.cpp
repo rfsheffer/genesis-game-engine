@@ -32,25 +32,34 @@ namespace DataPacking
      * Write data mapped variables with the network flag to buffer.
      */
     void NetworkPackage::WriteDataMaps(CEntityBase *pBaseClass)
-    {
-        if(!pBaseClass)
-        {
-            // TODO: Writting an empty block for this index
-            return;
-        }
-        
-        StartWritting("NET_ENTITY_BLOCK"); // Write an entity save block.
+    {        
+        StartWritting("NET_ENTITY_BLOCK"); // Write an entity block.
         networked_entity_header_t net_ent_header;
         bool first_class = true;
         
-        datamap_t *pCurDataMap = pBaseClass->GetDataMap();;
+        if(!pBaseClass)
+        {
+            // Write an empty block and stop here if there is no entity.
+            net_ent_header.flags |= networked_entity_header_t::NET_FLAG_DEAD;
+            net_ent_header.num_objs = 0;
+            
+            WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
+            
+            EndWritting();
+            return;
+        }
+        
+        datamap_t *pCurDataMap = pBaseClass->GetDataMap();
         while( pCurDataMap )
         {
-            //Write entity save header first.
-            //strncpy( save_ent_header.entityname, ent_name->c_str(), MAX_ENTITY_NAME );
-            //strncpy( save_ent_header.classname, pCurDataMap->dataClassName, MAX_CLASS_NAME );
-            net_ent_header.topclass = first_class;
+            net_ent_header.flags = 0;
             net_ent_header.num_objs = 0;
+            
+            //Write entity save header first.
+            net_ent_header.flags |=
+                first_class?networked_entity_header_t::NET_FLAG_TOPCLASS:0;
+            
+            net_ent_header.num_objs = num_networked_obj(pCurDataMap);
             
             WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
 
