@@ -19,6 +19,8 @@ namespace DataPacking
     {
     public:
         
+        NetworkPackage() : m_pDataBuffer(NULL) {}
+        
         ~NetworkPackage()
         {
             if(m_pDataBuffer)

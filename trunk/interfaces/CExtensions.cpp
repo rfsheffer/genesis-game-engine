@@ -16,8 +16,9 @@
  Details.
  */
 #define ADD_EXTENSION(name) \
-    pExtensions[m_uiNumExtensions++] = Get##name(); \
-    Get##name()->Initialize(this);
+    ASSERTION(strlen(#name) > 0 && strlen(#name) < MAX_EXTENSION_NAME, "Bad Extension Name Length!"); \
+    Get##name()->Initialize(this); \
+    pExtensions[m_uiNumExtensions++] = Get##name();
 
 /**
  * Creates all extensions.
@@ -33,6 +34,8 @@ bool CExtensions::CreateAllExtensions(void)
     ADD_EXTENSION(Server);
     ADD_EXTENSION(Client);
     
+    m_uiCurSendBuffer = 0;
+    
     return true;
 }
 
@@ -43,8 +46,33 @@ void CExtensions::RunExtensions(void)
 {
     for(unsigned int i = 0; i < m_uiNumExtensions; ++i)
     {
+        // Dispatch pending messages
+        DispatchPendingMessages();
+        
+        // Run the extension
         pExtensions[i]->Run();
     }
+}
+
+/**
+ * Sends all new cross extension messages to their owners
+ */
+void CExtensions::DispatchPendingMessages(void)
+{
+    for(int i = 0; i < m_uiCurSendBuffer; ++i)
+    {
+        // TODO: Get rid of this string lookup.
+        if(strcmp(m_sendBuffers[i].szSendName, "Client") == 0)
+        {
+            GetClient()->RecvBuffer(&m_sendBuffers[i].sendBuffer);
+        }
+        else if(strcmp(m_sendBuffers[i].szSendName, "Server") == 0)
+        {
+            GetServer()->RecvBuffer(&m_sendBuffers[i].sendBuffer);
+        }
+    }
+    
+    m_uiCurSendBuffer = 0;
 }
 
 /**
@@ -61,23 +89,17 @@ void CExtensions::DestroyAllExtensions(void)
 }
 
 /**
- * Recieve a buffer from the engine
- * @param pBuffer The buffer to recv
- * @param pExtensionName The name of the specific system to give the data to.
- */
-void CExtensions::RecvBuffer(const char *pszRecvName, DataPacking::DataBuffer *pBuffer)
-{
-    if(strcmp(pszRecvName, "Client") == 0)
-    {
-        GetClient()->RecvBuffer(pBuffer);
-    }
-}
-
-/**
  * This will add a buffer to the list of send buffers that should be sent.
- * @param
+ * Note: This could also be called by the engine because of a network message.
+ * @param pszSendName The name of the extension to recieve this message.
+ * @param pBuffer The buffer to send to the extension.
  */
 void CExtensions::SendBuffer(const char *pszSendName, DataPacking::DataBuffer *pBuffer)
 {
+    ASSERTION(pszSendName && pBuffer, "Incomplete parameters in SendBuffer!");
     
+    strncpy(m_sendBuffers[m_uiCurSendBuffer].szSendName, pszSendName, MAX_EXTENSION_NAME);
+    m_sendBuffers[m_uiCurSendBuffer].sendBuffer = *pBuffer;
+    
+    ++m_uiCurSendBuffer;
 }

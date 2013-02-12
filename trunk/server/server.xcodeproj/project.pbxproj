@@ -24,6 +24,7 @@
 		BD0A009816B5F7680010FEF6 /* IServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IServer.h; path = ../interfaces/IServer.h; sourceTree = "<group>"; };
 		BD22CE3416C9CEAC00B8C48F /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../common/debug.cpp; sourceTree = "<group>"; };
 		BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		BD22CE3916C9E65F00B8C48F /* data_filepack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_filepack.h; path = ../shared/data_filepack.h; sourceTree = "<group>"; };
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
 		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
@@ -55,9 +56,10 @@
 			isa = PBXGroup;
 			children = (
 				BDFABFE616925EA5001C1E6A /* data_types.h */,
-				BDFABFDD1692559F001C1E6A /* data_pack.h */,
 				BDFABFDF1692559F001C1E6A /* data_mapping.h */,
+				BDFABFDD1692559F001C1E6A /* data_pack.h */,
 				BDF6753616C0DC5000966DB3 /* data_networkpack.h */,
+				BD22CE3916C9E65F00B8C48F /* data_filepack.h */,
 			);
 			name = data;
 			sourceTree = "<group>";
