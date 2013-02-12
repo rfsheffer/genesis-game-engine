@@ -26,6 +26,23 @@
  */
 #define NUM_SEND_BUFFERS            2
 
+/**
+ * This is the max number of characters in an extensions name.
+ */
+#define MAX_EXTENSION_NAME          32
+
+/**
+ * A message to be sent to an extension.
+ */
+class send_buffer_t
+{
+public:
+    send_buffer_t() : sendBuffer(1024, 256) {}
+    
+    char                        szSendName[MAX_EXTENSION_NAME];
+    DataPacking::DataBuffer     sendBuffer;
+};
+
 /*! An extension manager. */
 class CExtensions : public IExtensions
 {
@@ -39,7 +56,7 @@ public:
     void        RunExtensions(void);
     void        DestroyAllExtensions(void);
     void        SendBuffer(const char *pszSendDest, DataPacking::DataBuffer *pBuffer);
-    void        RecvBuffer(const char *pszRecvName, DataPacking::DataBuffer *pBuffer);
+    void        DispatchPendingMessages(void);
     
     /**
      * Get a send buffer by index.
@@ -49,7 +66,7 @@ public:
     {
         ASSERTION(index >= 0 && index < NUM_SEND_BUFFERS,
                   "Getting out of range send buffer!");
-        return m_sendBuffers[index];
+        return &m_sendBuffers[index].sendBuffer;
     }
     
     /**
@@ -59,6 +76,14 @@ public:
     unsigned int        GetNumSendBuffers(void) const
     {
         return NUM_SEND_BUFFERS;
+    }
+    
+    /**
+     * Clears all pending send buffers and allows them to be used again.
+     */
+    void        InvalidateSendBuffers(void)
+    {
+        m_uiCurSendBuffer = 0;
     }
     
     /**
@@ -81,8 +106,14 @@ private:
     /** The platform extension. */
     IPlatform       *pPlatform;
     
-   /** Send Buffers */
-    DataPacking::DataBuffer     *m_sendBuffers[NUM_SEND_BUFFERS];
+   /**
+    * Send Buffers
+    * @see m_uiCurSendBuffer
+    */
+    send_buffer_t               m_sendBuffers[NUM_SEND_BUFFERS];
+    
+    /** The number of send buffers currently ready to be sent out. */
+    unsigned int                m_uiCurSendBuffer;
 };
 
 

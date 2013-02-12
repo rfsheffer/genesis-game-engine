@@ -12,6 +12,39 @@ namespace DataPacking
 {
     /**
      * Constructor
+     * @param pToCopy The buffer to copy to this buffer.
+     */
+    DataBuffer::DataBuffer(const DataBuffer *pToCopy)
+    {
+        memset( this, 0, sizeof( *this ) );
+        
+        m_iBlockGrowSize = pToCopy->GetBlockGrowth();
+        
+        if(!ResizeBufferData(pToCopy->m_iBufferSize))
+        {
+            m_iError = BUFFER_INIT_ERROR;
+            ASSERTION(false, "Buffer initialization error!");
+        }
+        
+        if(!ResizeBlockData(pToCopy->m_iNum_Blocks))
+        {
+            m_iError = BUFFER_INIT_ERROR;
+            ASSERTION(false, "Buffer initialization error!");
+        }
+        
+        m_iBufferSize = pToCopy->m_iBufferSize;
+        m_iNum_Blocks = pToCopy->m_iNum_Blocks;
+        m_iCurrentPos = pToCopy->m_iCurrentPos;
+        m_iCurrent_Block = pToCopy->m_iCurrent_Block;
+        
+        memcpy(m_pBlocks, pToCopy->m_pBlocks, sizeof(data_block) * m_iNum_Blocks);
+        memcpy(m_pBaseData, pToCopy->m_pBaseData, pToCopy->m_iBufferSize);
+        
+        m_pCurrentData = m_pBaseData + m_iCurrentPos;
+    }
+    
+    /**
+     * Constructor
      * @param buffer_size The size of the buffer to create.
      * @param num_blocks The number of blocks to start with.
      */
@@ -47,6 +80,32 @@ namespace DataPacking
             free( m_pBlocks );
             m_pBlocks = NULL;
         }
+    }
+    
+    /**
+     * Allows this data buffer to take on the data of another buffer.
+     */
+    DataBuffer& DataBuffer::operator= (const DataBuffer &cSource)
+    {
+        m_iBlockGrowSize = cSource.GetBlockGrowth();
+        
+        ResizeBufferData(cSource.m_iBufferSize);
+        ResizeBlockData(cSource.m_iNum_Blocks);
+        
+        m_iBufferSize = cSource.m_iBufferSize;
+        m_iNum_Blocks = cSource.m_iNum_Blocks;
+        m_iCurrentPos = cSource.m_iCurrentPos;
+        m_iCurrent_Block = cSource.m_iCurrent_Block;
+        
+        memcpy(m_pBlocks, cSource.m_pBlocks, sizeof(data_block) * m_iNum_Blocks);
+        memcpy(m_pBaseData, cSource.m_pBaseData, cSource.m_iBufferSize);
+        
+        m_pCurrentData = m_pBaseData + m_iCurrentPos;
+        
+        m_bWritting = false;
+        m_iAmountWritten = 0;
+        
+        return *this;
     }
     
     /**

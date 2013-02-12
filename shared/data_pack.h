@@ -15,35 +15,27 @@
 
 namespace DataPacking
 {
-    // little-endian "GECF" (Genesis Engine Chunk File)
-#define BUFFER_HEADER			(('F'<<24)+('C'<<16)+('E'<<8)+'G')
-    
-    // Version for chunk pools saved in files
-#define BUFFER_FILE_VERSION		1
-    
-    /** Used for file saving. */
-    struct buffer_header_t
-    {
-        int         id;
-        short       version;
-        int         Num_Blocks;
-        int         BufferSize;
-    };
-    
     /** A class used to map and buffer data. */
     class DataBuffer
     {
     public:
         
+        DataBuffer(const DataBuffer *pToCopy);
         DataBuffer(unsigned int buffer_size = 0, unsigned int num_blocks = 0);
         ~DataBuffer();
+        
+        DataBuffer& operator= (const DataBuffer &cSource);
         
         /** Sets the rate of block growth when new blocks are needed. */
         inline void SetBlockGrowth(unsigned int size)
         {
+            ASSERTION(size > 1, "Invalid block growth size!");
             if(size > 1)
                 m_iBlockGrowSize = size;
         }
+        
+        /** Gets the block growth rate. */
+        inline int GetBlockGrowth(void) const { return m_iBlockGrowSize; }
         
         bool        WriteBlock(const char *pName, const char *pBuffer, unsigned int size);
         bool        StartWritting(const char *pName);
@@ -115,7 +107,10 @@ namespace DataPacking
         // Used durring the writting process.
         bool m_bWritting;		// Writting.
         int m_iAmountWritten;	// In bytes written.
-        int m_pWrittingblock;	// Current block being written to.
+        //int m_pWrittingblock;	// Current block being written to.
+        
+        // No copy constructor or assignment
+        DataBuffer(const DataBuffer &pCopy) {}
     };
     
 } // DataPacking

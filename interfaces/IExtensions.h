@@ -16,9 +16,9 @@ public:
     virtual void        RunExtensions(void) = 0;
     virtual void        DestroyAllExtensions(void) = 0;
     virtual void        SendBuffer(const char *pszSendDest, DataPacking::DataBuffer *pBuffer) = 0;
-    virtual void        RecvBuffer(const char *pszRecvName, DataPacking::DataBuffer *pBuffer) = 0;
     virtual DataPacking::DataBuffer *GetSendBuffer(unsigned int index) = 0;
     virtual unsigned int GetNumSendBuffers(void) const = 0;
+    virtual void        InvalidateSendBuffers(void) = 0;
 };
 
 #endif // IEXTENSIONS_H

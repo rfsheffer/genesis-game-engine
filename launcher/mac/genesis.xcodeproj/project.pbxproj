@@ -11,6 +11,7 @@
 		BD0A008816B5D64F0010FEF6 /* CPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0A008616B5D64F0010FEF6 /* CPlatform.cpp */; };
 		BD0A009216B5ECEC0010FEF6 /* CEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0A009016B5ECEC0010FEF6 /* CEngine.cpp */; };
 		BD1C29DA165835AC00E9D8EF /* util_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD1C29D8165835AC00E9D8EF /* util_time.cpp */; };
+		BD22CE3C16CA193C00B8C48F /* data_pack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD22CE3B16CA193C00B8C48F /* data_pack.cpp */; };
 		BD2BD65D1621F90D00A8AD24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2BD65C1621F90D00A8AD24 /* Cocoa.framework */; };
 		BD2BD6671621F90D00A8AD24 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD2BD6651621F90D00A8AD24 /* InfoPlist.strings */; };
 		BD2BD6691621F90D00A8AD24 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD2BD6681621F90D00A8AD24 /* main.mm */; };
@@ -61,6 +62,7 @@
 		BD1C29DE1659986500E9D8EF /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camera.h; path = ../../render/camera.h; sourceTree = SOURCE_ROOT; };
 		BD1C29DF1659A3D200E9D8EF /* OGL_Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OGL_Types.h; path = ../../render/opengl/OGL_Types.h; sourceTree = SOURCE_ROOT; };
 		BD22CE3816C9D30400B8C48F /* IExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IExtensions.h; path = ../../interfaces/IExtensions.h; sourceTree = SOURCE_ROOT; };
+		BD22CE3B16CA193C00B8C48F /* data_pack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_pack.cpp; path = ../../shared/data_pack.cpp; sourceTree = SOURCE_ROOT; };
 		BD2BD6581621F90D00A8AD24 /* genesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = genesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2BD65C1621F90D00A8AD24 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BD2BD65F1621F90D00A8AD24 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -255,6 +257,14 @@
 			name = utilities;
 			sourceTree = "<group>";
 		};
+		BD22CE3A16CA191300B8C48F /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BD22CE3B16CA193C00B8C48F /* data_pack.cpp */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
 		BD2BD64D1621F90D00A8AD24 = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +317,7 @@
 		BD2BD6631621F90D00A8AD24 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BD22CE3A16CA191300B8C48F /* data */,
 				BD0A009416B5ED340010FEF6 /* engine */,
 				BD1C29D71658357B00E9D8EF /* utilities */,
 				BD1C29D316582C9000E9D8EF /* OS */,
@@ -516,6 +527,7 @@
 				BD0A008816B5D64F0010FEF6 /* CPlatform.cpp in Sources */,
 				BD0A009216B5ECEC0010FEF6 /* CEngine.cpp in Sources */,
 				BD6C736716C2119700913D33 /* CEngineClient.cpp in Sources */,
+				BD22CE3C16CA193C00B8C48F /* data_pack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
