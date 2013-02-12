@@ -9,16 +9,13 @@
 #ifndef IEXTENSION_H
 #define IEXTENSION_H
 
+#include "iExtensions.h"
+
 /*! \file iExtension.h
  \brief Extension Interface Macros and Interface class.
  
  Details.
  */
-
-namespace DataPacking
-{
-    class DataBuffer;
-}
 
 /*! Extension Interface */
 class iExtension
@@ -76,14 +73,13 @@ dlclose(p##name##Handle);
  Details.
  */
 #define START_EXTENSION_INTERFACE(name) \
-class CExtensions; \
 \
 class I##name : public iExtension \
 { \
 public: \
-    virtual void            Initialize(CExtensions *pExtensions) = 0; \
+    virtual void            Initialize(IExtensions *pExtensions) = 0; \
     virtual void            Shutdown() = 0; \
-    virtual void            RecvDataBuffer(DataPacking::DataBuffer *pBuffer) = 0;
+    virtual void            RecvBuffer(DataPacking::DataBuffer *pBuffer) = 0;
 
 /*! \def END_EXTENSION_INTERFACE()
  \brief A macro for ending a new extension.

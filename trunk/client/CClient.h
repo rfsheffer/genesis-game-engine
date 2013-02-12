@@ -18,22 +18,22 @@
 class CClient : public IClient
 {
 public:
-    void            Initialize(CExtensions *pExtensions);
+    void            Initialize(IExtensions *pExtensions);
     void            Run(void);
     void            Shutdown();
     
     /**
      * Get the extensions manager which created this extension.
      */
-    CExtensions     *GetExtensions(void){ return m_pExtensions; }
+    IExtensions     *GetExtensions(void){ return m_pExtensions; }
     
-    void            RecvDataBuffer(DataPacking::DataBuffer *pBuffer);
+    void            RecvBuffer(DataPacking::DataBuffer *pBuffer);
     
 private:
     /**
      * Extensions Manager which created this extension
      */
-    CExtensions     *m_pExtensions;
+    IExtensions     *m_pExtensions;
     
     /**
      * Entities which exist on both the client and the server

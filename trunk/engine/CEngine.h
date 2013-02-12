@@ -33,9 +33,6 @@ public:
     void        Run(void);
     void        Shutdown(void);
     
-    void SendDataBuffer(DataPacking::DataBuffer *pBuffer,
-                                        const char *pExtensionName);
-    
 private:
     
     /** The extensions manager to drive. */

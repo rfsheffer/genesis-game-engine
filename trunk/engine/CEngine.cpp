@@ -45,31 +45,3 @@ void CEngine::Shutdown(void)
     m_pExtensionManager->DestroyAllExtensions();
     delete m_pExtensionManager;
 }
-
-/**
- * Send a buffer to all engine clients
- * @param pBuffer The buffer to send
- * @param pExtensionName The name of the specific system the engine client should
- * send the buffer to. Set to NULL to let the engine use the data.
- */
-void CEngine::SendDataBuffer(DataPacking::DataBuffer *pBuffer,
-                                        const char *pExtensionName)
-{
-    if(pExtensionName == NULL)
-    {
-        // Engine handles
-    }
-    
-    // Sending only the client for now so we can proceed, but I am going
-    // to come back and copy this data before it's sent to the extensions.
-    // Also, the data will have to be put into a que. We want this to be
-    // multi-thread compatible in the future. Also, need to setup networking
-    // here with the code written for this. ~RFS
-    m_pExtensionManager->RecvDataBuffer(pBuffer, pExtensionName);
-    
-    // Send the buffer to all engine clients
-    //for(int i = 1; i < MAX_ENGINE_CLIENTS; ++i)
-    //{
-    //
-    //}
-}

@@ -13,7 +13,7 @@
  * manager has been created.
  * @param pExtensions The extension manager which created this extension.
  */
-void CPlatform::Initialize(CExtensions *pExtensions)
+void CPlatform::Initialize(IExtensions *pExtensions)
 {
 #ifdef _MAC
     // TODO: Move to platform

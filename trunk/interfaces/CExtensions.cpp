@@ -65,11 +65,19 @@ void CExtensions::DestroyAllExtensions(void)
  * @param pBuffer The buffer to recv
  * @param pExtensionName The name of the specific system to give the data to.
  */
-void CExtensions::RecvDataBuffer(DataPacking::DataBuffer *pBuffer,
-                                            const char *pExtensionName)
+void CExtensions::RecvBuffer(const char *pszRecvName, DataPacking::DataBuffer *pBuffer)
 {
-    if(strcmp(pExtensionName, "Client") == 0)
+    if(strcmp(pszRecvName, "Client") == 0)
     {
-        
+        GetClient()->RecvBuffer(pBuffer);
     }
+}
+
+/**
+ * This will add a buffer to the list of send buffers that should be sent.
+ * @param
+ */
+void CExtensions::SendBuffer(const char *pszSendName, DataPacking::DataBuffer *pBuffer)
+{
+    
 }

@@ -15,17 +15,19 @@
 namespace DataPacking
 {
     /** Networking packaging */
-    class NetworkPackage : public DataBuffer
+    class NetworkPackage
     {
     public:
         
-        /**
-         * Constructor
-         * @param numEntities The number of entities which can be packed.
-         */
-        NetworkPackage(unsigned int numEntities) : DataBuffer(0, numEntities){}
+        ~NetworkPackage()
+        {
+            if(m_pDataBuffer)
+            {
+                delete m_pDataBuffer;
+            }
+        }
         
-        bool        PackageEntities(CEntityBase *pEntities[],
+        DataBuffer        *PackageEntities(CEntityBase *pEntities[],
                                             unsigned int numEntities);
         
         void        WriteDataMaps(CEntityBase *pBaseClass);
@@ -62,8 +64,10 @@ namespace DataPacking
              */
             short flags;
         };
+        
+        /** This is the buffer that is currently being worked on. */
+        DataBuffer *m_pDataBuffer;
     };
-    
 }
 
 
