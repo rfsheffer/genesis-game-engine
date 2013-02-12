@@ -1,8 +1,10 @@
-//========= Copyright � 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
-// Purpose: Useful Debug Functions
+//  debug.h
+//  Debugging tools
 //
-//==================================================================================================//
+//  Created by Ryan Sheffer on 13-01-01.
+//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
+//
 
 #ifndef DEBUG_H
 #define DEBUG_H
@@ -11,6 +13,9 @@
 #pragma once
 #endif
 
+/**
+ * System Calls
+ */
 #ifdef _WIN
 
 #define BREAKPOINT do { __asm { int 3 } } while (0)
@@ -23,6 +28,9 @@
 
 #endif
 
+/**
+ * Assertions
+ */
 #ifdef _MAC
 
 // Standard Defined found on the windows API documentation
@@ -93,5 +101,22 @@ static int HandleAsserting(const char *testStr,
 #define ASSERTION(test, msg)
 
 #endif // _DEBUG
+
+/*
+ * Cast Debugging
+ */
+#ifdef _DEBUG
+template <typename DEST_TYPE_POINTER, typename SOURCE_TYPE_POINTER>
+inline DEST_TYPE_POINTER assert_cast(SOURCE_TYPE_POINTER *pSource)
+{
+    ASSERTION(static_cast<DEST_TYPE_POINTER>(pSource) ==
+              dynamic_cast<DEST_TYPE_POINTER>(pSource),
+              "Casting assertion!");
+    
+    return static_cast<DEST_TYPE_POINTER>(pSource);
+}
+#else
+#define assert_cast static_cast
+#endif //_DEBUG
 
 #endif // DEBUG_H

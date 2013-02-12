@@ -19,9 +19,6 @@ class IEngine
 {
 public:
     
-    virtual void SendDataBuffer(DataPacking::DataBuffer *pBuffer,
-                                                const char *pExtensionName) = 0;
-    
 };
 
 #endif // IENGINE_H

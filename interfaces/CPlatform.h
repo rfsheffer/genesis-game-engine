@@ -18,10 +18,10 @@ class CExtensions;
 class CPlatform : public IPlatform
 {
 public:
-    void            Initialize(CExtensions *pExtensions);
+    void            Initialize(IExtensions *pExtensions);
     void            Run(void){}
     void            Shutdown(void);
-    void            RecvDataBuffer(DataPacking::DataBuffer *pBuffer){}
+    void            RecvBuffer(DataPacking::DataBuffer *pBuffer){}
     
     /**
      * Gets the state ( true[on] or false[off] of a keyboard key.

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BD0A009916B5F7680010FEF6 /* IServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009816B5F7680010FEF6 /* IServer.h */; };
+		BD22CE3516C9CEAD00B8C48F /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD22CE3416C9CEAC00B8C48F /* debug.cpp */; };
+		BD22CE3716C9CF2100B8C48F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */; };
 		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
 		BDF6753816C0DC9400966DB3 /* data_networkpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF6753716C0DC9400966DB3 /* data_networkpack.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		BD0A009816B5F7680010FEF6 /* IServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IServer.h; path = ../interfaces/IServer.h; sourceTree = "<group>"; };
+		BD22CE3416C9CEAC00B8C48F /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../common/debug.cpp; sourceTree = "<group>"; };
+		BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
 		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD22CE3716C9CF2100B8C48F /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,7 @@
 				BD0A008F16B5E8C00010FEF6 /* data */,
 				BDFABFD01692345B001C1E6A /* ent_base.cpp */,
 				BDED316116B37E0200B7E97B /* CServer.cpp */,
+				BD22CE3416C9CEAC00B8C48F /* debug.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -110,6 +116,7 @@
 		BDFABFC916922B75001C1E6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,6 +191,7 @@
 				BDFABFE01692559F001C1E6A /* data_pack.cpp in Sources */,
 				BDED316216B37E0200B7E97B /* CServer.cpp in Sources */,
 				BDF6753816C0DC9400966DB3 /* data_networkpack.cpp in Sources */,
+				BD22CE3516C9CEAD00B8C48F /* debug.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

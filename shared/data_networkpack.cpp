@@ -1,6 +1,6 @@
 //
 //  data_networkpack.cpp
-//  Packager for network the server -> client
+//  Packager for networking the server <-> client
 //
 //  Created by Ryan Sheffer on 2013-02-04.
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
@@ -14,18 +14,22 @@ namespace DataPacking
      * Packages a list of entities up for sending.
      * @param pEntities The entities which should be packed.
      * @param numEntities The number of entities being passed in for packing.
+     * @return The data buffer containing the entities packed for networking.
      */
-    bool NetworkPackage::PackageEntities(CEntityBase *pEntities[],
+    DataBuffer *NetworkPackage::PackageEntities(CEntityBase *pEntities[],
                                          unsigned int numEntities)
     {
-        SetBlockGrowth(10);
+        ASSERTION(!m_pDataBuffer, "Trying to package a new buffer,"
+                  "but the old buffer hasn't been destroyed yet!");
+        m_pDataBuffer = new DataBuffer(0 ,numEntities);
+        m_pDataBuffer->SetBlockGrowth(10);
         
         for(int i = 0; i < numEntities; ++i)
         {
             WriteDataMaps(pEntities[i]);
         }
         
-        return true;
+        return m_pDataBuffer;
     }
     
     /**
@@ -33,7 +37,7 @@ namespace DataPacking
      */
     void NetworkPackage::WriteDataMaps(CEntityBase *pBaseClass)
     {        
-        StartWritting("NET_ENTITY_BLOCK"); // Write an entity block.
+        m_pDataBuffer->StartWritting("NET_ENTITY_BLOCK"); // Write an entity block.
         networked_entity_header_t net_ent_header;
         bool first_class = true;
         
@@ -43,9 +47,9 @@ namespace DataPacking
             net_ent_header.flags |= networked_entity_header_t::NET_FLAG_DEAD;
             net_ent_header.num_objs = 0;
             
-            WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
+            m_pDataBuffer->WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
             
-            EndWritting();
+            m_pDataBuffer->EndWritting();
             return;
         }
         
@@ -61,7 +65,7 @@ namespace DataPacking
             
             net_ent_header.num_objs = num_networked_obj(pCurDataMap);
             
-            WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
+            m_pDataBuffer->WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
 
             // Write Objects
             for(int i = 0; i < pCurDataMap->NumObjs; i++)
@@ -78,7 +82,7 @@ namespace DataPacking
             pCurDataMap = pCurDataMap->baseMap;
         }
         
-        EndWritting();
+        m_pDataBuffer->EndWritting();
     }
     
     /**
@@ -101,7 +105,7 @@ namespace DataPacking
                                 (GetDataSize(pObject->objType) * pObject->numobjs));
         
         // Request a buffer
-        char *pBuffer = CreateBuffer( obj_block_size );
+        char *pBuffer = m_pDataBuffer->CreateBuffer( obj_block_size );
         if( pBuffer )
         {
             // Size of this block of data.

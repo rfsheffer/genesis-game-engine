@@ -10,6 +10,7 @@
 #include "CServer.h"
 #include "ent_base.h"
 #include "data_networkpack.h"
+#include "CExtensions.h"
 
 // Allow this extension to be used by the manager as an importable extension.
 SETUP_EXTENSION_LINK(Server);
@@ -19,7 +20,7 @@ SETUP_EXTENSION_LINK(Server);
  * manager has been created.
  * @param pExtensions The extension manager which created this extension.
  */
-void CServer::Initialize(CExtensions *pExtensions)
+void CServer::Initialize(IExtensions *pExtensions)
 {
     m_pExtensions = pExtensions;
     
@@ -42,10 +43,12 @@ void CServer::Initialize(CExtensions *pExtensions)
 void CServer::Run(void)
 {
     // Package up the entities
-    DataPacking::NetworkPackage     networkPackage(MAX_NUM_ENTITIES);
-    networkPackage.PackageEntities(m_pSharedEntities, MAX_NUM_ENTITIES);
+    DataPacking::NetworkPackage     networkPackage;
+    DataPacking::DataBuffer *pNewBuffer =
+                                networkPackage.PackageEntities(m_pSharedEntities,
+                                                               MAX_NUM_ENTITIES);
     
-    // Now send it off to the engine
+    m_pExtensions->SendBuffer("Client", pNewBuffer);
 }
 
 /**
@@ -69,7 +72,7 @@ void CServer::Shutdown()
  * @param pBuffer The buffer to recv
  * @param pExtensionName The name of the specific system to give the data to.
  */
-void CServer::RecvDataBuffer(DataPacking::DataBuffer *pBuffer)
+void CServer::RecvBuffer(DataPacking::DataBuffer *pBuffer)
 {
     // This will be a small buffer from the clients which contains
     // data such as input commands.

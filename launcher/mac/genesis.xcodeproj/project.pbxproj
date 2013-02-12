@@ -60,6 +60,7 @@
 		BD1C29DD16596B9600E9D8EF /* util_perf_timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = util_perf_timer.h; path = ../../utilities/util_perf_timer.h; sourceTree = SOURCE_ROOT; };
 		BD1C29DE1659986500E9D8EF /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = camera.h; path = ../../render/camera.h; sourceTree = SOURCE_ROOT; };
 		BD1C29DF1659A3D200E9D8EF /* OGL_Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OGL_Types.h; path = ../../render/opengl/OGL_Types.h; sourceTree = SOURCE_ROOT; };
+		BD22CE3816C9D30400B8C48F /* IExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IExtensions.h; path = ../../interfaces/IExtensions.h; sourceTree = SOURCE_ROOT; };
 		BD2BD6581621F90D00A8AD24 /* genesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = genesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2BD65C1621F90D00A8AD24 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BD2BD65F1621F90D00A8AD24 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -180,6 +181,7 @@
 				BDED316416B3805200B7E97B /* CExtensions.h */,
 				BD0A008C16B5E2460010FEF6 /* IPlatform.h */,
 				BD0A009516B5F6980010FEF6 /* iExtension.h */,
+				BD22CE3816C9D30400B8C48F /* IExtensions.h */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -214,21 +216,21 @@
 			name = render;
 			sourceTree = "<group>";
 		};
-		BD1C29D316582C9000E9D8EF /* platform */ = {
+		BD1C29D316582C9000E9D8EF /* OS */ = {
 			isa = PBXGroup;
 			children = (
 				BD2BD6961621FC6D00A8AD24 /* CCocoaWrapper.mm */,
 			);
-			name = platform;
+			name = OS;
 			sourceTree = "<group>";
 		};
-		BD1C29D516582DFE00E9D8EF /* platform */ = {
+		BD1C29D516582DFE00E9D8EF /* OS */ = {
 			isa = PBXGroup;
 			children = (
 				BD2BD6951621FC6D00A8AD24 /* CCocoaWrapper.h */,
 				BD0A009B16B665770010FEF6 /* PlatformWrapper.h */,
 			);
-			name = platform;
+			name = OS;
 			sourceTree = "<group>";
 		};
 		BD1C29D71658357B00E9D8EF /* utilities */ = {
@@ -307,7 +309,7 @@
 			children = (
 				BD0A009416B5ED340010FEF6 /* engine */,
 				BD1C29D71658357B00E9D8EF /* utilities */,
-				BD1C29D316582C9000E9D8EF /* platform */,
+				BD1C29D316582C9000E9D8EF /* OS */,
 				BD1C29D216582C7C00E9D8EF /* render */,
 				BD0159BD163C9F290096512C /* extensions */,
 				BD0159AF163C80150096512C /* filetypes */,
@@ -323,7 +325,7 @@
 			children = (
 				BD0A009316B5ED280010FEF6 /* engine */,
 				BD1C29DC1658C43E00E9D8EF /* utilities */,
-				BD1C29D516582DFE00E9D8EF /* platform */,
+				BD1C29D516582DFE00E9D8EF /* OS */,
 				BDDA1B00165828B900D6F5D8 /* mesh */,
 				BD72E14E163D9E10004F7CF7 /* math */,
 				BD0159BE163C9F400096512C /* extensions */,

@@ -19,7 +19,7 @@ SETUP_EXTENSION_LINK(Client);
  * manager has been created.
  * @param pExtensions The extension manager which created this extension.
  */
-void CClient::Initialize(CExtensions *pExtensions)
+void CClient::Initialize(IExtensions *pExtensions)
 {
     m_pExtensions = pExtensions;
     
@@ -52,7 +52,7 @@ void CClient::Shutdown()
  * @param pBuffer The buffer to recv
  * @param pExtensionName The name of the specific system to give the data to.
  */
-void CClient::RecvDataBuffer(DataPacking::DataBuffer *pBuffer)
+void CClient::RecvBuffer(DataPacking::DataBuffer *pBuffer)
 {
     
 }
