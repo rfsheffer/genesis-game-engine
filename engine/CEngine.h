@@ -25,15 +25,16 @@ class CEngine : public IEngine
 {
 public:
     
+    void        Initialize(IPlatform *pPlatform);
+    void        Run(void);
+    void        Shutdown(void);
+    bool        FinishedExecution(void) { return m_bHaultExecution; }
+    
+private:
+    
     /** If true, the engine has been requested to hault. This will terminate
      * the programs execution. */
     bool        m_bHaultExecution;
-    
-    void        Initialize(void);
-    void        Run(void);
-    void        Shutdown(void);
-    
-private:
     
     /** The extensions manager to drive. */
     CExtensions     *m_pExtensionManager;

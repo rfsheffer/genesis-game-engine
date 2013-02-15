@@ -10,7 +10,6 @@
 #include "CServer.h"
 #include "ent_base.h"
 #include "data_networkpack.h"
-#include "CExtensions.h"
 
 // Allow this extension to be used by the manager as an importable extension.
 SETUP_EXTENSION_LINK(Server);

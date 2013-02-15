@@ -9,10 +9,16 @@
 
 #include "CEngine.h"
 
+DLL_EXPORT
+IEngine *__CreateEngine(void)
+{
+    return new CEngine();
+}
+
 /**
  * Initialize the engine
  */
-void CEngine::Initialize(void)
+void CEngine::Initialize(IPlatform *pPlatform)
 {
     // Initialize us as the first
     m_EngineClients[LOCAL_ENGINE_CLIENT_INDEX].InitializeLocal();
@@ -25,6 +31,7 @@ void CEngine::Initialize(void)
         return;
     }
     
+    m_pExtensionManager->SetPlatform(pPlatform);
     m_pExtensionManager->CreateAllExtensions();
 }
 

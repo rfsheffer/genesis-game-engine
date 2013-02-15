@@ -9,15 +9,17 @@
 #ifndef IENGINE_H
 #define IENGINE_H
 
-namespace DataPacking
-{
-    class DataBuffer;
-}
+class IPlatform;
 
 /** Engine Interface */
 class IEngine
 {
 public:
+    
+    virtual void        Initialize(IPlatform *pPlatform) = 0;
+    virtual void        Run(void) = 0;
+    virtual void        Shutdown(void) = 0;
+    virtual bool        FinishedExecution(void) = 0;
     
 };
 
