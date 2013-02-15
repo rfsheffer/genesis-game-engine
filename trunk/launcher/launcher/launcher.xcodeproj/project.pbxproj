@@ -17,11 +17,12 @@
 		BDF13CD316CDD471003994AE /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF13CD216CDD471003994AE /* Carbon.framework */; };
 		BDF13CD516CDD48A003994AE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF13CD416CDD48A003994AE /* SenTestingKit.framework */; };
 		BDF13CD816CDD4BE003994AE /* CCocoaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BDF13CD716CDD4BE003994AE /* CCocoaWrapper.mm */; };
+		BDF78E6D16CDEA1900E1995D /* CPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF78E6B16CDEA1900E1995D /* CPlatform.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BD89E1B816CDDA6C00D29262 /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../../../common/debug.cpp; sourceTree = "<group>"; };
-		BDF13CB016CDD311003994AE /* launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = launcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF13CB016CDD311003994AE /* genesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = genesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF13CB316CDD311003994AE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BDF13CB616CDD311003994AE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		BDF13CB716CDD311003994AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -35,8 +36,11 @@
 		BDF13CD016CDD463003994AE /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDF13CD216CDD471003994AE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		BDF13CD416CDD48A003994AE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		BDF13CD616CDD4BE003994AE /* CCocoaWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCocoaWrapper.h; sourceTree = "<group>"; };
+		BDF13CD616CDD4BE003994AE /* CCocoaWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCocoaWrapper.h; path = launcher/CCocoaWrapper.h; sourceTree = "<group>"; };
 		BDF13CD716CDD4BE003994AE /* CCocoaWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCocoaWrapper.mm; sourceTree = "<group>"; };
+		BDF78E6B16CDEA1900E1995D /* CPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CPlatform.cpp; path = ../../CPlatform.cpp; sourceTree = "<group>"; };
+		BDF78E6C16CDEA1900E1995D /* CPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPlatform.h; path = ../CPlatform.h; sourceTree = "<group>"; };
+		BDF78E6F16CDEDE100E1995D /* IPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = ../../interfaces/IPlatform.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,8 @@
 		BDF13CA716CDD311003994AE = {
 			isa = PBXGroup;
 			children = (
-				BDF13CB916CDD311003994AE /* launcher */,
+				BDF78E6E16CDEA2400E1995D /* Headers */,
+				BDF13CB916CDD311003994AE /* Source */,
 				BDF13CB216CDD311003994AE /* Frameworks */,
 				BDF13CB116CDD311003994AE /* Products */,
 			);
@@ -66,7 +71,7 @@
 		BDF13CB116CDD311003994AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDF13CB016CDD311003994AE /* launcher.app */,
+				BDF13CB016CDD311003994AE /* genesis.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,15 +98,16 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		BDF13CB916CDD311003994AE /* launcher */ = {
+		BDF13CB916CDD311003994AE /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BD89E1B816CDDA6C00D29262 /* debug.cpp */,
-				BDF13CD616CDD4BE003994AE /* CCocoaWrapper.h */,
-				BDF13CD716CDD4BE003994AE /* CCocoaWrapper.mm */,
 				BDF13CC816CDD311003994AE /* MainMenu.xib */,
+				BDF13CD716CDD4BE003994AE /* CCocoaWrapper.mm */,
+				BDF78E6B16CDEA1900E1995D /* CPlatform.cpp */,
+				BD89E1B816CDDA6C00D29262 /* debug.cpp */,
 				BDF13CBA16CDD311003994AE /* Supporting Files */,
 			);
+			name = Source;
 			path = launcher;
 			sourceTree = "<group>";
 		};
@@ -115,6 +121,16 @@
 				BDF13CC216CDD311003994AE /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDF78E6E16CDEA2400E1995D /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BDF78E6F16CDEDE100E1995D /* IPlatform.h */,
+				BDF78E6C16CDEA1900E1995D /* CPlatform.h */,
+				BDF13CD616CDD4BE003994AE /* CCocoaWrapper.h */,
+			);
+			name = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,7 +150,7 @@
 			);
 			name = launcher;
 			productName = launcher;
-			productReference = BDF13CB016CDD311003994AE /* launcher.app */;
+			productReference = BDF13CB016CDD311003994AE /* genesis.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,6 +200,7 @@
 				BDF13CC016CDD311003994AE /* main.mm in Sources */,
 				BDF13CD816CDD4BE003994AE /* CCocoaWrapper.mm in Sources */,
 				BD89E1B916CDDA6C00D29262 /* debug.cpp in Sources */,
+				BDF78E6D16CDEA1900E1995D /* CPlatform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +247,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -263,6 +281,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -280,6 +299,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -297,12 +317,11 @@
 					../../common,
 					"../../utilities/**",
 					../../shared,
-					../../engine,
 					../../math,
 					../../render,
 				);
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = genesis;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -311,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -328,12 +348,11 @@
 					../../common,
 					"../../utilities/**",
 					../../shared,
-					../../engine,
 					../../math,
 					../../render,
 				);
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = genesis;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

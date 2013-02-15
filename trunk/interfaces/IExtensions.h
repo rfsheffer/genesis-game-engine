@@ -9,6 +9,8 @@
 #ifndef IEXTENSIONS_H
 #define IEXTENSIONS_H
 
+class IPlatform;
+
 class IExtensions
 {
 public:
@@ -19,6 +21,9 @@ public:
     virtual DataPacking::DataBuffer *GetSendBuffer(unsigned int index) = 0;
     virtual unsigned int GetNumSendBuffers(void) const = 0;
     virtual void        InvalidateSendBuffers(void) = 0;
+    
+    virtual void        SetPlatform(IPlatform *pPlatform) = 0;
+    virtual IPlatform   *GetPlatform(void) = 0;
 };
 
 #endif // IEXTENSIONS_H

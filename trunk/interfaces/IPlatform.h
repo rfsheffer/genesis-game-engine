@@ -9,11 +9,11 @@
 #ifndef IPLATFORM_H
 #define IPLATFORM_H
 
-#include "iExtension.h"
-
-#define PLATFORM_EXTENSION_NAME     Platform
-
-START_EXTENSION_INTERFACE(Platform)
-END_EXTENSION_INTERFACE();
+class IPlatform
+{
+public:
+    virtual void Initialize(void) = 0;
+    virtual void Shutdown(void) = 0;
+};
 
 #endif // IPLATFORM_H
