@@ -23,7 +23,7 @@
  * Creates all extensions.
  */
 bool CExtensions::CreateAllExtensions(void)
-{    
+{
     DEFINE_IMPORT_EXTENSION("./bin/libserver.dylib", Server);
     DEFINE_IMPORT_EXTENSION("./bin/libclient.dylib", Client);
     
@@ -57,14 +57,15 @@ void CExtensions::DispatchPendingMessages(void)
 {
     for(int i = 0; i < m_uiCurSendBuffer; ++i)
     {
-        // TODO: Get rid of this string lookup.
-        if(strcmp(m_sendBuffers[i].szSendName, "Client") == 0)
+        const char *pMsgExtensionName = m_sendBuffers[i].szSendName;
+        
+        for(int j = 0; j < m_uiNumExtensions; ++j)
         {
-            GetClient()->RecvBuffer(&m_sendBuffers[i].sendBuffer);
-        }
-        else if(strcmp(m_sendBuffers[i].szSendName, "Server") == 0)
-        {
-            GetServer()->RecvBuffer(&m_sendBuffers[i].sendBuffer);
+            if(m_pExtensions[j] &&
+               strcmp(pMsgExtensionName, m_pExtensions[j]->GetName()) == 0)
+            {
+                m_pExtensions[j]->RecvBuffer(&m_sendBuffers[i].sendBuffer);
+            }
         }
     }
     
@@ -78,7 +79,6 @@ void CExtensions::DestroyAllExtensions(void)
 {
     GetServer()->Shutdown();
     GetClient()->Shutdown();
-    GetPlatform()->Shutdown();
     
     CLOSE_IMPORT_EXTENSION(Server);
     CLOSE_IMPORT_EXTENSION(Client);

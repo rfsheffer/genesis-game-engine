@@ -13,6 +13,7 @@
 
 #include "IClient.h"
 #include "ent_base.h"
+#include "IPlatform.h"
 
 /*! The client controller. This classes Run method is called every tick. */
 class CClient : public IClient
@@ -22,24 +23,56 @@ public:
     void            Run(void);
     void            Shutdown();
     
-    /**
-     * Get the extensions manager which created this extension.
-     */
+    unsigned int    RegisterSharedEntity(CEntityBase *pEnt);
+    unsigned int    RegisterLocalEntity(CEntityBase *pEnt);
+    
+    /** Get the extensions manager which created this extension. */
     IExtensions     *GetExtensions(void){ return m_pExtensions; }
     
     void            RecvBuffer(DataPacking::DataBuffer *pBuffer);
     
 private:
-    /**
-     * Extensions Manager which created this extension
-     */
+    /** Extensions Manager which created this extension */
     IExtensions     *m_pExtensions;
     
-    /**
-     * Entities which exist on both the client and the server
-     */
-    CEntityBase     *m_pSharedEntities[MAX_NUM_ENTITIES];
+    /** The max number of local entities, change as needed. */
+    static const unsigned int MAX_NUM_LOCAL_ENTITIES = 32;
+    
+    /** The number of shared entities currently registered */
+    unsigned int    m_uiNumSharedEntities;
+    
+    /** Entities which can be shared with other systems */
+    CEntityBase     *m_pSharedEntities[Foundation::MAX_SHARED_BASE_ENTITIES];
+    
+    /** The number of local entities currently registered */
+    unsigned int    m_uiNumLocalEntities;
+    
+    /** Entities which can be shared with other systems */
+    CEntityBase     *m_pLocalEntities[MAX_NUM_LOCAL_ENTITIES];
+    
+    /** The main render context being used by this client */
+    render::CContext    *m_renderContext;
 };
+
+CClient     *GetClient(void);
+
+//------------------------------------------------------------------------------
+/**
+ * A helper to get the platform pointer.
+ * @note The platform pointer should always be valid in any case. If this fails,
+ * there is something very wrong with the engine.
+ */
+inline IPlatform *GetPlatform(void)
+{
+    ASSERTION(GetClient() != NULL,
+              "GetPlatform: No Client!");
+    ASSERTION(GetClient()->GetExtensions() != NULL,
+              "GetPlatform: No Extensions manager availible!");
+    ASSERTION(GetClient()->GetExtensions()->GetPlatform() != NULL,
+              "GetPlatform: No Platform availible!");
+    
+    return GetClient()->GetExtensions()->GetPlatform();
+}
 
 
 #endif // CCLIENT_H

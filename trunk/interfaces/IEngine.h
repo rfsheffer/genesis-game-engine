@@ -19,8 +19,7 @@ public:
     virtual void        Initialize(IPlatform *pPlatform) = 0;
     virtual void        Run(void) = 0;
     virtual void        Shutdown(void) = 0;
-    virtual bool        FinishedExecution(void) = 0;
-    
+    virtual bool        FinishedExecution(void) = 0;    
 };
 
 #endif // IENGINE_H

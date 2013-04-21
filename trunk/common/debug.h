@@ -88,7 +88,7 @@ static int HandleAsserting(const char *testStr,
 		static int callIt = 1; \
 		if(callIt) \
 		{ \
-			if(HandleAsserting(#test, #msg, __FILE__, __LINE__, &callIt)) \
+			if(HandleAsserting(#test, msg, __FILE__, __LINE__, &callIt)) \
 			{ \
 				ABORT; \
 			} \

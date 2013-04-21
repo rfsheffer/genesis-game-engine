@@ -39,33 +39,49 @@ namespace DataPacking
     {        
         m_pDataBuffer->StartWritting("NET_ENTITY_BLOCK"); // Write an entity block.
         networked_entity_header_t net_ent_header;
-        bool first_class = true;
+        //bool first_class = true;
         
         if(!pBaseClass)
         {
+            /*unsigned int uiStrLen = strlen("empty");
+            m_pDataBuffer->WriteBuffer((char*)&uiStrLen, sizeof(uiStrLen));
+            m_pDataBuffer->WriteBuffer("empty", strlen("empty"));
+            
             // Write an empty block and stop here if there is no entity.
-            net_ent_header.flags |= networked_entity_header_t::NET_FLAG_DEAD;
+            net_ent_header.flags = networked_entity_header_t::NET_FLAG_DEAD;
             net_ent_header.num_objs = 0;
             
-            m_pDataBuffer->WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
+            m_pDataBuffer->WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));*/
+            
+            int netFlags = NET_FLAG_DEAD;
+            m_pDataBuffer->WriteBuffer((byte*)&netFlags, sizeof(netFlags));
             
             m_pDataBuffer->EndWritting();
             return;
         }
         
+        int netFlags = NET_FLAG_UPDATE;
+        m_pDataBuffer->WriteBuffer((byte*)&netFlags, sizeof(netFlags));
+        
+        int iStrLen = (int)strlen(pBaseClass->GetClassname());
+        m_pDataBuffer->WriteBuffer((byte*)&iStrLen, sizeof(iStrLen));
+        m_pDataBuffer->WriteBuffer((byte*)pBaseClass->GetClassname(),
+                                  (unsigned int)strlen(pBaseClass->GetClassname()));
+        
+        // OPTIMIZATION: Only package an update for an entity if something actually
+        // changed...
+        
         datamap_t *pCurDataMap = pBaseClass->GetDataMap();
         while( pCurDataMap )
         {
-            net_ent_header.flags = 0;
-            net_ent_header.num_objs = 0;
-            
-            //Write entity save header first.
-            net_ent_header.flags |=
-                first_class?networked_entity_header_t::NET_FLAG_TOPCLASS:0;
-            
+            //net_ent_header.flags = networked_entity_header_t::NET_FLAG_UPDATE;
             net_ent_header.num_objs = num_networked_obj(pCurDataMap);
             
-            m_pDataBuffer->WriteBuffer((char*)&net_ent_header, sizeof(net_ent_header));
+            //Write entity save header first.
+//            net_ent_header.flags |=
+//                first_class?networked_entity_header_t::NET_FLAG_TOPCLASS:0;
+            
+            m_pDataBuffer->WriteBuffer((byte*)&net_ent_header, sizeof(net_ent_header));
 
             // Write Objects
             for(int i = 0; i < pCurDataMap->NumObjs; i++)
@@ -74,11 +90,10 @@ namespace DataPacking
                 if(pobject->flags & MAPOBJ_NETWORKED)
                 {
                     WriteObject(pBaseClass, pobject);
-                    ++net_ent_header.num_objs;
                 }
             }
             
-            first_class = false;
+            //first_class = false;
             pCurDataMap = pCurDataMap->baseMap;
         }
         
@@ -98,14 +113,14 @@ namespace DataPacking
         // First determine the size of this obj_block
         size_t obj_name_len = strlen( pObject->objname );
         short obj_block_size = (SHORT_SIZE +
-                                BYTE_SIZE +
+                                CHAR_SIZE +
                                 obj_name_len +
                                 SHORT_SIZE +
                                 SHORT_SIZE +
                                 (GetDataSize(pObject->objType) * pObject->numobjs));
         
         // Request a buffer
-        char *pBuffer = m_pDataBuffer->CreateBuffer( obj_block_size );
+        byte *pBuffer = m_pDataBuffer->CreateBuffer( obj_block_size );
         if( pBuffer )
         {
             // Size of this block of data.
@@ -131,7 +146,7 @@ namespace DataPacking
      * @param pBuffer The buffer to write to
      */
     void NetworkPackage::WriteTypeFromClass(CEntityBase *pBaseClass,
-                                            objdesc_t *pObject, char *pBuffer)
+                                            objdesc_t *pObject, byte *pBuffer)
     {
         if( !pBaseClass || !pObject || !pBuffer )
             return;

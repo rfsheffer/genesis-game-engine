@@ -7,35 +7,18 @@
 //
 
 #import "CCocoaWrapper.h"
-#import "render_globals.h"
 #include "util_perf_timer.h"
 #include "IEngine.h"
+#include "CEngineState.h"
 #include "CPlatform.h"
-#include <dlfcn.h>
 
-enum engine_state
-{
-    ENGINE_STATE_RUNNING,
-    ENGINE_STATE_LOCKED,
-    ENGINE_STATE_CLOSED
-};
-
-enum engine_lock_reason
-{
-    ENGINE_UNLOCKED,
-    ENGINE_LOCK_WAIT,
-    ENGINE_LOCK_QUIT
-};
-
-// This is a way for the application to talk with the main loop thread.
-// The application can hault the main loop thread for some reason, or use
-// this to quit execution of the engine.
-engine_lock_reason      engineLockReason = ENGINE_UNLOCKED;
-engine_state            enginestate = ENGINE_STATE_CLOSED;
+/** The cocoa application pointer */
+CCocoaWrapper           *pCocoaApp;
 
 //------------------------------------------------------------------------------
-// Main Application Thread Class
-//------------------------------------------------------------------------------
+/**
+ * Main Application Thread Class
+ */
 @interface MainAppThread : NSObject
 
 // The main application loop
@@ -48,15 +31,19 @@ engine_state            enginestate = ENGINE_STATE_CLOSED;
 @implementation MainAppThread
 
 //------------------------------------------------------------------------------
-// Purpose: The main application thread and loop
-//------------------------------------------------------------------------------
+/**
+ * The main engine thread loop
+ */
 +(void)ApplicationLoop:(id)param
 {
-#ifdef _MAC
-    // TODO: Move to platform
-    static char szFileLine[2048];
-    printf( "working directory: %s\n", getcwd(szFileLine, sizeof(szFileLine)) );
-#endif
+    // We create our platform class here and pass it to the engine. Any operating
+    // system specific functions should be put in the platform and setup for all
+    // platforms in the manner they require.
+    CPlatform platform; platform.Initialize();
+    
+    // This is nessesary for our file structure. We are not using apples APP
+    // package and resource folders because it isn't modder friendly. ~RFS
+    chdir(platform.GetAbsoluteApplicationPath());
     
     void *pEngineDLL = dlopen("./bin/libengine.dylib", RTLD_NOW);
     if(pEngineDLL == NULL)
@@ -80,87 +67,384 @@ engine_state            enginestate = ENGINE_STATE_CLOSED;
         return;
     }
     
-    // We create our platform class here and pass it to the engine. Any operating
-    // system specific functions should be put in the platform and setup for all
-    // platforms in the manner they require.
-    CPlatform platform; platform.Initialize();
     pEngine->Initialize(&platform);
     
-    enginestate = ENGINE_STATE_RUNNING;
+    CEngineState::enginestate = CEngineState::ENGINE_STATE_RUNNING;
     
     while(!pEngine->FinishedExecution())
     {
-        if(engineLockReason == ENGINE_LOCK_QUIT)
+        if(CEngineState::engineLockReason == CEngineState::ENGINE_LOCK_QUIT)
         {
             break;
         }
-        else if(engineLockReason == ENGINE_LOCK_WAIT)
+        else if(CEngineState::engineLockReason == CEngineState::ENGINE_LOCK_WAIT)
         {
             usleep(1000);
             continue;
         }
+        
+        //CPerfTimer engine_timer("Engine Run Time", true);
+        
         pEngine->Run();
+        
+        //engine_timer.PrintTimer();
+        
+        // TODO: Not sure yet, but I might make a rendering frame here
+        // [mutex_renderlock lock];
     }
     
     pEngine->Shutdown();
     
-    enginestate = ENGINE_STATE_CLOSED;
+    dlclose(pEngineDLL);
     
-//    if(!g_curContext)
-//    {
-//        NSLog(@"Trying to create the main game thead, but there is no render context!");
-//        return;
-//    }
-//    
-//    if(!g_pOGLRenderContext)
-//    {
-//        NSLog(@"Game thread started with no Render Control!");
-//    }
-//    
-//    CPerfTimer game_start_timer("Game Start", true);
-//    
-//    g_pGameInterface = new CGameInterface();
-//    g_pGameInterface->Init();
-//    
-//    game_start_timer.PrintTimer();
-//    
-//    // Main Loop
-//    while(1)
-//    {
-//        [mutex_renderlock lock];
-//        
-//        // Important MAC note: Only one thread can use a context at a time,
-//        // and to allow a new thread to use the context, it needs to be reset
-//        // like I am doing here.
-//        [g_curContext makeCurrentContext];
-//        
-//#ifdef ENABLE_VSYNC
-//        //const GLint setVal = 0;
-//        //[g_curContext setValues:&setVal forParameter:NSOpenGLCPSwapInterval];
-//#endif // ENABLE_VSYNC
-//        
-//        g_pGameInterface->GameFrame();
-//        
-//        // Simple Render Control Frame Update
-//        if(g_pOGLRenderContext)
-//        {
-//            g_pOGLRenderContext->FrameUpdate();
-//        }
-//        
-//        // Swap the back buffer with the front buffer
-//        [[NSOpenGLContext currentContext] flushBuffer];
-//        
-//        [mutex_renderlock unlock];
-//    }
+    CEngineState::enginestate = CEngineState::ENGINE_STATE_CLOSED;
 }
 @end
 
-id                      appWindow;
+@implementation NSAppWindowDelagate
+
+//------------------------------------------------------------------------------
+/**
+ * Window resized
+ */
+//- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
+//{
+//    NSAppWindow *pWindow = (NSAppWindow *)sender;
+//    
+//    [pWindow UpdateViewport:frameSize];
+//    
+//    return frameSize;
+//}
+
+@end
 
 @implementation NSAppWindow
+
 //------------------------------------------------------------------------------
-// Purpose: Key Press Event
+/**
+ * Constructor
+ */
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        // superclass successfully initialized, further
+        // initialization happens here ...
+        m_delagate = [NSAppWindowDelagate alloc];
+        [self setDelegate:m_delagate];
+    }
+    return self;
+}
+
 //------------------------------------------------------------------------------
+/**
+ * Creates a pixel format for fullscreen mode
+ */
+-(NSOpenGLPixelFormat*)CreateFullScreenPixelFormat:(const render::render_context_settings &) info
+{
+    NSOpenGLPixelFormatAttribute attribs[] =
+	{
+		NSOpenGLPFANoRecovery,
+		NSOpenGLPFAAccelerated,
+		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAColorSize,
+		(NSOpenGLPixelFormatAttribute) info.colorBufferSize,
+		NSOpenGLPFADepthSize,
+		(NSOpenGLPixelFormatAttribute) info.depthBufferSize,
+		NSOpenGLPFAStencilSize,
+		(NSOpenGLPixelFormatAttribute) info.stencilBufferSize,
+		NSOpenGLPFAAccumSize,
+		(NSOpenGLPixelFormatAttribute) info.accumulationBufferSize,
+		NSOpenGLPFAFullScreen,
+		NSOpenGLPFAScreenMask,
+		(NSOpenGLPixelFormatAttribute)CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
+		(NSOpenGLPixelFormatAttribute) 0
+	};
+	
+	NSOpenGLPixelFormat* fmt = [[NSOpenGLPixelFormat alloc] initWithAttributes: attribs];
+	
+	if (!fmt)
+	{
+		NSLog(@"Cannot create NSOpenGLPixelFormat for the fullscreen context");
+		return nil;
+	}
+    
+    return fmt;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Creates a pixel format for windowed mode
+ */
+-(NSOpenGLPixelFormat*)CreateWindowedPixelFormat:(const render::render_context_settings &) info
+{
+    //setup the window gl context
+	NSOpenGLPixelFormatAttribute attribs[] =
+	{
+		NSOpenGLPFANoRecovery,
+		NSOpenGLPFAAccelerated,
+		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAColorSize,
+		(NSOpenGLPixelFormatAttribute) info.colorBufferSize,
+		NSOpenGLPFADepthSize,
+		(NSOpenGLPixelFormatAttribute) info.depthBufferSize,
+		NSOpenGLPFAStencilSize,
+		(NSOpenGLPixelFormatAttribute) info.stencilBufferSize,
+		NSOpenGLPFAAccumSize,
+		(NSOpenGLPixelFormatAttribute) info.accumulationBufferSize,
+		NSOpenGLPFAWindow,
+		(NSOpenGLPixelFormatAttribute) 0,
+	};
+    
+	
+	NSOpenGLPixelFormat* fmt = [[NSOpenGLPixelFormat alloc] initWithAttributes: attribs];
+	
+	if (!fmt)
+	{
+		NSLog(@"Cannot create NSOpenGLPixelFormat for the windowed context");
+		return nil;
+	}
+    
+    return fmt;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Creates a graphics context for this window
+ */
+- (Boolean)CreateGraphicsContext:(const render::render_context_settings &) info
+{
+    ASSERTION(info.fullscreen || info.windowed, "Trying to create context with "
+              "neither fullscreen or windowed specified!");
+    
+    if(info.fullscreen)
+    {
+        if(m_pFullScreenPixelFmt != nil)
+        {
+            [m_pFullScreenPixelFmt release];
+            m_pFullScreenPixelFmt = nil;
+        }
+        
+        if(m_pCtxFullScreen != nil)
+        {
+            [m_pCtxFullScreen release];
+            m_pCtxFullScreen = nil;
+        }
+            
+        m_pFullScreenPixelFmt = [self CreateFullScreenPixelFormat:info];
+        if(m_pFullScreenPixelFmt == nil)
+        {
+            NSLog(@"Could not create Fullscreen context on window. Bad input settings?");
+            return false;
+        }
+        
+        m_pCtxFullScreen = [[NSOpenGLContext alloc] initWithFormat: m_pFullScreenPixelFmt
+                                                      shareContext: nil];
+        
+        if(m_pCtxFullScreen == nil)
+        {
+            NSLog(@"Could not create Fullscreen GL Context!");
+            return false;
+        }
+    }
+    
+    if(info.windowed)
+    {
+        if(m_pWindowedPixelFmt != nil)
+        {
+            [m_pWindowedPixelFmt release];
+            m_pWindowedPixelFmt = nil;
+        }
+        
+        if(m_pCtxWindowed != nil)
+        {
+            [m_pCtxWindowed release];
+            m_pCtxWindowed = nil;
+        }
+        
+        m_pWindowedPixelFmt = [self CreateWindowedPixelFormat:info];
+        if(m_pWindowedPixelFmt == nil)
+        {
+            NSLog(@"Could not create Windowed context on window. Bad input settings?");
+            return false;
+        }
+        
+        m_pCtxWindowed = [[NSOpenGLContext alloc] initWithFormat: m_pWindowedPixelFmt
+                                                    shareContext: nil]; // m_pCtxFullScreen
+        
+        if (m_pCtxWindowed == nil)
+        {
+            NSLog(@"Could not create Windowed GL Context!");
+            return false;
+        }
+    }
+    
+    // TODO: This doesn't work, figure out why... ~RFS
+    if(info.fullscreen && info.defaultFullscreen)
+    {
+        //displays.Capture(0);
+        //displays.SetDisplayMode(0, CGSizeMake( SCREEN_WIDTH, SCREEN_HEIGHT ), 32, 75);
+        
+        if(m_pGLView != nil)
+        {
+            [m_pGLView release];
+            m_pGLView = nil;
+        }
+        
+        [m_pCtxFullScreen setFullScreen];
+        [m_pCtxFullScreen makeCurrentContext];
+        
+        // TODO: We need proper cursor control.
+        //[NSCursor hide];
+        
+        m_bFullscreen = true;
+    }
+    else
+    {
+        if(m_pGLView == nil)
+        {
+            NSSize myNSWindowSize = [[self contentView]frame].size;
+            m_pGLView = [[NSOpenGLView alloc]initWithFrame:NSMakeRect(0,
+                                                                      0,
+                                                                      myNSWindowSize.width,
+                                                                      myNSWindowSize.height)];
+            
+            ASSERTION(m_pGLView != nil, "Could not create GLView!");
+        }
+        
+        if(info.highResBackingMode)
+        {
+            [m_pGLView setWantsBestResolutionOpenGLSurface:YES];
+            [m_pGLView convertRectToBacking:[m_pGLView bounds]];
+        }
+        
+        [self setContentView: m_pGLView];
+        [m_pCtxWindowed setView:m_pGLView];
+        [m_pGLView setOpenGLContext:m_pCtxWindowed];
+        [m_pGLView setPixelFormat:m_pWindowedPixelFmt];
+        
+        //[ m_pCtxWindowed copyAttributesFromContext:m_pCtxFullScreen withMask:GL_ALL_ATTRIB_BITS ];
+        //[m_pCtxWindowed makeCurrentContext];
+        m_bFullscreen = false;
+    }
+
+    return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * If the resolution changes, this should be called to correct the screen pixels
+ */
+- (void)DestroyGraphicsContext
+{
+    if(m_pFullScreenPixelFmt != nil)
+    {
+        [m_pFullScreenPixelFmt release];
+        m_pFullScreenPixelFmt = nil;
+    }
+    
+    if(m_pCtxFullScreen != nil)
+    {
+        [m_pCtxFullScreen release];
+        m_pCtxFullScreen = nil;
+    }
+    
+    if(m_pWindowedPixelFmt != nil)
+    {
+        [m_pWindowedPixelFmt release];
+        m_pWindowedPixelFmt = nil;
+    }
+    
+    if(m_pCtxWindowed != nil)
+    {
+        [m_pCtxWindowed release];
+        m_pCtxWindowed = nil;
+    }
+    
+    if(m_pGLView != nil)
+    {
+        [m_pGLView release];
+        m_pGLView = nil;
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Gets the window size in pixels.
+ */
+-(void) GetWindowSizePixels:(unsigned int &)width GetHeight:(unsigned int &)height
+{
+    if(m_pGLView != nil)
+    {
+        // Get view dimensions in pixels
+        NSRect backingBounds = [m_pGLView convertRectToBacking:[m_pGLView bounds]];
+        
+        width = backingBounds.size.width;
+        height = backingBounds.size.height;
+    }
+    else
+    {
+        [self GetWindowSize:width GetHeight:height];
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Gets the window size
+ */
+-(void) GetWindowSize:(unsigned int &)width GetHeight:(unsigned int &)height
+{
+    NSSize myNSWindowSize = [[self contentView]frame].size;
+    
+    width = myNSWindowSize.width;
+    height = myNSWindowSize.height;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Activates the graphics context
+ */
+- (void)ActivateGraphicsContext
+{
+    if(m_bFullscreen)
+    {
+        ASSERTION(m_pCtxFullScreen != nil,
+                  "ActivateGraphicsContext: Graphics context (m_pCtxFullScreen) is nil!");
+        [m_pCtxFullScreen makeCurrentContext];
+    }
+    else
+    {
+        ASSERTION(m_pCtxWindowed != nil,
+                  "ActivateGraphicsContext: Graphics context (m_pCtxWindowed) is nil!");
+        [m_pCtxWindowed makeCurrentContext];
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Presents the fullscreen color buffer to the screen.
+ */
+- (void)SwapGraphicsContextBuffers
+{
+    if(m_bFullscreen)
+    {
+        ASSERTION(m_pCtxFullScreen != nil,
+                  "ActivateGraphicsContext: Graphics context (m_pCtxFullScreen) is nil!");
+        [m_pCtxFullScreen flushBuffer];
+    }
+    else
+    {
+        ASSERTION(m_pCtxWindowed != nil,
+                  "ActivateGraphicsContext: Graphics context (m_pCtxWindowed) is nil!");
+        [m_pCtxWindowed flushBuffer];
+    }
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Keyboard press event from the window
+ */
 - (void) keyDown: (NSEvent *) event
 {
     NSString *chars = [event characters];
@@ -172,8 +456,9 @@ id                      appWindow;
 }
 
 //------------------------------------------------------------------------------
-// Purpose: Key Up Event
-//------------------------------------------------------------------------------
+/**
+ * Keyboard up event from the window
+ */
 - (void) keyUp: (NSEvent *) event
 {
     NSString *chars = [event characters];
@@ -184,6 +469,10 @@ id                      appWindow;
     }
 }
 
+//------------------------------------------------------------------------------
+/**
+ * Mouse down event from the window
+ */
 - (void)mouseDown:(NSEvent *)theEvent
 {
     if([theEvent eventNumber] == NSLeftMouseDown)
@@ -196,6 +485,10 @@ id                      appWindow;
     }
 }
 
+//------------------------------------------------------------------------------
+/**
+ * Mouse up event from the window
+ */
 - (void)mouseUp:(NSEvent *)theEvent
 {
     if([theEvent eventNumber] == NSLeftMouseUp)
@@ -208,6 +501,10 @@ id                      appWindow;
     }
 }
 
+//------------------------------------------------------------------------------
+/**
+ * Mouse dragged event from the window
+ */
 - (void)mouseDragged:(NSEvent *)theEvent
 {
     //NSPoint windowOrigin;
@@ -226,11 +523,19 @@ id                      appWindow;
 //    }
 }
 
+//------------------------------------------------------------------------------
+/**
+ * Get Key state
+ */
 - (Boolean) GetKeyState: (char) character
 {
     return m_keys[character];
 }
 
+//------------------------------------------------------------------------------
+/**
+ * Get Mouse state
+ */
 - (Boolean) GetMouseState: (Boolean) left
 {
     if(left)
@@ -241,35 +546,19 @@ id                      appWindow;
 
 @end
 
-namespace PlatformWrapper
-{
-//------------------------------------------------------------------------------
-// Purpose: C functions for access to platform information ( key presses, etc )
-//------------------------------------------------------------------------------
-bool    GetKeyState(char character)
-{
-    return [appWindow GetKeyState:character];
-}
-
-bool    GetMouseState(bool left)
-{
-    return [appWindow GetMouseState:left];
-}
-} // PlatformWrapper
-
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 @implementation CCocoaWrapper
 
-//------------------------------------------------------------------------------
-// Purpose: The window object itself ( creates getters and setters )
-// This object gets set by the xib at runtime.
-//------------------------------------------------------------------------------
-@synthesize genesisWindow;
+- (NSAppWindow*) m_activeWindow
+{
+    return m_activeWindow;
+}
 
 //------------------------------------------------------------------------------
-// Purpose: Sets up a GL context in the cocoa framework
-//------------------------------------------------------------------------------
+/**
+ * Application finished launching, setup the engine and platform
+ */
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 //    [self SetupGLContext];
@@ -297,21 +586,45 @@ bool    GetMouseState(bool left)
     // Create a new mutex for rendering calls.
     //mutexEngineLock = [[NSLock alloc] init];
     
-    appWindow = [genesisWindow self];
-
+    for(int i = 0; i < Foundation::MAX_PLATFORM_WINDOWS; ++i)
+    {
+        m_windows[i] = NULL;
+    }
+    
+    // Set the application pointer for C++ access
+    pCocoaApp = self;
+    
     // Create the main gameloop thread
     [NSThread detachNewThreadSelector:@selector(ApplicationLoop:)
                              toTarget:[MainAppThread class] withObject:nil];
 }
 
 //------------------------------------------------------------------------------
-// Purpose: On quit button pressed, tell the engine thread to terminate
+/**
+ * Application is about the terminate, clean up platform specific stuff
+ */
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+    // Release any windows
+    for(int i = 0; i < Foundation::MAX_PLATFORM_WINDOWS; ++i)
+    {
+        if(m_windows[i])
+        {
+            [m_windows[i] release];
+            m_windows[i] = NULL;
+        }
+    }
+}
+
 //------------------------------------------------------------------------------
+/**
+ * On quit button pressed, tell the engine thread to terminate
+ */
 - (IBAction)QuitButton:(id)sender
 {
-    while(enginestate != ENGINE_STATE_CLOSED)
+    while(CEngineState::enginestate != CEngineState::ENGINE_STATE_CLOSED)
     {
-        engineLockReason = ENGINE_LOCK_QUIT;
+        CEngineState::engineLockReason = CEngineState::ENGINE_LOCK_QUIT;
         usleep(1000); // wait awhile
     }
     
@@ -319,165 +632,49 @@ bool    GetMouseState(bool left)
 }
 
 //------------------------------------------------------------------------------
-// Purpose: Creates a pixel format for fullscreen mode
-//------------------------------------------------------------------------------
--(NSOpenGLPixelFormat*)CreateFullScreenPixelFormat
+/**
+ * Creates a new window test
+ * @param info Contains information to create the window
+ * @return int The index of the window created, or -1 if the window could not be
+ * created.
+ */
+- (int)CreateContentWindow:(const window_info &) info
 {
-    NSOpenGLPixelFormatAttribute attribs[] =
-	{
-		NSOpenGLPFANoRecovery,
-		NSOpenGLPFAAccelerated,
-		NSOpenGLPFADoubleBuffer,
-		NSOpenGLPFAColorSize,
-		(NSOpenGLPixelFormatAttribute) COLOR_BUFFER_SIZE,
-		NSOpenGLPFADepthSize,
-		(NSOpenGLPixelFormatAttribute) DEPTH_BUFFER_SIZE,
-		NSOpenGLPFAStencilSize,
-		(NSOpenGLPixelFormatAttribute) STENCIL_BUFFER_SIZE,
-		NSOpenGLPFAAccumSize,
-		(NSOpenGLPixelFormatAttribute) ACCUM_BUFFER_SIZE,
-		NSOpenGLPFAFullScreen,
-		NSOpenGLPFAScreenMask,
-		(NSOpenGLPixelFormatAttribute)CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
-		(NSOpenGLPixelFormatAttribute) 0
-	};
-	
-	NSOpenGLPixelFormat* fmt = [[NSOpenGLPixelFormat alloc] initWithAttributes: attribs];
-	
-	if (!fmt)
-	{
-		NSLog(@"Cannot create NSOpenGLPixelFormat for the fullscreen context");
-		return nil;
-	}
-    
-    return fmt;
-}
-
-//------------------------------------------------------------------------------
-// Purpose: Creates a pixel format for windowed mode
-//------------------------------------------------------------------------------
--(NSOpenGLPixelFormat*)CreateWindowedPixelFormat
-{
-    //setup the window gl context
-	NSOpenGLPixelFormatAttribute attribs1[] =
-	{
-		NSOpenGLPFANoRecovery,
-		NSOpenGLPFAAccelerated,
-		NSOpenGLPFADoubleBuffer,
-		NSOpenGLPFAColorSize,
-		(NSOpenGLPixelFormatAttribute) COLOR_BUFFER_SIZE,
-		NSOpenGLPFADepthSize,
-		(NSOpenGLPixelFormatAttribute) DEPTH_BUFFER_SIZE,
-		NSOpenGLPFAStencilSize,
-		(NSOpenGLPixelFormatAttribute) STENCIL_BUFFER_SIZE,
-		NSOpenGLPFAAccumSize,
-		(NSOpenGLPixelFormatAttribute) ACCUM_BUFFER_SIZE,
-		NSOpenGLPFAWindow,
-		(NSOpenGLPixelFormatAttribute) 0,
-	};
-    
-	
-	NSOpenGLPixelFormat* fmt = [[NSOpenGLPixelFormat alloc] initWithAttributes: attribs1];
-	
-	
-	if (!fmt)
-	{
-		NSLog(@"Cannot create NSOpenGLPixelFormat for the windowed context");
-		return nil;
-	}
-    
-    return fmt;
-}
-
-//------------------------------------------------------------------------------
-// Purpose: Sets up a GL context in the cocoa framework
-//------------------------------------------------------------------------------
--(Boolean)SetupGLContext
-{
-    m_pFullScreenPixelFmt = [self CreateFullScreenPixelFormat];
-    if(!m_pFullScreenPixelFmt)
-        return false;
-	
-	m_pCtxFullScreen = [[NSOpenGLContext alloc] initWithFormat: m_pFullScreenPixelFmt
-                                                  shareContext: nil];
-	
-	if (!m_pCtxFullScreen)
-	{
-		NSLog(@"Could not create Fullscreen GL Context!");
-		return false;
-	}
-	
-    m_pWindowedPixelFmt = [self CreateWindowedPixelFormat];
-    if(!m_pWindowedPixelFmt)
-        return false;
-	
-	m_pCtxWindowed = [[NSOpenGLContext alloc] initWithFormat: m_pWindowedPixelFmt
-                                                shareContext: m_pCtxFullScreen];
-	
-	if (!m_pCtxWindowed)
-	{
-		NSLog(@"Could not create Windowed GL Context!");
-		return false;
-	}
-	
-	
-	if( FULLSCREEN_DEFAULT )
-	{
-		//displays.Capture(0);
-		//displays.SetDisplayMode(0, CGSizeMake( SCREEN_WIDTH, SCREEN_HEIGHT ), 32, 75);
-		
-		[m_pCtxFullScreen setFullScreen];
-		[m_pCtxFullScreen makeCurrentContext];
-		[NSCursor hide];
-		m_bFullscreen = true;
-	}
-	else
-	{
-		m_pGLView = [[NSOpenGLView alloc]
-                              initWithFrame:NSMakeRect(0,
-                                                       0,
-                                                       LOWEST_SCREEN_WIDTH,
-                                                       LOWEST_SCREEN_HEIGHT)];
-        
-        if(HIGH_RES_BACKING_MODE)
+    for(int i = 0; i < Foundation::MAX_PLATFORM_WINDOWS; ++i)
+    {
+        if(m_windows[i] == NULL)
         {
-            [m_pGLView setWantsBestResolutionOpenGLSurface:YES];
-            [m_pGLView convertRectToBacking:[m_pGLView bounds]];
+            NSAppWindow* window = [[NSAppWindow alloc]
+                                   initWithContentRect: NSMakeRect(info.x, info.y, info.width, info.height)
+                                   styleMask: NSTitledWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask
+                                   backing: NSBackingStoreBuffered
+                                   defer: NO];
+            
+            [window setTitle: @"Genesis Window"];
+            [window center];
+            [window makeKeyAndOrderFront:self];
+            [window setBackgroundColor:[NSColor blackColor]];
+            
+            m_windows[i] = window;
+            return i;
         }
-		
-		[ genesisWindow setContentView: m_pGLView ];
-		[ m_pCtxWindowed setView:m_pGLView ];
-		[ m_pGLView setOpenGLContext:m_pCtxWindowed ];
-		
-		//[ m_pCtxWindowed copyAttributesFromContext:m_pCtxFullScreen withMask:GL_ALL_ATTRIB_BITS ];
-		[ m_pCtxWindowed makeCurrentContext ];
-		m_bFullscreen = false;
-	}
-	
-    return true;
+    }
+    
+    ASSERTION(false, "Tried to create a content window, but ran out of windows!");
+    
+    return -1;
 }
 
 //------------------------------------------------------------------------------
-// Purpose: If the resolution changes, this should be called to correct the
-// screen pixels
-//------------------------------------------------------------------------------
--(void)UpdateViewport
+/**
+ * Sets the active window
+ */
+- (void)SetActiveWindow:(int)index
 {
-    // Gotta lock the render thread so we can do this.
-    // TODO: We should send a message to the render thread asking for a resolution
-    // change.
-//   [mutex_renderlock lock];
-//    
-//    [g_curContext makeCurrentContext];
-//    
-//    // Get view dimensions in pixels
-//    NSRect backingBounds = [m_pGLView convertRectToBacking:[m_pGLView bounds]];
-//    
-//    GLsizei backingPixelWidth  = (GLsizei)(backingBounds.size.width),
-//    backingPixelHeight = (GLsizei)(backingBounds.size.height);
-//    
-//    g_pOGLRenderContext->SetViewport(0, 0, backingPixelWidth, backingPixelHeight);
-//    
-//    [mutex_renderlock unlock];
+    ASSERTION(index >= 0 && index < Foundation::MAX_PLATFORM_WINDOWS,
+              "Trying to set active window to a bad index! Not recoverable!");
+    
+    m_activeWindow = m_windows[index];
 }
+
 @end

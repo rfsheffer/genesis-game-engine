@@ -10,6 +10,7 @@
 		BD0A009916B5F7680010FEF6 /* IServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009816B5F7680010FEF6 /* IServer.h */; };
 		BD22CE3516C9CEAD00B8C48F /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD22CE3416C9CEAC00B8C48F /* debug.cpp */; };
 		BD22CE3716C9CF2100B8C48F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */; };
+		BD50B9DE1720B218007FA4A7 /* allhead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BD50B9DD1720B218007FA4A7 /* allhead.pch */; };
 		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
 		BDF6753816C0DC9400966DB3 /* data_networkpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF6753716C0DC9400966DB3 /* data_networkpack.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
@@ -25,6 +26,9 @@
 		BD22CE3416C9CEAC00B8C48F /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../common/debug.cpp; sourceTree = "<group>"; };
 		BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		BD22CE3916C9E65F00B8C48F /* data_filepack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_filepack.h; path = ../shared/data_filepack.h; sourceTree = "<group>"; };
+		BD4AF1D117066A6100135A3E /* data_network_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_network_helpers.h; path = ../shared/data_network_helpers.h; sourceTree = "<group>"; };
+		BD50B9DD1720B218007FA4A7 /* allhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.pch; path = ../common/allhead.pch; sourceTree = "<group>"; };
+		BD50B9E91721E1B5007FA4A7 /* serverhead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serverhead.pch; sourceTree = "<group>"; };
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
 		BDED316116B37E0200B7E97B /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CServer.cpp; sourceTree = "<group>"; };
@@ -35,7 +39,7 @@
 		BDFABFDC1692559F001C1E6A /* data_pack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_pack.cpp; path = ../shared/data_pack.cpp; sourceTree = "<group>"; };
 		BDFABFDD1692559F001C1E6A /* data_pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_pack.h; path = ../shared/data_pack.h; sourceTree = "<group>"; };
 		BDFABFDF1692559F001C1E6A /* data_mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_mapping.h; path = ../shared/data_mapping.h; sourceTree = "<group>"; wrapsLines = 0; };
-		BDFABFE516925A27001C1E6A /* entity_dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entity_dictionary.h; sourceTree = "<group>"; };
+		BDFABFE516925A27001C1E6A /* entity_dictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = entity_dictionary.h; path = ../shared/entity_dictionary.h; sourceTree = "<group>"; };
 		BDFABFE616925EA5001C1E6A /* data_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_types.h; path = ../shared/data_types.h; sourceTree = "<group>"; };
 		BDFABFE816926659001C1E6A /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = macros.h; path = ../common/macros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +64,7 @@
 				BDFABFDD1692559F001C1E6A /* data_pack.h */,
 				BDF6753616C0DC5000966DB3 /* data_networkpack.h */,
 				BD22CE3916C9E65F00B8C48F /* data_filepack.h */,
+				BD4AF1D117066A6100135A3E /* data_network_helpers.h */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -106,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				BD0A008D16B5E89F0010FEF6 /* data */,
+				BD50B9DD1720B218007FA4A7 /* allhead.pch */,
+				BD50B9E91721E1B5007FA4A7 /* serverhead.pch */,
 				BDFABFD11692345B001C1E6A /* ent_base.h */,
 				BDFABFE516925A27001C1E6A /* entity_dictionary.h */,
 				BDFABFE816926659001C1E6A /* macros.h */,
@@ -135,6 +142,7 @@
 				BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */,
 				BDFABFE716925EA5001C1E6A /* data_types.h in Headers */,
 				BD0A009916B5F7680010FEF6 /* IServer.h in Headers */,
+				BD50B9DE1720B218007FA4A7 /* allhead.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,11 +266,12 @@
 		BDC7800E1692213C00C3F72E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../common/allhead.pch;
+				GCC_PREFIX_HEADER = serverhead.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
@@ -283,11 +292,12 @@
 		BDC7800F1692213C00C3F72E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../common/allhead.pch;
+				GCC_PREFIX_HEADER = serverhead.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_RELEASE,
 					_MAC,

@@ -13,6 +13,7 @@
 #include "IEngine.h"
 #include "CExtensions.h"
 #include "CEngineClient.h"
+#include "AppVariables.h"
 
 // Index 0 is always the local engine.
 #define LOCAL_ENGINE_CLIENT_INDEX       0

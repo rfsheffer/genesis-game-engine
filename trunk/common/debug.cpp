@@ -8,6 +8,11 @@
 #include "debug.h"
 
 #ifdef _MAC
+
+// We need some core API stuff here...
+#include <CoreFoundation/CoreFoundation.h>
+//#include <CoreServices/CoreServices.h>
+
 int MessageBox(void *hWnd, char* lpText, char* lpCaption, unsigned int uType)
 {
     //convert the strings from char* to CFStringRef

@@ -21,6 +21,9 @@ public:
     void            Run(void);
     void            Shutdown(void);
     
+    unsigned int    RegisterSharedEntity(CEntityBase *pEnt);
+    unsigned int    RegisterLocalEntity(CEntityBase *pEnt);
+    
     /**
      * Get the extensions manager which created this extension.
      */
@@ -29,17 +32,38 @@ public:
     void            RecvBuffer(DataPacking::DataBuffer *pBuffer);
     
 private:
-
     /**
      * Extensions Manager which created this extension
      */
     IExtensions     *m_pExtensions;
     
     /**
-     * Entities which exist on both the client and the server
+     * The max number of local entities, change as needed.
      */
-    CEntityBase     *m_pSharedEntities[MAX_NUM_ENTITIES];
+    static const unsigned int MAX_NUM_LOCAL_ENTITIES = 32;
+    
+    /**
+     * The number of shared entities currently registered
+     */
+    unsigned int    m_uiNumSharedEntities;
+                                         
+    /**
+     * Entities which can be shared with other systems
+     */
+    CEntityBase     *m_pSharedEntities[Foundation::MAX_SHARED_BASE_ENTITIES];
+    
+    /**
+     * The number of local entities currently registered
+     */
+    unsigned int    m_uiNumLocalEntities;
+    
+    /**
+     * Entities which can be shared with other systems
+     */
+    CEntityBase     *m_pLocalEntities[MAX_NUM_LOCAL_ENTITIES];
 };
+
+CServer     *GetServer(void);
 
 
 #endif // CSERVER_H
