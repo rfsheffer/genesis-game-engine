@@ -32,9 +32,14 @@ public:
      * A method designed to initialize a created entity. Should only be called
      * by a factory.
      */
-    void            _InitBaseEntity(unsigned int index)
+//    void            _InitBaseEntity(unsigned int index)
+//    {
+//        m_iEntIndex = index;
+//    }
+    
+    const char      *GetClassname(void) const
     {
-        m_iEntIndex = index;
+        return m_pszClassName;
     }
     
 protected:
@@ -47,11 +52,18 @@ protected:
     
 private:
     
+    friend class IEntityFactory;
+    
     /**
      * The entity index assigned to this entity.
      * Will be set to -1 if this entity is not networked.
      */
     int             m_iEntIndex;
+    
+    /**
+     * The name of this entity
+     */
+    const char      *m_pszClassName;
 };
 
 

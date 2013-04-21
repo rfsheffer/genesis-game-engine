@@ -44,6 +44,9 @@
 
 #define ASCII_SPACE                 32
 
+#define ASCII_PERIOD                46
+#define ASCII_FSLASH                47
+
 #define ASCII_ZERO                  48
 #define ASCII_ONE                   49
 #define ASCII_TWO                   50

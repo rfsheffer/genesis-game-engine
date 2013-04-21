@@ -21,7 +21,11 @@
 class iExtension
 {
 public:
-    virtual void Run(void) = 0;
+    virtual void            Initialize(IExtensions *pExtensions) = 0;
+    virtual void            Run(void) = 0;
+    virtual void            Shutdown() = 0;
+    virtual void            RecvBuffer(DataPacking::DataBuffer *pBuffer) = 0;
+    virtual const char      *GetName(void) = 0;
 };
 
 /*! \def DECLARE_IMPORT_EXTENSION(name)
@@ -77,9 +81,7 @@ dlclose(p##name##Handle);
 class I##name : public iExtension \
 { \
 public: \
-    virtual void            Initialize(IExtensions *pExtensions) = 0; \
-    virtual void            Shutdown() = 0; \
-    virtual void            RecvBuffer(DataPacking::DataBuffer *pBuffer) = 0;
+    const char              *GetName(void) { return #name; }
 
 /*! \def END_EXTENSION_INTERFACE()
  \brief A macro for ending a new extension.

@@ -37,14 +37,16 @@ namespace DataPacking
         /** Gets the block growth rate. */
         inline int GetBlockGrowth(void) const { return m_iBlockGrowSize; }
         
-        bool        WriteBlock(const char *pName, const char *pBuffer, unsigned int size);
+        bool        WriteBlock(const char *pName, const byte *pBuffer, unsigned int size);
         bool        StartWritting(const char *pName);
-        bool        WriteBuffer(const char *pBuffer, unsigned int size);
-        char        *CreateBuffer(unsigned int size);
+        bool        WriteBuffer(const byte *pBuffer, unsigned int size);
+        byte        *CreateBuffer(unsigned int size);
         void        EndWritting(void);
         bool        ResizeBlockData(unsigned int newsize);
         bool        ResizeBufferData(unsigned int newsize);
         bool        SetBufferPos(unsigned int position);
+        
+        byte        *ReadFromBlock(unsigned int blockIndex, unsigned int offset);
         
         // Max name for data blocks
 #define MAX_DATA_BLOCK_NAME		16
@@ -67,10 +69,10 @@ namespace DataPacking
         int         m_iCurrent_Block;
         
         /** Pointer to start of data buffer. */
-        char        *m_pBaseData;
+        byte        *m_pBaseData;
         
         /** Pointer to current position in data buffer. */
-        char		*m_pCurrentData;
+        byte		*m_pCurrentData;
         
         /** Distance in bytes to current position, also the buffers
          current size( m_iBufferSize - m_iCurrentPos ). */

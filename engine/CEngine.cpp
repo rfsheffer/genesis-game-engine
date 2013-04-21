@@ -8,6 +8,7 @@
 //
 
 #include "CEngine.h"
+#include "AppVarHolder.h"
 
 DLL_EXPORT
 IEngine *__CreateEngine(void)

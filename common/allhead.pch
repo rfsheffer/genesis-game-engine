@@ -1,7 +1,10 @@
 //
-//  This is the pre-compiled header which should be used by all projects
-//  connected to the game. It sets up all the generic systems which are
-//  used throughout the game.
+//  allhead.pch
+//  This is the master precompiled header used as a base by all extensions
+//  precompiled headers.
+//
+//  Created by Ryan Sheffer on 2013-04-19.
+//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
 // Standard C Libraries
@@ -12,61 +15,22 @@
 #include <float.h>
 
 // C++ Libraries
-#include <new>
+#include <new> // For new override
 #include <vector> // TODO: Get rid of me!
+#include <map> // TODO: Get rid of me!
 
-#ifdef _MAC
-
-// Objective-C headers go here
-#ifdef __OBJC__
-#import <Cocoa/Cocoa.h>
-#endif
-
-#include <CoreFoundation/CoreFoundation.h>
-#include <CoreServices/CoreServices.h>
-
-// Carbon, the low level graphics API for MAC
-#include <Carbon/Carbon.h>
+#if defined(_MAC) || defined(_LINUX)
 
 // Unix Dynamic Linker
 #include <dlfcn.h>
 
-// OpenGL specific
-// TODO: MOVE TO RENDER ONLY
-#include <OpenGL/OpenGL.h>
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-#include <OpenGL/glext.h>
-
 #endif
 
 // Platform macros and defines
-#include "platform.h"
+#include "platform_constants.h"
 #include "types.h"
 #include "macros.h"
+#include "foundation_constants.h"
 
 // Debug specific stuff like ASSERTION
 #include "debug.h"
-
-namespace MathLib
-{
-    // The start of the mathlib namespace.
-}
-
-// Math Specific
-using namespace MathLib;
-#include "math_constants.h"
-#include "math_types.h"
-#include "math_common.h"
-#include "math_asm.h"
-#include "math_vector.h"
-#include "math_angle.h"
-#include "math_matrix.h"
-#include "math_plane.h"
-#include "math_frustum.h"
-
-// Utilities
-#include "util_vector.h"
-
-#include "data_mapping.h"
-#include "data_pack.h"

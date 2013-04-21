@@ -9,7 +9,7 @@
 #ifndef I_CLIENT_H
 #define I_CLIENT_H
 
-#include "iExtension.h"
+#include "IExtension.h"
 
 #define CLIENT_EXTENSION_NAME     Client
 

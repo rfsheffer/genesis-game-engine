@@ -14,6 +14,7 @@
 //****************************************************
 #if defined(_WIN) || defined(_LINUX) || defined(_MAC)
 
+/** The byte type */
 typedef unsigned char byte;
 
 #define FLOAT   float
@@ -40,6 +41,9 @@ typedef unsigned char byte;
 #define UINT32      uint32_t
 #define INT64       int64_t
 #define UINT64      uint64_t
+
+/** The handle type for a window */
+typedef int hWindow;
 
 #endif
 

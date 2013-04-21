@@ -20,6 +20,9 @@ namespace DataPacking
         
         m_iBlockGrowSize = pToCopy->GetBlockGrowth();
         
+        m_iCurrentPos = pToCopy->m_iCurrentPos;
+        m_iCurrent_Block = pToCopy->m_iCurrent_Block;
+        
         if(!ResizeBufferData(pToCopy->m_iBufferSize))
         {
             m_iError = BUFFER_INIT_ERROR;
@@ -32,13 +35,11 @@ namespace DataPacking
             ASSERTION(false, "Buffer initialization error!");
         }
         
-        m_iBufferSize = pToCopy->m_iBufferSize;
-        m_iNum_Blocks = pToCopy->m_iNum_Blocks;
-        m_iCurrentPos = pToCopy->m_iCurrentPos;
-        m_iCurrent_Block = pToCopy->m_iCurrent_Block;
-        
         memcpy(m_pBlocks, pToCopy->m_pBlocks, sizeof(data_block) * m_iNum_Blocks);
         memcpy(m_pBaseData, pToCopy->m_pBaseData, pToCopy->m_iBufferSize);
+        
+        m_bWritting = pToCopy->m_bWritting;
+        m_iAmountWritten = pToCopy->m_iAmountWritten;
         
         m_pCurrentData = m_pBaseData + m_iCurrentPos;
     }
@@ -89,18 +90,14 @@ namespace DataPacking
     {
         m_iBlockGrowSize = cSource.GetBlockGrowth();
         
-        ResizeBufferData(cSource.m_iBufferSize);
-        ResizeBlockData(cSource.m_iNum_Blocks);
-        
-        m_iBufferSize = cSource.m_iBufferSize;
-        m_iNum_Blocks = cSource.m_iNum_Blocks;
         m_iCurrentPos = cSource.m_iCurrentPos;
         m_iCurrent_Block = cSource.m_iCurrent_Block;
         
+        ResizeBufferData(cSource.m_iBufferSize);
+        ResizeBlockData(cSource.m_iNum_Blocks);
+        
         memcpy(m_pBlocks, cSource.m_pBlocks, sizeof(data_block) * m_iNum_Blocks);
         memcpy(m_pBaseData, cSource.m_pBaseData, cSource.m_iBufferSize);
-        
-        m_pCurrentData = m_pBaseData + m_iCurrentPos;
         
         m_bWritting = false;
         m_iAmountWritten = 0;
@@ -130,10 +127,11 @@ namespace DataPacking
         else
         {
             // Need to resize the current block buffer.
-            data_block *ptemp = (data_block*)realloc( m_pBlocks, newsize );
+            data_block *ptemp = (data_block*)realloc( m_pBlocks, sizeof( data_block ) * newsize );
             if( !ptemp )
                 return false;
             
+            m_iNum_Blocks = newsize;
             m_pBlocks = ptemp;
             return true;
         }
@@ -152,7 +150,7 @@ namespace DataPacking
         
         if( !m_pBaseData )
         {
-            m_pBaseData = m_pCurrentData = (char*)malloc( newsize );
+            m_pBaseData = m_pCurrentData = (byte*)malloc( newsize );
             if( m_pBaseData )
             {
                 m_iBufferSize = newsize;
@@ -163,9 +161,12 @@ namespace DataPacking
         else
         {
             // Need to resize the current block buffer.
-            char *ptemp = (char*)realloc( m_pBaseData, newsize );
+            byte *ptemp = (byte*)realloc( m_pBaseData, newsize );
             if( !ptemp )
+            {
+                ASSERTION(ptemp, "Ran out of memory on realloc?");
                 return false;
+            }
             
             m_iBufferSize = newsize;
             m_pBaseData = ptemp;
@@ -191,13 +192,33 @@ namespace DataPacking
     }
     
     /**
+     * A safe method for reading from a block
+     * @return NULL if the request is out of range of the block, or a pointer to the data in the block
+     */
+    byte *DataBuffer::ReadFromBlock(unsigned int blockIndex, unsigned int offset)
+    {
+        ASSERTION(m_pBaseData, "Trying to read from block with no valid block data!");
+        if(blockIndex >= m_iNum_Blocks)
+        {
+            return NULL;
+        }
+        
+        if(offset >= m_pBlocks[blockIndex].size)
+        {
+            return NULL;
+        }
+        
+        return m_pBaseData + (m_pBlocks[blockIndex].offset + offset);
+    }
+    
+    /**
      * Creates a new block by name, adds the data buffer to it
      * @param pName The name of the new block.
      * @param pBuffer The buffer to be added to the block.
      * @param size The size of the buffer being passed in.
      */
     bool DataBuffer::WriteBlock(const char *pName,
-                                const char *pBuffer,
+                                const byte *pBuffer,
                                 unsigned int size)
     {
         if( !pBuffer || !pName || !size )
@@ -234,7 +255,7 @@ namespace DataPacking
     /**
      * Writes a buffer to the currently open block.
      */
-    bool DataBuffer::WriteBuffer(const char *pBuffer, unsigned int size)
+    bool DataBuffer::WriteBuffer(const byte *pBuffer, unsigned int size)
     {
         if( m_bWritting == false )
             return false;
@@ -265,7 +286,7 @@ namespace DataPacking
      * returns a pointer to it.
      * @param size The size of buffer to create.
      */
-    char *DataBuffer::CreateBuffer(unsigned int size)
+    byte *DataBuffer::CreateBuffer(unsigned int size)
     {
         if( m_bWritting == false )
             return NULL;
@@ -280,7 +301,7 @@ namespace DataPacking
         
         if( m_pCurrentData )
         {
-            char *newbuffer = m_pCurrentData;
+            byte *newbuffer = m_pCurrentData;
             m_pCurrentData = m_pCurrentData + size;
             m_iAmountWritten += size;
             m_iCurrentPos += size;
