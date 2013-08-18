@@ -44,7 +44,6 @@ namespace ScriptParse
                 case '-':
                     m_operatorTable[i] = LexTokenOperator::OPERATOR_SUBTRACTION;
                     continue;
-                    
             }
             
             m_operatorTable[i] = LexTokenOperator::NUM_OPERATOR_TYPES;
@@ -59,7 +58,7 @@ namespace ScriptParse
     {
         int iVarIndex = 0;
         char szVar[32];
-        bool bFloatingPoint = false; // TEMP HACK
+        bool bFloatingPoint = false;
         
         while(*pString != ASCII_NULL)
         {
@@ -85,12 +84,15 @@ namespace ScriptParse
                     }
                     
                     // Push the Variable onto the token stack, then the operator
-                    szVar[iVarIndex] = ASCII_NULL;
-                    PushVariable(szVar, bFloatingPoint);
-                    PushOperator(pString);
+                    if(iVarIndex != 0)
+                    {
+                        szVar[iVarIndex] = ASCII_NULL;
+                        PushVariable(szVar, bFloatingPoint);
+                        iVarIndex = 0;
+                        bFloatingPoint = false;
+                    }
                     
-                    iVarIndex = 0;
-                    bFloatingPoint = false;
+                    PushOperator(pString);
                 }
             }
             

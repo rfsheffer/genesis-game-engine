@@ -14,6 +14,8 @@ class IPlatform;
 class IExtensions
 {
 public:
+    virtual ~IExtensions(){}
+    
     virtual bool        CreateAllExtensions(void) = 0;
     virtual void        RunExtensions(void) = 0;
     virtual void        DestroyAllExtensions(void) = 0;

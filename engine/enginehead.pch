@@ -15,17 +15,8 @@ namespace MathLib
     // Everything should be able to access.. This might change...
 }
 
-// Math Specific
-using namespace MathLib;
-#include "math_constants.h"
-//#include "math_types.h"
-#include "math_common.h"
-//#include "math_asm.h"
-#include "math_vector.h"
-#include "math_angle.h"
-//#include "math_matrix.h"
-//#include "math_plane.h"
-//#include "math_frustum.h"
+// Math Library
+#include "mathlib.h"
 
 // Utilities
 #include "util_vector.h"

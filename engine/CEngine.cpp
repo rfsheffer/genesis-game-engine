@@ -16,11 +16,46 @@ IEngine *__CreateEngine(void)
     return new CEngine();
 }
 
+namespace __engine_holder
+{
+    CEngine     *pEngine;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Gets the engine itself.
+ */
+CEngine     *GetEngine(void)
+{
+    return __engine_holder::pEngine;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * A helper to get the platform pointer.
+ * @note The platform pointer should always be valid in any case. If this fails,
+ * there is something very wrong with the engine.
+ */
+IPlatform *GetPlatform(void)
+{
+    ASSERTION(GetEngine() != NULL,
+              "GetPlatform: No Client!");
+    ASSERTION(GetEngine()->GetExtensions() != NULL,
+              "GetPlatform: No Extensions manager availible!");
+    ASSERTION(GetEngine()->GetExtensions()->GetPlatform() != NULL,
+              "GetPlatform: No Platform availible!");
+    
+    return GetEngine()->GetExtensions()->GetPlatform();
+}
+
+//------------------------------------------------------------------------------
 /**
  * Initialize the engine
  */
 void CEngine::Initialize(IPlatform *pPlatform)
 {
+    __engine_holder::pEngine = this;
+    
     // Initialize us as the first
     m_EngineClients[LOCAL_ENGINE_CLIENT_INDEX].InitializeLocal();
     
@@ -36,6 +71,7 @@ void CEngine::Initialize(IPlatform *pPlatform)
     m_pExtensionManager->CreateAllExtensions();
 }
 
+//------------------------------------------------------------------------------
 /**
  * Run the engine, called by the main program thread.
  */
@@ -45,6 +81,7 @@ void CEngine::Run(void)
     m_pExtensionManager->RunExtensions();
 }
 
+//------------------------------------------------------------------------------
 /**
  * Shutdown the engine
  */

@@ -28,7 +28,7 @@ namespace render
         pPlatform->SetActiveWindow(windowHandle);
         m_windowHandle = windowHandle;
         
-        bool created = pPlatform->CreateGraphicsContext(settings);
+        bool created = true; //pPlatform->CreateGraphicsContext(settings);
         
         if(created)
         {
@@ -85,6 +85,7 @@ namespace render
         }
     }
     
+    //--------------------------------------------------------------------------
     /**
      * Refreshes the context information, resyncs the context with the platform.
      * @note This should be called before drawing with the context. It ensures
@@ -112,6 +113,7 @@ namespace render
         }
     }
     
+    //--------------------------------------------------------------------------
     /**
      * Presents the fullscreen color buffer to the screen.
      * ( Swaps the back buffer with the front buffer )

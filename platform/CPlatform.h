@@ -23,17 +23,24 @@ public:
     bool            GetKeyState(char character) const;
     bool            GetMouseState(bool left) const;
     
-    hWindow         CreateContentWindow(const window_info &info) const;
+    hWindow         GetWindowHandle(const char *pszWindowName) const;
+    
+    //hWindow         CreateContentWindow(const window_info &info) const;
     void            SetActiveWindow(hWindow index) const;
     void            GetWindowSizePixels(unsigned int &width, unsigned int &height) const;
     void            GetWindowSize(unsigned int &width, unsigned int &height) const;
     
-    bool            CreateGraphicsContext(const render::render_context_settings &settings) const;
-    void            ShutdownActiveGraphicsContext(void) const;
+    //bool            CreateGraphicsContext(const render::render_context_settings &settings) const;
+    //void            ShutdownActiveGraphicsContext(void) const;
     void            ActivateGraphicsContext(void) const;
     void            SwapGraphicsContextBuffers(void) const;
     
     const char      *GetAbsoluteApplicationPath(void) const;
+    
+    FileHandle FileOpen(const char *pszFileName, const char *pszOptions) const;
+    size_t FileRead(void *ptr, size_t chunkSize, size_t chunkCount, FileHandle pFile) const;
+    size_t FileWrite(const void *ptr, size_t chunkSize, size_t chunkCount, FileHandle pFile) const;
+    size_t GetFileSize(FileHandle pFile) const;
 };
 
 

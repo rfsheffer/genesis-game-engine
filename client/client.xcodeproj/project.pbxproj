@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BD0A009716B5F7570010FEF6 /* IClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009616B5F7570010FEF6 /* IClient.h */; };
 		BD50B9D81720B180007FA4A7 /* render_context.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50B9D61720B180007FA4A7 /* render_context.h */; };
-		BD50B9DC1720B1F3007FA4A7 /* allhead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BD50B9DB1720B1F3007FA4A7 /* allhead.pch */; };
 		BD50B9E21721CC5F007FA4A7 /* render_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD50B9E11721CC5F007FA4A7 /* render_context.cpp */; };
 		BD50B9E61721DB5F007FA4A7 /* IRender.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50B9E51721DB5F007FA4A7 /* IRender.h */; };
 		BD50B9EF1721FE06007FA4A7 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD50B9EE1721FE06007FA4A7 /* OpenGL.framework */; };
@@ -24,6 +23,7 @@
 		BD50BA0517222100007FA4A7 /* math_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD50B9FD17222100007FA4A7 /* math_screen.cpp */; };
 		BD50BA0617222100007FA4A7 /* math_sincos_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD50B9FE17222100007FA4A7 /* math_sincos_table.cpp */; };
 		BD50BA0717222100007FA4A7 /* math_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD50B9FF17222100007FA4A7 /* math_vector.cpp */; };
+		BD90E053172669B6004B904E /* math_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = BD90E052172669B6004B904E /* math_vector.h */; };
 		BDED316816B386D400B7E97B /* CClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316616B386D400B7E97B /* CClient.cpp */; };
 		BDED316916B386D400B7E97B /* CClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDED316716B386D400B7E97B /* CClient.h */; };
 		BDF2673116CF7A11009533FC /* data_pack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF2672D16CF7A11009533FC /* data_pack.cpp */; };
@@ -39,7 +39,6 @@
 /* Begin PBXFileReference section */
 		BD0A009616B5F7570010FEF6 /* IClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IClient.h; path = ../interfaces/IClient.h; sourceTree = "<group>"; };
 		BD50B9D61720B180007FA4A7 /* render_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render_context.h; path = ../render/render_context.h; sourceTree = "<group>"; };
-		BD50B9DB1720B1F3007FA4A7 /* allhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.pch; path = ../common/allhead.pch; sourceTree = "<group>"; };
 		BD50B9E11721CC5F007FA4A7 /* render_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = render_context.cpp; path = ../render/render_context.cpp; sourceTree = "<group>"; };
 		BD50B9E51721DB5F007FA4A7 /* IRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRender.h; path = ../interfaces/IRender.h; sourceTree = "<group>"; };
 		BD50B9E71721DF29007FA4A7 /* clienthead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = clienthead.pch; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		BD50B9FD17222100007FA4A7 /* math_screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_screen.cpp; path = ../math/math_screen.cpp; sourceTree = "<group>"; };
 		BD50B9FE17222100007FA4A7 /* math_sincos_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_sincos_table.cpp; path = ../math/math_sincos_table.cpp; sourceTree = "<group>"; };
 		BD50B9FF17222100007FA4A7 /* math_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = math_vector.cpp; path = ../math/math_vector.cpp; sourceTree = "<group>"; };
+		BD90E052172669B6004B904E /* math_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = math_vector.h; path = ../math/math_vector.h; sourceTree = "<group>"; };
 		BDC7801B1692215F00C3F72E /* libclient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316616B386D400B7E97B /* CClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CClient.cpp; sourceTree = "<group>"; };
 		BDED316716B386D400B7E97B /* CClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CClient.h; sourceTree = "<group>"; };
@@ -103,6 +103,7 @@
 		BD50B9F7172220DD007FA4A7 /* math */ = {
 			isa = PBXGroup;
 			children = (
+				BD90E052172669B6004B904E /* math_vector.h */,
 				BD50B9F817222100007FA4A7 /* math_angle.cpp */,
 				BD50B9F917222100007FA4A7 /* math_common.cpp */,
 				BD50B9FA17222100007FA4A7 /* math_frustum.cpp */,
@@ -153,7 +154,6 @@
 			children = (
 				BD50B9D41720B167007FA4A7 /* render */,
 				BDF2672916CF79E8009533FC /* data */,
-				BD50B9DB1720B1F3007FA4A7 /* allhead.pch */,
 				BD50B9E71721DF29007FA4A7 /* clienthead.pch */,
 				BD0A009616B5F7570010FEF6 /* IClient.h */,
 				BDED316716B386D400B7E97B /* CClient.h */,
@@ -204,9 +204,9 @@
 				BDF2673616CF7A79009533FC /* data_networkunpack.h in Headers */,
 				BDF2673C16CF87A4009533FC /* entity_dictionary.h in Headers */,
 				BD50B9D81720B180007FA4A7 /* render_context.h in Headers */,
-				BD50B9DC1720B1F3007FA4A7 /* allhead.pch in Headers */,
 				BD50B9E61721DB5F007FA4A7 /* IRender.h in Headers */,
 				BD50B9F617221012007FA4A7 /* CBasicRender.h in Headers */,
+				BD90E053172669B6004B904E /* math_vector.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

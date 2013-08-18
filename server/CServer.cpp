@@ -21,6 +21,7 @@ namespace __server_holder
     CServer     *pServer;
 }
 
+//------------------------------------------------------------------------------
 /**
  * Gets the server itself.
  */
@@ -29,6 +30,25 @@ CServer     *GetServer(void)
     return __server_holder::pServer;
 }
 
+//------------------------------------------------------------------------------
+/**
+ * A helper to get the platform pointer.
+ * @note The platform pointer should always be valid in any case. If this fails,
+ * there is something very wrong with the engine.
+ */
+IPlatform *GetPlatform(void)
+{
+    ASSERTION(GetServer() != NULL,
+              "GetPlatform: No Client!");
+    ASSERTION(GetServer()->GetExtensions() != NULL,
+              "GetPlatform: No Extensions manager availible!");
+    ASSERTION(GetServer()->GetExtensions()->GetPlatform() != NULL,
+              "GetPlatform: No Platform availible!");
+    
+    return GetServer()->GetExtensions()->GetPlatform();
+}
+
+//------------------------------------------------------------------------------
 /**
  * Initialization of the server. This will happen after the extension
  * manager has been created.
@@ -58,6 +78,7 @@ void CServer::Initialize(IExtensions *pExtensions)
     CREATE_SHARED_ENTITY_BY_NAME("baseent");
 }
 
+//------------------------------------------------------------------------------
 /**
  * Extension Run method, Called once per tick by the extension manager.
  */
@@ -100,6 +121,7 @@ void CServer::Run(void)
     m_pExtensions->SendBuffer("Client", pNewBuffer);
 }
 
+//------------------------------------------------------------------------------
 /**
  * Called usually at the end of program execution when the client and
  * server are being shutdown. The server is shutdown before the clients.
@@ -126,6 +148,7 @@ void CServer::Shutdown()
     }
 }
 
+//------------------------------------------------------------------------------
 /**
  * Recieve a buffer from the extension manager
  * @param pBuffer The buffer to recv
@@ -137,6 +160,7 @@ void CServer::RecvBuffer(DataPacking::DataBuffer *pBuffer)
     // data such as input commands.
 }
 
+//------------------------------------------------------------------------------
 /**
  * Registers a new entity as shared
  * TODO: This needs a better system, so old slots get refilled.
@@ -149,6 +173,7 @@ unsigned int CServer::RegisterSharedEntity(CEntityBase *pEnt)
     return m_uiNumSharedEntities++;
 }
 
+//------------------------------------------------------------------------------
 /**
  * Registers a local entity
  * @param pEnt The entity to register

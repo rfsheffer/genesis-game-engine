@@ -31,6 +31,9 @@ public:
     void        Shutdown(void);
     bool        FinishedExecution(void) { return m_bHaultExecution; }
     
+    /** Get the extensions manager which created this extension. */
+    IExtensions     *GetExtensions(void){ return m_pExtensionManager; }
+    
 private:
     
     /** If true, the engine has been requested to hault. This will terminate
@@ -38,9 +41,11 @@ private:
     bool        m_bHaultExecution;
     
     /** The extensions manager to drive. */
-    CExtensions     *m_pExtensionManager;
+    IExtensions     *m_pExtensionManager;
     
     CEngineClient   m_EngineClients[MAX_ENGINE_CLIENTS];
 };
+
+CEngine     *GetEngine(void);
 
 #endif // CENGINE_H

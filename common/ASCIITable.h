@@ -44,6 +44,8 @@
 
 #define ASCII_SPACE                 32
 
+#define ASCII_DOUBLE_QUOTE          34
+
 #define ASCII_PERIOD                46
 #define ASCII_FSLASH                47
 
@@ -64,5 +66,7 @@
 #define ASCII_LOWER_A               97
 #define ASCII_LOWER_Z               122
 
+#define ASCII_LEFT_BRACKET          123
+#define ASCII_RIGHT_BRACKET         125
 
 #endif // ASCII_TABLE_H

@@ -11,6 +11,7 @@
 #include "IEngine.h"
 #include "CEngineState.h"
 #include "CPlatform.h"
+#include "util_keyvalues.h"
 
 /** The cocoa application pointer */
 CCocoaWrapper           *pCocoaApp;
@@ -26,6 +27,26 @@ CCocoaWrapper           *pCocoaApp;
 
 @end
 
+// Why do I do this?
+/*
+ Globals suck, but they are needed sometimes for system getters and whatnot.
+ So to keep the variables hidden (somewhat), I like to surround them in namespaces.
+ */
+namespace _platform_holder
+{
+    IPlatform *pPlatform;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Implementation of GetPlatform, which is a pointer that should always be valid
+ * across all extensions and systems as soon as the main engine loop is started.
+ */
+IPlatform *GetPlatform(void)
+{
+    return _platform_holder::pPlatform;
+}
+
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 @implementation MainAppThread
@@ -36,14 +57,9 @@ CCocoaWrapper           *pCocoaApp;
  */
 +(void)ApplicationLoop:(id)param
 {
-    // We create our platform class here and pass it to the engine. Any operating
-    // system specific functions should be put in the platform and setup for all
-    // platforms in the manner they require.
-    CPlatform platform; platform.Initialize();
-    
     // This is nessesary for our file structure. We are not using apples APP
     // package and resource folders because it isn't modder friendly. ~RFS
-    chdir(platform.GetAbsoluteApplicationPath());
+    chdir(GetPlatform()->GetAbsoluteApplicationPath());
     
     void *pEngineDLL = dlopen("./bin/libengine.dylib", RTLD_NOW);
     if(pEngineDLL == NULL)
@@ -67,7 +83,7 @@ CCocoaWrapper           *pCocoaApp;
         return;
     }
     
-    pEngine->Initialize(&platform);
+    pEngine->Initialize(GetPlatform());
     
     CEngineState::enginestate = CEngineState::ENGINE_STATE_RUNNING;
     
@@ -185,6 +201,7 @@ CCocoaWrapper           *pCocoaApp;
 		NSOpenGLPFANoRecovery,
 		NSOpenGLPFAAccelerated,
 		NSOpenGLPFADoubleBuffer,
+        NSOpenGLPFAWindow,
 		NSOpenGLPFAColorSize,
 		(NSOpenGLPixelFormatAttribute) info.colorBufferSize,
 		NSOpenGLPFADepthSize,
@@ -193,7 +210,6 @@ CCocoaWrapper           *pCocoaApp;
 		(NSOpenGLPixelFormatAttribute) info.stencilBufferSize,
 		NSOpenGLPFAAccumSize,
 		(NSOpenGLPixelFormatAttribute) info.accumulationBufferSize,
-		NSOpenGLPFAWindow,
 		(NSOpenGLPixelFormatAttribute) 0,
 	};
     
@@ -293,7 +309,7 @@ CCocoaWrapper           *pCocoaApp;
         }
         
         [m_pCtxFullScreen setFullScreen];
-        [m_pCtxFullScreen makeCurrentContext];
+        //[m_pCtxFullScreen makeCurrentContext];
         
         // TODO: We need proper cursor control.
         //[NSCursor hide];
@@ -301,25 +317,14 @@ CCocoaWrapper           *pCocoaApp;
         m_bFullscreen = true;
     }
     else
-    {
-        if(m_pGLView == nil)
-        {
-            NSSize myNSWindowSize = [[self contentView]frame].size;
-            m_pGLView = [[NSOpenGLView alloc]initWithFrame:NSMakeRect(0,
-                                                                      0,
-                                                                      myNSWindowSize.width,
-                                                                      myNSWindowSize.height)];
-            
-            ASSERTION(m_pGLView != nil, "Could not create GLView!");
-        }
-        
+    {        
         if(info.highResBackingMode)
         {
             [m_pGLView setWantsBestResolutionOpenGLSurface:YES];
             [m_pGLView convertRectToBacking:[m_pGLView bounds]];
         }
         
-        [self setContentView: m_pGLView];
+        //[self setContentView: m_pGLView];
         [m_pCtxWindowed setView:m_pGLView];
         [m_pGLView setOpenGLContext:m_pCtxWindowed];
         [m_pGLView setPixelFormat:m_pWindowedPixelFmt];
@@ -328,8 +333,46 @@ CCocoaWrapper           *pCocoaApp;
         //[m_pCtxWindowed makeCurrentContext];
         m_bFullscreen = false;
     }
+    
+    [NSOpenGLContext clearCurrentContext];
 
     return true;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Sets the name of the window.
+ */
+-(void) SetWindowName: (NSString *) str
+{    
+    m_pWindowName = str;
+}
+
+- (NSString *) GetWindowName
+{
+    return m_pWindowName;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Creates the GL view for the window.
+ */
+- (void)CreateGLView
+{
+    ASSERTION(m_pGLView == nil, "GLView already created for this window!");
+    
+    if(m_pGLView == nil)
+    {
+        NSSize myNSWindowSize = [[self contentView]frame].size;
+        m_pGLView = [[NSOpenGLView alloc]initWithFrame:NSMakeRect(0,
+                                                                  0,
+                                                                  myNSWindowSize.width,
+                                                                  myNSWindowSize.height)];
+        
+        ASSERTION(m_pGLView != nil, "Could not create GLView!");
+        
+        [self setContentView: m_pGLView];
+    }
 }
 
 //------------------------------------------------------------------------------
@@ -418,6 +461,8 @@ CCocoaWrapper           *pCocoaApp;
         ASSERTION(m_pCtxWindowed != nil,
                   "ActivateGraphicsContext: Graphics context (m_pCtxWindowed) is nil!");
         [m_pCtxWindowed makeCurrentContext];
+        
+        //CGLLockContext((CGLContextObj)[m_pCtxWindowed CGLContextObj]);
     }
 }
 
@@ -586,6 +631,13 @@ CCocoaWrapper           *pCocoaApp;
     // Create a new mutex for rendering calls.
     //mutexEngineLock = [[NSLock alloc] init];
     
+    // We create our platform class here and pass it to the engine. Any operating
+    // system specific functions should be put in the platform and setup for all
+    // platforms in the manner they require.
+    CPlatform platform; platform.Initialize();
+    
+    _platform_holder::pPlatform = &platform;
+    
     for(int i = 0; i < Foundation::MAX_PLATFORM_WINDOWS; ++i)
     {
         m_windows[i] = NULL;
@@ -593,6 +645,79 @@ CCocoaWrapper           *pCocoaApp;
     
     // Set the application pointer for C++ access
     pCocoaApp = self;
+    
+    // Create Application Windows
+    Utility::Keyvalues kvRoot;
+    
+    FileHandle fileref = GetPlatform()->FileOpen("./configuration/windows.kv", FILE_READ_BINARY);
+    if(fileref)
+    {
+        kvRoot.PopulateWithFile(fileref, "windows.kv");
+    }
+
+    ASSERTION(fileref, "Could not open windows.kv, no application windows were created!");
+    
+    Utility::Keyvalues *pkvWindows = kvRoot.GetKey("windows");
+    
+    for(const Utility::Keyvalues *pCurKey = pkvWindows->GetFirstChild();
+                        pCurKey != NULL; pCurKey = pCurKey->GetNextChild())
+    {
+        // Should always have children...
+        if(pCurKey->HasChildren())
+        {
+            window_info info;
+            
+            info.width = pCurKey->GetInt("min_width", 0);
+            info.height = pCurKey->GetInt("min_height", 0);
+            info.x = pCurKey->GetInt("pos_x", 0);
+            info.y = pCurKey->GetInt("pos_y", 0);
+            info.centered = pCurKey->GetInt("centered", 0);
+            info.maxWidth = pCurKey->GetInt("max_width", 0);
+            info.maxHeight = pCurKey->GetInt("max_height", 0);
+            info.windowTitle = pCurKey->GetName();
+            
+            // Create the actual window
+            int wind = [self CreateContentWindow:info];
+            [self SetActiveWindow:wind];
+            
+            // Create the rendering context
+            render::render_context_settings settings;
+            
+            settings.windowed = true;
+            settings.fullscreen = false;
+            
+            settings.colorBufferSize = pCurKey->GetInt("color_buffer_size", 0);
+            settings.depthBufferSize = pCurKey->GetInt("depth_buffer_size", 0);
+            settings.stencilBufferSize = pCurKey->GetInt("stencil_buffer_size", 0);
+            settings.accumulationBufferSize = pCurKey->GetInt("accum_buffer_size", 0);
+            
+            settings.defaultFullscreen = false;
+            
+            settings.vsync = true;
+#ifdef _MAC
+            settings.multiThreadServer = true;
+            // TODO: Need to figure out if high res is supported before turning this on.
+            settings.highResBackingMode = true;
+#else
+            settings.multiThreadServer = false;
+            settings.highResBackingMode = false;
+#endif
+            
+            [[self m_activeWindow] CreateGraphicsContext:settings];
+        }
+    }
+
+    [[self m_activeWindow] ActivateGraphicsContext];
+    
+    unsigned int width, height;
+    [m_activeWindow GetWindowSize:width GetHeight:height];
+    
+    /*glViewport(0, 0, width, height);
+    
+    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    [[self m_activeWindow] SwapGraphicsContextBuffers];*/
     
     // Create the main gameloop thread
     [NSThread detachNewThreadSelector:@selector(ApplicationLoop:)
@@ -650,10 +775,38 @@ CCocoaWrapper           *pCocoaApp;
                                    backing: NSBackingStoreBuffered
                                    defer: NO];
             
-            [window setTitle: @"Genesis Window"];
-            [window center];
-            [window makeKeyAndOrderFront:self];
+            if(info.windowTitle != NULL)
+            {
+                NSString *windowString = [NSString stringWithUTF8String:info.windowTitle];
+                
+                [window SetWindowName:windowString];
+                [window setTitle: windowString];
+            }
+            else
+            {
+                [window setTitle: @"untitled"];
+                [window SetWindowName:@"untitled"];
+            }
+            
+            
+
+            if(info.centered)
+            {
+                [window center];
+            }
+            
+            NSSize maxSize;
+            maxSize.width = info.maxWidth;
+            maxSize.height = info.maxHeight;
+            
+            if(maxSize.width != 0 && maxSize.height != 0)
+            {
+                [m_activeWindow setMaxSize:maxSize];
+            }
+            
+            [window makeKeyAndOrderFront:nil];
             [window setBackgroundColor:[NSColor blackColor]];
+            [window CreateGLView];
             
             m_windows[i] = window;
             return i;
@@ -661,6 +814,22 @@ CCocoaWrapper           *pCocoaApp;
     }
     
     ASSERTION(false, "Tried to create a content window, but ran out of windows!");
+    
+    return -1;
+}
+
+-(int)GetWindowHandleByName: (NSString *) str
+{
+    for(int i = 0; i < Foundation::MAX_PLATFORM_WINDOWS; ++i)
+    {
+        if(m_windows[i] != NULL)
+        {
+            if([str compare:[m_windows[i] GetWindowName]] == NSOrderedSame)
+            {
+                return i;
+            }
+        }
+    }
     
     return -1;
 }

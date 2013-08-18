@@ -48,6 +48,7 @@ class CExtensions : public IExtensions
 {
 public:
     CExtensions() : m_uiNumExtensions(0) {}
+    ~CExtensions() {}
     
     DECLARE_IMPORT_EXTENSION(Server);
     DECLARE_IMPORT_EXTENSION(Client);

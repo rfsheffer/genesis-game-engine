@@ -24,64 +24,70 @@
 
 #endif
 
-enum TIMER_STATES_E
+namespace Utility
 {
-    TIMER_STATE_INVALID,
-    TIMER_STATE_STARTED,
-    TIMER_STATE_ENDED
-};
-
-//===================================================================
-// Purpose: Main time.
-//===================================================================
-class CTime
-{
-public:
-
-	CTime();
-	~CTime() { }
-
-	void Init();
-	void Update();
-
-	inline uint64_t GetPerfTime() const
+    /** Timer States */
+    enum TIMER_STATES_E
     {
-        return m_ui64AccumTime;
-    }
+        TIMER_STATE_INVALID,
+        TIMER_STATE_STARTED,
+        TIMER_STATE_ENDED
+    };
     
-    inline uint64_t GetPerfElapsedTime() const
+    class CTime
     {
-        return m_ui64ElapsedTime;
-    }
+    public:
+        
+        CTime();
+        ~CTime() { }
+        
+        void Init();
+        void Update();
+        
+        /** Gets the current time in nanoseconds */
+        inline uint64_t GetPerfTime() const
+        {
+            return m_ui64AccumTime;
+        }
+        
+        /** Gets the elapsed nanoseconds since last update call */
+        inline uint64_t GetPerfElapsedTime() const
+        {
+            return m_ui64ElapsedTime;
+        }
+        
+        /** Gets the system time in nanoseconds */
+        inline uint64_t GetPerfSystemTime() const
+        {
+            return m_ui64CurTime;
+        }
+        
+    private:
+        
+        /** The system time when the program started time */
+        uint64_t            m_ui64StartTime;
+        
+        /** Current system time */
+        uint64_t            m_ui64CurTime;
+        
+        /** 
+         * This is the time in nanoseconds from when the program started
+         * to the current time.
+         */
+        uint64_t			m_ui64AccumTime;
+        
+        /** This is the time since the last call to the GetElapsedTime */
+        uint64_t			m_ui64ElapsedTime;
+        
+        /** This is the time when GetElapsedTime was last called. */
+        uint64_t			m_ui64LastAccumTime;
+        
+        /** Using the CPU performance timer? */
+        bool			m_bPerformance_Timer;
+    };
     
-    inline uint64_t GetPerfSystemTime() const
-    {
-        return m_ui64CurTime;
-    }
-
-private:
-    
-    // The system time when the program started time
-    uint64_t            m_ui64StartTime;
-    
-    // Current system time
-    uint64_t            m_ui64CurTime;
-    
-    // This is the time in nanoseconds from when the program started
-    // to the current time.
-	uint64_t			m_ui64AccumTime;
-    
-    // This is the time since the last call to the GetElapsedTime
-	uint64_t			m_ui64ElapsedTime;
-    
-    // This is the time when GetElapsedTime was last called.
-	uint64_t			m_ui64LastAccumTime;
-
-	// Using the CPU performance timer?
-	bool			m_bPerformance_Timer;
-};
-
-double ConvertToSeconds(uint64_t perfTime);
-uint64_t ConvertToCycles(double time);
+    double ConvertToSeconds(uint64_t perfTime);
+    uint64_t ConvertToCycles(double time);
+}
 
 #endif // UTIL_TIME_H

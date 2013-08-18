@@ -12,6 +12,7 @@
 
 #include "IServer.h"
 #include "ent_base.h"
+#include "IPlatform.h"
 
 /*! The server controller. This classes Run method is called every tick. */
 class CServer : public IServer

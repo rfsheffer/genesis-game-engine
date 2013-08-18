@@ -15,47 +15,52 @@
 #include <sys/time.h>
 #include "util_time.h"
 
-class CTimerSimple
+namespace Utility
 {
-public:
-    CTimerSimple()
+    class CTimerSimple
     {
-        m_bTimerState = TIMER_STATE_INVALID;
-    }
-    
-    // Starts the timer
-    void StartTimer(void)
-    {
-        gettimeofday(&m_startTime, NULL);
-        m_bTimerState = TIMER_STATE_STARTED;
-    }
-    
-    // Stops the timer and returns the time in seconds
-    double StopTimer(void)
-    {
-        ASSERTION(m_bTimerState != TIMER_STATE_INVALID,
-                  "Called StopTimer on a non-initialized simple timer!");
-        
-        if(m_bTimerState == TIMER_STATE_STARTED)
+    public:
+        /** Constructor */
+        CTimerSimple()
         {
-            // Get the end time
-            gettimeofday(&m_EndTime, NULL);
-            m_bTimerState = TIMER_STATE_ENDED;
+            m_bTimerState = TIMER_STATE_INVALID;
         }
         
-        return (m_EndTime.tv_sec - m_startTime.tv_sec) +
-                ((m_EndTime.tv_usec - m_startTime.tv_usec) * 0.000001);
-    }
-    
-private:
-    
-    // The time in which this timer was started
-    timeval m_startTime;
-    
-    // The time when this timer ended
-    timeval m_EndTime;
-    
-    TIMER_STATES_E    m_bTimerState;
-};
+        /** Starts the timer */
+        void StartTimer(void)
+        {
+            gettimeofday(&m_startTime, NULL);
+            m_bTimerState = TIMER_STATE_STARTED;
+        }
+        
+        /** Stops the timer and returns the time in seconds */
+        double StopTimer(void)
+        {
+            ASSERTION(m_bTimerState != TIMER_STATE_INVALID,
+                      "Called StopTimer on a non-initialized simple timer!");
+            
+            if(m_bTimerState == TIMER_STATE_STARTED)
+            {
+                // Get the end time
+                gettimeofday(&m_EndTime, NULL);
+                m_bTimerState = TIMER_STATE_ENDED;
+            }
+            
+            return (m_EndTime.tv_sec - m_startTime.tv_sec) +
+            ((m_EndTime.tv_usec - m_startTime.tv_usec) * 0.000001);
+        }
+        
+    private:
+        
+        /** The time in which this timer was started */
+        timeval m_startTime;
+        
+        /** The time when this timer ended */
+        timeval m_EndTime;
+        
+        /** The state of the timer */
+        TIMER_STATES_E    m_bTimerState;
+    };
+}
 
 #endif // UTIL_TIMER_H

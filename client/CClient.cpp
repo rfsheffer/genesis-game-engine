@@ -33,6 +33,24 @@ CClient     *GetClient(void)
 
 //------------------------------------------------------------------------------
 /**
+ * A helper to get the platform pointer.
+ * @note The platform pointer should always be valid in any case. If this fails,
+ * there is something very wrong with the engine.
+ */
+IPlatform *GetPlatform(void)
+{
+    ASSERTION(GetClient() != NULL,
+              "GetPlatform: No Client!");
+    ASSERTION(GetClient()->GetExtensions() != NULL,
+              "GetPlatform: No Extensions manager availible!");
+    ASSERTION(GetClient()->GetExtensions()->GetPlatform() != NULL,
+              "GetPlatform: No Platform availible!");
+    
+    return GetClient()->GetExtensions()->GetPlatform();
+}
+
+//------------------------------------------------------------------------------
+/**
  * Initialization of the client. This will happen after the extension
  * manager has been created.
  * @param pExtensions The extension manager which created this extension.
@@ -56,20 +74,15 @@ void CClient::Initialize(IExtensions *pExtensions)
         m_pLocalEntities[i] = NULL;
     }
     
-    window_info info;
-    info.x = 0;
-    info.y = 0;
-    info.width = 800;
-    info.height = 600;
+    //hWindow wind = 0;
+
+    //render::render_context_settings settings;
+    //render::GetDefaultRenderSettings(settings);
     
-    hWindow wind = pExtensions->GetPlatform()->CreateContentWindow(info);
-    ASSERTION(wind != -1, "Cannot create window for client!");
-    
-    render::render_context_settings settings;
-    render::GetDefaultRenderSettings(settings);
+    GetPlatform();
     
     render::CContext *pContext = new render::CContext;
-    pContext->InitializeContext(wind, settings);
+    //pContext->InitializeContext(wind, settings);
     
     m_renderContext = pContext;
 }

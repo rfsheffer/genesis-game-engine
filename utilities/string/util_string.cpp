@@ -1,10 +1,11 @@
-//========= Copyright © 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
-// Purpose: String class
+//  util_string.cpp
+//  A string helper class.
 //
-//==================================================================================================//
+//  Created by Ryan Sheffer on 2013-04-21.
+//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
+//
 
-#include "allhead.h"
 #include "util_string.h"
 
 //-----------------------------------------------------------------------------
