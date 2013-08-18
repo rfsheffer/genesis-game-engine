@@ -8,6 +8,7 @@
 
 #include "CExtensions.h"
 
+//------------------------------------------------------------------------------
 /*! \def ADD_EXTENSION(name)
  \brief Adds an extension to the extension list, and initializes it.
  Note: The order of added extensions is the order of extension execution.
@@ -19,6 +20,7 @@
     Get##name()->Initialize(this); \
     m_pExtensions[m_uiNumExtensions++] = Get##name();
 
+//------------------------------------------------------------------------------
 /**
  * Creates all extensions.
  */
@@ -35,6 +37,7 @@ bool CExtensions::CreateAllExtensions(void)
     return true;
 }
 
+//------------------------------------------------------------------------------
 /**
  * Executes the extensions in the order of creation.
  */
@@ -50,6 +53,7 @@ void CExtensions::RunExtensions(void)
     }
 }
 
+//------------------------------------------------------------------------------
 /**
  * Sends all new cross extension messages to their owners
  */
@@ -72,6 +76,7 @@ void CExtensions::DispatchPendingMessages(void)
     m_uiCurSendBuffer = 0;
 }
 
+//------------------------------------------------------------------------------
 /**
  * Closes all open extensions.
  */
@@ -84,6 +89,7 @@ void CExtensions::DestroyAllExtensions(void)
     CLOSE_IMPORT_EXTENSION(Client);
 }
 
+//------------------------------------------------------------------------------
 /**
  * This will add a buffer to the list of send buffers that should be sent.
  * Note: This could also be called by the engine because of a network message.
@@ -93,6 +99,7 @@ void CExtensions::DestroyAllExtensions(void)
 void CExtensions::SendBuffer(const char *pszSendName, DataPacking::DataBuffer *pBuffer)
 {
     ASSERTION(pszSendName && pBuffer, "Incomplete parameters in SendBuffer!");
+    ASSERTION(m_uiCurSendBuffer < NUM_SEND_BUFFERS, "Ran out of extension send buffers! Raise Limit!");
     
     strncpy(m_sendBuffers[m_uiCurSendBuffer].szSendName, pszSendName, MAX_EXTENSION_NAME);
     m_sendBuffers[m_uiCurSendBuffer].sendBuffer = *pBuffer;

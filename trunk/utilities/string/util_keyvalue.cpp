@@ -1,10 +1,16 @@
-//========= Copyright © 2012-2013, Ryan Sheffers Game Utility Library ==============================//
+//========= Copyright ï¿½ 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
 // Purpose: Parses scripts with keyvalue based syntax.
 //
 //==================================================================================================//
 
+// TODO: This needs a re-write in a big way! Very old code written ages ago
+// in my youth. (12 years old at least) and it is poorly designed.
+
+#ifdef _WIN
 #include "allhead.h"
+#endif
+
 #include "util_keyvalue.h"
 #include <string>
 
@@ -72,7 +78,7 @@ enum kv_commands
 // How To: Pass in a pointer to a keyvalue buffer of filename, if the return bool is true, there is a syntax error and the keyvalue was not created.
 //===================================================================
 bool ParseKVScript( const char *szScriptName, int stringsize, keyvalue **pReturnKV, bool isfile )
-{
+{    
 	//=====================================================
 	// PROCESS FILE, GET IT READY FOR PARSE.
 	//=====================================================
@@ -91,8 +97,14 @@ bool ParseKVScript( const char *szScriptName, int stringsize, keyvalue **pReturn
 	if( isfile )
 	{
 		// Open KV file
+#ifdef _MAC
+        pKV_File = fopen(szScriptName, "rb");
+        if(!pKV_File)
+            return TRUE;
+#else
 		if( fopen_s( &pKV_File, szScriptName, "rb") )
 			return TRUE;
+#endif
 
 		fseek(pKV_File, 0, SEEK_END);
 		buffersize = ftell(pKV_File);
@@ -437,7 +449,7 @@ bool ParseKVScript( const char *szScriptName, int stringsize, keyvalue **pReturn
 				break;
 			}
 
-			strncpy_s( ToSlot, keyvalue_char.size() + 1, keyvalue_char.c_str(), keyvalue_char.size() );
+			strncpy( ToSlot, keyvalue_char.c_str(), keyvalue_char.size() + 1 );
 			ToSlot[keyvalue_char.size()] = '\0';
 
 			// Assign the name for the keyvalue
@@ -696,18 +708,26 @@ bool CreateKVScript( char *szScriptName, keyvalue *pWriteKV )
 
 	// File pointer
 	FILE *pFile = NULL;
-	int err = fopen_s( &pFile, szScriptName, "wb");
-
-	// File Read Error.
-	if (err != 0) 
+#ifdef _MAC
+	pFile = fopen( szScriptName, "wb");
+    // File Read Error.
+	if (!pFile)
 	{
 		return FALSE;
 	}
+#else
+    int err = fopen_s( &pFile, szScriptName, "wb");
+    // File Read Error.
+	if (err != 0)
+	{
+		return FALSE;
+	}
+#endif
 
 	int level = 0;
 
 	// Add header.
-	fputs ( "// Copyright © 2012, Interdimensional Games Incorporated, All rights reserved. \n// Auto-Generated Keyvalue Script", pFile);
+	fputs ( "// Copyright ï¿½ 2012, Interdimensional Games Incorporated, All rights reserved. \n// Auto-Generated Keyvalue Script", pFile);
 	AddStructuretoFile( pFile, true, false, false, false, level );
 
 	// The first thing we do is add the name, then we loop through every element there after.
@@ -845,7 +865,7 @@ keyvalue *keyvalue::FindKey( const char *szKeyName, bool bCreate )
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				// If key was found, return it.
 				return pKeyValues[i];
@@ -877,7 +897,7 @@ keyvalue *keyvalue::FindKey( const char *szKeyName, bool bCreate )
 				}
 				else
 				{
-					assert( pKeyValues[i] ); // Not enough memory?
+					ASSERTION( pKeyValues[i], "Unable to create keyvlue, out of memory?" ); // Not enough memory?
 					return NULL;
 				}
 			}
@@ -960,18 +980,18 @@ void keyvalue::SetName( const char *szKeyName )
 	if ( !szKeyName )
 		return;
 
-	int stringsize = strlen( szKeyName );
+	size_t stringsize = strlen( szKeyName );
 	char *ToName = (char*)malloc(stringsize+1);
 	if ( !ToName )
 	{
-		assert( !ToName ); // out of memory.
+		ASSERTION( !ToName, "Set keyvalue name, out of memory?" ); // out of memory.
 	}
 
 	// Null out new data.
 	memset( ToName, 0, (stringsize+1) );
 
 	// Set ToName to szKeyName.
-	strncpy_s( ToName, stringsize + 1, szKeyName, stringsize );
+	strncpy( ToName, szKeyName, stringsize + 1 );
 
 	// just in case.
 	ToName[stringsize] = '\0';
@@ -992,18 +1012,18 @@ void keyvalue::SetValue( const char *szKeyName )
 	if ( !szKeyName )
 		return;
 
-	int stringsize = strlen( szKeyName );
+	size_t stringsize = strlen( szKeyName );
 	char *ToValue = (char*)malloc(stringsize+1);
 	if ( !ToValue )
 	{
-		assert( !ToValue ); // out of memory.
+		ASSERTION( !ToValue, "Set keyvalue, out of memory?" ); // out of memory.
 	}
 
 	// Null out new data.
 	memset( ToValue, 0, stringsize + 1 );
 
 	// Set ToName to szKeyName.
-	strncpy_s( ToValue, stringsize + 1, szKeyName, stringsize );
+	strncpy( ToValue, szKeyName, stringsize + 1 );
 
 	// just in case.
 	ToValue[stringsize] = '\0';
@@ -1028,7 +1048,7 @@ int keyvalue::GetInt( const char *szKeyName, int defaultValue )
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				//convert to int, return.
 				return atoi( pKeyValues[i]->value );
@@ -1051,7 +1071,7 @@ long keyvalue::GetLong( const char *szKeyName, long defaultValue )
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				//convert to long, return.
 				return atol( pKeyValues[i]->value );
@@ -1074,7 +1094,7 @@ float keyvalue::GetFloat( const char *szKeyName, float defaultValue )
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				//convert to float, return.
 				return (float)atof( pKeyValues[i]->value );
@@ -1097,7 +1117,7 @@ double keyvalue::GetDouble( const char *szKeyName, double defaultValue )
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				//convert to double, return.
 				return atof( pKeyValues[i]->value );
@@ -1120,7 +1140,7 @@ bool keyvalue::GetBool( const char *szKeyName, bool defaultValue )
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				//determine boolean.
 				return atoi( pKeyValues[i]->value )?TRUE:FALSE;
@@ -1143,7 +1163,7 @@ const char *keyvalue::GetString( const char *szKeyName, const char *defaultValue
 	{
 		if ( pKeyValues[i] != NULL )
 		{
-			if ( _strnicmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
+			if ( strncasecmp( pKeyValues[i]->name, szKeyName, strlen( szKeyName ) ) == 0 )
 			{
 				//return string.
 				return pKeyValues[i]->value;

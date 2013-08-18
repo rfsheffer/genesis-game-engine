@@ -56,23 +56,5 @@ private:
 
 CClient     *GetClient(void);
 
-//------------------------------------------------------------------------------
-/**
- * A helper to get the platform pointer.
- * @note The platform pointer should always be valid in any case. If this fails,
- * there is something very wrong with the engine.
- */
-inline IPlatform *GetPlatform(void)
-{
-    ASSERTION(GetClient() != NULL,
-              "GetPlatform: No Client!");
-    ASSERTION(GetClient()->GetExtensions() != NULL,
-              "GetPlatform: No Extensions manager availible!");
-    ASSERTION(GetClient()->GetExtensions()->GetPlatform() != NULL,
-              "GetPlatform: No Platform availible!");
-    
-    return GetClient()->GetExtensions()->GetPlatform();
-}
-
 
 #endif // CCLIENT_H

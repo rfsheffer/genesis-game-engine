@@ -1,7 +1,7 @@
 //
 //  allhead.pch
-//  This is the master precompiled header used as a base by all extensions
-//  precompiled headers.
+//  This is the master precompiled header used by all genesis extensions and
+//  Libraries. It should only contain the bare minimum for running a genesis app.
 //
 //  Created by Ryan Sheffer on 2013-04-19.
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
@@ -31,6 +31,7 @@
 #include "types.h"
 #include "macros.h"
 #include "foundation_constants.h"
+#include "IPlatform.h"
 
 // Debug specific stuff like ASSERTION
 #include "debug.h"

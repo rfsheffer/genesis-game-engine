@@ -11,7 +11,6 @@
 		BD42C0EC16CE36D60076157E /* AppVariables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD42C0EA16CE36D50076157E /* AppVariables.cpp */; };
 		BD42C0ED16CE36D60076157E /* AppVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = BD42C0EB16CE36D60076157E /* AppVariables.h */; };
 		BD42C0EF16CE3D2A0076157E /* util_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = BD42C0EE16CE3D2A0076157E /* util_vector.h */; };
-		BD50B9E01720B245007FA4A7 /* allhead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BD50B9DF1720B245007FA4A7 /* allhead.pch */; };
 		BDF13C8C16CDCFD4003994AE /* CEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8816CDCFD4003994AE /* CEngine.cpp */; };
 		BDF13C8D16CDCFD4003994AE /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C8916CDCFD4003994AE /* CEngine.h */; };
 		BDF13C8E16CDCFD4003994AE /* CEngineClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8A16CDCFD4003994AE /* CEngineClient.cpp */; };
@@ -38,7 +37,6 @@
 		BD42C0EB16CE36D60076157E /* AppVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppVariables.h; sourceTree = "<group>"; };
 		BD42C0EE16CE3D2A0076157E /* util_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_vector.h; path = ../utilities/container/util_vector.h; sourceTree = "<group>"; };
 		BD42C0F016CE4B170076157E /* AppVarHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppVarHolder.h; sourceTree = "<group>"; };
-		BD50B9DF1720B245007FA4A7 /* allhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.pch; path = ../common/allhead.pch; sourceTree = "<group>"; };
 		BD50B9E81721E00B007FA4A7 /* enginehead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = enginehead.pch; sourceTree = "<group>"; };
 		BDC780091692213C00C3F72E /* libengine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libengine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF13C8816CDCFD4003994AE /* CEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CEngine.cpp; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 				BDF78E6A16CDE24A00E1995D /* interfaces */,
 				BDF13C9416CDD0A6003994AE /* extensions */,
 				BD0A008D16B5E89F0010FEF6 /* data */,
-				BD50B9DF1720B245007FA4A7 /* allhead.pch */,
 				BD50B9E81721E00B007FA4A7 /* enginehead.pch */,
 				BDF13C8916CDCFD4003994AE /* CEngine.h */,
 				BDF13C8B16CDCFD4003994AE /* CEngineClient.h */,
@@ -205,7 +202,6 @@
 				BD42C0ED16CE36D60076157E /* AppVariables.h in Headers */,
 				BD42C0EF16CE3D2A0076157E /* util_vector.h in Headers */,
 				BDF2672816CF76B7009533FC /* util_mempool.h in Headers */,
-				BD50B9E01720B245007FA4A7 /* allhead.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0112EB178A8D8E00E640C8 /* math.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD0112EA178A8D8E00E640C8 /* math.a */; };
 		BD0A009916B5F7680010FEF6 /* IServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A009816B5F7680010FEF6 /* IServer.h */; };
 		BD22CE3516C9CEAD00B8C48F /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD22CE3416C9CEAC00B8C48F /* debug.cpp */; };
 		BD22CE3716C9CF2100B8C48F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */; };
-		BD50B9DE1720B218007FA4A7 /* allhead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BD50B9DD1720B218007FA4A7 /* allhead.pch */; };
 		BDED316216B37E0200B7E97B /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDED316116B37E0200B7E97B /* CServer.cpp */; };
 		BDF6753816C0DC9400966DB3 /* data_networkpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF6753716C0DC9400966DB3 /* data_networkpack.cpp */; };
 		BDFABFD21692345B001C1E6A /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFABFD01692345B001C1E6A /* ent_base.cpp */; };
@@ -22,12 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD0112EA178A8D8E00E640C8 /* math.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = math.a; path = "../../../Library/Developer/Xcode/DerivedData/Genesis-dmaykhmtllevyrdkadfquzbqziqs/Build/Products/Debug/math.a"; sourceTree = "<group>"; };
 		BD0A009816B5F7680010FEF6 /* IServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IServer.h; path = ../interfaces/IServer.h; sourceTree = "<group>"; };
 		BD22CE3416C9CEAC00B8C48F /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = ../common/debug.cpp; sourceTree = "<group>"; };
 		BD22CE3616C9CF2100B8C48F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		BD22CE3916C9E65F00B8C48F /* data_filepack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_filepack.h; path = ../shared/data_filepack.h; sourceTree = "<group>"; };
 		BD4AF1D117066A6100135A3E /* data_network_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = data_network_helpers.h; path = ../shared/data_network_helpers.h; sourceTree = "<group>"; };
-		BD50B9DD1720B218007FA4A7 /* allhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.pch; path = ../common/allhead.pch; sourceTree = "<group>"; };
 		BD50B9E91721E1B5007FA4A7 /* serverhead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serverhead.pch; sourceTree = "<group>"; };
 		BDC780091692213C00C3F72E /* libserver.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDED316016B37CD600B7E97B /* CServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CServer.h; sourceTree = "<group>"; };
@@ -49,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD0112EB178A8D8E00E640C8 /* math.a in Frameworks */,
 				BD22CE3716C9CF2100B8C48F /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD0112EC178A8DB200E640C8 /* Static Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BD0112EA178A8D8E00E640C8 /* math.a */,
+			);
+			name = "Static Libraries";
+			sourceTree = "<group>";
+		};
 		BD0A008D16B5E89F0010FEF6 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +93,7 @@
 				BDED315B16B37AD200B7E97B /* Headers */,
 				BDC78026169222C100C3F72E /* Source */,
 				BDFABFC916922B75001C1E6A /* Frameworks */,
+				BD0112EC178A8DB200E640C8 /* Static Libraries */,
 				BDC7800A1692213C00C3F72E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				BD0A008D16B5E89F0010FEF6 /* data */,
-				BD50B9DD1720B218007FA4A7 /* allhead.pch */,
 				BD50B9E91721E1B5007FA4A7 /* serverhead.pch */,
 				BDFABFD11692345B001C1E6A /* ent_base.h */,
 				BDFABFE516925A27001C1E6A /* entity_dictionary.h */,
@@ -142,7 +151,6 @@
 				BDFABFE31692559F001C1E6A /* data_mapping.h in Headers */,
 				BDFABFE716925EA5001C1E6A /* data_types.h in Headers */,
 				BD0A009916B5F7680010FEF6 /* IServer.h in Headers */,
-				BD50B9DE1720B218007FA4A7 /* allhead.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +293,10 @@
 					../math,
 					../shared,
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Genesis-dmaykhmtllevyrdkadfquzbqziqs/Build/Products/Debug\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -310,6 +322,10 @@
 					"../utilities/**",
 					../math,
 					../shared,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Genesis-dmaykhmtllevyrdkadfquzbqziqs/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

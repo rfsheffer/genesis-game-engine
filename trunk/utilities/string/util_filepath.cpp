@@ -1,10 +1,11 @@
-//========= Copyright © 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
-// Purpose: A class used for parsing and changing folder paths
+//  util_filepath.cpp
+//  A class used for parsing and changing folder paths
 //
-//==================================================================================================//
+//  Created by Ryan Sheffer on 2013-04-21.
+//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
+//
 
-#include "allhead.h"
 #include "util_filepath.h"
 
 //-----------------------------------------------------------------------------

@@ -13,4 +13,10 @@
    <FileRef
       location = "group:server/server.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:math/math.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:utilities/utilities.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -1,0 +1,334 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD0112C7178A856300E640C8 /* math_angle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112BE178A856300E640C8 /* math_angle.cpp */; };
+		BD0112C8178A856300E640C8 /* math_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112BF178A856300E640C8 /* math_common.cpp */; };
+		BD0112C9178A856300E640C8 /* math_frustum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C0178A856300E640C8 /* math_frustum.cpp */; };
+		BD0112CA178A856300E640C8 /* math_matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C1178A856300E640C8 /* math_matrix.cpp */; };
+		BD0112CB178A856300E640C8 /* math_plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C2178A856300E640C8 /* math_plane.cpp */; };
+		BD0112CC178A856300E640C8 /* math_screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C3178A856300E640C8 /* math_screen.cpp */; };
+		BD0112CD178A856300E640C8 /* math_sincos_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C4178A856300E640C8 /* math_sincos_table.cpp */; };
+		BD0112CE178A856300E640C8 /* math_splines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C5178A856300E640C8 /* math_splines.cpp */; };
+		BD0112CF178A856300E640C8 /* math_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD0112C6178A856300E640C8 /* math_vector.cpp */; };
+		BD0112DC178A857200E640C8 /* math_angle.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D0178A857200E640C8 /* math_angle.h */; };
+		BD0112DD178A857200E640C8 /* math_asm.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D1178A857200E640C8 /* math_asm.h */; };
+		BD0112DE178A857200E640C8 /* math_common.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D2178A857200E640C8 /* math_common.h */; };
+		BD0112DF178A857200E640C8 /* math_constants.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D3178A857200E640C8 /* math_constants.h */; };
+		BD0112E0178A857200E640C8 /* math_frustum.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D4178A857200E640C8 /* math_frustum.h */; };
+		BD0112E1178A857200E640C8 /* math_matrix.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D5178A857200E640C8 /* math_matrix.h */; };
+		BD0112E2178A857200E640C8 /* math_plane.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D6178A857200E640C8 /* math_plane.h */; };
+		BD0112E3178A857200E640C8 /* math_screen.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D7178A857200E640C8 /* math_screen.h */; };
+		BD0112E4178A857200E640C8 /* math_sincos_table.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D8178A857200E640C8 /* math_sincos_table.h */; };
+		BD0112E5178A857200E640C8 /* math_splines.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D9178A857200E640C8 /* math_splines.h */; };
+		BD0112E6178A857200E640C8 /* math_types.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112DA178A857200E640C8 /* math_types.h */; };
+		BD0112E7178A857200E640C8 /* math_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112DB178A857200E640C8 /* math_vector.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BD01127B178A83E900E640C8 /* math.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = math.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD0112BE178A856300E640C8 /* math_angle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_angle.cpp; sourceTree = "<group>"; };
+		BD0112BF178A856300E640C8 /* math_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_common.cpp; sourceTree = "<group>"; };
+		BD0112C0178A856300E640C8 /* math_frustum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_frustum.cpp; sourceTree = "<group>"; };
+		BD0112C1178A856300E640C8 /* math_matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_matrix.cpp; sourceTree = "<group>"; };
+		BD0112C2178A856300E640C8 /* math_plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_plane.cpp; sourceTree = "<group>"; };
+		BD0112C3178A856300E640C8 /* math_screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_screen.cpp; sourceTree = "<group>"; };
+		BD0112C4178A856300E640C8 /* math_sincos_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_sincos_table.cpp; sourceTree = "<group>"; };
+		BD0112C5178A856300E640C8 /* math_splines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_splines.cpp; sourceTree = "<group>"; };
+		BD0112C6178A856300E640C8 /* math_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_vector.cpp; sourceTree = "<group>"; };
+		BD0112D0178A857200E640C8 /* math_angle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_angle.h; sourceTree = "<group>"; };
+		BD0112D1178A857200E640C8 /* math_asm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_asm.h; sourceTree = "<group>"; };
+		BD0112D2178A857200E640C8 /* math_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_common.h; sourceTree = "<group>"; };
+		BD0112D3178A857200E640C8 /* math_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_constants.h; sourceTree = "<group>"; };
+		BD0112D4178A857200E640C8 /* math_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_frustum.h; sourceTree = "<group>"; };
+		BD0112D5178A857200E640C8 /* math_matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_matrix.h; sourceTree = "<group>"; };
+		BD0112D6178A857200E640C8 /* math_plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_plane.h; sourceTree = "<group>"; };
+		BD0112D7178A857200E640C8 /* math_screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_screen.h; sourceTree = "<group>"; };
+		BD0112D8178A857200E640C8 /* math_sincos_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_sincos_table.h; sourceTree = "<group>"; };
+		BD0112D9178A857200E640C8 /* math_splines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_splines.h; sourceTree = "<group>"; };
+		BD0112DA178A857200E640C8 /* math_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_types.h; sourceTree = "<group>"; };
+		BD0112DB178A857200E640C8 /* math_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_vector.h; sourceTree = "<group>"; };
+		BD0112E8178A86B000E640C8 /* mathhead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mathhead.pch; sourceTree = "<group>"; };
+		BD0112E9178A893200E640C8 /* mathlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mathlib.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD011278178A83E900E640C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD011272178A83E900E640C8 = {
+			isa = PBXGroup;
+			children = (
+				BD011282178A83F300E640C8 /* Headers */,
+				BD011283178A83F900E640C8 /* Source */,
+				BD01127C178A83E900E640C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD01127C178A83E900E640C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD01127B178A83E900E640C8 /* math.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD011282178A83F300E640C8 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BD0112E9178A893200E640C8 /* mathlib.h */,
+				BD0112E8178A86B000E640C8 /* mathhead.pch */,
+				BD0112D0178A857200E640C8 /* math_angle.h */,
+				BD0112D1178A857200E640C8 /* math_asm.h */,
+				BD0112D2178A857200E640C8 /* math_common.h */,
+				BD0112D3178A857200E640C8 /* math_constants.h */,
+				BD0112D4178A857200E640C8 /* math_frustum.h */,
+				BD0112D5178A857200E640C8 /* math_matrix.h */,
+				BD0112D6178A857200E640C8 /* math_plane.h */,
+				BD0112D7178A857200E640C8 /* math_screen.h */,
+				BD0112D8178A857200E640C8 /* math_sincos_table.h */,
+				BD0112D9178A857200E640C8 /* math_splines.h */,
+				BD0112DA178A857200E640C8 /* math_types.h */,
+				BD0112DB178A857200E640C8 /* math_vector.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		BD011283178A83F900E640C8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BD0112BE178A856300E640C8 /* math_angle.cpp */,
+				BD0112BF178A856300E640C8 /* math_common.cpp */,
+				BD0112C0178A856300E640C8 /* math_frustum.cpp */,
+				BD0112C1178A856300E640C8 /* math_matrix.cpp */,
+				BD0112C2178A856300E640C8 /* math_plane.cpp */,
+				BD0112C3178A856300E640C8 /* math_screen.cpp */,
+				BD0112C4178A856300E640C8 /* math_sincos_table.cpp */,
+				BD0112C5178A856300E640C8 /* math_splines.cpp */,
+				BD0112C6178A856300E640C8 /* math_vector.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BD011279178A83E900E640C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD0112DC178A857200E640C8 /* math_angle.h in Headers */,
+				BD0112DD178A857200E640C8 /* math_asm.h in Headers */,
+				BD0112DE178A857200E640C8 /* math_common.h in Headers */,
+				BD0112DF178A857200E640C8 /* math_constants.h in Headers */,
+				BD0112E0178A857200E640C8 /* math_frustum.h in Headers */,
+				BD0112E1178A857200E640C8 /* math_matrix.h in Headers */,
+				BD0112E2178A857200E640C8 /* math_plane.h in Headers */,
+				BD0112E3178A857200E640C8 /* math_screen.h in Headers */,
+				BD0112E4178A857200E640C8 /* math_sincos_table.h in Headers */,
+				BD0112E5178A857200E640C8 /* math_splines.h in Headers */,
+				BD0112E6178A857200E640C8 /* math_types.h in Headers */,
+				BD0112E7178A857200E640C8 /* math_vector.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BD01127A178A83E900E640C8 /* math */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD01127F178A83E900E640C8 /* Build configuration list for PBXNativeTarget "math" */;
+			buildPhases = (
+				BD011277178A83E900E640C8 /* Sources */,
+				BD011278178A83E900E640C8 /* Frameworks */,
+				BD011279178A83E900E640C8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = math;
+			productName = math;
+			productReference = BD01127B178A83E900E640C8 /* math.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD011273178A83E900E640C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ryan Sheffer";
+			};
+			buildConfigurationList = BD011276178A83E900E640C8 /* Build configuration list for PBXProject "math" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BD011272178A83E900E640C8;
+			productRefGroup = BD01127C178A83E900E640C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD01127A178A83E900E640C8 /* math */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD011277178A83E900E640C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD0112C7178A856300E640C8 /* math_angle.cpp in Sources */,
+				BD0112C8178A856300E640C8 /* math_common.cpp in Sources */,
+				BD0112C9178A856300E640C8 /* math_frustum.cpp in Sources */,
+				BD0112CA178A856300E640C8 /* math_matrix.cpp in Sources */,
+				BD0112CB178A856300E640C8 /* math_plane.cpp in Sources */,
+				BD0112CC178A856300E640C8 /* math_screen.cpp in Sources */,
+				BD0112CD178A856300E640C8 /* math_sincos_table.cpp in Sources */,
+				BD0112CE178A856300E640C8 /* math_splines.cpp in Sources */,
+				BD0112CF178A856300E640C8 /* math_vector.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BD01127D178A83E900E640C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BD01127E178A83E900E640C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BD011280178A83E900E640C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = mathhead.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_DEBUG,
+					_MAC,
+					_MAC64,
+					_MATH,
+				);
+				HEADER_SEARCH_PATHS = (
+					../interfaces,
+					../common,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BD011281178A83E900E640C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = mathhead.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_RELEASE,
+					_MAC,
+					_MAC64,
+					_MATH,
+				);
+				HEADER_SEARCH_PATHS = (
+					../interfaces,
+					../common,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD011276178A83E900E640C8 /* Build configuration list for PBXProject "math" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD01127D178A83E900E640C8 /* Debug */,
+				BD01127E178A83E900E640C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD01127F178A83E900E640C8 /* Build configuration list for PBXNativeTarget "math" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD011280178A83E900E640C8 /* Debug */,
+				BD011281178A83E900E640C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD011273178A83E900E640C8 /* Project object */;
+}

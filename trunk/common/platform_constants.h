@@ -79,7 +79,7 @@
 //****************************************************
 
 // Function Pointer.
-typedef void* (*pFunc)();
+//typedef void* (*pFunc)();
 
 #if defined(_WIN)
 
@@ -151,6 +151,54 @@ static const size_t NPOS = -1;
     #define offsetof(s,m)    (size_t)&(((s *)0)->m)
 #endif
 
+// NOTE ABOUT THESE FILE MODES:
+// - The 'b' is ignored on all POSIX conforming systems, including Linux.
+//   However, on windows using 'b' may actually improve performance because
+//   there is no carriage-return etc translation involved. So even though
+//   microsoft should be conforming to the standard, which they are bad at,
+//   I am still going to keep using it for legacy and windows.
+
+/**
+ * Open text file for reading. The stream is positioned at the beginning of the file.
+ */
+#define FILE_READ           "r"
+#define FILE_READ_BINARY           "rb"
+
+/** 
+ * Open for reading and writing. The stream is positioned at the beginning of the file.
+ */
+#define FILE_READ_WRITE     "r+"
+#define FILE_READ_WRITE_BINARY     "rb+"
+
+/**
+ * Truncate file to zero length or create text file for writing. The stream is
+ * positioned at the beginning of the file.
+ */
+#define FILE_WRITE          "w"
+#define FILE_WRITE_BINARY          "wb"
+
+/**
+ * Open for reading and writing. The file is created if it does not exist,
+ * otherwise it is truncated. The stream is positioned at the beginning of the file.
+ */
+#define FILE_READ_WRITE_CREATE  "w+"
+#define FILE_READ_WRITE_CREATE_BINARY  "wb+"
+
+/**
+ * Open for appending (writing at end of file). The file is created if it does
+ * not exist. The stream is positioned at the end of the file.
+ */
+#define FILE_APPEND_CREATE      "a"
+#define FILE_APPEND_CREATE_BINARY      "ab"
+
+/**
+ * Open for reading and appending (writing at end of file). The file is created
+ * if it does not exist. The initial file position for reading is at the
+ * beginning of the file, but output is always appended to the end of the file.
+ */
+#define FILE_READ_APPEND_CREATE     "a+"
+#define FILE_READ_APPEND_CREATE_BINARY     "ab+"
+
 /**
  * This is a struct sent to the platform containing information about a window,
  * Usually for window creation.
@@ -168,6 +216,18 @@ struct window_info
     
     /** Window Width */
     int width;
+    
+    /** Maximum Window Width */
+    int maxWidth;
+    
+    /** Maxiumum Window Height */
+    int maxHeight;
+    
+    /** The title to be appended to the top of the window. */
+    const char *windowTitle;
+    
+    /** Should window ignore x and y and just be centered? */
+    bool centered;
 };
 
 #endif // PLATFORM_H

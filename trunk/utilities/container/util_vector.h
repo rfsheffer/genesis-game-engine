@@ -184,7 +184,8 @@ T* Vector<T>::Base()
 template <typename T>
 void Vector<T>::ShiftElementsRight( unsigned int elem, unsigned int num )
 {
-	// Num elements greater than 0, pos isn't out of bounds. If element is being placed at m_iNumElements, no need to shift.
+	// Num elements greater than 0, pos isn't out of bounds.
+    // If element is being placed at m_iNumElements, no need to shift.
 	if ( (m_iNumElements > 0) && (elem < m_iNumElements) )
 	{
 		// Determine the number of elements to move.

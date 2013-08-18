@@ -21,6 +21,9 @@ class IPlatform
 {
 public:
     
+    //--------------------------------------------------------------------------
+    // INITIALIZATION
+    //--------------------------------------------------------------------------
     /**
      * Platform initialization.
      */
@@ -31,6 +34,9 @@ public:
      */
     virtual void    Shutdown(void) = 0;
     
+    //--------------------------------------------------------------------------
+    // INPUT
+    //--------------------------------------------------------------------------
     /**
      * Gets the state ( true[on] or false[off] of a keyboard key.
      * @param character The key to check.
@@ -43,12 +49,23 @@ public:
      */
     virtual bool    GetMouseState(bool left) const = 0;
     
+    //--------------------------------------------------------------------------
+    // WINDOW
+    //--------------------------------------------------------------------------
+    
+    /**
+     * Gets a window handle by name.
+     * @param pszWindowName The name of the window
+     * @return The handle to the window.
+     */
+    virtual hWindow     GetWindowHandle(const char *pszWindowName) const = 0;
+    
     /**
      * Creates a new window test
      * @return int The index of the window created, or -1 if the window could not be
      * created.
      */
-    virtual hWindow CreateContentWindow(const window_info &info) const = 0;
+    //virtual hWindow CreateContentWindow(const window_info &info) const = 0;
     
     /**
      * Sets the active window to update
@@ -70,15 +87,18 @@ public:
      */
     virtual void    GetWindowSize(unsigned int &width, unsigned int &height) const = 0;
     
+    //--------------------------------------------------------------------------
+    // GRAPHICS CONTEXT
+    //--------------------------------------------------------------------------
     /**
      * Creates a graphics context on the currently active window.
      */
-    virtual bool    CreateGraphicsContext(const render::render_context_settings &settings) const = 0;
+    //virtual bool    CreateGraphicsContext(const render::render_context_settings &settings) const = 0;
     
     /**
      * Shuts down the active graphics context.
      */
-    virtual void    ShutdownActiveGraphicsContext(void) const = 0;
+    //virtual void    ShutdownActiveGraphicsContext(void) const = 0;
     
     /**
      * Activates the graphics context for the currently active window.
@@ -90,10 +110,58 @@ public:
      */
     virtual void    SwapGraphicsContextBuffers(void) const = 0;
     
+    //--------------------------------------------------------------------------
+    // FILE SYSTEM
+    //--------------------------------------------------------------------------
     /**
      * Gets the absolute path to the application directory.
      */
     virtual const char *GetAbsoluteApplicationPath(void) const = 0;
+    
+    /**
+     * Opens a file and returns a handle to that file.
+     * Note that the handle will need to be released manually.
+     * @param pszFileName The name of the file to open.
+     * @param pszOptions The options string.
+     * @see platform_constants.h for a list of file IO options.
+     */
+    virtual FileHandle FileOpen(const char *pszFileName, const char *pszOptions) const = 0;
+    
+    /**
+     * Reads from a file to a buffer at ptr. Note that this will fail if the file isn't writeable.
+     * @param ptr A pointer to the buffer to read to.
+     * @param chunkSize The chunk size in bytes to read in at a time.
+     * @param chunkCount The number of chunks to read in.
+     * @param pFile The file handle to read from.
+     * @return The number of bytes read.
+     */
+    virtual size_t FileRead(void *ptr, size_t chunkSize, size_t chunkCount, FileHandle pFile) const = 0;
+    
+    /**
+     * Writes the buffer at ptr to pFile. Note that this will fail if the file isn't writeable.
+     * @param ptr A pointer to the buffer to write to pFile.
+     * @param chunkSize The chunk size in bytes to write out at a time.
+     * @param chunkCount The number of chunks to write out.
+     * @param pFile The file handle to write to.
+     * @return The number of bytes written.
+     */
+    virtual size_t FileWrite(const void *ptr, size_t chunkSize, size_t chunkCount, FileHandle pFile) const = 0;
+    
+    /**
+     * Gets the size of the file in bytes.
+     * @param pFile The file to get the size of.
+     * @return The size of the file.
+     */
+    virtual size_t GetFileSize(FileHandle pFile) const = 0;
 };
+
+//------------------------------------------------------------------------------
+/**
+ * A helper to get the platform pointer.
+ * @note The platform pointer should always be valid in any case. If this fails,
+ * there is something very wrong with the engine.
+ */
+IPlatform *GetPlatform(void);
+
 
 #endif // IPLATFORM_H

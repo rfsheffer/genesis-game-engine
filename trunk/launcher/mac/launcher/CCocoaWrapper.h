@@ -43,6 +43,11 @@
 @interface NSAppWindow : NSWindow
 {
     /**
+     * The name of the window
+     */
+    NSString *m_pWindowName;
+    
+    /**
      * Mouse button states
      */
     Boolean m_keys[255];
@@ -72,6 +77,11 @@
      */
     NSAppWindowDelagate *m_delagate;
 }
+
+- (void) SetWindowName: (NSString *) str;
+- (NSString *) GetWindowName;
+
+- (void)CreateGLView;
 
 - (Boolean)CreateGraphicsContext:(const render::render_context_settings &) info;
 - (void)DestroyGraphicsContext;
@@ -118,6 +128,8 @@
 // Methods
 - (int)CreateContentWindow: (const window_info &) info;
 - (void)SetActiveWindow:(int)index;
+
+-(int)GetWindowHandleByName: (NSString *) str;
 
 - (IBAction)QuitButton:(id)sender;
 

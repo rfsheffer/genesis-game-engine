@@ -58,12 +58,25 @@ bool CPlatform::GetMouseState(bool left) const
 
 //------------------------------------------------------------------------------
 /**
+ * Gets a window handle by name
+ * @param pszWindowName The name of the window
+ * @return The window handle
+ */
+hWindow CPlatform::GetWindowHandle(const char *pszWindowName) const
+{
+    NSString *windowString = [NSString stringWithUTF8String:pszWindowName];
+    
+    return (hWindow)[pCocoaApp GetWindowHandleByName:windowString];
+}
+
+//------------------------------------------------------------------------------
+/**
  * Creates a content window
  */
-hWindow CPlatform::CreateContentWindow(const window_info &info) const
+/*hWindow CPlatform::CreateContentWindow(const window_info &info) const
 {
     return [pCocoaApp CreateContentWindow: info];
-}
+}*/
 
 //------------------------------------------------------------------------------
 /**
@@ -106,23 +119,23 @@ void CPlatform::GetWindowSize(unsigned int &width, unsigned int &height) const
  * Creates a graphics context for the active window with the settings provided.
  * @param settings The settings to create the context with.
  */
-bool CPlatform::CreateGraphicsContext(const render::render_context_settings &settings) const
+/*bool CPlatform::CreateGraphicsContext(const render::render_context_settings &settings) const
 {
     ACTIVE_WINDOW_ASSERT("CreateGraphicsContext");
     
     return [[pCocoaApp m_activeWindow] CreateGraphicsContext:settings];
-}
+}*/
 
 //------------------------------------------------------------------------------
 /**
  * Shuts down the active graphics context.
  */
-void CPlatform::ShutdownActiveGraphicsContext(void) const
+/*void CPlatform::ShutdownActiveGraphicsContext(void) const
 {
     ACTIVE_WINDOW_ASSERT("ShutdownActiveGraphicsContext");
     
     [[pCocoaApp m_activeWindow] DestroyGraphicsContext];
-}
+}*/
 
 //------------------------------------------------------------------------------
 /**
@@ -168,4 +181,69 @@ const char *CPlatform::GetAbsoluteApplicationPath(void) const
     }
     
     return szFileLine;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Opens a file and returns a handle to that file.
+ * Note that the handle will need to be released manually.
+ * @param pszFileName The name of the file to open.
+ * @param pszOptions The options string.
+ * @see platform_constants.h for a list of file IO options.
+ */
+FileHandle CPlatform::FileOpen(const char *pszFileName, const char *pszOptions) const
+{
+    return fopen(pszFileName, pszOptions);
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Reads from a file to a buffer at ptr. Note that this will fail if the file isn't writeable.
+ * @param ptr A pointer to the buffer to read to.
+ * @param chunkSize The chunk size in bytes to read in at a time.
+ * @param chunkCount The number of chunks to read in.
+ * @param pFile The file handle to read from.
+ * @return The number of bytes read.
+ */
+size_t CPlatform::FileRead(void *ptr, size_t chunkSize, size_t chunkCount, FileHandle pFile) const
+{
+    return fread(ptr, chunkSize, chunkCount, pFile);
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Writes the buffer at ptr to pFile. Note that this will fail if the file isn't writeable.
+ * @param ptr A pointer to the buffer to write to pFile.
+ * @param chunkSize The chunk size in bytes to write out at a time.
+ * @param chunkCount The number of chunks to write out.
+ * @param pFile The file handle to write to.
+ * @return The number of bytes written.
+ */
+size_t CPlatform::FileWrite(const void *ptr, size_t chunkSize, size_t chunkCount, FileHandle pFile) const
+{
+    return fwrite(ptr, chunkSize, chunkCount, pFile);
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Gets the size of the file in bytes.
+ * @param pFile The file to get the size of.
+ * @return The size of the file.
+ */
+size_t CPlatform::GetFileSize(FileHandle pFile) const
+{
+    fpos_t pos;
+    int err = fgetpos(pFile, &pos);
+    ASSERTION(err == 0, "GetFileSize: fgetpos has failed!");
+    
+#ifndef _MAC
+#error fseek may not work on this platform
+#endif
+    fseek(pFile, 0, SEEK_END);   // non-portable
+    size_t size = ftell(pFile);
+    
+    err = fsetpos(pFile, &pos);
+    ASSERTION(err == 0, "GetFileSize: fsetpos has failed!");
+    
+    return size;
 }
