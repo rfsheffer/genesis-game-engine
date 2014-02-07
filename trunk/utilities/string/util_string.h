@@ -1,4 +1,4 @@
-//========= Copyright © 2012-2013, Ryan Sheffers Game Utility Library ==============================//
+//========= Copyright ï¿½ 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
 // Purpose: String container class. Has a bunch of useful string functions built in for fast string manipulation.
 //
@@ -61,7 +61,7 @@ public:
 	inline size_t GetNumAllocated(void) const { return m_uiNumAllocBytes; }
 
 	// Character Replacement
-	void ReplaceCharacters(char cReplacement, size_t numElems, ...);
+	//void ReplaceCharacters(char cReplacement, size_t numElems, ...);
 	void ReplaceCharacters(char cOriginal, char cReplacement);
 
 	// String Comparison

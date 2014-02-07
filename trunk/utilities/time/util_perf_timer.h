@@ -1,6 +1,7 @@
 //
 //  util_perf_timer.h
-//  A class for testing performance of sections of code.
+//  This is a performance timer for high resolution and precise timing. Good
+//  for timing operations which run very fast.
 //
 //  Created by Ryan Sheffer on 2012-11-18.
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
@@ -13,7 +14,7 @@
 
 #include "util_time.h"
 
-namespace Time
+namespace Utility
 {
     //--------------------------------------------------------------------------
     /** The performance timer itself */
@@ -37,7 +38,7 @@ namespace Time
             m_pszTimerName = pszTimerName;
             if(startTimer)
             {
-                m_ui64StartTime = CSystemTime::GetSystemTicks();
+                m_ui64StartTime = mach_absolute_time();
                 m_bTimerState = TIMER_STATE_STARTED;
             }
             else
@@ -51,22 +52,23 @@ namespace Time
          */
         void StartTimer(void)
         {
-            m_ui64StartTime = CSystemTime::GetSystemTicks();
+            m_ui64StartTime = mach_absolute_time();
             m_bTimerState = TIMER_STATE_STARTED;
         }
         
         /**
-         * Stops the timer and returns the time in ticks
+         * Stops the timer and returns the time in cycles
+         * Use ConvertToSeconds function if you need seconds.
          */
         uint64_t StopTimer(void)
         {
             ASSERTION(m_bTimerState != TIMER_STATE_INVALID,
-				"Called StopTimer on a non-initialized performance timer!");
+                      "Called StopTimer on a non-initialized performance timer!");
             
             if(m_bTimerState == TIMER_STATE_STARTED)
             {
                 // Get the end time
-                m_ui64EndTime = CSystemTime::GetSystemTicks();
+                m_ui64EndTime = mach_absolute_time();
                 m_bTimerState = TIMER_STATE_ENDED;
             }
             
@@ -84,7 +86,7 @@ namespace Time
         {
             printf("%s took %f seconds to complete.\n",
                    m_pszTimerName,
-                   TicksToSeconds(StopTimer()));
+                   ConvertToSeconds(StopTimer()));
         }
         
     private:

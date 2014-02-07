@@ -99,6 +99,7 @@ bool CUtlString::SetupMem(size_t numChars)
 //-----------------------------------------------------------------------------
 // Purpose: Replaces a variable number of characters with a single character
 //-----------------------------------------------------------------------------
+/*
 void CUtlString::ReplaceCharacters(char cReplacement, size_t numElems, ...)
 {
 	va_list ap;
@@ -122,6 +123,7 @@ void CUtlString::ReplaceCharacters(char cReplacement, size_t numElems, ...)
 		va_end(ap);
 	}
 }
+ */
 
 //-----------------------------------------------------------------------------
 // Purpose: Replaces a specific character in a string with another character
@@ -276,7 +278,7 @@ void CUtlString::ToUpperCase(void)
 //-----------------------------------------------------------------------------
 void CUtlString::RemoveCharacters(size_t startChar, size_t numChars)
 {
-	if(startChar < 0 || startChar >= m_uiNumCharacters)
+	if(startChar >= m_uiNumCharacters)
 	{
 		ASSERTION(false, "CUtlString: startChar in RemoveCharacters is out of range!");
 		return;
@@ -329,7 +331,7 @@ void CUtlString::PopCharacters(size_t numChars)
 	if(m_uiNumCharacters == 0)
 		return;
 
-	for(size_t i = (m_uiNumCharacters - 1); (i >= 0) && (numChars > 0); --i, --numChars)
+	for(int i = int(m_uiNumCharacters - 1); (i >= 0) && (numChars > 0); --i, --numChars)
 	{
 		m_pszStr[i] = '\0';
 		--m_uiNumCharacters;
@@ -401,13 +403,13 @@ void CUtlString::VarArgs(char *format, ...)
 	static char		str[1024];
 
 	va_start(argptr, format);
-	vsnprintf_s(str, sizeof(str), format, argptr);
+	vsnprintf(str, sizeof(str), format, argptr);
 	va_end(argptr);
 
 	m_uiNumCharacters = strlen(str);
 
 	if(SetupMem(m_uiNumCharacters + 1))
 	{
-		strncpy_s(m_pszStr, m_uiNumAllocBytes, str, m_uiNumCharacters);
+		strncpy(m_pszStr, str, m_uiNumCharacters);
 	}
 }

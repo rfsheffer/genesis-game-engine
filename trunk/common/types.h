@@ -1,6 +1,6 @@
 //
 //  types.h
-//  Global data types
+//  Data types which can be used across the whole engine
 //
 //  Created by Ryan Sheffer on 2012-10-31.
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.

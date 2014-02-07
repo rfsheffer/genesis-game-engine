@@ -1,0 +1,271 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BDABF2F818A3051100E86A29 /* graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2F618A3051100E86A29 /* graphics.cpp */; };
+		BDABF2F918A3051100E86A29 /* graphics.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2F718A3051100E86A29 /* graphics.h */; };
+		BDABF2FB18A3052D00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF2FA18A3052D00E86A29 /* utilities.dylib */; };
+		BDB9FAE318A24EAA0049A361 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB9FAE218A24EAA0049A361 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BDABF2F618A3051100E86A29 /* graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graphics.cpp; sourceTree = "<group>"; };
+		BDABF2F718A3051100E86A29 /* graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
+		BDABF2FA18A3052D00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/utilities/../bin/utilities.dylib; sourceTree = "<absolute>"; };
+		BDABF2FC18A30D1F00E86A29 /* igraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = igraphics.h; path = public/igraphics.h; sourceTree = "<group>"; };
+		BDB9FABD18A236330049A361 /* graphicshead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicshead.pch; sourceTree = "<group>"; };
+		BDB9FAE218A24EAA0049A361 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BDC780091692213C00C3F72E /* graphics.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = graphics.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDC780061692213C00C3F72E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDABF2FB18A3052D00E86A29 /* utilities.dylib in Frameworks */,
+				BDB9FAE318A24EAA0049A361 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDC77FFE1692213C00C3F72E = {
+			isa = PBXGroup;
+			children = (
+				BDC78026169222C100C3F72E /* Source */,
+				BDFABFC916922B75001C1E6A /* Frameworks */,
+				BDC7800A1692213C00C3F72E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BDC7800A1692213C00C3F72E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDC780091692213C00C3F72E /* graphics.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDC78026169222C100C3F72E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BDB9FABD18A236330049A361 /* graphicshead.pch */,
+				BDABF2F618A3051100E86A29 /* graphics.cpp */,
+				BDABF2F718A3051100E86A29 /* graphics.h */,
+				BDABF2FC18A30D1F00E86A29 /* igraphics.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		BDFABFC916922B75001C1E6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDABF2FA18A3052D00E86A29 /* utilities.dylib */,
+				BDB9FAE218A24EAA0049A361 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BDC780071692213C00C3F72E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDABF2F918A3051100E86A29 /* graphics.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BDC780081692213C00C3F72E /* graphics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDC7800D1692213C00C3F72E /* Build configuration list for PBXNativeTarget "graphics" */;
+			buildPhases = (
+				BDC780051692213C00C3F72E /* Sources */,
+				BDC780061692213C00C3F72E /* Frameworks */,
+				BDC780071692213C00C3F72E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = graphics;
+			productName = graphics;
+			productReference = BDC780091692213C00C3F72E /* graphics.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDC780001692213C00C3F72E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Ryan Sheffer";
+			};
+			buildConfigurationList = BDC780031692213C00C3F72E /* Build configuration list for PBXProject "graphics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BDC77FFE1692213C00C3F72E;
+			productRefGroup = BDC7800A1692213C00C3F72E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDC780081692213C00C3F72E /* graphics */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDC780051692213C00C3F72E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDABF2F818A3051100E86A29 /* graphics.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BDC7800B1692213C00C3F72E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BDC7800C1692213C00C3F72E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/game/bin";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BDC7800E1692213C00C3F72E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = ../bin;
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = graphicshead.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_DEBUG,
+					_MAC,
+					_64BIT,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/**",
+					../common,
+					"../utilities/**",
+					../math,
+				);
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = graphics;
+			};
+			name = Debug;
+		};
+		BDC7800F1692213C00C3F72E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = ../bin;
+				EXECUTABLE_PREFIX = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = graphicshead.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_MAC,
+					_64BIT,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/**",
+					../common,
+					"../utilities/**",
+					../math,
+				);
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = graphics;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDC780031692213C00C3F72E /* Build configuration list for PBXProject "graphics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC7800B1692213C00C3F72E /* Debug */,
+				BDC7800C1692213C00C3F72E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDC7800D1692213C00C3F72E /* Build configuration list for PBXNativeTarget "graphics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC7800E1692213C00C3F72E /* Debug */,
+				BDC7800F1692213C00C3F72E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDC780001692213C00C3F72E /* Project object */;
+}

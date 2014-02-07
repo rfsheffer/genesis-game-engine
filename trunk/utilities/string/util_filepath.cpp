@@ -42,7 +42,7 @@ void CUtlFilePath::SetupPath(void)
 	ReplaceCharacters('\\', '/');
 
 	// Determine if there is a file name on the end
-	for(size_t i = GetNumCharacters() - 1; i >= 0; --i)
+	for(int i = (int)GetNumCharacters() - 1; i >= 0; --i)
 	{
 		// break if there is a slash
 		if(Element(i) == '/')
@@ -62,10 +62,16 @@ void CUtlFilePath::SetupPath(void)
 		PushCharacter('/');
 	}
 
-	m_uiPathDepth = CountCharacters('/') - 1;
+	int pathdepth = (int)CountCharacters('/') - 1;
 
-	if(m_uiPathDepth < 0)
-		m_uiPathDepth = 0;
+	if(pathdepth < 0)
+    {
+        m_uiPathDepth = 0;
+    }
+    else
+    {
+        m_uiPathDepth = pathdepth;
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -76,7 +82,7 @@ const char *CUtlFilePath::GetFileExtension(void) const
 	if(!m_bHasFileName)
 		return NULL;
 
-	for(size_t i = GetNumCharacters() - 1; i >= 0; --i)
+	for(size_t i = GetNumCharacters() - 1; i == 0; --i)
 	{
 		// Look for the '.' of the extension
 		if(Element(i) == '.')
@@ -131,8 +137,8 @@ void CUtlFilePath::StripFileName(void)
 	if(!m_bHasFileName)
 		return;
 
-	size_t i;
-	for(i = GetNumCharacters() - 1; i >= 0; --i)
+	int i;
+	for(i = (int)GetNumCharacters() - 1; i >= 0; --i)
 	{
 		if(Element(i) == '/')
 			break;
@@ -151,7 +157,7 @@ const char *CUtlFilePath::GetFileName(void) const
 	if(!m_bHasFileName)
 		return NULL;
 
-	for(size_t i = GetNumCharacters() - 1; i >= 0; --i)
+	for(int i = (int)GetNumCharacters() - 1; i >= 0; --i)
 	{
 		if(Element(i) == '/')
 			return &Element(i + 1);
@@ -190,10 +196,10 @@ void CUtlFilePath::PushFolder(const char *szFolderName)
 //-----------------------------------------------------------------------------
 void CUtlFilePath::PopFolder(void)
 {
-	if(GetNumCharacters() == 0)
+	if(GetNumCharacters() == 0 || m_uiPathDepth == 0)
 		return;
 
-	size_t numToKeep = GetNumCharacters() - 1;
+	int numToKeep = (int)GetNumCharacters() - 1;
 	if(Element(numToKeep) == '/')
 	{
 		// If there is a slash on the end, jump it
@@ -224,9 +230,6 @@ void CUtlFilePath::PopFolder(void)
 	PopCharacters(GetNumCharacters() - numToKeep);
 
 	--m_uiPathDepth;
-
-	if(m_uiPathDepth < 0)
-		m_uiPathDepth = 0;
 
 	m_bHasFileName = m_bHasFileExtension = false;
 }

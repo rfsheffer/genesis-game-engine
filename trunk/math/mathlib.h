@@ -23,4 +23,6 @@ using namespace MathLib;
 #include "math_plane.h"
 #include "math_frustum.h"
 
+#define MATHLIB     1
+
 #endif

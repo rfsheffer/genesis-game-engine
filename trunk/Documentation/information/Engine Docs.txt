@@ -1,0 +1,39 @@
+---------------------------------------------------
+Engine Read me!
+---------------------------------------------------
+
+*****************************************
+Component based system:
+*****************************************
+Genesis is a component based engine. Components are like plugins, in fact there is no
+real difference besides the name. The engine doesn't care which components are hooked up
+to it, as long as the component follows the component standard accepted by the engine.
+
+The engine is the driver for components. Components are systems such as Sound, Game, or
+AI to name a few, but there are no limitations to what a component is, it is anything
+that is needed.
+
+Components can specify themselves through their interface. See the basic interface for
+a component to see what needs to be supported, and what can be supported if needed.
+
+The engine supports both local communication between components, and network
+communication. Also, more than one engine can be networked together to complete tasks,
+or for networked games. An example of a networked game would be:
+There is a single engine which acts as the server. It has a component called server.
+Then there are a number of networked engines with clients. These clients can send messages
+back to the server engine, and all client engines will receive messages from the server
+engine. This is the standard way a networking game would be made, but there are many
+other applications such as work farming, where a number of networked engines are given
+tasks to complete such as offline rendering, or maybe even world spatialization or offline
+physics calculations. Even shader compilation could be created into a component and put
+on a client engine, and the server could tell a bunch of shader compiling engines to do
+the job and return the results.
+
+Engine components are by default put into their own thread. No locking is used when a
+component wants to speak with the engine, the component merely requests a channel to the
+engine, and a channel handel will be returned where it can send any information it wants.
+Once it is finished with the channel, the component will close it. From there, the engine
+will see an unprocessed channel and do what it should with the data buffered. Channels
+can be prioritized so they can have higher precedence to other open channels, but if no
+precedence is set, the channels will be executed from top to bottom of the stack of
+channels.
