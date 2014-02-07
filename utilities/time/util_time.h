@@ -1,7 +1,6 @@
 //
 //  util_time.h
-//	A class designed for getting the time from the system in ticks.
-//	Used by all other timer classes for determining time.
+//  A class used for telling application time
 //
 //  Created by Ryan Sheffer on 2012-11-17.
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
@@ -10,13 +9,12 @@
 #ifndef UTIL_TIME_H
 #define UTIL_TIME_H
 
+#pragma once
+
 #if defined(_WIN)
 
-#pragma once
 #include <mmsystem.h>
-#include <stdint.h>
 #pragma comment(lib,"winmm.lib")
-//#include <time.h>
 
 #elif defined(_MAC)
 
@@ -26,7 +24,7 @@
 
 #endif
 
-namespace Time
+namespace Utility
 {
     /** Timer States */
     enum TIMER_STATES_E
@@ -36,119 +34,60 @@ namespace Time
         TIMER_STATE_ENDED
     };
     
-	/** High resolution time */
-    class CSystemTime
+    class CTime
     {
     public:
         
-        /** Gets the time the system has been running in ticks. */
-        static inline uint64_t GetSystemTicks(void)
+        CTime();
+        ~CTime() { }
+        
+        void Init();
+        void Update();
+        
+        /** Gets the current time in nanoseconds */
+        inline uint64_t GetPerfTime() const
         {
-			uint64_t ui64Ticks;
-			QueryPerformanceCounter((LARGE_INTEGER *)&ui64Ticks);
-            return ui64Ticks;
+            return m_ui64AccumTime;
         }
-
-		/** Gets the time in seconds since the system has started. */
-		static inline double GetSystemTimeSeconds(void)
-		{
-			return (GetSystemTicks() / m_sPerformanceTimeFreq) * 1e-9;
-		}
-
-		/** Gets the time in nanoseconds since the system has started. */
-		static inline double GetSystemTimeNanoseconds(void)
-		{
-			return GetSystemTicks() / m_sPerformanceTimeFreq;
-		}
-
-	private:
-
-		friend void InitTime(void);
-		friend double TicksToSeconds(uint64_t ticks);
-		friend double TicksToNanoseconds(uint64_t ticks);
-		friend uint64_t SecondsToTicks(double seconds);
-
-		static double m_sPerformanceTimeFreq;
+        
+        /** Gets the elapsed nanoseconds since last update call */
+        inline uint64_t GetPerfElapsedTime() const
+        {
+            return m_ui64ElapsedTime;
+        }
+        
+        /** Gets the system time in nanoseconds */
+        inline uint64_t GetPerfSystemTime() const
+        {
+            return m_ui64CurTime;
+        }
+        
+    private:
+        
+        /** The system time when the program started time */
+        uint64_t            m_ui64StartTime;
+        
+        /** Current system time */
+        uint64_t            m_ui64CurTime;
+        
+        /** 
+         * This is the time in nanoseconds from when the program started
+         * to the current time.
+         */
+        uint64_t			m_ui64AccumTime;
+        
+        /** This is the time since the last call to the GetElapsedTime */
+        uint64_t			m_ui64ElapsedTime;
+        
+        /** This is the time when GetElapsedTime was last called. */
+        uint64_t			m_ui64LastAccumTime;
+        
+        /** Using the CPU performance timer? */
+        bool			m_bPerformance_Timer;
     };
-
-	/**
-     * Must be called before timers can be used! 
-     */
-	inline void InitTime(void)
-	{
-		ASSERTION(performanceTimeFreq == 0.0, "Performance Timers Already Initialized!");
-
-#if defined(_MAC)
-		mach_timebase_info_data_t info;
-		kern_return_t err = mach_timebase_info(&info);
-
-		// Setup the scalar to convert ticks into nanoseconds
-		if(err == 0)
-		{
-			performanceTimeFreq = (double) info.numer / (double) info.denom;
-		}
-#elif defined(_WIN)
-		uint64_t            ui64Freq;
-		if(QueryPerformanceFrequency((LARGE_INTEGER *)&ui64Freq))
-		{
-			// By default to stay consistent across platforms, we will always first
-			// convert to nanoseconds.
-			CSystemTime::m_sPerformanceTimeFreq = double(ui64Freq) / 1000000000.0;
-		}
-#endif
-	}
     
-	//--------------------------------------------------------------------------
-    /**
-	 * Converts a performance timers tick count into seconds.
-     */
-    inline double TicksToSeconds(uint64_t ticks)
-    {
-        return (ticks / CSystemTime::m_sPerformanceTimeFreq) * 1e-9;
-    }
-
-	//--------------------------------------------------------------------------
-    /**
-	 * Converts a performance timers tick count into nanoseconds.
-     */
-    inline double TicksToNanoseconds(uint64_t ticks)
-    {
-        return ticks / CSystemTime::m_sPerformanceTimeFreq;
-    }
-    
-    //--------------------------------------------------------------------------
-    /**
-     * Converts a time in seconds to CPU ticks
-     */
-    inline uint64_t SecondsToTicks(double seconds)
-    {
-		return uint64_t((seconds * 1e+9) * CSystemTime::m_sPerformanceTimeFreq);
-    }
-
-	/** Simple timer which uses an operating system supplied timer */
-	class CSimpleTime
-	{
-	public:
-
-		/** Gets the time in seconds since the system has started. */
-		static inline double GetTimeSeconds(void)
-		{
-#if defined(_MAC)
-			timeval curTime;
-			gettimeofday(&curTime, NULL);
-
-			return curTime.tv_sec + (curTime.tv_usec * 0.000001);
-#elif defined(_WIN)
-			return timeGetTime() * 0.001;
-#endif
-		}
-
-		/** Gets the time in nanoseconds since the system has started. */
-		static inline double GetTimeMilliseconds(void)
-		{
-			return GetTimeSeconds() * 1000.0;
-		}
-	};
+    double ConvertToSeconds(uint64_t perfTime);
+    uint64_t ConvertToCycles(double time);
 }
 
 #endif // UTIL_TIME_H

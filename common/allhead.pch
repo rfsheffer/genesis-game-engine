@@ -27,11 +27,13 @@
 #endif
 
 // Platform macros and defines
-#include "platform_constants.h"
 #include "types.h"
 #include "macros.h"
 #include "foundation_constants.h"
-#include "IPlatform.h"
+#include "../platform/platform_constants.h"
+#include "../platform/IPlatform.h"
+#include "../utilities/interfaces/interfaces.h"
+#include "../utilities/logging.h"
 
 // Debug specific stuff like ASSERTION
 #include "debug.h"

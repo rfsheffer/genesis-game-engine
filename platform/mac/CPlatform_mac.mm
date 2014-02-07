@@ -71,15 +71,6 @@ hWindow CPlatform::GetWindowHandle(const char *pszWindowName) const
 
 //------------------------------------------------------------------------------
 /**
- * Creates a content window
- */
-/*hWindow CPlatform::CreateContentWindow(const window_info &info) const
-{
-    return [pCocoaApp CreateContentWindow: info];
-}*/
-
-//------------------------------------------------------------------------------
-/**
  * Sets the active window to update
  * @param index The index of the active window.
  */
@@ -116,29 +107,6 @@ void CPlatform::GetWindowSize(unsigned int &width, unsigned int &height) const
 
 //------------------------------------------------------------------------------
 /**
- * Creates a graphics context for the active window with the settings provided.
- * @param settings The settings to create the context with.
- */
-/*bool CPlatform::CreateGraphicsContext(const render::render_context_settings &settings) const
-{
-    ACTIVE_WINDOW_ASSERT("CreateGraphicsContext");
-    
-    return [[pCocoaApp m_activeWindow] CreateGraphicsContext:settings];
-}*/
-
-//------------------------------------------------------------------------------
-/**
- * Shuts down the active graphics context.
- */
-/*void CPlatform::ShutdownActiveGraphicsContext(void) const
-{
-    ACTIVE_WINDOW_ASSERT("ShutdownActiveGraphicsContext");
-    
-    [[pCocoaApp m_activeWindow] DestroyGraphicsContext];
-}*/
-
-//------------------------------------------------------------------------------
-/**
  * Activates the graphics context for the current active window.
  */
 void CPlatform::ActivateGraphicsContext(void) const
@@ -165,7 +133,7 @@ void CPlatform::SwapGraphicsContextBuffers(void) const
  */
 const char *CPlatform::GetAbsoluteApplicationPath(void) const
 {
-    static char szFileLine[PATH_MAX];
+    static char szFileLine[PATH_MAX]; szFileLine[0] = '\0';
     static const char *appdir = [[[NSBundle mainBundle] bundlePath] UTF8String];
     strncat(szFileLine, appdir, PATH_MAX);
     

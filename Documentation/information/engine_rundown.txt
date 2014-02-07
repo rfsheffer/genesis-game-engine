@@ -1,0 +1,58 @@
+Genesis Engine Rundown
+-------------------------------------------
+
+Folders:
+
+Sound: All sound related code goes here, no exceptions. Sound is an isolated system which
+takes event calls from outside sources. These event calls complete such things as:
+play a sound, stop a sound, change some rules about sound playback... To name a few.
+
+AI: All Artificial intelligence systems exist here. AI related extensions can exist in
+other systems (example, game code) taking advantage of the core AI foundation. The core
+aspects of the Genesis AI system exist in here.
+
+Platform: A system designed to wrap Genesis supported platforms exists here. All platform
+specific calls that need to be made will be wrapped in this system, there should be no
+need for calling platform API calls from other systems, always wrap and ensure when a new
+platform call is added, it is added for all other platforms as well. This might be painful,
+but it will ensure that there are no inconsistencies between platforms or missing features
+in certain platforms.
+
+Utilities: This contains all utility classes and tools which could be useful across all
+systems. Common utilities include string parsers, data serialization, and special
+container classes for storing data in optimal ways.
+
+Math: All math related functions and helpers go here. Do not write system specific math
+routines, try to keep all math functions in this folder so any developer working with the
+engine will know they can try to find what they are looking for in one place before
+resorting to redundant code directly in the system they are working on.
+
+Graphics: All graphics related code goes here. This includes rasterization methods,
+polygonal representation code, and material loading code.
+
+Common: A folder which should contain VERY common lines of code used across all systems.
+Debugging tools can safely be put here as long as they are relavent to all systems.
+
+ThirdParty: All third party libraries used by the engine are put here, no exceptions. We
+want to always keep track of what licenses are in use by the engine, and also understand
+which third party systems could be periodically looked into for upgrades which might
+benefit the engine. Even small third party additions can be added here in their own
+compiled code file.
+
+Unit_tests: Engine unit tests. Unit tests for individual systems can be put with the
+system itself.
+
+Launchers: Launchers for any applications which use the engine, including the games
+themselves.
+
+Documentation: Documentation which describes the engine and its usage.
+
+Networking: Code related to the networking of engine systems. Systems can be networked
+locally or to other computers. An example may be, a Genesis program with a client
+connected to a genesis program on another computer running a server system.
+
+Game: All game related code goes here. The general structure is the client system, the
+server system, and the code shared between the two systems. Games will have their own
+folder within the client, server, and shared folders.
+
+Libraries: Contains all compiled static libraries to be linked with systems that need them.

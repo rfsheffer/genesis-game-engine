@@ -1,0 +1,56 @@
+External Scripting:
+-------------------------------
+
+The external scripting language of choice is squirrel. It is a fast, extremely lightweight
+scripting language with a C like syntax. Even though squirrel is supported by default, it
+would be trivial to wrap LUA as it is generally like squirrel as it has a stack based
+communication API.
+
+struct functionInfo
+{
+	const char *pszName;
+	
+	int num_parameters;
+	
+};
+
+enum data_type
+{
+	DATATYPE_INTEGER,
+	DATATYPE_FLOAT,
+	DATATYPE_BOOLEAN,
+};
+struct variant_holder
+{
+	void		*pMem;
+	data_type	type;
+};
+
+#define 
+
+class iScriptWrap
+{
+	public:
+	
+	const char *GetScriptName() { return "test.nut"; }
+	
+	int TestFunction(int wholeNum, float frac)
+	{
+		return int(wholeNum * frac);
+	}
+	
+	int testVariable;
+	float testVariable2;
+	
+	void AddFunctionCall(void *, 
+	
+	void InitWithScript(void)
+	{
+		// Adds a function callable from the external script called
+		// "TestFunction" which returns an int
+		AddFunctionCall(TestFunction, "TestFunction", int, int, float);
+		
+		AddVariable(variant_holder{&testVariable, DATATYPE_INTEGER});
+		AddVariable(variant_holder{&testVariable2, DATATYPE_FLOAT});
+	}
+};
