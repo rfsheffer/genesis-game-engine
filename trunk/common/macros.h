@@ -9,6 +9,8 @@
 #ifndef MACROS_H
 #define MACROS_H
 
+#if defined(_MAC) || defined(_LINUX)
+
 // Source: winnt.h
 #define _ARRAYSIZE(A) (sizeof(A)/sizeof((A)[0]))
 
@@ -17,5 +19,7 @@ template <typename T, size_t N>
 char (*RtlpNumberOf( T (&)[N] ))[N];
 
 #define ARRAYSIZE(A) (sizeof(*RtlpNumberOf(A)))
+
+#endif // _MAC || _LINUX
 
 #endif // MACROS_H
