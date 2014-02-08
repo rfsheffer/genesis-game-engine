@@ -45,9 +45,14 @@ typedef unsigned char byte;
 /** The handle type for a window */
 typedef int hWindow;
 
-/** File Handle */
-typedef FILE *  FileHandle;
+#elif defined(_WIN)
+
+/** The handle type for a window */
+#define hWindow     HWND
 
 #endif
+
+/** File Handle */
+typedef FILE *  FileHandle;
 
 #endif // TYPES_H

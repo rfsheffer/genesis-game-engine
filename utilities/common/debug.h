@@ -19,7 +19,7 @@
  */
 #ifdef _WIN
 #   ifdef _64BIT
-#       error UNSUPPORTED BREAKPOINT MACRO
+#       define BREAKPOINT __debugbreak()
 #       define ABORT exit(1)
 #   else
 #       define BREAKPOINT do { __asm { int 3 } } while (0)
