@@ -1,15 +1,27 @@
-// Launcher.cpp : Defines the entry point for the application.
+//
+//  Launcher.cpp
+//  Launcher Main
+//
+//  Created by Ryan Sheffer on 2014-02-08.
+//  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
 #include "allhead.pch"
 #include "Launcher.h"
+#include "CPlatform.h"
+#include <strsafe.h>
 
 #define MAX_LOADSTRING 100
 
 // Global Variables:
 HINSTANCE hInst;								// current instance
+HWND hWnd;                                      // current window
 TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
+
+// Threaded Engine
+DWORD WINAPI EngineThread( LPVOID lpParam );
+HANDLE engineMutex = 0;
 
 // Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -17,6 +29,23 @@ BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 
+//------------------------------------------------------------------------------
+/** This is the pointer to the WIN specific platform interface */
+static CPlatform g_platform;
+IPlatform *GetPlatform(void)
+{
+    return &g_platform;
+}
+
+/** The platform is registered early on so all systems can access it */
+REGISTER_STATIC_INTERFACE(g_platform,
+                          PLATFORM_INTERFACE_NAME,
+                          PLATFORM_INTERFACE_VERSION);
+
+//------------------------------------------------------------------------------
+/**
+ * Win Main
+ */
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPTSTR    lpCmdLine,
@@ -42,6 +71,28 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHER));
 
+    // Create the engine thread mutex
+    engineMutex = CreateMutex( 
+        NULL,              // default security attributes
+        FALSE,             // initially not owned
+        NULL);             // unnamed mutex
+
+    // Create the engine thread
+    DWORD  engineThreadID = -1;
+    HANDLE engineThread = CreateThread( 
+            NULL,                   // default security attributes
+            0,                      // use default stack size  
+            EngineThread,           // thread function name
+            NULL,                   // argument to thread function 
+            0,                      // use default creation flags 
+            &engineThreadID);       // returns the thread identifier
+
+    ASSERTION(engineThread != NULL, "Unable to create engine thread!");
+    if(engineThread == NULL)
+    {
+        ExitProcess(3);
+    }
+
 	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
@@ -52,16 +103,49 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		}
 	}
 
+    CloseHandle(engineThread);
+    CloseHandle(engineMutex);
+
 	return (int) msg.wParam;
 }
 
+//------------------------------------------------------------------------------
+/** Engine States */
+enum engine_state_e
+{
+    ENGINE_STATE_INACTIVE,
+    ENGINE_STATE_ACTIVE,
+    ENGINE_STATE_CLOSING,
+};
 
+/** The State the engine is currently in.
+ * NOTE: Only change this state if you have an engine mutex lock */
+engine_state_e engineState = ENGINE_STATE_INACTIVE;
 
-//
-//  FUNCTION: MyRegisterClass()
-//
-//  PURPOSE: Registers the window class.
-//
+//------------------------------------------------------------------------------
+/**
+ * Engine Thread
+ */
+DWORD WINAPI EngineThread( LPVOID lpParam )
+{
+    DWORD dwWaitResult;
+
+    dwWaitResult = WaitForSingleObject(engineMutex, INFINITE);
+    if(dwWaitResult == WAIT_OBJECT_0)
+    {
+        printf("Engine Thread Ran\n");
+
+        ReleaseMutex(engineMutex);
+    }
+
+    // terminate thread
+    return 0;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Registers the window class.
+ */
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
 	WNDCLASSEX wcex;
@@ -83,20 +167,14 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	return RegisterClassEx(&wcex);
 }
 
-//
-//   FUNCTION: InitInstance(HINSTANCE, int)
-//
-//   PURPOSE: Saves instance handle and creates main window
-//
-//   COMMENTS:
-//
-//        In this function, we save the instance handle in a global variable and
-//        create and display the main program window.
-//
+//------------------------------------------------------------------------------
+/**
+ * Saves instance handle and creates main window
+ * In this function, we save the instance handle in a global variable and
+ * create and display the main program window.
+ */
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   HWND hWnd;
-
    hInst = hInstance; // Store instance handle in our global variable
 
    hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
@@ -113,16 +191,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-//
-//  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  PURPOSE:  Processes messages for the main window.
-//
-//  WM_COMMAND	- process the application menu
-//  WM_PAINT	- Paint the main window
-//  WM_DESTROY	- post a quit message and return
-//
-//
+//------------------------------------------------------------------------------
+/**
+ * Processes messages for the main window.
+ * @param hWnd
+ * @param message
+ * @param wParam
+ * @param lParam
+ * @return result
+ */
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
@@ -161,7 +238,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-// Message handler for about box.
+//------------------------------------------------------------------------------
+/**
+ * Message handler for about box.
+ */
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	UNREFERENCED_PARAMETER(lParam);

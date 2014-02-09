@@ -106,7 +106,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WIN;_64BIT;_CRT_SECURE_NO_WARNINGS;INCLUDE_WINDOWS_HEADER;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\common;..\..\utilities;..\..\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\common;..\..\utilities;..\..\engine;..\..\platform;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>allhead.pch</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -163,7 +163,7 @@ exit 1
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN;_64BIT;_CRT_SECURE_NO_WARNINGS;INCLUDE_WINDOWS_HEADER;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\common;..\..\utilities;..\..\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\common;..\..\utilities;..\..\engine;..\..\platform;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>allhead.pch</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -193,6 +193,9 @@ exit 1
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\platform\CPlatform.h" />
+    <ClInclude Include="..\..\platform\IPlatform.h" />
+    <ClInclude Include="..\..\platform\platform_constants.h" />
     <ClInclude Include="Launcher.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -205,6 +208,7 @@ exit 1
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\platform\windows\CPlatform_win.cpp" />
     <ClCompile Include="Launcher.cpp" />
   </ItemGroup>
   <ItemGroup>

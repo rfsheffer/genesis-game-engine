@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
+#include "allhead.pch"
+
 static IPlatform   *g_pPlatformInterface = NULL;
 
 /** Just a pointer hookup so utilities can get the platform interface */
