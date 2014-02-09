@@ -204,9 +204,6 @@ size_t CPlatform::GetFileSize(FileHandle pFile) const
     int err = fgetpos(pFile, &pos);
     ASSERTION(err == 0, "GetFileSize: fgetpos has failed!");
     
-#ifndef _MAC
-#error fseek may not work on this platform
-#endif
     fseek(pFile, 0, SEEK_END);   // non-portable
     size_t size = ftell(pFile);
     

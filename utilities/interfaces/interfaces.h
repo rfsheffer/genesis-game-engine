@@ -10,6 +10,10 @@
 #ifndef INTERFACES_H
 #define INTERFACES_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 typedef void *(*InterfaceGetFunc)(void);
 typedef void  (*InterfaceKillFunc)(void *);
 

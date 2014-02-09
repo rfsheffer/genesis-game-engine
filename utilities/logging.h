@@ -9,6 +9,10 @@
 #ifndef LOGGING_H
 #define LOGGING_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace Logging
 {
     /** Logs a basic message */

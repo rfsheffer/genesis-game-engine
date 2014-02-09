@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#include "allhead.pch"
 #include "CPlatform.h"
-#import "CCocoaWrapper.h"
-
-extern CCocoaWrapper           *pCocoaApp;
 
 //------------------------------------------------------------------------------
 /**
@@ -30,7 +28,9 @@ void CPlatform::Shutdown(void)
     
 }
 
-#define ACTIVE_WINDOW_ASSERT(str)  ASSERTION([pCocoaApp m_activeWindow] != NULL, "Active window is invalid in " str)
+//extern hWindow GetActiveWindow(void);
+
+#define ACTIVE_WINDOW_ASSERT(str)  ASSERTION(GetActiveWindow(), "Active window is invalid in " str)
 
 //------------------------------------------------------------------------------
 /**
@@ -41,7 +41,7 @@ bool CPlatform::GetKeyState(char character) const
 {
     ACTIVE_WINDOW_ASSERT("GetKeyState");
     
-    return [[pCocoaApp m_activeWindow] GetKeyState:character];
+    return false;
 }
 
 //------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ bool CPlatform::GetMouseState(bool left) const
 {
     ACTIVE_WINDOW_ASSERT("GetMouseState");
     
-    return [[pCocoaApp m_activeWindow] GetMouseState:left];
+    return false;
 }
 
 //------------------------------------------------------------------------------
@@ -64,9 +64,7 @@ bool CPlatform::GetMouseState(bool left) const
  */
 hWindow CPlatform::GetWindowHandle(const char *pszWindowName) const
 {
-    NSString *windowString = [NSString stringWithUTF8String:pszWindowName];
-    
-    return (hWindow)[pCocoaApp GetWindowHandleByName:windowString];
+    return GetActiveWindow();
 }
 
 //------------------------------------------------------------------------------
@@ -76,7 +74,7 @@ hWindow CPlatform::GetWindowHandle(const char *pszWindowName) const
  */
 void CPlatform::SetActiveWindow(hWindow index) const
 {
-    [pCocoaApp SetActiveWindow:index];
+
 }
 
 //------------------------------------------------------------------------------
@@ -87,9 +85,7 @@ void CPlatform::SetActiveWindow(hWindow index) const
  */
 void CPlatform::GetWindowSizePixels(unsigned int &width, unsigned int &height) const
 {
-    ACTIVE_WINDOW_ASSERT("GetWindowSizePixels");
     
-    [[pCocoaApp m_activeWindow] GetWindowSizePixels:width GetHeight:height];
 }
 
 //------------------------------------------------------------------------------
@@ -100,9 +96,7 @@ void CPlatform::GetWindowSizePixels(unsigned int &width, unsigned int &height) c
  */
 void CPlatform::GetWindowSize(unsigned int &width, unsigned int &height) const
 {
-    ACTIVE_WINDOW_ASSERT("GetWindowSize");
     
-    [[pCocoaApp m_activeWindow] GetWindowSize:width GetHeight:height];
 }
 
 //------------------------------------------------------------------------------
@@ -111,9 +105,7 @@ void CPlatform::GetWindowSize(unsigned int &width, unsigned int &height) const
  */
 void CPlatform::ActivateGraphicsContext(void) const
 {
-    ACTIVE_WINDOW_ASSERT("ActivateGraphicsContext");
     
-    return [[pCocoaApp m_activeWindow] ActivateGraphicsContext];
 }
 
 //------------------------------------------------------------------------------
@@ -122,9 +114,7 @@ void CPlatform::ActivateGraphicsContext(void) const
  */
 void CPlatform::SwapGraphicsContextBuffers(void) const
 {
-    ACTIVE_WINDOW_ASSERT("ActivateGraphicsContext");
     
-    [[pCocoaApp m_activeWindow] SwapGraphicsContextBuffers];
 }
 
 //------------------------------------------------------------------------------
@@ -133,12 +123,12 @@ void CPlatform::SwapGraphicsContextBuffers(void) const
  */
 const char *CPlatform::GetAbsoluteApplicationPath(void) const
 {
-    static char szFileLine[PATH_MAX]; szFileLine[0] = '\0';
-    static const char *appdir = [[[NSBundle mainBundle] bundlePath] UTF8String];
-    strncat(szFileLine, appdir, PATH_MAX);
+    static char szFileLine[MAX_PATH]; szFileLine[0] = '\0';
+    static const char *appdir = " ";
+    strncat(szFileLine, appdir, MAX_PATH);
     
     // Take off the file name
-    for(int i = PATH_MAX - 1; i >= 0; --i)
+    for(int i = MAX_PATH - 1; i >= 0; --i)
     {
         if(szFileLine[i] == '/')
         {
@@ -204,9 +194,6 @@ size_t CPlatform::GetFileSize(FileHandle pFile) const
     int err = fgetpos(pFile, &pos);
     ASSERTION(err == 0, "GetFileSize: fgetpos has failed!");
     
-#ifndef _MAC
-#error fseek may not work on this platform
-#endif
     fseek(pFile, 0, SEEK_END);   // non-portable
     size_t size = ftell(pFile);
     

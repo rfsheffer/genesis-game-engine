@@ -48,7 +48,12 @@ typedef int hWindow;
 #elif defined(_WIN)
 
 /** The handle type for a window */
+
+#ifdef INCLUDE_WINDOWS_HEADER
 #define hWindow     HWND
+#else
+#define hWindow     int // If windows changes the standard, we are in trouble.
+#endif
 
 #endif
 
