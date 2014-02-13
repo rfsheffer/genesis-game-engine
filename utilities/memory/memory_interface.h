@@ -83,6 +83,8 @@ class iMemoryPool
 {
 public:
     
+    virtual void Initialize(void) = 0;
+    
     virtual iMemoryAllocator *CreateBucketAllocator(const char *pszAllocatorName,
                                                     unsigned int numBuckets,
                                                     bucket_info *pBucketInfos) = 0;

@@ -33,6 +33,8 @@ public:
     MemoryPool();
     ~MemoryPool();
     
+    void Initialize(void);
+    
     iMemoryAllocator *CreateBucketAllocator(const char *pszAllocatorName,
                                             unsigned int numBuckets,
                                             bucket_info *pBucketInfos);

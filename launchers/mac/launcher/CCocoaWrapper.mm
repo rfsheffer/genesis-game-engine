@@ -15,6 +15,7 @@
 // Utilities lib
 #include "util_perf_timer.h"
 #include "keyvalues.h"
+#include "memory_interface.h"
 
 // Graphics Lib
 #include "contextinfo.h"
@@ -622,6 +623,14 @@ REGISTER_STATIC_INTERFACE(g_platform,
     // Create a new mutex for engine locking so we can hault the engine if
     // needed.
     mutexEngineLock = [[NSLock alloc] init];
+    
+    // Initialize the memory pool for the application.
+    // All systems designed around the engine use the memory pool for all
+    // allocations. This is done to help with fragmentation, but most of all, it
+    // is done to ensure all allocations are accounted for, and in debug situations,
+    // allows the developer to understand exactly what is allocated at any one
+    // time, and what is not being de-allocated when it should.
+    GetMemoryPool()->Initialize();
     
     // We create our platform class here and pass it to the engine. Any operating
     // system specific functions should be put in the platform and setup for all
