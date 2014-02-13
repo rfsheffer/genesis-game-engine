@@ -400,6 +400,10 @@ const char *CUtlString::NextToken(char *token, const char *str, char sep)
 //-----------------------------------------------------------------------------
 void CUtlString::VarArgs(char *format, ...)
 {
+    // There is a 1024 string limit here, which should not be.
+    // Will need to determine a good solution.
+    ASSERTION(false, "Please fix VarArgs before using");
+
 	va_list			argptr;
 	static char		str[1024];
 

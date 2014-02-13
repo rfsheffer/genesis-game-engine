@@ -10,6 +10,7 @@
 #include "Launcher.h"
 #include "CPlatform.h"
 #include <strsafe.h>
+#include "memory\memory_interface.h"
 
 #define MAX_LOADSTRING 100
 
@@ -72,6 +73,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHER));
 
     Logging::Msg("Created Windows");
+
+    // Initialize Memory Pool ( Creates all general pools for system allocations )
+    GetMemoryPool()->Initialize();
 
     // Initialize the platform wrapper
     g_platform.Initialize();

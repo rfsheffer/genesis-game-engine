@@ -5,6 +5,7 @@
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
 //
 
+#include "allhead.h"
 #include "debug.h"
 
 #ifdef _MAC
@@ -52,6 +53,13 @@ int MessageBox(void *hWnd, char* lpText, char* lpCaption, unsigned int uType)
         return IDIGNORE;
     
     return IDCANCEL;
+}
+
+#elif defined(_WIN) && !defined(INCLUDE_WINDOWS_HEADER)
+
+int MessageBoxWIN(void *hWnd, char* lpText, char* lpCaption, unsigned int uType)
+{
+    MessageBox(hWnd, lpText, lpCaption, uType);
 }
 
 #endif

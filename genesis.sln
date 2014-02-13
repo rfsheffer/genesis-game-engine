@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Launcher", "launchers\windo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilities", "utilities\utilities.vcxproj", "{33AAE0B7-C3CA-4423-AECB-227B30B7CD3A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "engine", "engine\engine.vcxproj", "{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -42,6 +44,18 @@ Global
 		{33AAE0B7-C3CA-4423-AECB-227B30B7CD3A}.Release|Win32.Build.0 = Release|Win32
 		{33AAE0B7-C3CA-4423-AECB-227B30B7CD3A}.Release|x64.ActiveCfg = Release|x64
 		{33AAE0B7-C3CA-4423-AECB-227B30B7CD3A}.Release|x64.Build.0 = Release|x64
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Debug|Win32.Build.0 = Debug|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Debug|x64.ActiveCfg = Debug|x64
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Debug|x64.Build.0 = Debug|x64
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Release|Win32.ActiveCfg = Release|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Release|Win32.Build.0 = Release|Win32
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Release|x64.ActiveCfg = Release|x64
+		{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
