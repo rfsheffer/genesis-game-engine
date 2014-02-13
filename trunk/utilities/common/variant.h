@@ -11,7 +11,10 @@
 #ifndef VARIANT_H
 #define VARIANT_H
 
-#include "floatwatch.h"
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "data/data_types.h"
 
 namespace Utility

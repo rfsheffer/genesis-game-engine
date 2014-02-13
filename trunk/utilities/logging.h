@@ -16,12 +16,15 @@
 namespace Logging
 {
     /** Logs a basic message */
+    UTILITIES_FUNCTION
     void Msg(const char *pszMessage, ...);
     
     /** Logs a warning message */
+    UTILITIES_FUNCTION
     void Warning(const char *pszMessage, ...);
     
     /** Logs an error message, and exits */
+    UTILITIES_FUNCTION
     void Error(const char *pszMessage, ...);
 }
 

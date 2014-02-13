@@ -28,7 +28,7 @@ struct InterfacePointer
 /**
  * The interface holder
  */
-class InterfaceElement
+class UTILITIES_CLASS InterfaceElement
 {
 public:
     
@@ -74,6 +74,7 @@ private:
     InterfaceElement *m_pHead;
 };
 
+UTILITIES_FUNCTION
 InterfaceRegistration *GetInterfaceRegistration(void);
 
 // Use this to register a function which returns a pointer to static memory

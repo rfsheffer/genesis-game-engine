@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
 //
 
+#include "allhead.h"
+
 namespace Utility
 {
     //--------------------------------------------------------------------------

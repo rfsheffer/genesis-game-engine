@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
-#include "allhead.pch"
+#include "allhead.h"
 #include "Launcher.h"
 #include "CPlatform.h"
 #include <strsafe.h>
@@ -71,6 +71,13 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHER));
 
+    Logging::Msg("Created Windows");
+
+    // Initialize the platform wrapper
+    g_platform.Initialize();
+
+    Logging::Msg("Initialized Platform Settings");
+
     // Create the engine thread mutex
     engineMutex = CreateMutex( 
         NULL,              // default security attributes
@@ -78,7 +85,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
         NULL);             // unnamed mutex
 
     // Create the engine thread
-    DWORD  engineThreadID = -1;
+    DWORD  engineThreadID = 0;
     HANDLE engineThread = CreateThread( 
             NULL,                   // default security attributes
             0,                      // use default stack size  
@@ -90,8 +97,11 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
     ASSERTION(engineThread != NULL, "Unable to create engine thread!");
     if(engineThread == NULL)
     {
+        Logging::Warning("Unable to create engine thread!");
         ExitProcess(3);
     }
+
+    Logging::Msg("Finished Launching Engine Thread");
 
 	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0))
