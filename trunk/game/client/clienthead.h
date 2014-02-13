@@ -1,13 +1,18 @@
 //
-//  enginehead.pch
-//  Precompiled header for the engine
+//  clienthead.h
+//  The client precompiled header
 //
 //  Created by Ryan Sheffer on 2013-04-19.
-//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
+//  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
+#include "allhead.h"
 
-#include "allhead.pch"
+// OpenGL specific
+#include <OpenGL/OpenGL.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <OpenGL/glext.h>
 
 namespace MathLib
 {
@@ -22,5 +27,5 @@ namespace MathLib
 #include "util_vector.h"
 
 // Data packaging
-#include "data_mapping.h"
+#include "data_mappable.h"
 #include "data_pack.h"

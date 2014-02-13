@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BD31F30D18A4B70A0083E283 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD31F30C18A4B70A0083E283 /* OpenGL.framework */; };
 		BDABF31018A3599A00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF30F18A3599A00E86A29 /* utilities.dylib */; };
-		BDABF31418A359E400E86A29 /* clienthead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31318A359E400E86A29 /* clienthead.pch */; };
+		BDABF31418A359E400E86A29 /* clienthead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31318A359E400E86A29 /* clienthead.h */; };
 		BDABF31618A359EF00E86A29 /* IClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31518A359EF00E86A29 /* IClient.h */; };
 		BDABF31918A359FE00E86A29 /* CClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF31718A359FE00E86A29 /* CClient.cpp */; };
 		BDABF31A18A359FE00E86A29 /* CClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31818A359FE00E86A29 /* CClient.h */; };
@@ -22,7 +22,7 @@
 		BD31F30C18A4B70A0083E283 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDABF30818A3596000E86A29 /* client.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = client.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDABF30F18A3599A00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/utilities/../bin/utilities.dylib; sourceTree = "<absolute>"; };
-		BDABF31318A359E400E86A29 /* clienthead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clienthead.pch; sourceTree = "<group>"; };
+		BDABF31318A359E400E86A29 /* clienthead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clienthead.h; sourceTree = "<group>"; };
 		BDABF31518A359EF00E86A29 /* IClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IClient.h; path = public/IClient.h; sourceTree = "<group>"; };
 		BDABF31718A359FE00E86A29 /* CClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CClient.cpp; path = source/CClient.cpp; sourceTree = "<group>"; };
 		BDABF31818A359FE00E86A29 /* CClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CClient.h; path = source/CClient.h; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				BDABF31718A359FE00E86A29 /* CClient.cpp */,
 				BDABF31818A359FE00E86A29 /* CClient.h */,
 				BDABF31518A359EF00E86A29 /* IClient.h */,
-				BDABF31318A359E400E86A29 /* clienthead.pch */,
+				BDABF31318A359E400E86A29 /* clienthead.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -94,7 +94,7 @@
 				BDABF31A18A359FE00E86A29 /* CClient.h in Headers */,
 				BDABF32018A35C2700E86A29 /* entity_dictionary.h in Headers */,
 				BDABF31F18A35C2700E86A29 /* ent_base.h in Headers */,
-				BDABF31418A359E400E86A29 /* clienthead.pch in Headers */,
+				BDABF31418A359E400E86A29 /* clienthead.h in Headers */,
 				BDABF31618A359EF00E86A29 /* IClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +232,7 @@
 				CONFIGURATION_BUILD_DIR = ../../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = clienthead.pch;
+				GCC_PREFIX_HEADER = clienthead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
@@ -255,7 +255,7 @@
 				CONFIGURATION_BUILD_DIR = ../../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = clienthead.pch;
+				GCC_PREFIX_HEADER = clienthead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,
