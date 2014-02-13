@@ -18,8 +18,28 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="enginehead.h" />
+    <ClInclude Include="public\IEngine.h" />
+    <ClInclude Include="source\AppVarHolder.h" />
+    <ClInclude Include="source\AppVariables.h" />
+    <ClInclude Include="source\CEngine.h" />
+    <ClInclude Include="source\CEngineClient.h" />
+    <ClInclude Include="source\CEngineState.h" />
+    <ClInclude Include="source\CExtensions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="enginehead.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="source\AppVariables.cpp" />
+    <ClCompile Include="source\CEngine.cpp" />
+    <ClCompile Include="source\CEngineClient.cpp" />
+    <ClCompile Include="source\CExtensions.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{33AAE0B7-C3CA-4423-AECB-227B30B7CD3A}</ProjectGuid>
+    <ProjectGuid>{233A91AC-2BDD-4C0A-88AF-F9144AD196B6}</ProjectGuid>
     <RootNamespace>utilities</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -91,10 +111,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\common;..\platform;.\common;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN;_64BIT;INCLUDE_WINDOWS_HEADER;UTILITIES_EXPORT;_HAS_EXCEPTIONS=0;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;.\public;..\common;..\platform;..\utilities;..\utilities\data;..\utilities\interfaces;..\utilities\memory;..\utilities\container;..\utilities\script;..\math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN;_64BIT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>allhead.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>enginehead.h</PrecompiledHeaderFile>
       <WarningLevel>Level4</WarningLevel>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
@@ -140,10 +160,10 @@ exit 1
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\common;..\platform;.\common;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN;_64BIT;INCLUDE_WINDOWS_HEADER;UTILITIES_EXPORT;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\;.\public;..\common;..\platform;..\utilities;..\utilities\data;..\utilities\interfaces;..\utilities\memory;..\utilities\container;..\utilities\script;..\math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN;_64BIT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>allhead.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>enginehead.h</PrecompiledHeaderFile>
       <WarningLevel>Level4</WarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -189,141 +209,6 @@ exit 1
       <Message>Publishing to ..\bin\.</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\common\allhead.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="common\debug.cpp" />
-    <ClCompile Include="common\variant.cpp" />
-    <ClCompile Include="data\data_factory.cpp" />
-    <ClCompile Include="data\data_mappable.cpp" />
-    <ClCompile Include="data\data_networkpack.cpp" />
-    <ClCompile Include="data\data_networkunpack.cpp" />
-    <ClCompile Include="data\data_pack.cpp" />
-    <ClCompile Include="hashing\Bitslice.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Bitvec.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\crc.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\lookup3.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\md5.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash1.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash2.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash3.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Platform.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\PMurHash.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Random.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\sha1.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Spooky.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\SuperFastHash.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Types.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="interfaces\interfaces.cpp" />
-    <ClCompile Include="logging.cpp" />
-    <ClCompile Include="memory\memory_bucket.cpp" />
-    <ClCompile Include="memory\memory_pool.cpp" />
-    <ClCompile Include="script\keyvalues.cpp" />
-    <ClCompile Include="script\lexer.cpp" />
-    <ClCompile Include="string\string_helpers.cpp" />
-    <ClCompile Include="string\string_pool.cpp" />
-    <ClCompile Include="string\util_filepath.cpp" />
-    <ClCompile Include="string\util_string.cpp" />
-    <ClCompile Include="threading\util_thread.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="time\util_time.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="utilities.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="common\debug.h" />
-    <ClInclude Include="common\util_random.h" />
-    <ClInclude Include="common\variant.h" />
-    <ClInclude Include="container\binarytree.h" />
-    <ClInclude Include="container\treenodes.h" />
-    <ClInclude Include="container\util_vector.h" />
-    <ClInclude Include="data\data_bits.h" />
-    <ClInclude Include="data\data_factory.h" />
-    <ClInclude Include="data\data_filepack.h" />
-    <ClInclude Include="data\data_mappable.h" />
-    <ClInclude Include="data\data_mapping.h" />
-    <ClInclude Include="data\data_networkpack.h" />
-    <ClInclude Include="data\data_networkunpack.h" />
-    <ClInclude Include="data\data_network_helpers.h" />
-    <ClInclude Include="data\data_pack.h" />
-    <ClInclude Include="data\data_types.h" />
-    <ClInclude Include="gstdlib\gstdlib.h" />
-    <ClInclude Include="hashing\Bitvec.h" />
-    <ClInclude Include="hashing\MurmurHash1.h" />
-    <ClInclude Include="hashing\MurmurHash2.h" />
-    <ClInclude Include="hashing\MurmurHash3.h" />
-    <ClInclude Include="hashing\Platform.h" />
-    <ClInclude Include="hashing\PMurHash.h" />
-    <ClInclude Include="hashing\pstdint.h" />
-    <ClInclude Include="hashing\Random.h" />
-    <ClInclude Include="hashing\sha1.h" />
-    <ClInclude Include="hashing\Spooky.h" />
-    <ClInclude Include="hashing\Types.h" />
-    <ClInclude Include="interfaces\interfaces.h" />
-    <ClInclude Include="logging.h" />
-    <ClInclude Include="memory\memory_bucket.h" />
-    <ClInclude Include="memory\memory_interface.h" />
-    <ClInclude Include="memory\memory_pool.h" />
-    <ClInclude Include="script\keyvalues.h" />
-    <ClInclude Include="script\lexer.h" />
-    <ClInclude Include="string\string_helpers.h" />
-    <ClInclude Include="string\string_pointer.h" />
-    <ClInclude Include="string\string_pool.h" />
-    <ClInclude Include="string\util_filepath.h" />
-    <ClInclude Include="string\util_string.h" />
-    <ClInclude Include="threading\util_thread.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="time\util_perf_timer.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="time\util_simple_timer.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="time\util_time.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="utilities.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

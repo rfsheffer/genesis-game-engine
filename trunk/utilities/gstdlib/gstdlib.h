@@ -48,6 +48,10 @@ inline int c99_snprintf(char* str, size_t size, const char* format, ...)
 #define strcasecmp stricmp
 #define strncasecmp strnicmp
 
+// Microsoft "safe" versions
+#define vsnprintf vsnprintf_s
+#define strncat strncat_s
+
 #endif // _WIN
 
 #endif // G_STDLIB_H
