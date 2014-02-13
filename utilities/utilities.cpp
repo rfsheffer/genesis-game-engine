@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
-#include "allhead.pch"
+#include "allhead.h"
 
 static IPlatform   *g_pPlatformInterface = NULL;
 

@@ -7,7 +7,7 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
-#include "allhead.pch"
+#include "allhead.h"
 #include "interfaces.h"
 
 static InterfaceRegistration g_interfaceRegistration;

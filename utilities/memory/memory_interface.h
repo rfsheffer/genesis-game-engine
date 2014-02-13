@@ -91,4 +91,7 @@ public:
                                 unsigned int uiFileLine) = 0;
 };
 
+UTILITIES_FUNCTION
+iMemoryPool *GetMemoryPool(void);
+
 #endif // MEMORY_POOL_INTERFACE_H

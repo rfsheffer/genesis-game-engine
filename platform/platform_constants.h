@@ -18,6 +18,7 @@
 
 #pragma once
 
+/*
 // Modify the following defines if you have to target a platform prior to the ones specified below.
 // Refer to MSDN for the latest info on corresponding values for different platforms.
 #ifndef WINVER                          // Specifies that the minimum required platform is Windows Vista.
@@ -35,6 +36,8 @@
 #ifndef _WIN32_IE                       // Specifies that the minimum required platform is Internet Explorer 7.0.
 #define _WIN32_IE 0x0700        // Change this to the appropriate value to target other versions of IE.
 #endif
+
+*/
 
 #endif
 
@@ -72,6 +75,7 @@
 
 // Long is treated differently by MSVC and GCC so to prevent compatibility
 // problems I am disabling it.
+// TODO: Too much long usage in our dependancies, look into solution. We shouldn't have to use long at all.
 //#define long        do_not_use_long_use_int32_or_int64_instead
 
 //****************************************************
@@ -81,6 +85,7 @@
 // Function Pointer.
 //typedef void* (*pFunc)();
 
+/*
 #if defined(_WIN)
 
 // Used for dll exporting and importing
@@ -112,6 +117,7 @@
 #else
 #error "Unsupported Platform."
 #endif
+*/
 
 //****************************************************
 // Used for standard calling conventions
@@ -138,7 +144,7 @@
 #endif
 
 // highest possible value of an unsigned int, also the return of a not found string.
-static const size_t NPOS = -1;
+static const size_t NPOS = ULLONG_MAX;
 
 #if defined(__GNUC__)
     #undef offsetof

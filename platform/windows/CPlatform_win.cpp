@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
-#include "allhead.pch"
+#include "allhead.h"
 #include "CPlatform.h"
 
 //------------------------------------------------------------------------------
@@ -124,8 +124,8 @@ void CPlatform::SwapGraphicsContextBuffers(void) const
 const char *CPlatform::GetAbsoluteApplicationPath(void) const
 {
     static char szFileLine[MAX_PATH]; szFileLine[0] = '\0';
-    static const char *appdir = " ";
-    strncat(szFileLine, appdir, MAX_PATH);
+    //static const char *appdir = " ";
+    //strncat(szFileLine, appdir, MAX_PATH);
     
     // Take off the file name
     for(int i = MAX_PATH - 1; i >= 0; --i)

@@ -50,6 +50,54 @@
     <ClCompile Include="interfaces\interfaces.cpp">
       <Filter>Source Files\interfaces</Filter>
     </ClCompile>
+    <ClCompile Include="string\string_helpers.cpp">
+      <Filter>Source Files\string</Filter>
+    </ClCompile>
+    <ClCompile Include="string\string_pool.cpp">
+      <Filter>Source Files\string</Filter>
+    </ClCompile>
+    <ClCompile Include="string\util_filepath.cpp">
+      <Filter>Source Files\string</Filter>
+    </ClCompile>
+    <ClCompile Include="string\util_string.cpp">
+      <Filter>Source Files\string</Filter>
+    </ClCompile>
+    <ClCompile Include="time\util_time.cpp">
+      <Filter>Source Files\time</Filter>
+    </ClCompile>
+    <ClCompile Include="threading\util_thread.cpp">
+      <Filter>Source Files\threading</Filter>
+    </ClCompile>
+    <ClCompile Include="script\keyvalues.cpp">
+      <Filter>Source Files\script</Filter>
+    </ClCompile>
+    <ClCompile Include="script\lexer.cpp">
+      <Filter>Source Files\script</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\memory_bucket.cpp">
+      <Filter>Source Files\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\memory_pool.cpp">
+      <Filter>Source Files\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="data\data_factory.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="data\data_mappable.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="data\data_networkpack.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="data\data_networkunpack.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="data\data_pack.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="common\variant.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="logging.h">
@@ -57,6 +105,102 @@
     </ClInclude>
     <ClInclude Include="interfaces\interfaces.h">
       <Filter>Source Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="string\string_helpers.h">
+      <Filter>Source Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\string_pointer.h">
+      <Filter>Source Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\string_pool.h">
+      <Filter>Source Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\util_filepath.h">
+      <Filter>Source Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="string\util_string.h">
+      <Filter>Source Files\string</Filter>
+    </ClInclude>
+    <ClInclude Include="time\util_perf_timer.h">
+      <Filter>Source Files\time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\util_simple_timer.h">
+      <Filter>Source Files\time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\util_time.h">
+      <Filter>Source Files\time</Filter>
+    </ClInclude>
+    <ClInclude Include="threading\util_thread.h">
+      <Filter>Source Files\threading</Filter>
+    </ClInclude>
+    <ClInclude Include="script\keyvalues.h">
+      <Filter>Source Files\script</Filter>
+    </ClInclude>
+    <ClInclude Include="script\lexer.h">
+      <Filter>Source Files\script</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\memory_bucket.h">
+      <Filter>Source Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\memory_interface.h">
+      <Filter>Source Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\memory_pool.h">
+      <Filter>Source Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_bits.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_factory.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_filepack.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_mappable.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_mapping.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_network_helpers.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_networkpack.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_networkunpack.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_pack.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="data\data_types.h">
+      <Filter>Source Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="container\binarytree.h">
+      <Filter>Source Files\container</Filter>
+    </ClInclude>
+    <ClInclude Include="container\treenodes.h">
+      <Filter>Source Files\container</Filter>
+    </ClInclude>
+    <ClInclude Include="container\util_vector.h">
+      <Filter>Source Files\container</Filter>
+    </ClInclude>
+    <ClInclude Include="common\debug.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\util_random.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\variant.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="gstdlib\gstdlib.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

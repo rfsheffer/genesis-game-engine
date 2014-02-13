@@ -46,6 +46,7 @@ inline int c99_snprintf(char* str, size_t size, const char* format, ...)
 
 #define snprintf c99_snprintf
 #define strcasecmp stricmp
+#define strncasecmp strnicmp
 
 #endif // _WIN
 
