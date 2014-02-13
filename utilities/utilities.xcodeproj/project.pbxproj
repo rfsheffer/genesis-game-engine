@@ -23,6 +23,31 @@
 		BD1FACDB1890E1D1001B76BE /* memory_bucket.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1FACD91890E1D1001B76BE /* memory_bucket.h */; };
 		BD33303518A39A3E0085E98A /* logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD33303318A39A3E0085E98A /* logging.cpp */; };
 		BD33303618A39A3E0085E98A /* logging.h in Headers */ = {isa = PBXBuildFile; fileRef = BD33303418A39A3E0085E98A /* logging.h */; };
+		BD5D1EAF18AC851000579FB7 /* crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EAE18AC851000579FB7 /* crc.cpp */; };
+		BD5D1EB618AC855200579FB7 /* MurmurHash1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EB018AC855200579FB7 /* MurmurHash1.cpp */; };
+		BD5D1EB718AC855200579FB7 /* MurmurHash1.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EB118AC855200579FB7 /* MurmurHash1.h */; };
+		BD5D1EB818AC855200579FB7 /* MurmurHash2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EB218AC855200579FB7 /* MurmurHash2.cpp */; };
+		BD5D1EB918AC855200579FB7 /* MurmurHash2.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EB318AC855200579FB7 /* MurmurHash2.h */; };
+		BD5D1EBA18AC855200579FB7 /* MurmurHash3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EB418AC855200579FB7 /* MurmurHash3.cpp */; };
+		BD5D1EBB18AC855200579FB7 /* MurmurHash3.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EB518AC855200579FB7 /* MurmurHash3.h */; };
+		BD5D1EBD18AC855E00579FB7 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EBC18AC855E00579FB7 /* md5.cpp */; };
+		BD5D1EBF18AC877300579FB7 /* lookup3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EBE18AC877300579FB7 /* lookup3.cpp */; };
+		BD5D1EC218AC878700579FB7 /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EC018AC878700579FB7 /* Platform.cpp */; };
+		BD5D1EC318AC878700579FB7 /* Platform.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EC118AC878700579FB7 /* Platform.h */; };
+		BD5D1EC618AC879C00579FB7 /* Spooky.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EC418AC879C00579FB7 /* Spooky.cpp */; };
+		BD5D1EC718AC879C00579FB7 /* Spooky.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EC518AC879C00579FB7 /* Spooky.h */; };
+		BD5D1ECA18AC87B200579FB7 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EC818AC87B200579FB7 /* sha1.cpp */; };
+		BD5D1ECB18AC87B200579FB7 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EC918AC87B200579FB7 /* sha1.h */; };
+		BD5D1ECD18AC87FE00579FB7 /* SuperFastHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ECC18AC87FE00579FB7 /* SuperFastHash.cpp */; };
+		BD5D1ED018AC881700579FB7 /* Types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ECE18AC881700579FB7 /* Types.cpp */; };
+		BD5D1ED118AC881700579FB7 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1ECF18AC881700579FB7 /* Types.h */; };
+		BD5D1ED618AC888400579FB7 /* PMurHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ED218AC888400579FB7 /* PMurHash.cpp */; };
+		BD5D1ED718AC888400579FB7 /* PMurHash.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1ED318AC888400579FB7 /* PMurHash.h */; };
+		BD5D1ED818AC888400579FB7 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ED418AC888400579FB7 /* Random.cpp */; };
+		BD5D1ED918AC888400579FB7 /* Random.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1ED518AC888400579FB7 /* Random.h */; };
+		BD5D1EDE18AC88F300579FB7 /* Bitslice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EDA18AC88F300579FB7 /* Bitslice.cpp */; };
+		BD5D1EDF18AC88F300579FB7 /* Bitvec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EDB18AC88F300579FB7 /* Bitvec.cpp */; };
+		BD5D1EE018AC88F300579FB7 /* Bitvec.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EDC18AC88F300579FB7 /* Bitvec.h */; };
 		BDABF2D518A2CD8700E86A29 /* data_networkpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2CF18A2CD8700E86A29 /* data_networkpack.cpp */; };
 		BDABF2D618A2CD8700E86A29 /* data_networkpack.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2D018A2CD8700E86A29 /* data_networkpack.h */; };
 		BDABF2D718A2CD8700E86A29 /* data_networkunpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2D118A2CD8700E86A29 /* data_networkunpack.cpp */; };
@@ -81,6 +106,31 @@
 		BD1FACD91890E1D1001B76BE /* memory_bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memory_bucket.h; path = memory/memory_bucket.h; sourceTree = "<group>"; };
 		BD33303318A39A3E0085E98A /* logging.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = logging.cpp; sourceTree = "<group>"; };
 		BD33303418A39A3E0085E98A /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logging.h; sourceTree = "<group>"; };
+		BD5D1EAE18AC851000579FB7 /* crc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = crc.cpp; path = hashing/crc.cpp; sourceTree = "<group>"; };
+		BD5D1EB018AC855200579FB7 /* MurmurHash1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MurmurHash1.cpp; path = hashing/MurmurHash1.cpp; sourceTree = "<group>"; };
+		BD5D1EB118AC855200579FB7 /* MurmurHash1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MurmurHash1.h; path = hashing/MurmurHash1.h; sourceTree = "<group>"; };
+		BD5D1EB218AC855200579FB7 /* MurmurHash2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MurmurHash2.cpp; path = hashing/MurmurHash2.cpp; sourceTree = "<group>"; };
+		BD5D1EB318AC855200579FB7 /* MurmurHash2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MurmurHash2.h; path = hashing/MurmurHash2.h; sourceTree = "<group>"; };
+		BD5D1EB418AC855200579FB7 /* MurmurHash3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MurmurHash3.cpp; path = hashing/MurmurHash3.cpp; sourceTree = "<group>"; };
+		BD5D1EB518AC855200579FB7 /* MurmurHash3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MurmurHash3.h; path = hashing/MurmurHash3.h; sourceTree = "<group>"; };
+		BD5D1EBC18AC855E00579FB7 /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = md5.cpp; path = hashing/md5.cpp; sourceTree = "<group>"; };
+		BD5D1EBE18AC877300579FB7 /* lookup3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lookup3.cpp; path = hashing/lookup3.cpp; sourceTree = "<group>"; };
+		BD5D1EC018AC878700579FB7 /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform.cpp; path = hashing/Platform.cpp; sourceTree = "<group>"; };
+		BD5D1EC118AC878700579FB7 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Platform.h; path = hashing/Platform.h; sourceTree = "<group>"; };
+		BD5D1EC418AC879C00579FB7 /* Spooky.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Spooky.cpp; path = hashing/Spooky.cpp; sourceTree = "<group>"; };
+		BD5D1EC518AC879C00579FB7 /* Spooky.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spooky.h; path = hashing/Spooky.h; sourceTree = "<group>"; };
+		BD5D1EC818AC87B200579FB7 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = hashing/sha1.cpp; sourceTree = "<group>"; };
+		BD5D1EC918AC87B200579FB7 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = hashing/sha1.h; sourceTree = "<group>"; };
+		BD5D1ECC18AC87FE00579FB7 /* SuperFastHash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SuperFastHash.cpp; path = hashing/SuperFastHash.cpp; sourceTree = "<group>"; };
+		BD5D1ECE18AC881700579FB7 /* Types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Types.cpp; path = hashing/Types.cpp; sourceTree = "<group>"; };
+		BD5D1ECF18AC881700579FB7 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Types.h; path = hashing/Types.h; sourceTree = "<group>"; };
+		BD5D1ED218AC888400579FB7 /* PMurHash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMurHash.cpp; path = hashing/PMurHash.cpp; sourceTree = "<group>"; };
+		BD5D1ED318AC888400579FB7 /* PMurHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMurHash.h; path = hashing/PMurHash.h; sourceTree = "<group>"; };
+		BD5D1ED418AC888400579FB7 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Random.cpp; path = hashing/Random.cpp; sourceTree = "<group>"; };
+		BD5D1ED518AC888400579FB7 /* Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Random.h; path = hashing/Random.h; sourceTree = "<group>"; };
+		BD5D1EDA18AC88F300579FB7 /* Bitslice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bitslice.cpp; path = hashing/Bitslice.cpp; sourceTree = "<group>"; };
+		BD5D1EDB18AC88F300579FB7 /* Bitvec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bitvec.cpp; path = hashing/Bitvec.cpp; sourceTree = "<group>"; };
+		BD5D1EDC18AC88F300579FB7 /* Bitvec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bitvec.h; path = hashing/Bitvec.h; sourceTree = "<group>"; };
 		BDABF2CF18A2CD8700E86A29 /* data_networkpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_networkpack.cpp; path = data/data_networkpack.cpp; sourceTree = "<group>"; };
 		BDABF2D018A2CD8700E86A29 /* data_networkpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_networkpack.h; path = data/data_networkpack.h; sourceTree = "<group>"; };
 		BDABF2D118A2CD8700E86A29 /* data_networkunpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_networkunpack.cpp; path = data/data_networkunpack.cpp; sourceTree = "<group>"; };
@@ -226,6 +276,31 @@
 		BDB9FA8B18A1C7940049A361 /* Hashing */ = {
 			isa = PBXGroup;
 			children = (
+				BD5D1EDA18AC88F300579FB7 /* Bitslice.cpp */,
+				BD5D1EDB18AC88F300579FB7 /* Bitvec.cpp */,
+				BD5D1EDC18AC88F300579FB7 /* Bitvec.h */,
+				BD5D1ED218AC888400579FB7 /* PMurHash.cpp */,
+				BD5D1ED318AC888400579FB7 /* PMurHash.h */,
+				BD5D1ED418AC888400579FB7 /* Random.cpp */,
+				BD5D1ED518AC888400579FB7 /* Random.h */,
+				BD5D1ECE18AC881700579FB7 /* Types.cpp */,
+				BD5D1ECF18AC881700579FB7 /* Types.h */,
+				BD5D1ECC18AC87FE00579FB7 /* SuperFastHash.cpp */,
+				BD5D1EC818AC87B200579FB7 /* sha1.cpp */,
+				BD5D1EC918AC87B200579FB7 /* sha1.h */,
+				BD5D1EC418AC879C00579FB7 /* Spooky.cpp */,
+				BD5D1EC518AC879C00579FB7 /* Spooky.h */,
+				BD5D1EC018AC878700579FB7 /* Platform.cpp */,
+				BD5D1EC118AC878700579FB7 /* Platform.h */,
+				BD5D1EBE18AC877300579FB7 /* lookup3.cpp */,
+				BD5D1EBC18AC855E00579FB7 /* md5.cpp */,
+				BD5D1EB018AC855200579FB7 /* MurmurHash1.cpp */,
+				BD5D1EB118AC855200579FB7 /* MurmurHash1.h */,
+				BD5D1EB218AC855200579FB7 /* MurmurHash2.cpp */,
+				BD5D1EB318AC855200579FB7 /* MurmurHash2.h */,
+				BD5D1EB418AC855200579FB7 /* MurmurHash3.cpp */,
+				BD5D1EB518AC855200579FB7 /* MurmurHash3.h */,
+				BD5D1EAE18AC851000579FB7 /* crc.cpp */,
 			);
 			name = Hashing;
 			sourceTree = "<group>";
@@ -296,6 +371,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5D1ED718AC888400579FB7 /* PMurHash.h in Headers */,
+				BD5D1ED118AC881700579FB7 /* Types.h in Headers */,
 				BDB9FB0618A250000049A361 /* treenodes.h in Headers */,
 				BDABF2E218A2D29300E86A29 /* data_factory.h in Headers */,
 				BDB9FA9C18A1C8050049A361 /* util_thread.h in Headers */,
@@ -303,19 +380,25 @@
 				BD1FACC4188BAFDA001B76BE /* debug.h in Headers */,
 				BD1FACDB1890E1D1001B76BE /* memory_bucket.h in Headers */,
 				BD33303618A39A3E0085E98A /* logging.h in Headers */,
+				BD5D1EC718AC879C00579FB7 /* Spooky.h in Headers */,
 				BDB9FA9618A1C7F80049A361 /* util_simple_timer.h in Headers */,
 				BDB9FA9818A1C7F80049A361 /* util_time.h in Headers */,
+				BD5D1ED918AC888400579FB7 /* Random.h in Headers */,
 				BDB9FAF818A24FDD0049A361 /* data_network_helpers.h in Headers */,
 				BDB9FAA418A1C8100049A361 /* util_filepath.h in Headers */,
+				BD5D1EB718AC855200579FB7 /* MurmurHash1.h in Headers */,
 				BDB9FA9518A1C7F80049A361 /* util_perf_timer.h in Headers */,
 				BDB9FAB018A1C8210049A361 /* lexer.h in Headers */,
 				BDB9FB0118A24FDD0049A361 /* data_types.h in Headers */,
 				BDB9FAA618A1C8100049A361 /* string_helpers.h in Headers */,
 				BDB9FAF418A24FDD0049A361 /* data_filepack.h in Headers */,
+				BD5D1EE018AC88F300579FB7 /* Bitvec.h in Headers */,
 				BDABF2D618A2CD8700E86A29 /* data_networkpack.h in Headers */,
 				BD1FACD2188DF0D0001B76BE /* string_pointer.h in Headers */,
+				BD5D1EB918AC855200579FB7 /* MurmurHash2.h in Headers */,
 				BD14252518A1C0A400E3CFB3 /* floatwatch.h in Headers */,
 				BDB9FAFE18A24FDD0049A361 /* data_pack.h in Headers */,
+				BD5D1EBB18AC855200579FB7 /* MurmurHash3.h in Headers */,
 				BDB9FAAE18A1C8210049A361 /* keyvalues.h in Headers */,
 				BDB9FB0518A250000049A361 /* binarytree.h in Headers */,
 				BDB9FAF718A24FDD0049A361 /* data_mapping.h in Headers */,
@@ -325,7 +408,9 @@
 				BDABF2E618A2D2BB00E86A29 /* data_mappable.h in Headers */,
 				BDB9FAF318A24FDD0049A361 /* data_bits.h in Headers */,
 				BDABF2D818A2CD8700E86A29 /* data_networkunpack.h in Headers */,
+				BD5D1ECB18AC87B200579FB7 /* sha1.h in Headers */,
 				BD1FACCA188BB06A001B76BE /* memory_pool.h in Headers */,
+				BD5D1EC318AC878700579FB7 /* Platform.h in Headers */,
 				BDB9FAA818A1C8100049A361 /* util_string.h in Headers */,
 				BD1FACD4188DF0D0001B76BE /* string_pool.h in Headers */,
 			);
@@ -385,23 +470,38 @@
 				BDB9FA9718A1C7F80049A361 /* util_time.cpp in Sources */,
 				BDB9FAA518A1C8100049A361 /* string_helpers.cpp in Sources */,
 				BDB9FAAF18A1C8210049A361 /* lexer.cpp in Sources */,
+				BD5D1ED618AC888400579FB7 /* PMurHash.cpp in Sources */,
 				BD33303518A39A3E0085E98A /* logging.cpp in Sources */,
 				BDB9FAA718A1C8100049A361 /* util_string.cpp in Sources */,
+				BD5D1EDF18AC88F300579FB7 /* Bitvec.cpp in Sources */,
+				BD5D1ECD18AC87FE00579FB7 /* SuperFastHash.cpp in Sources */,
 				BDB9FA9B18A1C8050049A361 /* util_thread.cpp in Sources */,
+				BD5D1EAF18AC851000579FB7 /* crc.cpp in Sources */,
+				BD5D1EBA18AC855200579FB7 /* MurmurHash3.cpp in Sources */,
+				BD5D1EC618AC879C00579FB7 /* Spooky.cpp in Sources */,
 				BDABF2EE18A2E14F00E86A29 /* interfaces.cpp in Sources */,
+				BD5D1EBF18AC877300579FB7 /* lookup3.cpp in Sources */,
 				BDB9FAFD18A24FDD0049A361 /* data_pack.cpp in Sources */,
 				BDABF2D518A2CD8700E86A29 /* data_networkpack.cpp in Sources */,
 				BDB9FAA318A1C8100049A361 /* util_filepath.cpp in Sources */,
 				BD1FACDA1890E1D1001B76BE /* memory_bucket.cpp in Sources */,
 				BD14252718A1C0A400E3CFB3 /* variant.cpp in Sources */,
+				BD5D1ED818AC888400579FB7 /* Random.cpp in Sources */,
+				BD5D1EB618AC855200579FB7 /* MurmurHash1.cpp in Sources */,
 				BDB9FB0A18A2508C0049A361 /* utilities.cpp in Sources */,
 				BDABF2D718A2CD8700E86A29 /* data_networkunpack.cpp in Sources */,
+				BD5D1EB818AC855200579FB7 /* MurmurHash2.cpp in Sources */,
 				BD1FACC9188BB06A001B76BE /* memory_pool.cpp in Sources */,
 				BDB9FAAD18A1C8210049A361 /* keyvalues.cpp in Sources */,
 				BD1FACD3188DF0D0001B76BE /* string_pool.cpp in Sources */,
+				BD5D1EBD18AC855E00579FB7 /* md5.cpp in Sources */,
+				BD5D1ED018AC881700579FB7 /* Types.cpp in Sources */,
 				BDABF2E118A2D29300E86A29 /* data_factory.cpp in Sources */,
 				BD1FACC3188BAFDA001B76BE /* debug.cpp in Sources */,
+				BD5D1EDE18AC88F300579FB7 /* Bitslice.cpp in Sources */,
+				BD5D1EC218AC878700579FB7 /* Platform.cpp in Sources */,
 				BDABF2E518A2D2BB00E86A29 /* data_mappable.cpp in Sources */,
+				BD5D1ECA18AC87B200579FB7 /* sha1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

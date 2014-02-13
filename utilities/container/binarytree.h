@@ -9,6 +9,10 @@
 #ifndef UTIL_BINARY_TREE_H
 #define UTIL_BINARY_TREE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "util_variant.h"
 #include "util_treenode.h"
 

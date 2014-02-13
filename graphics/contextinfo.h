@@ -9,6 +9,10 @@
 #ifndef GRAPHICS_CONTEXT_INFO_H
 #define GRAPHICS_CONTEXT_INFO_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace graphics
 {
     

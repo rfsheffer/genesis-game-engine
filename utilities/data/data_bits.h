@@ -9,6 +9,10 @@
 #ifndef DATA_BITS_H
 #define DATA_BITS_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace data
 {
     //--------------------------------------------------------------------------

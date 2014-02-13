@@ -9,6 +9,10 @@
 #ifndef IGRAPHICS_H
 #define IGRAPHICS_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "iExtension.h"
 
 #define GRAPHICS_INTERFACE_NAME         "graphics"

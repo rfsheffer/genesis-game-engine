@@ -6,6 +6,12 @@
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
 //
 
+#if defined(_CLIENT)
+#include "clienthead.h"
+#elif defined(_SERVER)
+#include "serverhead.h"
+#endif
+
 #include "ent_base.h"
 #include "entity_dictionary.h"
 

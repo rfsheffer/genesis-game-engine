@@ -9,6 +9,10 @@
 #ifndef C_ENGINE_CLIENT
 #define C_ENGINE_CLIENT
 
+#ifdef _WIN
+#pragma once
+#endif
+
 /**
  * This is an engine client. When an engine is in control of a number of
  * other engines via a network, the engine will contain a list of engine

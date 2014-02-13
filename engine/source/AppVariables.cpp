@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#include "enginehead.h"
 #include "AppVariables.h"
 #include "ascii_table.h"
 

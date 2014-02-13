@@ -10,6 +10,10 @@
 #ifndef launcher_foundation_constants_h
 #define launcher_foundation_constants_h
 
+#ifdef _WIN
+#pragma once
+#endif
+
 /**
  * The Foundation namespace.
  * If anything is changed here, all libraries will need to be recompiled.

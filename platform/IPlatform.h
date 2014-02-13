@@ -9,6 +9,10 @@
 #ifndef IPLATFORM_H
 #define IPLATFORM_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #define PLATFORM_INTERFACE_NAME     "platform"
 #define PLATFORM_INTERFACE_VERSION  1
 

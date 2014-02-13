@@ -9,6 +9,10 @@
 #ifndef LEXER_H
 #define LEXER_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace ScriptParse
 {
     // Defines how many ASCII characters are usable

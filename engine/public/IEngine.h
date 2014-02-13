@@ -9,6 +9,10 @@
 #ifndef IENGINE_H
 #define IENGINE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #define ENGINE_INTERFACE_NAME           "engine"
 #define ENGINE_INTERFACE_VERSION        1
 

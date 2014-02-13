@@ -9,6 +9,10 @@
 #ifndef MEMORY_BUCKET_H
 #define MEMORY_BUCKET_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "memory_pool.h"
 
 //------------------------------------------------------------------------------

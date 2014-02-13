@@ -10,6 +10,10 @@
 #ifndef CENGINE_H
 #define CENGINE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "IEngine.h"
 #include "CExtensions.h"
 #include "CEngineClient.h"

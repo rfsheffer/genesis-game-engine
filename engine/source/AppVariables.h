@@ -9,6 +9,10 @@
 #ifndef APPVARIABLES_H
 #define APPVARIABLES_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #define MAX_APPVAR_NAME_SIZE        64
 
 /**

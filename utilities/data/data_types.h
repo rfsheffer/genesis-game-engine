@@ -10,6 +10,10 @@
 #ifndef DATA_TYPES_H
 #define DATA_TYPES_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 // Sizeof types
 #define FLOAT_SIZE		 sizeof( float )
 #define INT_SIZE		 sizeof( int )

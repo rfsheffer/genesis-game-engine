@@ -9,6 +9,10 @@
 #ifndef STRING_POINTER_H
 #define STRING_POINTER_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 class CStringPtr
 {
 public:

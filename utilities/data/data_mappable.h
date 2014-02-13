@@ -9,6 +9,10 @@
 #ifndef DATA_MAPPABLE_H
 #define DATA_MAPPABLE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "data_mapping.h"
 
 //------------------------------------------------------------------------------

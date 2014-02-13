@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
+#include "graphicshead.h"
 #include "graphics.h"
 
 static IPlatform   *g_pPlatformInterface = NULL;

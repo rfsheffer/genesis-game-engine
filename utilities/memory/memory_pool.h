@@ -9,6 +9,10 @@
 #ifndef MEMORY_POOL
 #define MEMORY_POOL
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "memory_interface.h"
 
 /** Holds an allocator and its name */

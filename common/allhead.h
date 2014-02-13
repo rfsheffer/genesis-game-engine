@@ -7,6 +7,10 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#ifdef _WIN
+#pragma once
+#endif
+
 // Standard C Libraries
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,8 +35,6 @@
 #include <dlfcn.h>
 
 #elif defined(_WIN)
-
-#pragma once
 
 #ifdef INCLUDE_WINDOWS_HEADER
 #include "targetver.h"

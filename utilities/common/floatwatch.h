@@ -9,6 +9,10 @@
 #ifndef CFLOATWATCHER
 #define CFLOATWATCHER
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include <fenv.h>
 
 namespace Utility

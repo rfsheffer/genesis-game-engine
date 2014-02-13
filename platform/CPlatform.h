@@ -9,6 +9,10 @@
 #ifndef CPLATFORM_H
 #define CPLATFORM_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "IPlatform.h"
 
 class CExtensions;

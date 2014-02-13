@@ -9,6 +9,10 @@
 #ifndef IEXTENSIONS_H
 #define IEXTENSIONS_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 class IPlatform;
 
 class IExtensions

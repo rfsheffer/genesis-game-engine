@@ -9,6 +9,10 @@
 #ifndef DATA_FILE_H
 #define DATA_FILE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace DataPacking
 {
     // little-endian "GECF" (Genesis Engine Chunk File)

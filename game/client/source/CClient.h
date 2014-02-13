@@ -11,6 +11,10 @@
 #ifndef CCLIENT_H
 #define CCLIENT_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "IClient.h"
 #include "ent_base.h"
 

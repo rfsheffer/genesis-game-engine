@@ -10,7 +10,9 @@
 #ifndef UTIL_TIMER_H
 #define UTIL_TIMER_H
 
+#ifdef _WIN
 #pragma once
+#endif
 
 #include <sys/time.h>
 #include "util_time.h"

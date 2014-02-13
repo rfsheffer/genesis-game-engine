@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "allhead.h"
 
 // OpenGL specific

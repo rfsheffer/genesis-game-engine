@@ -8,6 +8,7 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#include "clienthead.h"
 #include "CClient.h"
 #include "data_networkunpack.h"
 
