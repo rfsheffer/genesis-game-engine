@@ -1,11 +1,17 @@
-//========= Copyright � 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
-// Purpose: String container class. Has a bunch of useful string functions built in for fast string manipulation.
+//  util_string.h
+//  A string helper class.
 //
-//==================================================================================================//
+//  Created by Ryan Sheffer on 2013-04-21.
+//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
+//
 
 #ifndef UTIL_STRING_H
 #define UTIL_STRING_H
+
+#ifdef _WIN
+#pragma once
+#endif
 
 // Memory for the string is allocated in steps of MEM_ALLOC_STRIDE bytes
 #define MEM_ALLOC_STRIDE		4

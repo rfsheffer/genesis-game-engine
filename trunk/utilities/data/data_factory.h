@@ -6,9 +6,12 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
-#ifndef __utilities__data_factory__
-#define __utilities__data_factory__
+#ifndef DATA_FACTORY_H
+#define DATA_FACTORY_H
+
+#ifdef _WIN
+#pragma once
+#endif
 
 
-
-#endif /* defined(__utilities__data_factory__) */
+#endif // DATA_FACTORY_H

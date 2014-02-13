@@ -10,6 +10,10 @@
 #ifndef ENGINE_STATE_H
 #define ENGINE_STATE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 class CEngineState
 {
 public:

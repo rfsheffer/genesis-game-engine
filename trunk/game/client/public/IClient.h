@@ -9,6 +9,10 @@
 #ifndef I_CLIENT_H
 #define I_CLIENT_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "IExtension.h"
 
 #define CLIENT_INTERFACE_NAME       "client"

@@ -9,6 +9,10 @@
 #ifndef KEY_VALUES_H
 #define KEY_VALUES_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "common/variant.h"
 
 namespace Utility

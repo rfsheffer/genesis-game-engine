@@ -9,6 +9,10 @@
 #ifndef DATA_NETWORK_HELPERS
 #define DATA_NETWORK_HELPERS
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace DataPacking
 {
     /**

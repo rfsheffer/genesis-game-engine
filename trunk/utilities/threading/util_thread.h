@@ -9,6 +9,10 @@
 #ifndef UTIL_THREAD_H
 #define UTIL_THREAD_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include <pthread.h>
 
 namespace Threading {

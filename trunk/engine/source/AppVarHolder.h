@@ -9,6 +9,10 @@
 #ifndef APPVAR_HOLDER_H
 #define APPVAR_HOLDER_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "AppVariables.h"
 
 class AppVar

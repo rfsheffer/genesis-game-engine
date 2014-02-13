@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#ifdef _WIN
+#pragma once
+#endif
 
 #include "allhead.h"
 

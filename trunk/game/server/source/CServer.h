@@ -10,6 +10,10 @@
 #ifndef CSERVER_H
 #define CSERVER_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "IServer.h"
 #include "ent_base.h"
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#include "enginehead.h"
 #include "CExtensions.h"
 #include "keyvalues.h"
 

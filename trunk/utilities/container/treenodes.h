@@ -9,6 +9,10 @@
 #ifndef UTIL_TREE_NODE
 #define UTIL_TREE_NODE
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace Utility
 {
     //--------------------------------------------------------------------------

@@ -9,6 +9,10 @@
 #ifndef STRING_HELPERS_H
 #define STRING_HELPERS_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 namespace Utility
 {
     bool IsFilePath(const char *pszFileName);

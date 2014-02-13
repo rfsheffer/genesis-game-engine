@@ -7,6 +7,7 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#include "serverhead.h"
 #include "CServer.h"
 #include "ent_base.h"
 #include "data_networkpack.h"

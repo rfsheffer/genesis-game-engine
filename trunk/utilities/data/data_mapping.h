@@ -10,6 +10,10 @@
 #ifndef DATA_MAPPING_H
 #define DATA_MAPPING_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "data_types.h"
 
 // Easy way of getting basename, classname.

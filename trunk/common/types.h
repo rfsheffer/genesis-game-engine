@@ -9,6 +9,10 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 //****************************************************
 // Standard Types
 //****************************************************

@@ -9,6 +9,10 @@
 #ifndef ENT_BASE_H
 #define ENT_BASE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 // TODO: Make this a value taken from the master.cfg
 #define MAX_NUM_ENTITIES        256
 

@@ -9,6 +9,10 @@
 #ifndef MEMORY_POOL_INTERFACE_H
 #define MEMORY_POOL_INTERFACE_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 /**
  * The size of the pool for the entire application
  * TODO: This needs to be configurable.

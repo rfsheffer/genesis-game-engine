@@ -9,7 +9,9 @@
 #ifndef UTIL_TIME_H
 #define UTIL_TIME_H
 
+#ifdef _WIN
 #pragma once
+#endif
 
 #if defined(_WIN)
 

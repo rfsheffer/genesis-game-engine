@@ -9,6 +9,10 @@
 #ifndef STRING_POOL_H
 #define STRING_POOL_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "string_pointer.h"
 
 /** Pool of strings */

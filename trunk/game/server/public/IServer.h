@@ -9,6 +9,10 @@
 #ifndef I_SERVER_H
 #define I_SERVER_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "iExtension.h"
 
 #define SERVER_INTERFACE_NAME       "server"

@@ -7,6 +7,7 @@
 //  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
 //
 
+#include "enginehead.h"
 #include "CEngine.h"
 #include "AppVarHolder.h"
 

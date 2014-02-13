@@ -1,4 +1,4 @@
-//========= Copyright © 2012-2013, Ryan Sheffers Game Utility Library ==============================//
+//========= Copyright ï¿½ 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
 // Purpose: A class used for parsing and changing folder paths
 //
@@ -6,6 +6,10 @@
 
 #ifndef UTIL_FILE_PATH_H
 #define UTIL_FILE_PATH_H
+
+#ifdef _WIN
+#pragma once
+#endif
 
 #include "util_string.h"
 

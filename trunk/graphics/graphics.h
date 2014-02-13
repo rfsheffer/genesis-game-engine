@@ -9,6 +9,10 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "igraphics.h"
 
 class Graphics : public IGraphics

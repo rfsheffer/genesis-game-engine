@@ -9,6 +9,10 @@
 #ifndef CEXTENSIONS_H
 #define CEXTENSIONS_H
 
+#ifdef _WIN
+#pragma once
+#endif
+
 #include "iExtension.h"
 
 /*! \def MAX_BASE_EXTENSIONS
