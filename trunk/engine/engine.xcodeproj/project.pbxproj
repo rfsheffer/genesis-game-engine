@@ -19,7 +19,7 @@
 		BDF13C8F16CDCFD4003994AE /* CEngineClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C8B16CDCFD4003994AE /* CEngineClient.h */; };
 		BDF13C9916CDD0EF003994AE /* CExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C9516CDD0EF003994AE /* CExtensions.cpp */; };
 		BDF13C9A16CDD0EF003994AE /* CExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C9616CDD0EF003994AE /* CExtensions.h */; };
-		BDF13C9B16CDD0EF003994AE /* iExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C9716CDD0EF003994AE /* iExtension.h */; };
+		BDF13C9B16CDD0EF003994AE /* IExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C9716CDD0EF003994AE /* IExtension.h */; };
 		BDF13C9C16CDD0EF003994AE /* IExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C9816CDD0EF003994AE /* IExtensions.h */; };
 		BDF13CA316CDD15B003994AE /* IEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C9F16CDD15B003994AE /* IEngine.h */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,7 @@
 		BDF13C8B16CDCFD4003994AE /* CEngineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngineClient.h; path = source/CEngineClient.h; sourceTree = "<group>"; };
 		BDF13C9516CDD0EF003994AE /* CExtensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CExtensions.cpp; path = source/CExtensions.cpp; sourceTree = "<group>"; };
 		BDF13C9616CDD0EF003994AE /* CExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CExtensions.h; path = source/CExtensions.h; sourceTree = "<group>"; };
-		BDF13C9716CDD0EF003994AE /* iExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iExtension.h; path = ../common/iExtension.h; sourceTree = "<group>"; };
+		BDF13C9716CDD0EF003994AE /* IExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IExtension.h; path = ../common/IExtension.h; sourceTree = "<group>"; };
 		BDF13C9816CDD0EF003994AE /* IExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IExtensions.h; path = ../common/IExtensions.h; sourceTree = "<group>"; };
 		BDF13C9F16CDD15B003994AE /* IEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IEngine.h; path = public/IEngine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,7 +93,7 @@
 		BDF13C9316CDD0A1003994AE /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BDF13C9716CDD0EF003994AE /* iExtension.h */,
+				BDF13C9716CDD0EF003994AE /* IExtension.h */,
 				BDF13C9816CDD0EF003994AE /* IExtensions.h */,
 				BDF13C9616CDD0EF003994AE /* CExtensions.h */,
 				BDF13C9516CDD0EF003994AE /* CExtensions.cpp */,
@@ -120,7 +120,7 @@
 				BDF13C8F16CDCFD4003994AE /* CEngineClient.h in Headers */,
 				BDB9FAB618A231FF0049A361 /* AppVarHolder.h in Headers */,
 				BDF13C9A16CDD0EF003994AE /* CExtensions.h in Headers */,
-				BDF13C9B16CDD0EF003994AE /* iExtension.h in Headers */,
+				BDF13C9B16CDD0EF003994AE /* IExtension.h in Headers */,
 				BDB9FAB918A231FF0049A361 /* CEngineState.h in Headers */,
 				BDF13C9C16CDD0EF003994AE /* IExtensions.h in Headers */,
 				BDB9FAB818A231FF0049A361 /* AppVariables.h in Headers */,
