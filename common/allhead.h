@@ -11,7 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#if defined(_WIN)
 #include <malloc.h>
+#endif
 #include <memory.h>
 #include <math.h>
 #include <string.h>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD33302118A365D90085E98A /* serverhead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BD33302018A365D90085E98A /* serverhead.pch */; };
+		BD33302118A365D90085E98A /* serverhead.h in Headers */ = {isa = PBXBuildFile; fileRef = BD33302018A365D90085E98A /* serverhead.h */; };
 		BD33302318A365E10085E98A /* IServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD33302218A365E10085E98A /* IServer.h */; };
 		BD33302B18A365F60085E98A /* CServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD33302918A365F60085E98A /* CServer.cpp */; };
 		BD33302C18A365F60085E98A /* CServer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD33302A18A365F60085E98A /* CServer.h */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD33302018A365D90085E98A /* serverhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serverhead.pch; sourceTree = "<group>"; };
+		BD33302018A365D90085E98A /* serverhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serverhead.h; sourceTree = "<group>"; };
 		BD33302218A365E10085E98A /* IServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IServer.h; path = public/IServer.h; sourceTree = "<group>"; };
 		BD33302918A365F60085E98A /* CServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CServer.cpp; path = source/CServer.cpp; sourceTree = "<group>"; };
 		BD33302A18A365F60085E98A /* CServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CServer.h; path = source/CServer.h; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 				BD33302918A365F60085E98A /* CServer.cpp */,
 				BD33302A18A365F60085E98A /* CServer.h */,
 				BD33302218A365E10085E98A /* IServer.h */,
-				BD33302018A365D90085E98A /* serverhead.pch */,
+				BD33302018A365D90085E98A /* serverhead.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD33302118A365D90085E98A /* serverhead.pch in Headers */,
+				BD33302118A365D90085E98A /* serverhead.h in Headers */,
 				BD33303218A366060085E98A /* entity_dictionary.h in Headers */,
 				BD33303118A366060085E98A /* ent_base.h in Headers */,
 				BD33302318A365E10085E98A /* IServer.h in Headers */,
@@ -228,7 +228,7 @@
 				CONFIGURATION_BUILD_DIR = ../../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = serverhead.pch;
+				GCC_PREFIX_HEADER = serverhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
@@ -251,7 +251,7 @@
 				CONFIGURATION_BUILD_DIR = ../../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = serverhead.pch;
+				GCC_PREFIX_HEADER = serverhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,

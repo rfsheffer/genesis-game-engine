@@ -12,7 +12,7 @@
 		BDB9FAB718A231FF0049A361 /* AppVariables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB9FAB218A231FF0049A361 /* AppVariables.cpp */; };
 		BDB9FAB818A231FF0049A361 /* AppVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB318A231FF0049A361 /* AppVariables.h */; };
 		BDB9FAB918A231FF0049A361 /* CEngineState.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB418A231FF0049A361 /* CEngineState.h */; };
-		BDB9FABA18A231FF0049A361 /* enginehead.pch in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB518A231FF0049A361 /* enginehead.pch */; };
+		BDB9FABA18A231FF0049A361 /* enginehead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB518A231FF0049A361 /* enginehead.h */; };
 		BDF13C8C16CDCFD4003994AE /* CEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8816CDCFD4003994AE /* CEngine.cpp */; };
 		BDF13C8D16CDCFD4003994AE /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C8916CDCFD4003994AE /* CEngine.h */; };
 		BDF13C8E16CDCFD4003994AE /* CEngineClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8A16CDCFD4003994AE /* CEngineClient.cpp */; };
@@ -30,7 +30,7 @@
 		BDB9FAB218A231FF0049A361 /* AppVariables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppVariables.cpp; path = source/AppVariables.cpp; sourceTree = "<group>"; };
 		BDB9FAB318A231FF0049A361 /* AppVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppVariables.h; path = source/AppVariables.h; sourceTree = "<group>"; };
 		BDB9FAB418A231FF0049A361 /* CEngineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngineState.h; path = source/CEngineState.h; sourceTree = "<group>"; };
-		BDB9FAB518A231FF0049A361 /* enginehead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enginehead.pch; sourceTree = "<group>"; };
+		BDB9FAB518A231FF0049A361 /* enginehead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enginehead.h; sourceTree = "<group>"; };
 		BDC780091692213C00C3F72E /* engine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = engine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF13C8816CDCFD4003994AE /* CEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CEngine.cpp; path = source/CEngine.cpp; sourceTree = "<group>"; };
 		BDF13C8916CDCFD4003994AE /* CEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngine.h; path = source/CEngine.h; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 				BDF13C8A16CDCFD4003994AE /* CEngineClient.cpp */,
 				BDF13C8B16CDCFD4003994AE /* CEngineClient.h */,
 				BDB9FAB418A231FF0049A361 /* CEngineState.h */,
-				BDB9FAB518A231FF0049A361 /* enginehead.pch */,
+				BDB9FAB518A231FF0049A361 /* enginehead.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 				BDF13C9C16CDD0EF003994AE /* IExtensions.h in Headers */,
 				BDB9FAB818A231FF0049A361 /* AppVariables.h in Headers */,
 				BDF13CA316CDD15B003994AE /* IEngine.h in Headers */,
-				BDB9FABA18A231FF0049A361 /* enginehead.pch in Headers */,
+				BDB9FABA18A231FF0049A361 /* enginehead.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +251,7 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = enginehead.pch;
+				GCC_PREFIX_HEADER = enginehead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
@@ -276,7 +276,7 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = enginehead.pch;
+				GCC_PREFIX_HEADER = enginehead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,

@@ -7,13 +7,7 @@
 //
 
 
-#include "allhead.pch"
-
-// OpenGL specific
-#include <OpenGL/OpenGL.h>
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-#include <OpenGL/glext.h>
+#include "allhead.h"
 
 namespace MathLib
 {

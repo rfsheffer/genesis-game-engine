@@ -18,7 +18,7 @@
 		BDABF2F718A3051100E86A29 /* graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
 		BDABF2FA18A3052D00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/utilities/../bin/utilities.dylib; sourceTree = "<absolute>"; };
 		BDABF2FC18A30D1F00E86A29 /* igraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = igraphics.h; path = public/igraphics.h; sourceTree = "<group>"; };
-		BDB9FABD18A236330049A361 /* graphicshead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicshead.pch; sourceTree = "<group>"; };
+		BDB9FABD18A236330049A361 /* graphicshead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicshead.h; sourceTree = "<group>"; };
 		BDB9FAE218A24EAA0049A361 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDC780091692213C00C3F72E /* graphics.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = graphics.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -56,7 +56,7 @@
 		BDC78026169222C100C3F72E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BDB9FABD18A236330049A361 /* graphicshead.pch */,
+				BDB9FABD18A236330049A361 /* graphicshead.h */,
 				BDABF2F618A3051100E86A29 /* graphics.cpp */,
 				BDABF2F718A3051100E86A29 /* graphics.h */,
 				BDABF2FC18A30D1F00E86A29 /* igraphics.h */,
@@ -203,7 +203,7 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = graphicshead.pch;
+				GCC_PREFIX_HEADER = graphicshead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
@@ -228,7 +228,7 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = graphicshead.pch;
+				GCC_PREFIX_HEADER = graphicshead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,

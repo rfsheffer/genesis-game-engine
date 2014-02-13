@@ -25,7 +25,7 @@
 		BD14251C18A1A97C00E3CFB3 /* keyvalues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keyvalues.h; path = ../../../utilities/script/keyvalues.h; sourceTree = "<group>"; };
 		BD14251E18A1B62B00E3CFB3 /* contextinfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = contextinfo.h; path = ../../../graphics/contextinfo.h; sourceTree = "<group>"; };
 		BD14251F18A1BCFF00E3CFB3 /* IPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = ../../platform/IPlatform.h; sourceTree = "<group>"; };
-		BD14252018A1BD4700E3CFB3 /* allhead.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.pch; path = ../../../common/allhead.pch; sourceTree = "<group>"; };
+		BD14252018A1BD4700E3CFB3 /* allhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.h; path = ../../../common/allhead.h; sourceTree = "<group>"; };
 		BD4AF1D217067CC800135A3E /* foundation_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = foundation_constants.h; path = ../../../common/foundation_constants.h; sourceTree = "<group>"; };
 		BD50B9CE17209C43007FA4A7 /* CPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPlatform.h; path = ../../platform/CPlatform.h; sourceTree = "<group>"; };
 		BD50B9CF17209C52007FA4A7 /* CPlatform_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CPlatform_mac.mm; path = ../../../platform/mac/CPlatform_mac.mm; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		BDF13CB916CDD311003994AE /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BD14252018A1BD4700E3CFB3 /* allhead.pch */,
+				BD14252018A1BD4700E3CFB3 /* allhead.h */,
 				BD14251B18A1A97C00E3CFB3 /* keyvalues.cpp */,
 				BD14251C18A1A97C00E3CFB3 /* keyvalues.h */,
 				BDB0EAEC170756FD007D0CEE /* types.h */,
@@ -332,7 +332,7 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../common/allhead.pch;
+				GCC_PREFIX_HEADER = ../../common/allhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
@@ -365,7 +365,7 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../common/allhead.pch;
+				GCC_PREFIX_HEADER = ../../common/allhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,

@@ -482,11 +482,12 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../common/allhead.pch;
+				GCC_PREFIX_HEADER = ../common/allhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
 					_64BIT,
+					UTILITIES_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
@@ -504,10 +505,11 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../common/allhead.pch;
+				GCC_PREFIX_HEADER = ../common/allhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,
+					UTILITIES_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
