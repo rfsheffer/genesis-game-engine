@@ -20,6 +20,29 @@ iMemoryPool *GetMemoryPool(void)
 //------------------------------------------------------------------------------
 MemoryPool::MemoryPool()
 {
+    m_uiTotalBytes = 0;
+    m_uiNumAllocators = 0;
+    m_uiMaxAllocators = 0;
+    m_pBase = m_pHead = NULL;
+    m_pPoolMemoryAllocation = NULL;
+    m_pGeneralAllocator = NULL;
+    m_pAllocators = NULL;
+}
+
+//------------------------------------------------------------------------------
+MemoryPool::~MemoryPool()
+{
+    if(m_pPoolMemoryAllocation)
+    {
+        free(m_pPoolMemoryAllocation);
+    }
+}
+
+/**
+ * Initializes all default sub pools of the main pool
+ */
+void MemoryPool::Initialize(void)
+{
     m_uiTotalBytes = DEFAULT_POOL_SIZE;
     m_uiNumAllocators = 0;
     m_uiMaxAllocators = NUM_ALLOCATOR_SLOTS;
@@ -39,23 +62,14 @@ MemoryPool::MemoryPool()
     m_pGeneralAllocator = CreateGeneralAllocator("PrimaryHeap", GENERAL_HEAP_SIZE);
     
     bucket_info     stringBuckets[] = { { 20, 16 },
-                                        { 20, 32 },
-                                        { 20, 64 },
-                                        { 10, 128 },
-                                        { 10, 256 },
-                                        { 10, 512 } };
+        { 20, 32 },
+        { 20, 64 },
+        { 10, 128 },
+        { 10, 256 },
+        { 10, 512 } };
     
     // testing buckets
     CreateBucketAllocator("test_buckets", ARRAYSIZE(stringBuckets), stringBuckets);
-}
-
-//------------------------------------------------------------------------------
-MemoryPool::~MemoryPool()
-{
-    if(m_pPoolMemoryAllocation)
-    {
-        free(m_pPoolMemoryAllocation);
-    }
 }
 
 //------------------------------------------------------------------------------
