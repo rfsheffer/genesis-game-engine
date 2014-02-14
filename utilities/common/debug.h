@@ -20,7 +20,7 @@
 #ifdef _WIN
 #   ifdef _64BIT
 #       define BREAKPOINT __debugbreak()
-#       define ABORT exit(1)
+#       define ABORT __debugbreak()
 #   else
 #       define BREAKPOINT do { __asm { int 3 } } while (0)
 #       define ABORT      _asm { int 3 }
@@ -51,7 +51,12 @@
 
 int MessageBox(void *hWnd, char* lpText, char* lpCaption, unsigned int uType);
 
-#elif defined(_WIN) && !defined(INCLUDE_WINDOWS_HEADER)
+#elif defined(_WIN)
+
+UTILITIES_FUNCTION
+int MessageBoxWIN(void *hWnd, char* lpText, char* lpCaption, unsigned int uType);
+
+#if !defined(INCLUDE_WINDOWS_HEADER)
 
 #define MB_OK                       0x00000000L
 #define MB_OKCANCEL                 0x00000001L
@@ -71,9 +76,8 @@ int MessageBox(void *hWnd, char* lpText, char* lpCaption, unsigned int uType);
 #define IDYES               6
 #define IDNO                7
 
-UTILITIES_FUNCTION
-int MessageBoxWIN(void *hWnd, char* lpText, char* lpCaption, unsigned int uType);
 #define MessageBox MessageBoxWIN
+#endif // !defined(INCLUDE_WINDOWS_HEADER)
 
 #endif
 

@@ -13,6 +13,12 @@
 
 static IPlatform   *g_pPlatformInterface = NULL;
 
+CEngine::CEngine()
+{
+    m_bHaultExecution = false;
+    m_pExtensionManager = NULL;
+}
+
 /** Just a pointer hookup so utilities can get the platform interface */
 IPlatform *GetPlatform(void)
 {
@@ -45,8 +51,8 @@ void CEngine::Initialize(void)
     
     // TODO: Which extensions are hooked should be based on the extensions
     // scheme file. Dedicated Servers vs Client etc...
-    m_pExtensionManager->HookExtension("server");
-    m_pExtensionManager->HookExtension("client");
+    //m_pExtensionManager->HookExtension("server");
+    //m_pExtensionManager->HookExtension("client");
 }
 
 //------------------------------------------------------------------------------

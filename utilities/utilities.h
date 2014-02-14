@@ -14,59 +14,25 @@
 
 #ifdef UTILITIES_EXPORT
 
-#if defined(_WIN)
-
 // Used for dll exporting and importing
-#   define  UTILITIES_FUNCTION   extern "C" __declspec( dllexport )
+#   define  UTILITIES_FUNCTION   DLL_EXPORT
 
 // Can't use extern "C" when DLL exporting a class
-#   define  UTILITIES_CLASS   __declspec( dllexport )
+#   define  UTILITIES_CLASS   DLL_CLASS_EXPORT
 
 // Can't use extern "C" when DLL exporting a global
-#   define  UTILITIES_GLOBAL   extern __declspec( dllexport )
-
-#elif defined(_LINUX) || defined(_MAC) // GCC
-
-// Used for dll exporting and importing
-#   define  UTILITIES_FUNCTION   extern "C" __attribute__ ((visibility("default")))
-
-// Can't use extern "C" when DLL exporting a class
-#   define  UTILITIES_CLASS __attribute__ ((visibility("default")))
-
-// Can't use extern "C" when DLL exporting a global
-#   define  UTILITIES_GLOBAL   extern __attribute ((visibility("default")))
-
-#else
-#   error "Unsupported Platform."
-#endif
+#   define  UTILITIES_GLOBAL   DLL_GLOBAL_EXPORT
 
 #else
 
-#if defined(_WIN)
-
 // Used for dll exporting and importing
-#   define  UTILITIES_FUNCTION   extern "C" __declspec( dllimport )
+#   define  UTILITIES_FUNCTION   DLL_IMPORT
 
 // Can't use extern "C" when DLL exporting a class
-#   define  UTILITIES_CLASS   __declspec( dllimport )
+#   define  UTILITIES_CLASS   DLL_CLASS_IMPORT
 
 // Can't use extern "C" when DLL exporting a global
-#   define  UTILITIES_GLOBAL   extern __declspec( dllimport )
-
-#elif defined(_LINUX) || defined(_MAC) // GCC
-
-// Used for dll exporting and importing
-#   define  UTILITIES_FUNCTION   extern "C" __attribute__ ((visibility("hidden")))
-
-// Can't use extern "C" when DLL exporting a class
-#   define  UTILITIES_CLASS __attribute__ ((visibility("hidden")))
-
-// Can't use extern "C" when DLL exporting a global
-#   define  UTILITIES_GLOBAL   extern __attribute ((visibility("hidden")))
-
-#else
-#   error "Unsupported Platform."
-#endif
+#   define  UTILITIES_GLOBAL   DLL_GLOBAL_IMPORT
 
 #endif
 

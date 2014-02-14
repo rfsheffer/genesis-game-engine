@@ -55,11 +55,11 @@ int MessageBox(void *hWnd, char* lpText, char* lpCaption, unsigned int uType)
     return IDCANCEL;
 }
 
-#elif defined(_WIN) && !defined(INCLUDE_WINDOWS_HEADER)
+#elif defined(_WIN)
 
 int MessageBoxWIN(void *hWnd, char* lpText, char* lpCaption, unsigned int uType)
 {
-    MessageBox(hWnd, lpText, lpCaption, uType);
+    return MessageBox((HWND)hWnd, lpText, lpCaption, uType);
 }
 
 #endif

@@ -29,6 +29,7 @@ inline void MemoryCopyConstruct( T *pMemory, const T &src )
 template <typename T>
 inline void MemoryDestruct( T* pMemory )
 {
+    UNREFERENCED_PARAMETER(pMemory);
 	pMemory->~T();
 }
 

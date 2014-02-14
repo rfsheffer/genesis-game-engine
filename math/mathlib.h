@@ -19,6 +19,7 @@ using namespace MathLib;
 #ifdef _32BIT
 #include "math_asm.h"
 #elif _64BIT
+#include <xmmintrin.h>
 #include "math_intrinsics.h"
 #else
 #error Unknown Target Machine?

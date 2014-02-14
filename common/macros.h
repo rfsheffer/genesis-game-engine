@@ -22,4 +22,16 @@ char (*RtlpNumberOf( T (&)[N] ))[N];
 
 #endif // _MAC || _LINUX
 
+#ifndef UNREFERENCED_PARAMETER
+#define UNREFERENCED_PARAMETER(P)          (P)
+#endif
+
+#ifndef DBG_UNREFERENCED_PARAMETER
+#define DBG_UNREFERENCED_PARAMETER(P)      (P)
+#endif
+
+#ifndef DBG_UNREFERENCED_LOCAL_VARIABLE
+#define DBG_UNREFERENCED_LOCAL_VARIABLE(V) (V)
+#endif
+
 #endif // MACROS_H

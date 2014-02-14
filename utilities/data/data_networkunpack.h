@@ -21,7 +21,7 @@ namespace DataPacking
 {
     //--------------------------------------------------------------------------
     /** Networking unpacking */
-    class NetworkUnpackage
+    class UTILITIES_CLASS NetworkUnpackage
     {
     public:
         

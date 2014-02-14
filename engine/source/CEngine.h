@@ -29,6 +29,8 @@
 class CEngine : public IEngine
 {
 public:
+
+    CEngine();
     
     void        Initialize(void);
     void        Run(void);

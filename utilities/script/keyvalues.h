@@ -178,6 +178,9 @@ namespace Utility
      */
     inline const char *Keyvalues::GetString(const char *pszKeyName, const char *defaultValue) const
     {
+        UNREFERENCED_PARAMETER(pszKeyName);
+        UNREFERENCED_PARAMETER(defaultValue);
+
         // TODO: The variant type will no longer hold entire strings, instead
         // there will be a string pool in the keyvalue class itself and it will
         // hold all the strings. The variant will merely hold a pointer to the

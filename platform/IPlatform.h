@@ -13,6 +13,8 @@
 #pragma once
 #endif
 
+#include "platform_caps.h"
+
 #define PLATFORM_INTERFACE_NAME     "platform"
 #define PLATFORM_INTERFACE_VERSION  1
 
@@ -138,6 +140,42 @@ public:
      * @return The size of the file.
      */
     virtual size_t GetFileSize(FileHandle pFile) const = 0;
+
+    /**
+     * Loads a DLL, and returns a pointer to the base address of the DLL in memory.
+     */
+    virtual DLLHANDLE LoadDLL(const char *pszLibraryFileName) = 0;
+
+    /**
+     * Gets the extension of a DLL
+     */
+    virtual const char *GetDLLExtension(void) = 0;
+
+    /**
+     * Unloads a DLL 
+     */
+    virtual void UnloadDLL(DLLHANDLE dllHandle) = 0;
+
+    //--------------------------------------------------------------------------
+    // PLATFORM CAPABILITIES
+    //--------------------------------------------------------------------------
+    /**
+     * Gets the capabilities of the current platform.
+     * @return A structure containing all capabilities as On/Off states
+     */
+    virtual const platform_caps *GetPlatformCaps(void) const = 0;
+
+    /**
+     * Gets a specific capability of the current platform.
+     * @param cap The specific capability
+     * @return The state of the specific capability
+     */
+    virtual bool HasPlatformCap(platform_caps_e cap) const = 0;
+
+    /**
+     * Logs all platform caps
+     */
+    virtual void LogPlatformCaps(void) const = 0;
 };
 
 //------------------------------------------------------------------------------

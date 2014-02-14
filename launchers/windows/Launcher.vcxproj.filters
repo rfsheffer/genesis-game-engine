@@ -38,6 +38,9 @@
     <ClInclude Include="..\..\common\allhead.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\platform\platform_caps.h">
+      <Filter>Source Files\platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Launcher.cpp">
@@ -47,6 +50,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\platform\windows\CPlatform_win.cpp">
+      <Filter>Source Files\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\platform\CPlatform.cpp">
       <Filter>Source Files\platform</Filter>
     </ClCompile>
   </ItemGroup>

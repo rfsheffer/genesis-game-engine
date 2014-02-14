@@ -13,8 +13,9 @@ namespace MathLib
     /**
      * Purpose: Returns the SIN and COS of theta.
      */
-    void inline SinCos( float radians, float *sine, float *cosine )
+    inline void SinCos( float radians, float *sine, float *cosine )
     {
-
+        *sine = sin(radians);
+        *cosine = cos(radians);
     }
 }
