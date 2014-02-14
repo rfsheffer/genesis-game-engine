@@ -35,9 +35,9 @@ bool CExtensions::HookExtension(const char *pszExtensionName)
     {
         char dllpath[MAX_PATH]; dllpath[0] = '\0';
         strncat(dllpath, pszExtensionName, MAX_PATH);
-        strncat(dllpath, ".dylib", MAX_PATH);
+        strncat(dllpath, GetPlatform()->GetDLLExtension(), MAX_PATH);
         
-        void *pDLLHandle = dlopen(dllpath, RTLD_NOW);
+        void *pDLLHandle = GetPlatform()->LoadDLL(dllpath);
         if(pDLLHandle == NULL)
         {
             ASSERTION(pDLLHandle, "Unable to connect extension dll for %s!", pszExtensionName);
@@ -47,7 +47,7 @@ bool CExtensions::HookExtension(const char *pszExtensionName)
         pExtension = (iExtension *)GetInterfaceRegistration()->GetInterface(pszExtensionName, -1);
         if(!pExtension)
         {
-            dlclose(pDLLHandle);
+            GetPlatform()->UnloadDLL(pDLLHandle);
             
             ASSERTION(false, "Unable to create extension %s from dynamic lib, "
                                 "missing interface!", pszExtensionName);
@@ -119,7 +119,7 @@ void CExtensions::DestroyAllExtensions(void)
         // Close the DLL if one was linked
         if(m_pDLLsOpen[i] != NULL)
         {
-            dlclose(m_pDLLsOpen[i]);
+            GetPlatform()->UnloadDLL(m_pDLLsOpen[i]);
         }
     }
 }

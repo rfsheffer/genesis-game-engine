@@ -139,6 +139,7 @@
       <ImportLibrary>..\libraries\$(TargetName).lib</ImportLibrary>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(OutDir)$(TargetName).map</MapFileName>
+      <AdditionalDependencies>utilities.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if exist ..\bin\. goto GenesisStart
@@ -190,6 +191,7 @@ exit 1
       <MapFileName>$(OutDir)$(TargetName).map</MapFileName>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>utilities.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if exist ..\bin\. goto GenesisStart

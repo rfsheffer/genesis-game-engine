@@ -10,6 +10,7 @@
 #include "Launcher.h"
 #include "CPlatform.h"
 #include <strsafe.h>
+#include "IEngine.h"
 #include "memory\memory_interface.h"
 
 #define MAX_LOADSTRING 100
@@ -55,7 +56,16 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
- 	// TODO: Place code here.
+    // Before ANYTHING, we need to initialize all the stuff needed by the engine
+
+    // Initialize Memory Pool ( Creates all general pools for system allocations )
+    GetMemoryPool()->Initialize();
+
+    // Initialize the platform wrapper
+    g_platform.Initialize();
+    g_platform.LogPlatformCaps();
+    // Done Initializing Engine Stuff
+
 	MSG msg;
 	HACCEL hAccelTable;
 
@@ -73,14 +83,6 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_LAUNCHER));
 
     Logging::Msg("Created Windows");
-
-    // Initialize Memory Pool ( Creates all general pools for system allocations )
-    GetMemoryPool()->Initialize();
-
-    // Initialize the platform wrapper
-    g_platform.Initialize();
-
-    Logging::Msg("Initialized Platform Settings");
 
     // Create the engine thread mutex
     engineMutex = CreateMutex( 
@@ -107,7 +109,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
     Logging::Msg("Finished Launching Engine Thread");
 
-	// Main message loop:
+	// windows message loop:
+    DWORD code = 0;
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -115,12 +118,25 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+
+        if(GetExitCodeThread(engineThread, &code))
+        {
+            if(code != STILL_ACTIVE)
+            {
+                if(code == 1)
+                {
+                    Logging::Warning("Engine exited under strange circumstances");
+                }
+
+                break;
+            }
+        }
 	}
 
     CloseHandle(engineThread);
     CloseHandle(engineMutex);
 
-	return (int) msg.wParam;
+	return (int)code; // msg.wParam;
 }
 
 //------------------------------------------------------------------------------
@@ -142,17 +158,71 @@ engine_state_e engineState = ENGINE_STATE_INACTIVE;
  */
 DWORD WINAPI EngineThread( LPVOID lpParam )
 {
-    DWORD dwWaitResult;
+    UNREFERENCED_PARAMETER(lpParam);
 
-    dwWaitResult = WaitForSingleObject(engineMutex, INFINITE);
-    if(dwWaitResult == WAIT_OBJECT_0)
+    // This is nessesary for our file structure. We are not using apples APP
+    // package and resource folders because it isn't modder friendly. ~RFS
+    //chdir(GetPlatform()->GetAbsoluteApplicationPath());
+    Logging::Msg("Setting Application Path to %s\n", GetPlatform()->GetAbsoluteApplicationPath());
+    
+    DLLHANDLE dllHandle = GetPlatform()->LoadDLL("engine.dll");
+    if(dllHandle == NULL)
     {
-        printf("Engine Thread Ran\n");
+        ASSERTION(dllHandle, "Unable to load Engine DLL!");
+        return 1;
+    }
+    
+    IEngine *pEngine = static_cast<IEngine *>
+            (GetInterfaceRegistration()->GetInterface(ENGINE_INTERFACE_NAME,
+                                                      ENGINE_INTERFACE_VERSION));
+    
+    if(pEngine == NULL)
+    {
+        ASSERTION(pEngine, "Engine DLL loaded, but unable to create an interface to it!");
+        return 1;
+    }
+    
+    pEngine->Initialize();
 
-        ReleaseMutex(engineMutex);
+    bool shouldExit = false;
+    while(shouldExit == false)
+    {
+        DWORD dwWaitResult;
+        dwWaitResult = WaitForSingleObject(engineMutex, INFINITE);
+        if(dwWaitResult == WAIT_OBJECT_0)
+        {
+            if(engineState == ENGINE_STATE_CLOSING || pEngine->FinishedExecution())
+            {
+                shouldExit = true;
+                break;
+            }
+            else
+            {
+                engineState = ENGINE_STATE_ACTIVE;
+            
+                //CPerfTimer engine_timer("Engine Run Time", true);
+                pEngine->Run();
+                //engine_timer.PrintTimer();
+            }
+
+            ReleaseMutex(engineMutex);
+        }
     }
 
-    // terminate thread
+    pEngine->Shutdown();
+    
+    // Now release the interface pointer
+    GetInterfaceRegistration()->ReleaseInterfacePointer(ENGINE_INTERFACE_NAME, pEngine);
+    
+    // Release any un-released interfaces (they will be reported)
+    GetInterfaceRegistration()->ReleaseAllInterfacePointers();
+    
+    GetPlatform()->UnloadDLL(dllHandle);
+    
+    engineState = ENGINE_STATE_INACTIVE;
+    
+    ReleaseMutex(engineMutex);
+
     return 0;
 }
 
@@ -244,7 +314,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
-		PostQuitMessage(0);
+        {
+		    DWORD dwWaitResult;
+            dwWaitResult = WaitForSingleObject(engineMutex, INFINITE);
+            if(dwWaitResult == WAIT_OBJECT_0)
+            {
+                engineState = ENGINE_STATE_CLOSING;
+                ReleaseMutex(engineMutex);
+            }
+        }
 		break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);

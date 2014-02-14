@@ -17,17 +17,18 @@
 
 /*! \def MAX_BASE_EXTENSIONS
  \brief The max number of extensions which can be loaded at once.
- 
+ * TODO: Get rid of me. Make Dynamic!
  Details.
  */
 #define MAX_BASE_EXTENSIONS         5
 
-/**
+/*! \def NUM_SEND_BUFFERS
  * This is the number of buffers we can have packed up for sending at a time.
+ * TODO: Get rid of me. Make Dynamic!
  */
 #define NUM_SEND_BUFFERS            2
 
-/**
+/*! \def MAX_EXTENSION_NAME
  * This is the max number of characters in an extensions name.
  */
 #define MAX_EXTENSION_NAME          32
@@ -95,7 +96,7 @@ private:
      * @see m_uiNumExtensions
      */
     iExtension      *m_pExtensions[MAX_BASE_EXTENSIONS];
-    void            *m_pDLLsOpen[MAX_BASE_EXTENSIONS];
+    DLLHANDLE        m_pDLLsOpen[MAX_BASE_EXTENSIONS];
     
    /**
     * Send Buffers

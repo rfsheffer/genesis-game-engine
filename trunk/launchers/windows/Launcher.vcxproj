@@ -110,7 +110,7 @@
       <PreprocessorDefinitions>_WIN;_64BIT;_CRT_SECURE_NO_WARNINGS;INCLUDE_WINDOWS_HEADER;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>..\..\common;..\..\utilities;..\..\engine;..\..\platform;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\common;..\..\utilities;..\..\engine\public;..\..\platform;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>allhead.h</PrecompiledHeaderFile>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <OmitFramePointers>false</OmitFramePointers>
@@ -234,6 +234,7 @@ exit 1
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\allhead.h" />
+    <ClInclude Include="..\..\platform\platform_caps.h" />
     <ClInclude Include="..\..\platform\CPlatform.h" />
     <ClInclude Include="..\..\platform\IPlatform.h" />
     <ClInclude Include="..\..\platform\platform_constants.h" />
@@ -249,6 +250,7 @@ exit 1
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\platform\CPlatform.cpp" />
     <ClCompile Include="..\..\platform\windows\CPlatform_win.cpp" />
     <ClCompile Include="Launcher.cpp" />
   </ItemGroup>

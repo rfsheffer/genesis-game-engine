@@ -16,7 +16,7 @@
 namespace DataPacking
 {
     /** A class used to map and buffer data. */
-    class DataBuffer
+    class UTILITIES_CLASS DataBuffer
     {
     public:
         
@@ -112,7 +112,7 @@ namespace DataPacking
         //int m_pWrittingblock;	// Current block being written to.
         
         // No copy constructor or assignment
-        DataBuffer(const DataBuffer &pCopy) {}
+        DataBuffer(const DataBuffer &pCopy) { UNREFERENCED_PARAMETER(pCopy); }
     };
     
 } // DataPacking

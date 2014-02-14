@@ -43,6 +43,8 @@
 #define WIN32_LEAN_AND_MEAN
 
 #include <windows.h>
+//#else
+//#include <WinDef.h>
 #endif // INCLUDE_WINDOWS_HEADER
 
 #include <tchar.h>

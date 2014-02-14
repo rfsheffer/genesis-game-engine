@@ -16,7 +16,7 @@
  */
 void CPlatform::Initialize(void)
 {
-    
+    InitializePlatformCapabilities();
 }
 
 //------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ void CPlatform::Shutdown(void)
 bool CPlatform::GetKeyState(char character) const
 {
     ACTIVE_WINDOW_ASSERT("GetKeyState");
-    
+    character;
     return false;
 }
 
@@ -52,7 +52,7 @@ bool CPlatform::GetKeyState(char character) const
 bool CPlatform::GetMouseState(bool left) const
 {
     ACTIVE_WINDOW_ASSERT("GetMouseState");
-    
+    left;
     return false;
 }
 
@@ -64,6 +64,7 @@ bool CPlatform::GetMouseState(bool left) const
  */
 hWindow CPlatform::GetWindowHandle(const char *pszWindowName) const
 {
+    pszWindowName;
     return GetActiveWindow();
 }
 
@@ -74,7 +75,7 @@ hWindow CPlatform::GetWindowHandle(const char *pszWindowName) const
  */
 void CPlatform::SetActiveWindow(hWindow index) const
 {
-
+    index;
 }
 
 //------------------------------------------------------------------------------
@@ -85,7 +86,8 @@ void CPlatform::SetActiveWindow(hWindow index) const
  */
 void CPlatform::GetWindowSizePixels(unsigned int &width, unsigned int &height) const
 {
-    
+    width;
+    height;
 }
 
 //------------------------------------------------------------------------------
@@ -96,7 +98,8 @@ void CPlatform::GetWindowSizePixels(unsigned int &width, unsigned int &height) c
  */
 void CPlatform::GetWindowSize(unsigned int &width, unsigned int &height) const
 {
-    
+    width;
+    height;
 }
 
 //------------------------------------------------------------------------------
@@ -115,6 +118,39 @@ void CPlatform::ActivateGraphicsContext(void) const
 void CPlatform::SwapGraphicsContextBuffers(void) const
 {
     
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Dynamic Library Loading
+ */
+DLLHANDLE CPlatform::LoadDLL(const char *pszLibraryFileName)
+{
+    HMODULE hGetProcIDDLL = LoadLibrary(pszLibraryFileName);
+    if(hGetProcIDDLL == NULL)
+    {
+        Logging::Warning("Could not load library (%s)\n", pszLibraryFileName);
+    }
+
+    return hGetProcIDDLL;
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Unloading a loaded dynamic library
+ */
+void CPlatform::UnloadDLL(DLLHANDLE dllHandle)
+{
+    FreeLibrary((HMODULE)dllHandle);
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Gets the postfix extension of a DLL file
+ */
+const char *CPlatform::GetDLLExtension(void)
+{
+    return ".dll";
 }
 
 //------------------------------------------------------------------------------

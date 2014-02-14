@@ -57,7 +57,7 @@ public:
 /**
  * Class which holds interface pointers and registration methods
  */
-class InterfaceRegistration
+class UTILITIES_CLASS InterfaceRegistration
 {
 public:
     

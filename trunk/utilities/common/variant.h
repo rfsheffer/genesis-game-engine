@@ -101,7 +101,7 @@ namespace Utility
         {
             ASSERTION(numComps <= 16, "Variant: Setting a vector with an unsupported number of components.");
             
-            for(int i = 0; i < numComps; ++i)
+            for(unsigned int i = 0; i < numComps; ++i)
             {
                 m_mathval.flVal2[i] = pVec[i];
             }
