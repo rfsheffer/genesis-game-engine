@@ -32,7 +32,7 @@ namespace Logging
         va_start(vl, pszMessage);
         
         vsnprintf(szErrorMessage, 2048, pszMessage, vl);
-        ASSERTION(false, szErrorMessage);
+        ASSERTION_ALWAYS(szErrorMessage);
         
         exit(EXIT_FAILURE);
     }

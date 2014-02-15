@@ -29,13 +29,15 @@ namespace DataPacking
         /** Sets the rate of block growth when new blocks are needed. */
         inline void SetBlockGrowth(unsigned int size)
         {
-            ASSERTION(size > 1, "Invalid block growth size!");
-            if(size > 1)
-                m_iBlockGrowSize = size;
+            ASSERTION(size >= 1, "Invalid block growth size!");
+            if(size >= 1)
+            {
+                m_uiBlockGrowSize = size;
+            }
         }
         
         /** Gets the block growth rate. */
-        inline int GetBlockGrowth(void) const { return m_iBlockGrowSize; }
+        inline unsigned int GetBlockGrowth(void) const { return m_uiBlockGrowSize; }
         
         bool        WriteBlock(const char *pName, const byte *pBuffer, unsigned int size);
         bool        StartWritting(const char *pName);
@@ -63,10 +65,10 @@ namespace DataPacking
         data_block  *m_pBlocks;
         
         /** The number of blocks currently created */
-        int         m_iNum_Blocks;
+        unsigned int         m_uiNum_Blocks;
         
         /** The current block we are allowed to work with */
-        int         m_iCurrent_Block;
+        unsigned int         m_uiCurrent_Block;
         
         /** Pointer to start of data buffer. */
         byte        *m_pBaseData;
@@ -76,10 +78,10 @@ namespace DataPacking
         
         /** Distance in bytes to current position, also the buffers
          current size( m_iBufferSize - m_iCurrentPos ). */
-        int			 m_iCurrentPos;
+        unsigned int			 m_uiCurrentPos;
         
         /** Total allocated memory for this buffer in bytes. */
-        int			 m_iBufferSize;
+        unsigned int			 m_uiBufferSize;
         
         /** Error IDs for data buffer errors */
         enum buffer_error
@@ -104,11 +106,11 @@ namespace DataPacking
         data_block *CreateBlock(const char *pName, unsigned int size = 0);
         
         /** Block grow size */
-        int m_iBlockGrowSize;
+        unsigned int m_uiBlockGrowSize;
         
         // Used durring the writting process.
         bool m_bWritting;		// Writting.
-        int m_iAmountWritten;	// In bytes written.
+        unsigned int m_uiAmountWritten;	// In bytes written.
         //int m_pWrittingblock;	// Current block being written to.
         
         // No copy constructor or assignment

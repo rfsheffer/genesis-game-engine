@@ -41,9 +41,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="logging.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,59 +98,17 @@
     <ClCompile Include="common\variant.cpp">
       <Filter>Source Files\common</Filter>
     </ClCompile>
-    <ClCompile Include="hashing\Bitslice.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\Bitvec.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\crc.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\lookup3.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\md5.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash1.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash2.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash3.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\Platform.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\PMurHash.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\Random.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\sha1.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\Spooky.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\SuperFastHash.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
-    <ClCompile Include="hashing\Types.cpp">
-      <Filter>Source Files\hashing</Filter>
-    </ClCompile>
     <ClCompile Include="common\debug.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="logging.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="stdlib\util_stdlib.cpp">
       <Filter>Source Files\common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="logging.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="interfaces\interfaces.h">
       <Filter>Source Files\interfaces</Filter>
     </ClInclude>
@@ -247,44 +202,14 @@
     <ClInclude Include="common\variant.h">
       <Filter>Source Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="gstdlib\gstdlib.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="utilities.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="hashing\Bitvec.h">
-      <Filter>Source Files\hashing</Filter>
+    <ClInclude Include="logging.h">
+      <Filter>Source Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="hashing\MurmurHash1.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\MurmurHash2.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\MurmurHash3.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\Platform.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\PMurHash.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\pstdint.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\Random.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\sha1.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\Spooky.h">
-      <Filter>Source Files\hashing</Filter>
-    </ClInclude>
-    <ClInclude Include="hashing\Types.h">
-      <Filter>Source Files\hashing</Filter>
+    <ClInclude Include="stdlib\util_stdlib.h">
+      <Filter>Source Files\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -88,7 +88,12 @@ bool CUtlString::SetupMem(size_t numChars)
 		{
 			// We need to increase the size of this string
 			m_uiNumAllocBytes = (size_t)ceil((float)numChars / MEM_ALLOC_STRIDE) * MEM_ALLOC_STRIDE;
-			m_pszStr = (char*)realloc(m_pszStr, m_uiNumAllocBytes);
+            char *pTemp = (char*)realloc(m_pszStr, m_uiNumAllocBytes);
+            ASSERTION(pTemp, "Unable to re-alloc, out of memory?");
+            if(pTemp)
+            {
+                m_pszStr = pTemp;
+            }
 		}
 
 		ASSERTION(m_pszStr, "CUtlString: Out of Memory?");
@@ -259,7 +264,7 @@ void CUtlString::ToLowerCase(void)
 {
 	for(size_t i = 0; i < m_uiNumCharacters; ++i)
 	{
-		m_pszStr[i] = tolower(m_pszStr[i]);
+		m_pszStr[i] = (char)tolower(m_pszStr[i]);
 	}
 }
 
@@ -270,7 +275,7 @@ void CUtlString::ToUpperCase(void)
 {
 	for(size_t i = 0; i < m_uiNumCharacters; ++i)
 	{
-		m_pszStr[i] = toupper(m_pszStr[i]);
+		m_pszStr[i] = (char)toupper(m_pszStr[i]);
 	}
 }
 
@@ -281,7 +286,7 @@ void CUtlString::RemoveCharacters(size_t startChar, size_t numChars)
 {
 	if(startChar >= m_uiNumCharacters)
 	{
-		ASSERTION(false, "CUtlString: startChar in RemoveCharacters is out of range!");
+		ASSERTION_ALWAYS("CUtlString: startChar in RemoveCharacters is out of range!");
 		return;
 	}
 
@@ -402,7 +407,7 @@ void CUtlString::VarArgs(char *format, ...)
 {
     // There is a 1024 string limit here, which should not be.
     // Will need to determine a good solution.
-    ASSERTION(false, "Please fix VarArgs before using");
+    ASSERTION_ALWAYS("Please fix VarArgs before using");
 
 	va_list			argptr;
 	static char		str[1024];
@@ -415,6 +420,6 @@ void CUtlString::VarArgs(char *format, ...)
 
 	if(SetupMem(m_uiNumCharacters + 1))
 	{
-		strncpy(m_pszStr, str, m_uiNumCharacters);
+		util_strncpy(m_pszStr, str, (int)m_uiNumCharacters);
 	}
 }

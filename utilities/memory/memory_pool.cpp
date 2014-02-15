@@ -96,8 +96,8 @@ iMemoryAllocator *MemoryPool::CreateBucketAllocator(const char *pszAllocatorName
         numBytes +=
         pBucketInfos[i].uiNumBlocks * pBucketInfos[i].uiBlockSize;
         
-        // Each bucket has a stack of shorts for quick hole filling.
-        numBytes += sizeof(unsigned short) * pBucketInfos[i].uiNumBlocks;
+        // Each bucket has a stack of ints for quick hole filling.
+        numBytes += sizeof(unsigned int) * pBucketInfos[i].uiNumBlocks;
     }
     
     if((m_uiTotalBytes - (m_pHead - m_pBase)) < numBytes)
@@ -120,8 +120,8 @@ iMemoryAllocator *MemoryPool::CreateBucketAllocator(const char *pszAllocatorName
         
         // Assign memory for short stack
         pBuckets[i].m_pusStackIndex = 0;
-        pBuckets[i].m_pusIndexStack = (unsigned short*)m_pHead;
-        m_pHead += sizeof(unsigned short) * pBucketInfos[i].uiNumBlocks;
+        pBuckets[i].m_pusIndexStack = (unsigned int*)m_pHead;
+        m_pHead += sizeof(unsigned int) * pBucketInfos[i].uiNumBlocks;
         
         pBuckets[i].m_pusIndexStack[0] = 0;
     }
@@ -138,7 +138,7 @@ iMemoryAllocator *MemoryPool::CreateBucketAllocator(const char *pszAllocatorName
                                                                   pBuckets);
     
     m_pAllocators[m_uiNumAllocators].pAllocator = pAllocator;
-    strncpy(m_pAllocators[m_uiNumAllocators].szName, pszAllocatorName, POOL_NAME_LEN);
+    util_strncpy(m_pAllocators[m_uiNumAllocators].szName, pszAllocatorName, POOL_NAME_LEN);
     ++m_uiNumAllocators;
     return pAllocator;
 }
@@ -166,7 +166,7 @@ iMemoryAllocator *MemoryPool::CreateGeneralAllocator(const char *pszAllocatorNam
     m_pHead += numBytes;
     
     m_pAllocators[m_uiNumAllocators].pAllocator = pAllocator;
-    strncpy(m_pAllocators[m_uiNumAllocators].szName, pszAllocatorName, POOL_NAME_LEN);
+    util_strncpy(m_pAllocators[m_uiNumAllocators].szName, pszAllocatorName, POOL_NAME_LEN);
     ++m_uiNumAllocators;
     return pAllocator;
 }
@@ -179,6 +179,9 @@ void *MemoryPool::TryAllocation(unsigned int uiNumBytes,
                                 const char *pszFileName,
                                 unsigned int uiFileLine)
 {
+    UNREFERENCED_PARAMETER(pszFileName);
+    UNREFERENCED_PARAMETER(uiFileLine);
+
     ASSERTION(m_pGeneralAllocator,
               "Trying to make a general allocation, but there"
               " is no general allocator!");
@@ -255,7 +258,7 @@ void *GeneralAllocator::Allocate(unsigned int bytes)
     // Can't fit it anyway? Out of memory!
     if(bytesLeft < (bytes + sizeof(alloc_block)))
     {
-        ASSERTION(false, "Ran out of memory for allocation in general memory pool!");
+        ASSERTION_ALWAYS("Ran out of memory for allocation in general memory pool!");
         return NULL;
     }
     
@@ -286,5 +289,5 @@ void *GeneralAllocator::Allocate(unsigned int bytes)
  */
 void GeneralAllocator::Deallocate(void *pMemory)
 {
-    
+    UNREFERENCED_PARAMETER(pMemory);
 }

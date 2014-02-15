@@ -23,6 +23,7 @@
 #include <string.h>
 #include <float.h>
 #include <stdint.h>
+#include <limits.h>
 
 // C++ Libraries
 #include <new> // For new override
@@ -55,11 +56,11 @@
 #include "types.h"
 #include "macros.h"
 #include "foundation_constants.h"
+#include "../platform/platform_constants.h"
 
 // Utilities ( Always included in projects )
 #include "../utilities/utilities.h"
-#include "../utilities/gstdlib/gstdlib.h"
-#include "../platform/platform_constants.h"
+#include "../utilities/stdlib/util_stdlib.h"
 #include "../platform/IPlatform.h"
 #include "../utilities/interfaces/interfaces.h"
 #include "../utilities/logging.h"

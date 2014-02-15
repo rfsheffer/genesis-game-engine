@@ -187,7 +187,10 @@ const char *CPlatform::GetAbsoluteApplicationPath(void) const
  */
 FileHandle CPlatform::FileOpen(const char *pszFileName, const char *pszOptions) const
 {
-    return fopen(pszFileName, pszOptions);
+    FileHandle file; 
+    errno_t err = fopen_s(&file, pszFileName, pszOptions);
+    ASSERTION(err == 0, "Could not open file %s", pszFileName);
+    return file;
 }
 
 //------------------------------------------------------------------------------

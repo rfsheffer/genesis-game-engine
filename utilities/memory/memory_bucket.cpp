@@ -26,7 +26,7 @@ MemoryBucketAllocator::MemoryBucketAllocator(unsigned int numBuckets,
  */
 void *MemoryBucketAllocator::Allocate(unsigned int bytes)
 {
-    for(int i = 0; i < m_uiNumBuckets; ++i)
+    for(unsigned int i = 0; i < m_uiNumBuckets; ++i)
     {
         if(m_pBuckets[i].m_uiBlockSize <= bytes)
         {
@@ -47,7 +47,7 @@ void *MemoryBucketAllocator::AllocateToBucket(unsigned int index)
     MemoryBucket &curBucket = m_pBuckets[index];
     
     // Get the unoccupied block
-    unsigned short &usBlockIndex = curBucket.m_pusIndexStack[curBucket.m_pusStackIndex];
+    unsigned int &usBlockIndex = curBucket.m_pusIndexStack[curBucket.m_pusStackIndex];
     if(usBlockIndex >= curBucket.m_uiNumBlocks)
     {
         return NULL;
@@ -83,7 +83,7 @@ void MemoryBucketAllocator::Deallocate(void *pMemory)
     
     if(!GetBucketOccupiedByMemory(pMemory, bucketIndex))
     {
-        ASSERTION(false, "Tried to deallocate memory which doesn't exist in a bucket!");
+        ASSERTION_ALWAYS("Tried to deallocate memory which doesn't exist in a bucket!");
         return;
     }
     
