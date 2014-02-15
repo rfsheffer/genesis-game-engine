@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BDABF2F018A2E25000E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/utilities/../bin/utilities.dylib; sourceTree = "<absolute>"; };
+		BDABF2F018A2E25000E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/bin/utilities.dylib; sourceTree = "<absolute>"; };
 		BDB9FAB118A231FF0049A361 /* AppVarHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppVarHolder.h; path = source/AppVarHolder.h; sourceTree = "<group>"; };
 		BDB9FAB218A231FF0049A361 /* AppVariables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppVariables.cpp; path = source/AppVariables.cpp; sourceTree = "<group>"; };
 		BDB9FAB318A231FF0049A361 /* AppVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppVariables.h; path = source/AppVariables.h; sourceTree = "<group>"; };

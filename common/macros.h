@@ -20,7 +20,23 @@ char (*RtlpNumberOf( T (&)[N] ))[N];
 
 #define ARRAYSIZE(A) (sizeof(*RtlpNumberOf(A)))
 
+/**
+ * __pragma is a feature in VS for putting pragma preprocessor commands into
+ * macros. It is used in a couple macros to prevent stupid warnings which GCC
+ * does not give. So if there is a GCC version for in macro pragma, replace
+ * this define.
+ */
+#define __pragma(SUB)
+
 #endif // _MAC || _LINUX
+
+#if defined(_MAC) || defined(_LINUX)
+
+#define UNREFERENCED_PARAMETER(P)
+#define DBG_UNREFERENCED_PARAMETER(P)
+#define DBG_UNREFERENCED_LOCAL_VARIABLE(V)
+
+#elif defined(_WIN) // _MAC || _LINUX
 
 #ifndef UNREFERENCED_PARAMETER
 #define UNREFERENCED_PARAMETER(P)          (P)
@@ -33,5 +49,7 @@ char (*RtlpNumberOf( T (&)[N] ))[N];
 #ifndef DBG_UNREFERENCED_LOCAL_VARIABLE
 #define DBG_UNREFERENCED_LOCAL_VARIABLE(V) (V)
 #endif
+
+#endif // _WIN
 
 #endif // MACROS_H

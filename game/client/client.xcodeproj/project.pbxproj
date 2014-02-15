@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		BD31F30C18A4B70A0083E283 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDABF30818A3596000E86A29 /* client.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = client.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDABF30F18A3599A00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/utilities/../bin/utilities.dylib; sourceTree = "<absolute>"; };
+		BDABF30F18A3599A00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
 		BDABF31318A359E400E86A29 /* clienthead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clienthead.h; sourceTree = "<group>"; };
 		BDABF31518A359EF00E86A29 /* IClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IClient.h; path = public/IClient.h; sourceTree = "<group>"; };
 		BDABF31718A359FE00E86A29 /* CClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CClient.cpp; path = source/CClient.cpp; sourceTree = "<group>"; };

@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		BDABF2F618A3051100E86A29 /* graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graphics.cpp; sourceTree = "<group>"; };
 		BDABF2F718A3051100E86A29 /* graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
-		BDABF2FA18A3052D00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/utilities/../bin/utilities.dylib; sourceTree = "<absolute>"; };
+		BDABF2FA18A3052D00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
 		BDABF2FC18A30D1F00E86A29 /* igraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = igraphics.h; path = public/igraphics.h; sourceTree = "<group>"; };
 		BDB9FABD18A236330049A361 /* graphicshead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicshead.h; sourceTree = "<group>"; };
 		BDB9FAE218A24EAA0049A361 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };

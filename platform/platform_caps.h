@@ -9,6 +9,10 @@
 #ifndef PLATFORM_CAPS_H
 #define PLATFORM_CAPS_H
 
+/**
+ * Platform Capabilities Enum.
+ * Note: These have to be aligned with platform_caps
+ */
 enum platform_caps_e
 {
     PLAT_CAP_X64,
@@ -27,8 +31,11 @@ enum platform_caps_e
 };
 
 /**
-* Platform Capabilities
-*/
+ * Platform Capabilities Structure
+ * Note: These have to be aligned with platform_caps_e
+ * This is a list of bools ONLY, no other types. Create a new structure for
+ * a different type of platform caps if nessesary.
+ */
 struct platform_caps
 {
     bool     X64;
