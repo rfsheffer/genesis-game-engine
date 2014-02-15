@@ -163,7 +163,7 @@ namespace Utility
     bool Keyvalues::PopulateWithBuffer(const char *pszBuffer, size_t buffSize, const char *pszRootName)
     {
         // First key is always the root.
-        strncpy(m_szName, pszRootName, MAX_KEYVALUE_STRING_SIZE);
+        util_strncpy(m_szName, pszRootName, MAX_KEYVALUE_STRING_SIZE);
         m_szName[MAX_KEYVALUE_STRING_SIZE - 1] = '\0'; // Just in case...
         
         // Parse the first key. Normally, it will be a branch. If it is a
@@ -171,7 +171,7 @@ namespace Utility
         // going to hurt anything... It's just odd.
         if(ParseKey(&pszBuffer, buffSize) == false)
         {
-            ASSERTION(false, "Could not load keyvalues from buffer");
+            ASSERTION_ALWAYS("Could not load keyvalues from buffer");
             return false;
         }
         
@@ -353,7 +353,7 @@ namespace Utility
                     
                 default:
                 {
-                    ASSERTION(false, "ParseKey: Unknown key type in array?");
+                    ASSERTION_ALWAYS("ParseKey: Unknown key type in array?");
                     bFinished = true;
                     bRet = false;
                 }
@@ -395,14 +395,17 @@ namespace Utility
      */
     void WriteName(FileHandle pFile, const char *pszName)
     {
-        static char szNameBuff[Keyvalues::MAX_KEYVALUE_STRING_SIZE + 2];
+        static const int namebuffsize = Keyvalues::MAX_KEYVALUE_STRING_SIZE + 2;
+        static char szNameBuff[namebuffsize];
         size_t nameLen = strlen(pszName);
+
+        ASSERTION((nameLen + 2) <= namebuffsize, "ERROR: Keyvalues WriteName, Name Length exceeds max name!");
         
         szNameBuff[0] = '\"';
-        strcpy(&szNameBuff[1], pszName);
+        util_strncpy(&szNameBuff[1], pszName, namebuffsize - 1);
         szNameBuff[nameLen + 1] = '\"';
         
-        GetPlatform()->FileWrite(szNameBuff, 1, nameLen + 2, pFile);
+        GetPlatform()->FileWrite(szNameBuff, 1, namebuffsize, pFile);
     }
     
     //--------------------------------------------------------------------------
@@ -517,9 +520,9 @@ namespace Utility
      * @param pszName The value to determine.
      * @param nameLength The size of the input buffer.
      */
-    void Keyvalues::SetName(const char *pszName, size_t nameLength)
+    void Keyvalues::SetName(const char *pszName, int nameLength)
     {
-        strncpy(m_szName, pszName, nameLength);
+        util_strncpy(m_szName, pszName, nameLength);
     }
     
     //--------------------------------------------------------------------------
@@ -549,7 +552,13 @@ namespace Utility
             
             if(isFloating)
             {
-                m_value.SetFloat(atof(pszValue));
+#if _DEBUG
+                double strToDbl = atof(pszValue);
+                ASSERT_VALID_DOUBLE_TO_FLOAT(strToDbl);
+                m_value.SetFloat((float)strToDbl);
+#else
+                m_value.SetFloat((float)atof(pszValue));
+#endif
             }
             else
             {
@@ -558,7 +567,7 @@ namespace Utility
         }
         else
         {
-            ASSERTION(false, "Strings unsupported at the moment for keyvalues.");
+            ASSERTION_ALWAYS("Strings unsupported at the moment for keyvalues.");
             //m_value.SetString(pszValue);
         }
     }
@@ -653,7 +662,7 @@ namespace Utility
     {
         for(unsigned int i = 0; i < m_uiNumChildren; ++i)
         {
-            if(strncasecmp(m_ppChildren[i]->GetName(),
+            if(util_strnicmp(m_ppChildren[i]->GetName(),
                            pszKeyName,
                            MAX_KEYVALUE_STRING_SIZE) == 0)
             {
@@ -677,7 +686,7 @@ namespace Utility
         Keyvalues *key = new Keyvalues;
         AddChild(key);
         
-        key->SetName(pszKeyName, strlen(pszKeyName));
+        key->SetName(pszKeyName, (int)strlen(pszKeyName));
         
         return key;
     }

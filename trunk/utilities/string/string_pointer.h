@@ -16,6 +16,7 @@
 class CStringPtr
 {
 public:
+    CStringPtr() : pszPtr(NULL) {}
     
     FORCEINLINE bool operator==(const CStringPtr& str) const
     {

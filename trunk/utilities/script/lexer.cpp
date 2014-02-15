@@ -122,11 +122,13 @@ namespace ScriptParse
         
         if(bFloatingPoint)
         {
-            m_tokenVariables[m_iCurVariable].val = atof(pszVariable);
+            double indbl = atof(pszVariable);
+            ASSERT_VALID_DOUBLE_TO_FLOAT(indbl);
+            m_tokenVariables[m_iCurVariable].val = (float)indbl;
         }
         else
         {
-            m_tokenVariables[m_iCurVariable].val = atoi(pszVariable);
+            m_tokenVariables[m_iCurVariable].val = (float)atoi(pszVariable);
         }
         
         m_pTokens[m_iNumTokens++] = &m_tokenVariables[m_iCurVariable];
@@ -305,7 +307,7 @@ namespace ScriptParse
     
     float TokenModulo(LexTokenVariable *pV1, LexTokenVariable *pV2)
     {
-        return (int)pV1->val % (int)pV2->val;
+        return float((int)pV1->val % (int)pV2->val);
     }
     
     float TokenDivide(LexTokenVariable *pV1, LexTokenVariable *pV2)

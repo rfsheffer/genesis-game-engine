@@ -49,7 +49,7 @@ bool CExtensions::HookExtension(const char *pszExtensionName)
         {
             GetPlatform()->UnloadDLL(pDLLHandle);
             
-            ASSERTION(false, "Unable to create extension %s from dynamic lib, "
+            ASSERTION_ALWAYS("Unable to create extension %s from dynamic lib, "
                                 "missing interface!", pszExtensionName);
             return false;
         }
@@ -86,11 +86,11 @@ void CExtensions::RunExtensions(void)
  */
 void CExtensions::DispatchPendingMessages(void)
 {
-    for(int i = 0; i < m_uiCurSendBuffer; ++i)
+    for(unsigned int i = 0; i < m_uiCurSendBuffer; ++i)
     {
         const char *pMsgExtensionName = m_sendBuffers[i].szSendName;
         
-        for(int j = 0; j < m_uiNumExtensions; ++j)
+        for(unsigned int j = 0; j < m_uiNumExtensions; ++j)
         {
             if(m_pExtensions[j] &&
                strcmp(pMsgExtensionName, m_pExtensions[j]->GetInterfaceName()) == 0)
@@ -109,7 +109,7 @@ void CExtensions::DispatchPendingMessages(void)
  */
 void CExtensions::DestroyAllExtensions(void)
 {
-    for(int i = 0; i < m_uiNumExtensions; ++i)
+    for(unsigned int i = 0; i < m_uiNumExtensions; ++i)
     {
         m_pExtensions[i]->Shutdown();
         
@@ -136,7 +136,7 @@ void CExtensions::SendBuffer(const char *pszSendName, DataPacking::DataBuffer *p
     ASSERTION(pszSendName && pBuffer, "Incomplete parameters in SendBuffer!");
     ASSERTION(m_uiCurSendBuffer < NUM_SEND_BUFFERS, "Ran out of extension send buffers! Raise Limit!");
     
-    strncpy(m_sendBuffers[m_uiCurSendBuffer].szSendName, pszSendName, MAX_EXTENSION_NAME);
+    util_strncpy(m_sendBuffers[m_uiCurSendBuffer].szSendName, pszSendName, MAX_EXTENSION_NAME);
     m_sendBuffers[m_uiCurSendBuffer].sendBuffer = *pBuffer;
     
     ++m_uiCurSendBuffer;

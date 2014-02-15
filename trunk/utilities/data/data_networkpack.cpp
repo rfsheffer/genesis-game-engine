@@ -27,7 +27,7 @@ namespace DataPacking
         m_pDataBuffer = new DataBuffer(0 ,numMappables);
         m_pDataBuffer->SetBlockGrowth(10);
         
-        for(int i = 0; i < numMappables; ++i)
+        for(unsigned int i = 0; i < numMappables; ++i)
         {
             WriteDataMaps(pMappables[i]);
         }
@@ -79,7 +79,9 @@ namespace DataPacking
         while( pCurDataMap )
         {
             //net_ent_header.flags = networked_entity_header_t::NET_FLAG_UPDATE;
-            net_ent_header.num_objs = num_networked_obj(pCurDataMap);
+            int numNetworkedObjs = num_networked_obj(pCurDataMap);
+            ASSERTION(numNetworkedObjs <= SHRT_MAX, "Exceeded short type, change to int");
+            net_ent_header.num_objs = (short)numNetworkedObjs;
             
             //Write entity save header first.
 //            net_ent_header.flags |=
@@ -104,6 +106,7 @@ namespace DataPacking
         m_pDataBuffer->EndWritting();
     }
     
+    #pragma warning( disable : 4127 ) // conditional expression is constant
     //--------------------------------------------------------------------------
     /**
      * Writes a mapped object to the buffer
@@ -117,27 +120,31 @@ namespace DataPacking
         
         // First determine the size of this obj_block
         size_t obj_name_len = strlen( pObject->objname );
-        short obj_block_size = (SHORT_SIZE +
-                                CHAR_SIZE +
-                                obj_name_len +
-                                SHORT_SIZE +
-                                SHORT_SIZE +
-                                (GetDataSize(pObject->objType) * pObject->numobjs));
+        size_t obj_block_size = (SHORT_SIZE +
+                                        CHAR_SIZE +
+                                        obj_name_len +
+                                        SHORT_SIZE +
+                                        SHORT_SIZE +
+                                        (GetDataSize(pObject->objType) * pObject->numobjs));
+
+        ASSERTION(obj_block_size <= SHRT_MAX, "Exceeded short type, change to int");
+        ASSERTION(DATA_COUNT <= SHRT_MAX, "Exceeded short type, change to int");
+        ASSERTION(pObject->numobjs <= SHRT_MAX, "Exceeded short type, change to int");
         
         // Request a buffer
-        byte *pBuffer = m_pDataBuffer->CreateBuffer( obj_block_size );
+        byte *pBuffer = m_pDataBuffer->CreateBuffer((unsigned int)obj_block_size);
         if( pBuffer )
         {
             // Size of this block of data.
-            *((short*)pBuffer) = obj_block_size; pBuffer += SHORT_SIZE;
+            *((short*)pBuffer) = (short)obj_block_size; pBuffer += SHORT_SIZE;
             // Name Length
             pBuffer[0] = (char)obj_name_len; pBuffer += 1;
             // Name
             memcpy( pBuffer, pObject->objname, obj_name_len ); pBuffer += obj_name_len;
             // Type
-            *((short*)pBuffer) = pObject->objType; pBuffer += SHORT_SIZE;
+            *((short*)pBuffer) = (short)pObject->objType; pBuffer += SHORT_SIZE;
             // num items
-            *((short*)pBuffer) = pObject->numobjs; pBuffer += SHORT_SIZE;
+            *((short*)pBuffer) = (short)pObject->numobjs; pBuffer += SHORT_SIZE;
             
             // Objects
             WriteTypeFromClass( pBaseClass, pObject, pBuffer );

@@ -80,10 +80,13 @@ void CUtlFilePath::SetupPath(void)
 //-----------------------------------------------------------------------------
 const char *CUtlFilePath::GetFileExtension(void) const
 {
-	if(!m_bHasFileName)
+	if(!m_bHasFileName || GetNumCharacters() == 0)
+    {
 		return NULL;
+    }
 
-	for(size_t i = GetNumCharacters() - 1; i == 0; --i)
+    int numCharacters = (int)GetNumCharacters();
+	for(int i = (numCharacters - 1); i >= 0; --i)
 	{
 		// Look for the '.' of the extension
 		if(Element(i) == '.')
@@ -92,7 +95,7 @@ const char *CUtlFilePath::GetFileExtension(void) const
 		}
 	}
 
-	ASSERTION(NULL, "CUtlFilePath: Found no extension even though this is a file path!");
+	ASSERTION_ALWAYS("CUtlFilePath: Found no extension even though this is a file path!");
 	return NULL;
 }
 
@@ -164,7 +167,7 @@ const char *CUtlFilePath::GetFileName(void) const
 			return &Element(i + 1);
 	}
 
-	ASSERTION(NULL, "CUtlFilePath: Found no file name even though this is a file path!");
+	ASSERTION_ALWAYS("CUtlFilePath: Found no file name even though this is a file path!");
 	return NULL;
 }
 
@@ -240,7 +243,8 @@ void CUtlFilePath::PopFolder(void)
 //-----------------------------------------------------------------------------
 void CUtlFilePath::GetFileExtension(char *pDest, size_t destlen) const
 {
-
+    UNREFERENCED_PARAMETER(pDest);
+    UNREFERENCED_PARAMETER(destlen);
 }
 
 //-----------------------------------------------------------------------------
@@ -248,5 +252,7 @@ void CUtlFilePath::GetFileExtension(char *pDest, size_t destlen) const
 //-----------------------------------------------------------------------------
 void CUtlFilePath::GetFileName(char *pDest, size_t destlen, bool extension) const
 {
-
+    UNREFERENCED_PARAMETER(pDest);
+    UNREFERENCED_PARAMETER(destlen);
+    UNREFERENCED_PARAMETER(extension);
 }

@@ -18,7 +18,7 @@ AppVariableManager  g_pAppVariableManager;
  */
 AppVariable::AppVariable(const char *pszVarName, const char *pszVar)
 {
-    strncpy(szName, pszVarName, MAX_APPVAR_NAME_SIZE);
+    util_strncpy(szName, pszVarName, MAX_APPVAR_NAME_SIZE);
     
     // Determine what the variable is
     size_t varLen = strlen(pszVar);
@@ -46,7 +46,9 @@ AppVariable::AppVariable(const char *pszVarName, const char *pszVar)
         }
         else
         {
-            value.floating = atof(pszVar);
+            double toDouble = atof(pszVar);
+            ASSERT_VALID_DOUBLE_TO_FLOAT(toDouble);
+            value.floating = (float)toDouble;
         }
     }
 }
@@ -57,7 +59,7 @@ AppVariable::AppVariable(const char *pszVarName, const char *pszVar)
 AppVariable *AppVariableManager::RegisterVariable(const char *pszVarName,
                                                   const char *pszVar)
 {
-    for(int i = 0; i < m_varStore.Count(); ++i)
+    for(unsigned int i = 0; i < m_varStore.Count(); ++i)
     {
         if(strncmp(m_varStore[i].szName, pszVarName, MAX_APPVAR_NAME_SIZE) == 0)
         {

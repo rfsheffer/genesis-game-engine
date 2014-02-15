@@ -31,8 +31,8 @@ struct MemoryBucket
     
     byte            *m_pblocks;
     
-    unsigned short  *m_pusIndexStack;
-    unsigned short  m_pusStackIndex;
+    unsigned int  *m_pusIndexStack;
+    unsigned int  m_pusStackIndex;
 };
 
 //------------------------------------------------------------------------------

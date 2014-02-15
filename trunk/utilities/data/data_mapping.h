@@ -128,6 +128,8 @@ struct datamap_t
 
 #define END_DATA_MAP() \
 		}; \
+        __pragma(warning(push)) \
+        __pragma(warning(disable:4127)) /*disable 'conditional expression is constant' warning*/ \
 		\
 		if ( sizeof( objList ) > sizeof( objList[0] ) ) \
 		{ \
@@ -139,6 +141,7 @@ struct datamap_t
 			classNameTypedef::m_DataMap.NumObjs = 1; \
 			classNameTypedef::m_DataMap.objList 	  = objList; \
 		} \
+        __pragma(warning(pop)) \
 		return &classNameTypedef::m_DataMap; \
 	}
 

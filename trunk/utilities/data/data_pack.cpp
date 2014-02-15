@@ -19,30 +19,30 @@ namespace DataPacking
     {
         memset( this, 0, sizeof( *this ) );
         
-        m_iBlockGrowSize = pToCopy->GetBlockGrowth();
+        m_uiBlockGrowSize = pToCopy->GetBlockGrowth();
         
-        m_iCurrentPos = pToCopy->m_iCurrentPos;
-        m_iCurrent_Block = pToCopy->m_iCurrent_Block;
+        m_uiCurrentPos = pToCopy->m_uiCurrentPos;
+        m_uiCurrent_Block = pToCopy->m_uiCurrent_Block;
         
-        if(!ResizeBufferData(pToCopy->m_iBufferSize))
+        if(!ResizeBufferData(pToCopy->m_uiBufferSize))
         {
             m_iError = BUFFER_INIT_ERROR;
-            ASSERTION(false, "Buffer initialization error!");
+            ASSERTION_ALWAYS("Buffer initialization error!");
         }
         
-        if(!ResizeBlockData(pToCopy->m_iNum_Blocks))
+        if(!ResizeBlockData(pToCopy->m_uiNum_Blocks))
         {
             m_iError = BUFFER_INIT_ERROR;
-            ASSERTION(false, "Buffer initialization error!");
+            ASSERTION_ALWAYS("Buffer initialization error!");
         }
         
-        memcpy(m_pBlocks, pToCopy->m_pBlocks, sizeof(data_block) * m_iNum_Blocks);
-        memcpy(m_pBaseData, pToCopy->m_pBaseData, pToCopy->m_iBufferSize);
+        memcpy(m_pBlocks, pToCopy->m_pBlocks, sizeof(data_block) * m_uiNum_Blocks);
+        memcpy(m_pBaseData, pToCopy->m_pBaseData, pToCopy->m_uiBufferSize);
         
         m_bWritting = pToCopy->m_bWritting;
-        m_iAmountWritten = pToCopy->m_iAmountWritten;
+        m_uiAmountWritten = pToCopy->m_uiAmountWritten;
         
-        m_pCurrentData = m_pBaseData + m_iCurrentPos;
+        m_pCurrentData = m_pBaseData + m_uiCurrentPos;
     }
     
     /**
@@ -53,7 +53,7 @@ namespace DataPacking
     DataBuffer::DataBuffer(unsigned int buffer_size, unsigned int num_blocks)
     {
         memset( this, 0, sizeof( *this ) );
-        m_iBlockGrowSize = 1;
+        m_uiBlockGrowSize = 1;
         
         if( buffer_size && !ResizeBufferData( buffer_size ) )
         {
@@ -89,19 +89,19 @@ namespace DataPacking
      */
     DataBuffer& DataBuffer::operator= (const DataBuffer &cSource)
     {
-        m_iBlockGrowSize = cSource.GetBlockGrowth();
+        m_uiBlockGrowSize = cSource.GetBlockGrowth();
         
-        m_iCurrentPos = cSource.m_iCurrentPos;
-        m_iCurrent_Block = cSource.m_iCurrent_Block;
+        m_uiCurrentPos = cSource.m_uiCurrentPos;
+        m_uiCurrent_Block = cSource.m_uiCurrent_Block;
         
-        ResizeBufferData(cSource.m_iBufferSize);
-        ResizeBlockData(cSource.m_iNum_Blocks);
+        ResizeBufferData(cSource.m_uiBufferSize);
+        ResizeBlockData(cSource.m_uiNum_Blocks);
         
-        memcpy(m_pBlocks, cSource.m_pBlocks, sizeof(data_block) * m_iNum_Blocks);
-        memcpy(m_pBaseData, cSource.m_pBaseData, cSource.m_iBufferSize);
+        memcpy(m_pBlocks, cSource.m_pBlocks, sizeof(data_block) * m_uiNum_Blocks);
+        memcpy(m_pBaseData, cSource.m_pBaseData, cSource.m_uiBufferSize);
         
         m_bWritting = false;
-        m_iAmountWritten = 0;
+        m_uiAmountWritten = 0;
         
         return *this;
     }
@@ -112,7 +112,7 @@ namespace DataPacking
      */
     bool DataBuffer::ResizeBlockData(unsigned int newsize)
     {
-        if( newsize <= m_iNum_Blocks )
+        if( newsize <= m_uiNum_Blocks )
             return false;
         
         if( !m_pBlocks )
@@ -120,7 +120,7 @@ namespace DataPacking
             m_pBlocks = (data_block*)malloc( sizeof( data_block ) * newsize );
             if( m_pBlocks )
             {
-                m_iNum_Blocks = newsize;
+                m_uiNum_Blocks = newsize;
                 return true;
             }
             return false;
@@ -132,12 +132,10 @@ namespace DataPacking
             if( !ptemp )
                 return false;
             
-            m_iNum_Blocks = newsize;
+            m_uiNum_Blocks = newsize;
             m_pBlocks = ptemp;
             return true;
         }
-        
-        return false;
     }
     
     /**
@@ -146,7 +144,7 @@ namespace DataPacking
      */
     bool DataBuffer::ResizeBufferData(unsigned int newsize)
     {
-        if( newsize <= m_iBufferSize )
+        if( newsize <= m_uiBufferSize )
             return false;
         
         if( !m_pBaseData )
@@ -154,7 +152,7 @@ namespace DataPacking
             m_pBaseData = m_pCurrentData = (byte*)malloc( newsize );
             if( m_pBaseData )
             {
-                m_iBufferSize = newsize;
+                m_uiBufferSize = newsize;
                 return true;
             }
             return false;
@@ -169,13 +167,11 @@ namespace DataPacking
                 return false;
             }
             
-            m_iBufferSize = newsize;
+            m_uiBufferSize = newsize;
             m_pBaseData = ptemp;
-            m_pCurrentData = ptemp + m_iCurrentPos;
+            m_pCurrentData = ptemp + m_uiCurrentPos;
             return true;
         }
-        
-        return false;
     }
     
     /**
@@ -184,11 +180,11 @@ namespace DataPacking
      */
     bool DataBuffer::SetBufferPos(unsigned int position)
     {
-        if( position > m_iBufferSize )
+        if( position > m_uiBufferSize )
             return false;
         
         m_pCurrentData = m_pBaseData + position;
-        m_iCurrentPos = position;
+        m_uiCurrentPos = position;
         return true;
     }
     
@@ -199,12 +195,12 @@ namespace DataPacking
     byte *DataBuffer::ReadFromBlock(unsigned int blockIndex, unsigned int offset)
     {
         ASSERTION(m_pBaseData, "Trying to read from block with no valid block data!");
-        if(blockIndex >= m_iNum_Blocks)
+        if(blockIndex >= m_uiNum_Blocks)
         {
             return NULL;
         }
         
-        if(offset >= m_pBlocks[blockIndex].size)
+        if(offset >= (unsigned int)m_pBlocks[blockIndex].size)
         {
             return NULL;
         }
@@ -249,7 +245,7 @@ namespace DataPacking
             return false;
         
         m_bWritting = true;
-        m_iAmountWritten = 0;
+        m_uiAmountWritten = 0;
         return true;
     }
     
@@ -262,10 +258,10 @@ namespace DataPacking
             return false;
         
         // Check if we need to resize.
-        if( m_iBufferSize < (m_iBufferSize+size) )
+        if( m_uiBufferSize < (m_uiBufferSize+size) )
         {
             // We need to resize the buffer.
-            if( !ResizeBufferData( m_iBufferSize + size ) )
+            if( !ResizeBufferData( m_uiBufferSize + size ) )
                 return false;
         }
         
@@ -274,8 +270,8 @@ namespace DataPacking
         {
             memcpy( m_pCurrentData, pBuffer, size );
             m_pCurrentData = m_pCurrentData + size;
-            m_iAmountWritten += size;
-            m_iCurrentPos += size;
+            m_uiAmountWritten += size;
+            m_uiCurrentPos += size;
             return true;
         }
         else
@@ -293,10 +289,10 @@ namespace DataPacking
             return NULL;
         
         // Check if we need to resize.
-        if( m_iBufferSize < (m_iBufferSize+size) )
+        if( m_uiBufferSize < (m_uiBufferSize+size) )
         {
             // We need to resize the buffer.
-            if( !ResizeBufferData( m_iBufferSize + size ) )
+            if( !ResizeBufferData( m_uiBufferSize + size ) )
                 return NULL;
         }
         
@@ -304,8 +300,8 @@ namespace DataPacking
         {
             byte *newbuffer = m_pCurrentData;
             m_pCurrentData = m_pCurrentData + size;
-            m_iAmountWritten += size;
-            m_iCurrentPos += size;
+            m_uiAmountWritten += size;
+            m_uiCurrentPos += size;
             return newbuffer;
         }
         else
@@ -320,10 +316,10 @@ namespace DataPacking
     {
         if( m_bWritting == true )
         {
-            m_pBlocks[m_iCurrent_Block].size = m_iAmountWritten;
-            m_iAmountWritten = 0;
+            m_pBlocks[m_uiCurrent_Block].size = m_uiAmountWritten;
+            m_uiAmountWritten = 0;
             m_bWritting = false;
-            m_iCurrent_Block++;
+            m_uiCurrent_Block++;
         }
     }
     
@@ -336,20 +332,20 @@ namespace DataPacking
                                                     unsigned int size)
     {
         // Alloc more space if needed.
-        if( !m_pBlocks || ( m_iNum_Blocks == m_iCurrent_Block ) )
+        if( !m_pBlocks || ( m_uiNum_Blocks == m_uiCurrent_Block ) )
         {
-            if( !ResizeBlockData( (m_iNum_Blocks + m_iBlockGrowSize) ) )
+            if( !ResizeBlockData( (m_uiNum_Blocks + m_uiBlockGrowSize) ) )
                 return NULL;
         }
         
         // Create Block for Data Mapping.
         data_block block;
-        strncpy( block.name, pName, MAX_DATA_BLOCK_NAME );
-        block.offset = m_iCurrentPos;
+        util_strncpy( block.name, pName, MAX_DATA_BLOCK_NAME );
+        block.offset = m_uiCurrentPos;
         block.size = size;
-        memcpy( &m_pBlocks[m_iCurrent_Block], &block, sizeof( data_block ) );
+        memcpy( &m_pBlocks[m_uiCurrent_Block], &block, sizeof( data_block ) );
         
-        return &m_pBlocks[m_iCurrent_Block];
+        return &m_pBlocks[m_uiCurrent_Block];
     }
     
 } // DataPacking

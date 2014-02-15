@@ -13,7 +13,7 @@ namespace Utility
 {
     void Variant::SetFromString(const char *pszString)
     {
-        
+        UNREFERENCED_PARAMETER(pszString);
     }
     
     const char *Variant::ToString(void) const

@@ -92,7 +92,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\common;..\platform;.\common;.\;.\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN;_64BIT;INCLUDE_WINDOWS_HEADER;UTILITIES_EXPORT;_HAS_EXCEPTIONS=0;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN;_64BIT;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;INCLUDE_WINDOWS_HEADER;UTILITIES_EXPORT;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>allhead.h</PrecompiledHeaderFile>
       <WarningLevel>Level4</WarningLevel>
@@ -141,7 +141,7 @@ exit 1
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\common;..\platform;.\common;.\;.\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN;_64BIT;INCLUDE_WINDOWS_HEADER;UTILITIES_EXPORT;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN;_64BIT;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;INCLUDE_WINDOWS_HEADER;UTILITIES_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>allhead.h</PrecompiledHeaderFile>
       <WarningLevel>Level4</WarningLevel>
@@ -200,57 +200,13 @@ exit 1
     <ClCompile Include="data\data_networkpack.cpp" />
     <ClCompile Include="data\data_networkunpack.cpp" />
     <ClCompile Include="data\data_pack.cpp" />
-    <ClCompile Include="hashing\Bitslice.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Bitvec.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\crc.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\lookup3.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\md5.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash1.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash2.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\MurmurHash3.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Platform.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\PMurHash.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Random.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\sha1.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Spooky.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\SuperFastHash.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="hashing\Types.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="interfaces\interfaces.cpp" />
     <ClCompile Include="logging.cpp" />
     <ClCompile Include="memory\memory_bucket.cpp" />
     <ClCompile Include="memory\memory_pool.cpp" />
     <ClCompile Include="script\keyvalues.cpp" />
     <ClCompile Include="script\lexer.cpp" />
+    <ClCompile Include="stdlib\util_stdlib.cpp" />
     <ClCompile Include="string\string_helpers.cpp" />
     <ClCompile Include="string\string_pool.cpp" />
     <ClCompile Include="string\util_filepath.cpp" />
@@ -282,18 +238,6 @@ exit 1
     <ClInclude Include="data\data_network_helpers.h" />
     <ClInclude Include="data\data_pack.h" />
     <ClInclude Include="data\data_types.h" />
-    <ClInclude Include="gstdlib\gstdlib.h" />
-    <ClInclude Include="hashing\Bitvec.h" />
-    <ClInclude Include="hashing\MurmurHash1.h" />
-    <ClInclude Include="hashing\MurmurHash2.h" />
-    <ClInclude Include="hashing\MurmurHash3.h" />
-    <ClInclude Include="hashing\Platform.h" />
-    <ClInclude Include="hashing\PMurHash.h" />
-    <ClInclude Include="hashing\pstdint.h" />
-    <ClInclude Include="hashing\Random.h" />
-    <ClInclude Include="hashing\sha1.h" />
-    <ClInclude Include="hashing\Spooky.h" />
-    <ClInclude Include="hashing\Types.h" />
     <ClInclude Include="interfaces\interfaces.h" />
     <ClInclude Include="logging.h" />
     <ClInclude Include="memory\memory_bucket.h" />
@@ -301,6 +245,7 @@ exit 1
     <ClInclude Include="memory\memory_pool.h" />
     <ClInclude Include="script\keyvalues.h" />
     <ClInclude Include="script\lexer.h" />
+    <ClInclude Include="stdlib\util_stdlib.h" />
     <ClInclude Include="string\string_helpers.h" />
     <ClInclude Include="string\string_pointer.h" />
     <ClInclude Include="string\string_pool.h" />

@@ -22,10 +22,10 @@ namespace DataPacking
     {
         ASSERTION(m_pDataBuffer, "Trying to unpack NULL network package!");
         
-        ASSERTION(m_pDataBuffer->m_iNum_Blocks == numMappables,
+        ASSERTION(m_pDataBuffer->m_uiNum_Blocks == numMappables,
                   "Network package incompatible with unpack mappables!");
         
-        for(int i = 0; i < numMappables; ++i)
+        for(unsigned int i = 0; i < numMappables; ++i)
         {
             WriteToMappable(&pMappables[i], i);
         }

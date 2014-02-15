@@ -122,6 +122,18 @@ static inline int HandleAsserting(const char *testStr,
 // the trailing comma
 #if defined(_MAC) || defined(_LINUX)
 
+#define ASSERTION_ALWAYS(test, msg, ...) \
+{ \
+	static int callIt = 1; \
+	if(callIt) \
+	{ \
+		if(HandleAsserting("false", msg, __FILE__, __LINE__, &callIt, ##__VA_ARGS__)) \
+		{ \
+			ABORT; \
+		} \
+	} \
+}
+
 #define ASSERTION(test, msg, ...) \
 { \
 	if(!(test)) \
@@ -138,6 +150,18 @@ static inline int HandleAsserting(const char *testStr,
 }
 
 #elif defined(_WIN)
+
+#define ASSERTION_ALWAYS(msg, ...) \
+{ \
+	static int callIt = 1; \
+	if(callIt) \
+	{ \
+		if(HandleAsserting("false", msg, __FILE__, __LINE__, &callIt, __VA_ARGS__)) \
+		{ \
+			ABORT; \
+		} \
+	} \
+}
 
 #define ASSERTION(test, msg, ...) \
 { \
@@ -158,6 +182,7 @@ static inline int HandleAsserting(const char *testStr,
 
 #else
 
+#define ASSERTION_ALWAYS(msg, ...)
 #define ASSERTION(test, msg, ...)
 
 #endif // _DEBUG
@@ -179,5 +204,35 @@ inline DEST_TYPE_POINTER assert_cast(SOURCE_TYPE_POINTER *pSource)
 #else
 #define assert_cast static_cast
 #endif //_DEBUG
+
+//------------------------------------------------------------------------------
+/*
+ * Validating Pointer Helpers
+ */
+UTILITIES_FUNCTION void _AssertValidReadPtr(const void* ptr, int count = 1);
+UTILITIES_FUNCTION void _AssertValidWritePtr(void* ptr, int count = 1);
+UTILITIES_FUNCTION void _AssertValidStringPtr(const char* ptr, int maxchar);
+
+#ifdef _DEBUG
+#   define ASSERT_VALID_READ_PTR(ptr, count)  _AssertValidReadPtr(ptr, count)
+#   define ASSERT_VALID_WRITE_PTR(ptr, count)  _AssertValidWritePtr(ptr, count)
+#   define ASSERT_VALID_STRING_PTR(ptr, maxchar)  _AssertValidStringPtr(ptr, maxchar)
+#else
+#   define ASSERT_VALID_READ_PTR(ptr, count)
+#   define ASSERT_VALID_WRITE_PTR(ptr, count)
+#   define ASSERT_VALID_STRING_PTR(ptr, maxchar)
+#endif
+
+//------------------------------------------------------------------------------
+/*
+ * Datatype range checking
+ */
+#ifdef _DEBUG
+#   define ASSERT_VALID_DOUBLE_TO_FLOAT(dbl_val) \
+        ASSERTION(double(dbl_val) <= (double)FLT_MAX, "out of range double to float"); \
+        ASSERTION(double(dbl_val) >= (double)FLT_MIN, "out of range double to float")
+#else
+#   define ASSERT_VALID_DOUBLE_TO_FLOAT(dbl_val)
+#endif
 
 #endif // DEBUG_H

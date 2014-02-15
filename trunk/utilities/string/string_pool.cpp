@@ -16,7 +16,7 @@
  */
 CStringPool::CStringPool(const char *pszPoolName)
 {
-    
+    UNREFERENCED_PARAMETER(pszPoolName);
 }
 
 //------------------------------------------------------------------------------
@@ -25,6 +25,7 @@ CStringPool::CStringPool(const char *pszPoolName)
  */
 CStringPtr CStringPool::AllocateString(const char *pszString)
 {
+    UNREFERENCED_PARAMETER(pszString);
     CStringPtr todo;
     return todo;
 }

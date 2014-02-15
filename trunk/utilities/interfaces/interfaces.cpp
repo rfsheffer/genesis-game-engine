@@ -79,7 +79,7 @@ void *InterfaceRegistration::GetInterface(const char *pszName, int version)
     InterfaceElement *pCur = m_pHead;
     while(pCur)
     {
-        if(strcasecmp(pCur->m_pszElementName, pszName) == 0)
+        if(util_stricmp(pCur->m_pszElementName, pszName) == 0)
         {
             ASSERTION((pCur->m_iVersion == version || version == -1),
                       "Version mismatch for interface! Probably needs to update.");
@@ -102,7 +102,7 @@ void *InterfaceRegistration::GetInterface(const char *pszName, int version)
                     // one of the pointers already stored.
                     InterfacePointer *pCurIntPnt = pCur->m_pInterfacePointer;
                     InterfacePointer *pLastIntPnt = NULL;
-                    while(true)
+                    for(;;) // while(true)
                     {
                         if(pCurIntPnt->pPointer == pReturned)
                         {
@@ -146,7 +146,7 @@ void InterfaceRegistration::ReleaseInterfacePointer(const char *pszName, void *p
     InterfaceElement *pCur = m_pHead;
     while(pCur)
     {
-        if(strcasecmp(pCur->m_pszElementName, pszName) == 0)
+        if(util_stricmp(pCur->m_pszElementName, pszName) == 0)
         {
             InterfacePointer *pCurIntPnt = pCur->m_pInterfacePointer;
             if(!pCurIntPnt)
@@ -166,7 +166,7 @@ void InterfaceRegistration::ReleaseInterfacePointer(const char *pszName, void *p
                 return;
             }
             
-            while(true)
+            for(;;) // while(true)
             {
                 if(!pCurIntPnt->pNext)
                 {
@@ -213,7 +213,7 @@ void InterfaceRegistration::ReleaseAllInterfacePointers(void)
                 // Fire the kill callback and post an error message
                 pCur->m_killFunc(pCurIntPnt->pPointer);
                 
-                ASSERTION(false, "Un-released interface pointer of %s!", pCur->m_pszElementName);
+                ASSERTION_ALWAYS("Un-released interface pointer of %s!", pCur->m_pszElementName);
                 Logging::Warning("Interface Warning: unreleased dynamic interface of %s!\n",
                         pCur->m_pszElementName);
             }

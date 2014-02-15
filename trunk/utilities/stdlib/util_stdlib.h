@@ -1,6 +1,6 @@
 //
-//  gstdlib.h
-//  Genesis Standard C library. Anything we need to declare for platform support goes here.
+//  util_stdlib.h
+//  Utilities Standard C library. Anything we need to declare for platform support goes here.
 //  Generally, we will be supporting the standard library that comes with the OS unless
 //  we really see a reason (performance reason or other) to redeclare a standard C function
 //  here.
@@ -9,14 +9,14 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
-#ifndef G_STDLIB_H
-#define G_STDLIB_H
+#ifndef UTIL_STDLIB_H
+#define UTIL_STDLIB_H
 
 #ifdef _WIN
 #pragma once
 #endif
 
-//---------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 /** Missing C99 functions for windows platform support */
 #ifdef _WIN
 
@@ -45,8 +45,6 @@ inline int c99_snprintf(char* str, size_t size, const char* format, ...)
 }
 
 #define snprintf c99_snprintf
-#define strcasecmp stricmp
-#define strncasecmp strnicmp
 
 // Microsoft "safe" versions
 #define vsnprintf vsnprintf_s
@@ -54,4 +52,16 @@ inline int c99_snprintf(char* str, size_t size, const char* format, ...)
 
 #endif // _WIN
 
-#endif // G_STDLIB_H
+//------------------------------------------------------------------------------
+/**
+* Standard Library Functions with safeguards in _DEBUG mode
+*/
+UTILITIES_FUNCTION void     util_memset(void *dest, int fill, int count);
+UTILITIES_FUNCTION void     util_memcpy(void *dest, const void *src, int count);
+UTILITIES_FUNCTION void     util_memmove(void *dest, const void *src, int count);
+UTILITIES_FUNCTION int      util_memcmp(const void *m1, const void *m2, int count);
+UTILITIES_FUNCTION void     util_strncpy(char *pDest, const char *pSrc, int maxLen);
+UTILITIES_FUNCTION int      util_stricmp(const char *pStr1, const char *pStr2);
+UTILITIES_FUNCTION int      util_strnicmp(const char *pStr1, const char *pStr2, int maxLen);
+
+#endif // UTIL_STDLIB_H

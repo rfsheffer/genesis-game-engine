@@ -63,3 +63,34 @@ int MessageBoxWIN(void *hWnd, char* lpText, char* lpCaption, unsigned int uType)
 }
 
 #endif
+
+//------------------------------------------------------------------------------
+/*
+ * Validating Pointer Helpers
+ */
+UTILITIES_FUNCTION void _AssertValidReadPtr(const void* ptr, int count/* = 1*/)
+{
+#if defined( _WIN32 )
+	ASSERTION(!IsBadReadPtr(ptr, count), "AssertValidReadPtr");
+#else
+	ASSERTION(!count || ptr, "AssertValidReadPtr");
+#endif
+}
+
+UTILITIES_FUNCTION void _AssertValidWritePtr(void* ptr, int count/* = 1*/)
+{
+#if defined( _WIN32 )
+	ASSERTION(!IsBadWritePtr(ptr, count), "AssertValidWritePtr");
+#else
+	ASSERTION(!count || ptr, "AssertValidWritePtr");
+#endif
+}
+
+UTILITIES_FUNCTION void _AssertValidStringPtr(const char* ptr, int maxchar)
+{
+#if defined( _WIN32 )
+	ASSERTION(!IsBadStringPtr(ptr, maxchar), "AssertValidStringPtr");
+#else
+	Assert( ptr );
+#endif
+}

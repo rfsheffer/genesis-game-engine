@@ -70,7 +70,7 @@ namespace Utility
         
         void        AddChild(Keyvalues *pKeyvalue);
         
-        void        SetName(const char *pszName, size_t nameLength);
+        void        SetName(const char *pszName, int nameLength);
         void        SetValue(const char *pszValue, size_t valLength);
         
         bool        ParseKey(const char **pszBuffer, size_t &buffSize);
@@ -185,7 +185,7 @@ namespace Utility
         // there will be a string pool in the keyvalue class itself and it will
         // hold all the strings. The variant will merely hold a pointer to the
         // string in the pool. Will write this feature when its needed.
-        ASSERTION(false, "Using unsupported call GetString for Keyvalues. WRITEME!");
+        ASSERTION_ALWAYS("Using unsupported call GetString for Keyvalues. WRITEME!");
         return NULL;
         /*
         if(pszKeyName != NULL)
