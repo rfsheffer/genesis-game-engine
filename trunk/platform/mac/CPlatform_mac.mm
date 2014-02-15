@@ -212,3 +212,17 @@ size_t CPlatform::GetFileSize(FileHandle pFile) const
     
     return size;
 }
+
+// Library Loading
+DLLHANDLE CPlatform::LoadDLL(const char *pszLibraryFileName)
+{
+    return dlopen(pszLibraryFileName, RTLD_NOW);
+}
+void CPlatform::UnloadDLL(DLLHANDLE dllHandle)
+{
+    dlclose(dllHandle);
+}
+const char *CPlatform::GetDLLExtension(void)
+{
+    return ".dylib";
+}

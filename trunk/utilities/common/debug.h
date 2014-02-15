@@ -122,7 +122,7 @@ static inline int HandleAsserting(const char *testStr,
 // the trailing comma
 #if defined(_MAC) || defined(_LINUX)
 
-#define ASSERTION_ALWAYS(test, msg, ...) \
+#define ASSERTION_ALWAYS(msg, ...) \
 { \
 	static int callIt = 1; \
 	if(callIt) \

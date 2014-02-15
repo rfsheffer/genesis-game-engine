@@ -91,6 +91,6 @@ UTILITIES_FUNCTION void _AssertValidStringPtr(const char* ptr, int maxchar)
 #if defined( _WIN32 )
 	ASSERTION(!IsBadStringPtr(ptr, maxchar), "AssertValidStringPtr");
 #else
-	Assert( ptr );
+	ASSERTION(ptr, "AssertValidStringPtr");
 #endif
 }

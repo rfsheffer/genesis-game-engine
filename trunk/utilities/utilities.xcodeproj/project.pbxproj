@@ -58,6 +58,9 @@
 		BDABF2E618A2D2BB00E86A29 /* data_mappable.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2E418A2D2BB00E86A29 /* data_mappable.h */; };
 		BDABF2EE18A2E14F00E86A29 /* interfaces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2EC18A2E14F00E86A29 /* interfaces.cpp */; };
 		BDABF2EF18A2E14F00E86A29 /* interfaces.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2ED18A2E14F00E86A29 /* interfaces.h */; };
+		BDAC6FF518AF20AE008EA2E1 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAC6FF418AF20AE008EA2E1 /* macros.h */; };
+		BDAC6FF818AF222B008EA2E1 /* util_stdlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDAC6FF618AF222B008EA2E1 /* util_stdlib.cpp */; };
+		BDAC6FF918AF222B008EA2E1 /* util_stdlib.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAC6FF718AF222B008EA2E1 /* util_stdlib.h */; };
 		BDB9FA9518A1C7F80049A361 /* util_perf_timer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FA9118A1C7F80049A361 /* util_perf_timer.h */; };
 		BDB9FA9618A1C7F80049A361 /* util_simple_timer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FA9218A1C7F80049A361 /* util_simple_timer.h */; };
 		BDB9FA9718A1C7F80049A361 /* util_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB9FA9318A1C7F80049A361 /* util_time.cpp */; };
@@ -141,6 +144,9 @@
 		BDABF2E418A2D2BB00E86A29 /* data_mappable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_mappable.h; path = data/data_mappable.h; sourceTree = "<group>"; };
 		BDABF2EC18A2E14F00E86A29 /* interfaces.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interfaces.cpp; path = interfaces/interfaces.cpp; sourceTree = "<group>"; };
 		BDABF2ED18A2E14F00E86A29 /* interfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = interfaces.h; path = interfaces/interfaces.h; sourceTree = "<group>"; };
+		BDAC6FF418AF20AE008EA2E1 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = ../common/macros.h; sourceTree = "<group>"; };
+		BDAC6FF618AF222B008EA2E1 /* util_stdlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_stdlib.cpp; path = stdlib/util_stdlib.cpp; sourceTree = "<group>"; };
+		BDAC6FF718AF222B008EA2E1 /* util_stdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_stdlib.h; path = stdlib/util_stdlib.h; sourceTree = "<group>"; };
 		BDB9FA9118A1C7F80049A361 /* util_perf_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_perf_timer.h; path = time/util_perf_timer.h; sourceTree = "<group>"; };
 		BDB9FA9218A1C7F80049A361 /* util_simple_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_simple_timer.h; path = time/util_simple_timer.h; sourceTree = "<group>"; };
 		BDB9FA9318A1C7F80049A361 /* util_time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_time.cpp; path = time/util_time.cpp; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		BD1FACB1188BAFAC001B76BE = {
 			isa = PBXGroup;
 			children = (
+				BDAC6FFA18AF2236008EA2E1 /* Standard Lib */,
 				BDABF2EB18A2E14300E86A29 /* Interfaces */,
 				BDB9FA9018A1C7B70049A361 /* Time */,
 				BDB9FA8F18A1C7B10049A361 /* Threading */,
@@ -202,6 +209,7 @@
 				BD33303418A39A3E0085E98A /* logging.h */,
 				BD1FACC1188BAFDA001B76BE /* debug.cpp */,
 				BD1FACC2188BAFDA001B76BE /* debug.h */,
+				BDAC6FF418AF20AE008EA2E1 /* macros.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +247,15 @@
 				BDABF2ED18A2E14F00E86A29 /* interfaces.h */,
 			);
 			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		BDAC6FFA18AF2236008EA2E1 /* Standard Lib */ = {
+			isa = PBXGroup;
+			children = (
+				BDAC6FF618AF222B008EA2E1 /* util_stdlib.cpp */,
+				BDAC6FF718AF222B008EA2E1 /* util_stdlib.h */,
+			);
+			name = "Standard Lib";
 			sourceTree = "<group>";
 		};
 		BDB9FA8918A1C77B0049A361 /* Container */ = {
@@ -389,6 +406,7 @@
 				BD5D1EB718AC855200579FB7 /* MurmurHash1.h in Headers */,
 				BDB9FA9518A1C7F80049A361 /* util_perf_timer.h in Headers */,
 				BDB9FAB018A1C8210049A361 /* lexer.h in Headers */,
+				BDAC6FF918AF222B008EA2E1 /* util_stdlib.h in Headers */,
 				BDB9FB0118A24FDD0049A361 /* data_types.h in Headers */,
 				BDB9FAA618A1C8100049A361 /* string_helpers.h in Headers */,
 				BDB9FAF418A24FDD0049A361 /* data_filepack.h in Headers */,
@@ -407,6 +425,7 @@
 				BD14252618A1C0A400E3CFB3 /* util_random.h in Headers */,
 				BDABF2E618A2D2BB00E86A29 /* data_mappable.h in Headers */,
 				BDB9FAF318A24FDD0049A361 /* data_bits.h in Headers */,
+				BDAC6FF518AF20AE008EA2E1 /* macros.h in Headers */,
 				BDABF2D818A2CD8700E86A29 /* data_networkunpack.h in Headers */,
 				BD5D1ECB18AC87B200579FB7 /* sha1.h in Headers */,
 				BD1FACCA188BB06A001B76BE /* memory_pool.h in Headers */,
@@ -498,6 +517,7 @@
 				BD5D1ED018AC881700579FB7 /* Types.cpp in Sources */,
 				BDABF2E118A2D29300E86A29 /* data_factory.cpp in Sources */,
 				BD1FACC3188BAFDA001B76BE /* debug.cpp in Sources */,
+				BDAC6FF818AF222B008EA2E1 /* util_stdlib.cpp in Sources */,
 				BD5D1EDE18AC88F300579FB7 /* Bitslice.cpp in Sources */,
 				BD5D1EC218AC878700579FB7 /* Platform.cpp in Sources */,
 				BDABF2E518A2D2BB00E86A29 /* data_mappable.cpp in Sources */,
