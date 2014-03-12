@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD31F30D18A4B70A0083E283 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD31F30C18A4B70A0083E283 /* OpenGL.framework */; };
+		BD371A9618D0272900B9873C /* graphics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD371A9518D0272900B9873C /* graphics.dylib */; };
 		BDABF31018A3599A00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF30F18A3599A00E86A29 /* utilities.dylib */; };
 		BDABF31418A359E400E86A29 /* clienthead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31318A359E400E86A29 /* clienthead.h */; };
 		BDABF31618A359EF00E86A29 /* IClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31518A359EF00E86A29 /* IClient.h */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		BD31F30C18A4B70A0083E283 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BD371A9518D0272900B9873C /* graphics.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = graphics.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin/graphics.dylib; sourceTree = "<absolute>"; };
 		BDABF30818A3596000E86A29 /* client.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = client.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDABF30F18A3599A00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
 		BDABF31318A359E400E86A29 /* clienthead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clienthead.h; sourceTree = "<group>"; };
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD371A9618D0272900B9873C /* graphics.dylib in Frameworks */,
 				BD31F30D18A4B70A0083E283 /* OpenGL.framework in Frameworks */,
 				BDABF31018A3599A00E86A29 /* utilities.dylib in Frameworks */,
 			);
@@ -64,6 +67,7 @@
 		BDABF31118A359C500E86A29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD371A9518D0272900B9873C /* graphics.dylib */,
 				BD31F30C18A4B70A0083E283 /* OpenGL.framework */,
 				BDABF30F18A3599A00E86A29 /* utilities.dylib */,
 			);
@@ -244,8 +248,9 @@
 					"../../utilities/**",
 					../../math,
 					../../common,
+					../../graphics/public,
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -267,8 +272,9 @@
 					"../../utilities/**",
 					../../math,
 					../../common,
+					../../graphics/public,
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

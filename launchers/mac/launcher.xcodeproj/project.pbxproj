@@ -21,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD14251E18A1B62B00E3CFB3 /* contextinfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = contextinfo.h; path = ../../../graphics/contextinfo.h; sourceTree = "<group>"; };
 		BD14251F18A1BCFF00E3CFB3 /* IPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = ../../platform/IPlatform.h; sourceTree = "<group>"; };
 		BD14252018A1BD4700E3CFB3 /* allhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.h; path = ../../../common/allhead.h; sourceTree = "<group>"; };
 		BD4AF1D217067CC800135A3E /* foundation_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = foundation_constants.h; path = ../../../common/foundation_constants.h; sourceTree = "<group>"; };
@@ -127,7 +126,6 @@
 				BD4AF1D217067CC800135A3E /* foundation_constants.h */,
 				BDF13CD616CDD4BE003994AE /* CCocoaWrapper.h */,
 				BDF13CD716CDD4BE003994AE /* CCocoaWrapper.mm */,
-				BD14251E18A1B62B00E3CFB3 /* contextinfo.h */,
 			);
 			name = Source;
 			path = launcher;
@@ -344,7 +342,7 @@
 					../../common,
 					"../../utilities/**",
 					../../math,
-					../../graphics,
+					../../graphics/public,
 					../../engine/public,
 				);
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
@@ -376,7 +374,7 @@
 					../../common,
 					"../../utilities/**",
 					../../math,
-					../../graphics,
+					../../graphics/public,
 					../../engine/public,
 				);
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";

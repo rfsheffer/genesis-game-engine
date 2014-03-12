@@ -649,14 +649,19 @@ REGISTER_STATIC_INTERFACE(g_platform,
     Utility::Keyvalues kvRoot;
     
     FileHandle fileref = GetPlatform()->FileOpen("./configuration/windows.kv", FILE_READ_BINARY);
-    if(fileref)
+    if(!fileref || !kvRoot.PopulateWithFile(fileref, "windows.kv"))
     {
-        kvRoot.PopulateWithFile(fileref, "windows.kv");
+        ASSERTION(fileref, "Could not open windows.kv, no application windows were created!");
+        Logging::Error("Unable to load windows file");
+        return;
     }
-
-    ASSERTION(fileref, "Could not open windows.kv, no application windows were created!");
     
     Utility::Keyvalues *pkvWindows = kvRoot.GetKey("windows");
+    if(!pkvWindows)
+    {
+        Logging::Error("Invalid windows file");
+        return;
+    }
     
     for(const Utility::Keyvalues *pCurKey = pkvWindows->GetFirstChild();
                         pCurKey != NULL; pCurKey = pCurKey->GetNextChild())
