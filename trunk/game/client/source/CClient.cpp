@@ -11,8 +11,10 @@
 #include "clienthead.h"
 #include "CClient.h"
 #include "data_networkunpack.h"
+#include "IGraphics.h"
 
 static IPlatform   *g_pPlatformInterface = NULL;
+static IGraphics   *g_pGraphicsInterface = NULL;
 
 /** Just a pointer hookup so utilities can get the platform interface */
 IPlatform *GetPlatform(void)
@@ -25,6 +27,18 @@ IPlatform *GetPlatform(void)
     }
     
     return g_pPlatformInterface;
+}
+
+IGraphics *GetGraphics(void)
+{
+    if(g_pGraphicsInterface == NULL)
+    {
+        g_pGraphicsInterface = static_cast<IGraphics*>
+        (GetInterfaceRegistration()->GetInterface(GRAPHICS_INTERFACE_NAME,
+                                                  GRAPHICS_INTERFACE_VERSION));
+    }
+    
+    return g_pGraphicsInterface;
 }
 
 
