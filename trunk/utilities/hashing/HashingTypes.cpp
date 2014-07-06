@@ -1,4 +1,4 @@
-#include "Types.h"
+#include "HashingTypes.h"
 
 #include "Random.h"
 

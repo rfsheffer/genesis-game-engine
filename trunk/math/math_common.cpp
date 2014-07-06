@@ -5,7 +5,7 @@
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
 //
 
-//#include "allhead.pch"
+#include "mathhead.h"
 
 namespace MathLib
 {

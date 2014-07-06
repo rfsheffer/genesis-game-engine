@@ -13,6 +13,7 @@
 		BDB9FAB818A231FF0049A361 /* AppVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB318A231FF0049A361 /* AppVariables.h */; };
 		BDB9FAB918A231FF0049A361 /* CEngineState.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB418A231FF0049A361 /* CEngineState.h */; };
 		BDB9FABA18A231FF0049A361 /* enginehead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB518A231FF0049A361 /* enginehead.h */; };
+		BDE8A1B41969173F000E3E15 /* libmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE8A1B31969173F000E3E15 /* libmath.a */; };
 		BDF13C8C16CDCFD4003994AE /* CEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8816CDCFD4003994AE /* CEngine.cpp */; };
 		BDF13C8D16CDCFD4003994AE /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C8916CDCFD4003994AE /* CEngine.h */; };
 		BDF13C8E16CDCFD4003994AE /* CEngineClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8A16CDCFD4003994AE /* CEngineClient.cpp */; };
@@ -31,7 +32,8 @@
 		BDB9FAB318A231FF0049A361 /* AppVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppVariables.h; path = source/AppVariables.h; sourceTree = "<group>"; };
 		BDB9FAB418A231FF0049A361 /* CEngineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngineState.h; path = source/CEngineState.h; sourceTree = "<group>"; };
 		BDB9FAB518A231FF0049A361 /* enginehead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enginehead.h; sourceTree = "<group>"; };
-		BDC780091692213C00C3F72E /* engine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = engine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC780091692213C00C3F72E /* engine_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = engine_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE8A1B31969173F000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 		BDF13C8816CDCFD4003994AE /* CEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CEngine.cpp; path = source/CEngine.cpp; sourceTree = "<group>"; };
 		BDF13C8916CDCFD4003994AE /* CEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngine.h; path = source/CEngine.h; sourceTree = "<group>"; };
 		BDF13C8A16CDCFD4003994AE /* CEngineClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CEngineClient.cpp; path = source/CEngineClient.cpp; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE8A1B41969173F000E3E15 /* libmath.a in Frameworks */,
 				BDABF2F118A2E25000E86A29 /* utilities.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,7 +70,7 @@
 		BDC7800A1692213C00C3F72E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDC780091692213C00C3F72E /* engine.dylib */,
+				BDC780091692213C00C3F72E /* engine_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +107,7 @@
 		BDFABFC916922B75001C1E6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8A1B31969173F000E3E15 /* libmath.a */,
 				BDABF2F018A2E25000E86A29 /* utilities.dylib */,
 			);
 			name = Frameworks;
@@ -146,7 +150,7 @@
 			);
 			name = engine;
 			productName = server;
-			productReference = BDC780091692213C00C3F72E /* engine.dylib */;
+			productReference = BDC780091692213C00C3F72E /* engine_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -263,8 +267,13 @@
 					"../utilities/**",
 					../math,
 				);
-				LIBRARY_SEARCH_PATHS = ../bin;
-				PRODUCT_NAME = engine;
+				LIBRARY_SEARCH_PATHS = (
+					../bin,
+					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
+				);
+				OBJROOT = ./intermediates/debug;
+				PRODUCT_NAME = engine_d;
+				SYMROOT = ../bin;
 			};
 			name = Debug;
 		};
@@ -287,8 +296,13 @@
 					"../utilities/**",
 					../math,
 				);
-				LIBRARY_SEARCH_PATHS = ../bin;
+				LIBRARY_SEARCH_PATHS = (
+					../bin,
+					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
+				);
+				OBJROOT = ./intermediates/release;
 				PRODUCT_NAME = engine;
+				SYMROOT = ../bin;
 			};
 			name = Release;
 		};

@@ -39,8 +39,8 @@
 		BD5D1ECA18AC87B200579FB7 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EC818AC87B200579FB7 /* sha1.cpp */; };
 		BD5D1ECB18AC87B200579FB7 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EC918AC87B200579FB7 /* sha1.h */; };
 		BD5D1ECD18AC87FE00579FB7 /* SuperFastHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ECC18AC87FE00579FB7 /* SuperFastHash.cpp */; };
-		BD5D1ED018AC881700579FB7 /* Types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ECE18AC881700579FB7 /* Types.cpp */; };
-		BD5D1ED118AC881700579FB7 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1ECF18AC881700579FB7 /* Types.h */; };
+		BD5D1ED018AC881700579FB7 /* HashingTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ECE18AC881700579FB7 /* HashingTypes.cpp */; };
+		BD5D1ED118AC881700579FB7 /* HashingTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1ECF18AC881700579FB7 /* HashingTypes.h */; };
 		BD5D1ED618AC888400579FB7 /* PMurHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ED218AC888400579FB7 /* PMurHash.cpp */; };
 		BD5D1ED718AC888400579FB7 /* PMurHash.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1ED318AC888400579FB7 /* PMurHash.h */; };
 		BD5D1ED818AC888400579FB7 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1ED418AC888400579FB7 /* Random.cpp */; };
@@ -58,7 +58,6 @@
 		BDABF2E618A2D2BB00E86A29 /* data_mappable.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2E418A2D2BB00E86A29 /* data_mappable.h */; };
 		BDABF2EE18A2E14F00E86A29 /* interfaces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2EC18A2E14F00E86A29 /* interfaces.cpp */; };
 		BDABF2EF18A2E14F00E86A29 /* interfaces.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2ED18A2E14F00E86A29 /* interfaces.h */; };
-		BDAC6FF518AF20AE008EA2E1 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAC6FF418AF20AE008EA2E1 /* macros.h */; };
 		BDAC6FF818AF222B008EA2E1 /* util_stdlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDAC6FF618AF222B008EA2E1 /* util_stdlib.cpp */; };
 		BDAC6FF918AF222B008EA2E1 /* util_stdlib.h in Headers */ = {isa = PBXBuildFile; fileRef = BDAC6FF718AF222B008EA2E1 /* util_stdlib.h */; };
 		BDB9FA9518A1C7F80049A361 /* util_perf_timer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FA9118A1C7F80049A361 /* util_perf_timer.h */; };
@@ -88,6 +87,9 @@
 		BDB9FB0618A250000049A361 /* treenodes.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FB0318A250000049A361 /* treenodes.h */; };
 		BDB9FB0718A250000049A361 /* util_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FB0418A250000049A361 /* util_vector.h */; };
 		BDB9FB0A18A2508C0049A361 /* utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB9FB0818A2508C0049A361 /* utilities.cpp */; };
+		BDE8A18A19690ADF000E3E15 /* ascii_table.h in Headers */ = {isa = PBXBuildFile; fileRef = BDE8A18719690ADF000E3E15 /* ascii_table.h */; };
+		BDE8A18B19690ADF000E3E15 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BDE8A18819690ADF000E3E15 /* macros.h */; };
+		BDE8A18C19690ADF000E3E15 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = BDE8A18919690ADF000E3E15 /* types.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +97,6 @@
 		BD14252218A1C0A400E3CFB3 /* util_random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_random.h; path = common/util_random.h; sourceTree = "<group>"; };
 		BD14252318A1C0A400E3CFB3 /* variant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = variant.cpp; path = common/variant.cpp; sourceTree = "<group>"; };
 		BD14252418A1C0A400E3CFB3 /* variant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = variant.h; path = common/variant.h; sourceTree = "<group>"; };
-		BD1FACBA188BAFAC001B76BE /* utilities.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = utilities.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1FACC1188BAFDA001B76BE /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = debug.cpp; path = common/debug.cpp; sourceTree = "<group>"; };
 		BD1FACC2188BAFDA001B76BE /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debug.h; path = common/debug.h; sourceTree = "<group>"; };
 		BD1FACC5188BB053001B76BE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -125,8 +126,8 @@
 		BD5D1EC818AC87B200579FB7 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = hashing/sha1.cpp; sourceTree = "<group>"; };
 		BD5D1EC918AC87B200579FB7 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = hashing/sha1.h; sourceTree = "<group>"; };
 		BD5D1ECC18AC87FE00579FB7 /* SuperFastHash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SuperFastHash.cpp; path = hashing/SuperFastHash.cpp; sourceTree = "<group>"; };
-		BD5D1ECE18AC881700579FB7 /* Types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Types.cpp; path = hashing/Types.cpp; sourceTree = "<group>"; };
-		BD5D1ECF18AC881700579FB7 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Types.h; path = hashing/Types.h; sourceTree = "<group>"; };
+		BD5D1ECE18AC881700579FB7 /* HashingTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HashingTypes.cpp; path = hashing/HashingTypes.cpp; sourceTree = "<group>"; };
+		BD5D1ECF18AC881700579FB7 /* HashingTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HashingTypes.h; path = hashing/HashingTypes.h; sourceTree = "<group>"; };
 		BD5D1ED218AC888400579FB7 /* PMurHash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PMurHash.cpp; path = hashing/PMurHash.cpp; sourceTree = "<group>"; };
 		BD5D1ED318AC888400579FB7 /* PMurHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMurHash.h; path = hashing/PMurHash.h; sourceTree = "<group>"; };
 		BD5D1ED418AC888400579FB7 /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Random.cpp; path = hashing/Random.cpp; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		BDABF2E418A2D2BB00E86A29 /* data_mappable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_mappable.h; path = data/data_mappable.h; sourceTree = "<group>"; };
 		BDABF2EC18A2E14F00E86A29 /* interfaces.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = interfaces.cpp; path = interfaces/interfaces.cpp; sourceTree = "<group>"; };
 		BDABF2ED18A2E14F00E86A29 /* interfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = interfaces.h; path = interfaces/interfaces.h; sourceTree = "<group>"; };
-		BDAC6FF418AF20AE008EA2E1 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = ../common/macros.h; sourceTree = "<group>"; };
 		BDAC6FF618AF222B008EA2E1 /* util_stdlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util_stdlib.cpp; path = stdlib/util_stdlib.cpp; sourceTree = "<group>"; };
 		BDAC6FF718AF222B008EA2E1 /* util_stdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_stdlib.h; path = stdlib/util_stdlib.h; sourceTree = "<group>"; };
 		BDB9FA9118A1C7F80049A361 /* util_perf_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_perf_timer.h; path = time/util_perf_timer.h; sourceTree = "<group>"; };
@@ -174,6 +174,10 @@
 		BDB9FB0318A250000049A361 /* treenodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = treenodes.h; path = container/treenodes.h; sourceTree = "<group>"; };
 		BDB9FB0418A250000049A361 /* util_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_vector.h; path = container/util_vector.h; sourceTree = "<group>"; };
 		BDB9FB0818A2508C0049A361 /* utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utilities.cpp; sourceTree = "<group>"; };
+		BDE8A186196908F4000E3E15 /* utilities_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = utilities_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE8A18719690ADF000E3E15 /* ascii_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ascii_table.h; path = common/ascii_table.h; sourceTree = "<group>"; };
+		BDE8A18819690ADF000E3E15 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = common/macros.h; sourceTree = "<group>"; };
+		BDE8A18919690ADF000E3E15 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.h; path = common/types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,22 +207,16 @@
 				BD1FACD5188DF0D7001B76BE /* Common */,
 				BDB9FA8918A1C77B0049A361 /* Container */,
 				BD1FACCB188BB071001B76BE /* Frameworks */,
-				BD1FACBB188BAFAC001B76BE /* Products */,
 				BDB9FB0818A2508C0049A361 /* utilities.cpp */,
 				BD33303318A39A3E0085E98A /* logging.cpp */,
 				BD33303418A39A3E0085E98A /* logging.h */,
 				BD1FACC1188BAFDA001B76BE /* debug.cpp */,
 				BD1FACC2188BAFDA001B76BE /* debug.h */,
-				BDAC6FF418AF20AE008EA2E1 /* macros.h */,
+				BDE8A18719690ADF000E3E15 /* ascii_table.h */,
+				BDE8A18819690ADF000E3E15 /* macros.h */,
+				BDE8A18919690ADF000E3E15 /* types.h */,
+				BDE8A186196908F4000E3E15 /* utilities_d.dylib */,
 			);
-			sourceTree = "<group>";
-		};
-		BD1FACBB188BAFAC001B76BE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BD1FACBA188BAFAC001B76BE /* utilities.dylib */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BD1FACCB188BB071001B76BE /* Frameworks */ = {
@@ -300,8 +298,8 @@
 				BD5D1ED318AC888400579FB7 /* PMurHash.h */,
 				BD5D1ED418AC888400579FB7 /* Random.cpp */,
 				BD5D1ED518AC888400579FB7 /* Random.h */,
-				BD5D1ECE18AC881700579FB7 /* Types.cpp */,
-				BD5D1ECF18AC881700579FB7 /* Types.h */,
+				BD5D1ECE18AC881700579FB7 /* HashingTypes.cpp */,
+				BD5D1ECF18AC881700579FB7 /* HashingTypes.h */,
 				BD5D1ECC18AC87FE00579FB7 /* SuperFastHash.cpp */,
 				BD5D1EC818AC87B200579FB7 /* sha1.cpp */,
 				BD5D1EC918AC87B200579FB7 /* sha1.h */,
@@ -389,8 +387,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD5D1ED718AC888400579FB7 /* PMurHash.h in Headers */,
-				BD5D1ED118AC881700579FB7 /* Types.h in Headers */,
+				BD5D1ED118AC881700579FB7 /* HashingTypes.h in Headers */,
 				BDB9FB0618A250000049A361 /* treenodes.h in Headers */,
+				BDE8A18A19690ADF000E3E15 /* ascii_table.h in Headers */,
 				BDABF2E218A2D29300E86A29 /* data_factory.h in Headers */,
 				BDB9FA9C18A1C8050049A361 /* util_thread.h in Headers */,
 				BDB9FB0718A250000049A361 /* util_vector.h in Headers */,
@@ -415,6 +414,7 @@
 				BD1FACD2188DF0D0001B76BE /* string_pointer.h in Headers */,
 				BD5D1EB918AC855200579FB7 /* MurmurHash2.h in Headers */,
 				BD14252518A1C0A400E3CFB3 /* floatwatch.h in Headers */,
+				BDE8A18C19690ADF000E3E15 /* types.h in Headers */,
 				BDB9FAFE18A24FDD0049A361 /* data_pack.h in Headers */,
 				BD5D1EBB18AC855200579FB7 /* MurmurHash3.h in Headers */,
 				BDB9FAAE18A1C8210049A361 /* keyvalues.h in Headers */,
@@ -425,10 +425,10 @@
 				BD14252618A1C0A400E3CFB3 /* util_random.h in Headers */,
 				BDABF2E618A2D2BB00E86A29 /* data_mappable.h in Headers */,
 				BDB9FAF318A24FDD0049A361 /* data_bits.h in Headers */,
-				BDAC6FF518AF20AE008EA2E1 /* macros.h in Headers */,
 				BDABF2D818A2CD8700E86A29 /* data_networkunpack.h in Headers */,
 				BD5D1ECB18AC87B200579FB7 /* sha1.h in Headers */,
 				BD1FACCA188BB06A001B76BE /* memory_pool.h in Headers */,
+				BDE8A18B19690ADF000E3E15 /* macros.h in Headers */,
 				BD5D1EC318AC878700579FB7 /* Platform.h in Headers */,
 				BDB9FAA818A1C8100049A361 /* util_string.h in Headers */,
 				BD1FACD4188DF0D0001B76BE /* string_pool.h in Headers */,
@@ -452,7 +452,7 @@
 			);
 			name = utilities;
 			productName = utilities;
-			productReference = BD1FACBA188BAFAC001B76BE /* utilities.dylib */;
+			productReference = BDE8A186196908F4000E3E15 /* utilities_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -472,7 +472,7 @@
 				en,
 			);
 			mainGroup = BD1FACB1188BAFAC001B76BE;
-			productRefGroup = BD1FACBB188BAFAC001B76BE /* Products */;
+			productRefGroup = BD1FACB1188BAFAC001B76BE;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -514,7 +514,7 @@
 				BDB9FAAD18A1C8210049A361 /* keyvalues.cpp in Sources */,
 				BD1FACD3188DF0D0001B76BE /* string_pool.cpp in Sources */,
 				BD5D1EBD18AC855E00579FB7 /* md5.cpp in Sources */,
-				BD5D1ED018AC881700579FB7 /* Types.cpp in Sources */,
+				BD5D1ED018AC881700579FB7 /* HashingTypes.cpp in Sources */,
 				BDABF2E118A2D29300E86A29 /* data_factory.cpp in Sources */,
 				BD1FACC3188BAFDA001B76BE /* debug.cpp in Sources */,
 				BDAC6FF818AF222B008EA2E1 /* util_stdlib.cpp in Sources */,
@@ -602,20 +602,18 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../common/allhead.h;
+				GCC_PREFIX_HEADER = utilhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
 					_64BIT,
 					UTILITIES_EXPORT,
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/**",
-					../common,
-					../platform,
-				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				LIBRARY_SEARCH_PATHS = ../bin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OBJROOT = ./intermediates/debug;
+				PRODUCT_NAME = "$(TARGET_NAME)_d";
+				SYMROOT = ../bin;
 			};
 			name = Debug;
 		};
@@ -625,19 +623,17 @@
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../common/allhead.h;
+				GCC_PREFIX_HEADER = utilhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_MAC,
 					_64BIT,
 					UTILITIES_EXPORT,
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/**",
-					../common,
-					../platform,
-				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				LIBRARY_SEARCH_PATHS = ../bin;
+				OBJROOT = ./intermediates/release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = ../bin;
 			};
 			name = Release;
 		};

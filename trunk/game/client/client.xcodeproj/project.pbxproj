@@ -17,12 +17,13 @@
 		BDABF31E18A35C2700E86A29 /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF31B18A35C2700E86A29 /* ent_base.cpp */; };
 		BDABF31F18A35C2700E86A29 /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31C18A35C2700E86A29 /* ent_base.h */; };
 		BDABF32018A35C2700E86A29 /* entity_dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31D18A35C2700E86A29 /* entity_dictionary.h */; };
+		BDE8A1B019691719000E3E15 /* libmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE8A1AF19691719000E3E15 /* libmath.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BD31F30C18A4B70A0083E283 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BD371A9518D0272900B9873C /* graphics.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = graphics.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin/graphics.dylib; sourceTree = "<absolute>"; };
-		BDABF30818A3596000E86A29 /* client.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = client.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDABF30818A3596000E86A29 /* client_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = client_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDABF30F18A3599A00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
 		BDABF31318A359E400E86A29 /* clienthead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clienthead.h; sourceTree = "<group>"; };
 		BDABF31518A359EF00E86A29 /* IClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IClient.h; path = public/IClient.h; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 		BDABF31B18A35C2700E86A29 /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BDABF31C18A35C2700E86A29 /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
 		BDABF31D18A35C2700E86A29 /* entity_dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = entity_dictionary.h; path = ../shared/entity_dictionary.h; sourceTree = "<group>"; };
+		BDE8A1AF19691719000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE8A1B019691719000E3E15 /* libmath.a in Frameworks */,
 				BD371A9618D0272900B9873C /* graphics.dylib in Frameworks */,
 				BD31F30D18A4B70A0083E283 /* OpenGL.framework in Frameworks */,
 				BDABF31018A3599A00E86A29 /* utilities.dylib in Frameworks */,
@@ -59,7 +62,7 @@
 		BDABF30918A3596000E86A29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDABF30818A3596000E86A29 /* client.dylib */,
+				BDABF30818A3596000E86A29 /* client_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +70,7 @@
 		BDABF31118A359C500E86A29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8A1AF19691719000E3E15 /* libmath.a */,
 				BD371A9518D0272900B9873C /* graphics.dylib */,
 				BD31F30C18A4B70A0083E283 /* OpenGL.framework */,
 				BDABF30F18A3599A00E86A29 /* utilities.dylib */,
@@ -120,7 +124,7 @@
 			);
 			name = client;
 			productName = client;
-			productReference = BDABF30818A3596000E86A29 /* client.dylib */;
+			productReference = BDABF30818A3596000E86A29 /* client_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -234,6 +238,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = ../../bin;
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = clienthead.h;
@@ -249,9 +254,15 @@
 					../../math,
 					../../common,
 					../../graphics/public,
+					../../engine/public,
 				);
-				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin,
+					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
+				);
+				OBJROOT = ./intermediates/debug;
+				PRODUCT_NAME = client_d;
+				SYMROOT = ../../bin;
 			};
 			name = Debug;
 		};
@@ -273,9 +284,15 @@
 					../../math,
 					../../common,
 					../../graphics/public,
+					../../engine/public,
 				);
-				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin,
+					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
+				);
+				OBJROOT = ./intermediates/release;
+				PRODUCT_NAME = client;
+				SYMROOT = ../../bin;
 			};
 			name = Release;
 		};

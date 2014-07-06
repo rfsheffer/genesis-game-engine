@@ -28,6 +28,7 @@
 		BD0112E5178A857200E640C8 /* math_splines.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112D9178A857200E640C8 /* math_splines.h */; };
 		BD0112E6178A857200E640C8 /* math_types.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112DA178A857200E640C8 /* math_types.h */; };
 		BD0112E7178A857200E640C8 /* math_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0112DB178A857200E640C8 /* math_vector.h */; };
+		BDE8A1AC19691555000E3E15 /* mathhead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDE8A1AB19691555000E3E15 /* mathhead.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +54,8 @@
 		BD0112D9178A857200E640C8 /* math_splines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_splines.h; sourceTree = "<group>"; };
 		BD0112DA178A857200E640C8 /* math_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_types.h; sourceTree = "<group>"; };
 		BD0112DB178A857200E640C8 /* math_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math_vector.h; sourceTree = "<group>"; };
-		BD0112E8178A86B000E640C8 /* mathhead.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mathhead.pch; sourceTree = "<group>"; };
 		BD0112E9178A893200E640C8 /* mathlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mathlib.h; sourceTree = "<group>"; };
+		BDE8A1AB19691555000E3E15 /* mathhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mathhead.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +89,8 @@
 		BD011282178A83F300E640C8 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8A1AB19691555000E3E15 /* mathhead.h */,
 				BD0112E9178A893200E640C8 /* mathlib.h */,
-				BD0112E8178A86B000E640C8 /* mathhead.pch */,
 				BD0112D0178A857200E640C8 /* math_angle.h */,
 				BD0112D1178A857200E640C8 /* math_asm.h */,
 				BD0112D2178A857200E640C8 /* math_common.h */,
@@ -131,6 +132,7 @@
 			files = (
 				BD0112DC178A857200E640C8 /* math_angle.h in Headers */,
 				BD0112DD178A857200E640C8 /* math_asm.h in Headers */,
+				BDE8A1AC19691555000E3E15 /* mathhead.h in Headers */,
 				BD0112DE178A857200E640C8 /* math_common.h in Headers */,
 				BD0112DF178A857200E640C8 /* math_constants.h in Headers */,
 				BD0112E0178A857200E640C8 /* math_frustum.h in Headers */,
@@ -268,40 +270,46 @@
 		BD011280178A83E900E640C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = "";
+				CONFIGURATION_BUILD_DIR = ../libraries;
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = mathhead.pch;
+				GCC_PREFIX_HEADER = mathhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_DEBUG,
 					_MAC,
-					_MAC64,
+					_64BIT,
 					_MATH,
 				);
 				HEADER_SEARCH_PATHS = (
 					../interfaces,
 					../common,
 				);
+				OBJROOT = ./intermediates/debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = ../libraries;
 			};
 			name = Debug;
 		};
 		BD011281178A83E900E640C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = "";
+				CONFIGURATION_BUILD_DIR = ../libraries;
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = mathhead.pch;
+				GCC_PREFIX_HEADER = mathhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_RELEASE,
 					_MAC,
-					_MAC64,
+					_64BIT,
 					_MATH,
 				);
 				HEADER_SEARCH_PATHS = (
 					../interfaces,
 					../common,
 				);
+				OBJROOT = ./intermediates/release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = ../libraries;
 			};
 			name = Release;
 		};

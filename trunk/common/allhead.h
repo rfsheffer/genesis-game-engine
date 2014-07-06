@@ -52,16 +52,17 @@
 
 #endif // platform specific
 
-// Platform macros and defines
-#include "types.h"
-#include "macros.h"
+// Genesis Specific
 #include "foundation_constants.h"
-#include "../platform/platform_constants.h"
 
 // Utilities ( Always included in projects )
+// Platform macros and defines
+#include "../utilities/common/types.h"
+#include "../utilities/common/macros.h"
+#include "../utilities/platform/platform_constants.h"
 #include "../utilities/utilities.h"
 #include "../utilities/stdlib/util_stdlib.h"
-#include "../platform/IPlatform.h"
+#include "../utilities/platform/IPlatform.h"
 #include "../utilities/interfaces/interfaces.h"
 #include "../utilities/logging.h"
 

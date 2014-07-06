@@ -11,6 +11,7 @@
 		BDABF2F918A3051100E86A29 /* graphics.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2F718A3051100E86A29 /* graphics.h */; };
 		BDABF2FB18A3052D00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF2FA18A3052D00E86A29 /* utilities.dylib */; };
 		BDB9FAE318A24EAA0049A361 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB9FAE218A24EAA0049A361 /* OpenGL.framework */; };
+		BDE8A1AE196916F9000E3E15 /* libmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE8A1AD196916F9000E3E15 /* libmath.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +21,8 @@
 		BDABF2FC18A30D1F00E86A29 /* igraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = igraphics.h; path = public/igraphics.h; sourceTree = "<group>"; };
 		BDB9FABD18A236330049A361 /* graphicshead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicshead.h; sourceTree = "<group>"; };
 		BDB9FAE218A24EAA0049A361 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		BDC780091692213C00C3F72E /* graphics.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = graphics.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC780091692213C00C3F72E /* graphics_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = graphics_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE8A1AD196916F9000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE8A1AE196916F9000E3E15 /* libmath.a in Frameworks */,
 				BDABF2FB18A3052D00E86A29 /* utilities.dylib in Frameworks */,
 				BDB9FAE318A24EAA0049A361 /* OpenGL.framework in Frameworks */,
 			);
@@ -48,7 +51,7 @@
 		BDC7800A1692213C00C3F72E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDC780091692213C00C3F72E /* graphics.dylib */,
+				BDC780091692213C00C3F72E /* graphics_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +70,7 @@
 		BDFABFC916922B75001C1E6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8A1AD196916F9000E3E15 /* libmath.a */,
 				BDABF2FA18A3052D00E86A29 /* utilities.dylib */,
 				BDB9FAE218A24EAA0049A361 /* OpenGL.framework */,
 			);
@@ -101,7 +105,7 @@
 			);
 			name = graphics;
 			productName = graphics;
-			productReference = BDC780091692213C00C3F72E /* graphics.dylib */;
+			productReference = BDC780091692213C00C3F72E /* graphics_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -216,9 +220,12 @@
 					../math,
 					./public,
 					./source,
+					../engine/public,
 				);
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = graphics;
+				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries;
+				OBJROOT = ./intermediates/debug;
+				PRODUCT_NAME = graphics_d;
+				SYMROOT = ../bin;
 			};
 			name = Debug;
 		};
@@ -242,9 +249,12 @@
 					../math,
 					./public,
 					./source,
+					../engine/public,
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries;
+				OBJROOT = ./intermediates/release;
 				PRODUCT_NAME = graphics;
+				SYMROOT = ../bin;
 			};
 			name = Release;
 		};

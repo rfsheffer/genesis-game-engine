@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
 //
 
+#include "mathhead.h"
+
 namespace MathLib
 {    
     void AngleVectors(const Angle &ang, Vector3& left, Vector3& up, Vector3& forward)

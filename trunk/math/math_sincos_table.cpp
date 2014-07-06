@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.
 //
 
+#include "mathhead.h"
 #include "math_sincos_table.h"
 
 namespace MathLib
