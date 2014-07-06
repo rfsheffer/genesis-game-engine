@@ -1,0 +1,106 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		BDE8A1A7196914C6000E3E15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDE8A1A3196914C6000E3E15 /* pywrap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BDE8A1821968FDB0000E3E15;
+			remoteInfo = pywrap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BDE8A1A3196914C6000E3E15 /* pywrap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pywrap.xcodeproj; path = pywrap/pywrap.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		BDE8A1951969146F000E3E15 = {
+			isa = PBXGroup;
+			children = (
+				BDE8A1A3196914C6000E3E15 /* pywrap.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		BDE8A1A4196914C6000E3E15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDE8A1A8196914C6000E3E15 /* pywrap_d.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		BDE8A1961969146F000E3E15 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = BDE8A1991969146F000E3E15 /* Build configuration list for PBXProject "scripting" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BDE8A1951969146F000E3E15;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BDE8A1A4196914C6000E3E15 /* Products */;
+					ProjectRef = BDE8A1A3196914C6000E3E15 /* pywrap.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BDE8A1A8196914C6000E3E15 /* pywrap_d.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = pywrap_d.dylib;
+			remoteRef = BDE8A1A7196914C6000E3E15 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin XCBuildConfiguration section */
+		BDE8A19A1969146F000E3E15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		BDE8A19B1969146F000E3E15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDE8A1991969146F000E3E15 /* Build configuration list for PBXProject "scripting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDE8A19A1969146F000E3E15 /* Debug */,
+				BDE8A19B1969146F000E3E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDE8A1961969146F000E3E15 /* Project object */;
+}

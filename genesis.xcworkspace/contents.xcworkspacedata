@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:launchers/mac/launcher.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:utilities/utilities.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:game/server/server.xcodeproj">
    </FileRef>
    <FileRef
@@ -14,9 +20,9 @@
       location = "group:engine/engine.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:launchers/mac/launcher.xcodeproj">
+      location = "group:math/math.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:utilities/utilities.xcodeproj">
+      location = "group:scripting/scripting.xcodeproj">
    </FileRef>
 </Workspace>

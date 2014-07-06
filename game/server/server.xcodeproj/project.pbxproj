@@ -15,6 +15,7 @@
 		BD33303118A366060085E98A /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BD33302E18A366060085E98A /* ent_base.h */; };
 		BD33303218A366060085E98A /* entity_dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BD33302F18A366060085E98A /* entity_dictionary.h */; };
 		BDABF33418A363D900E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF33318A363D900E86A29 /* utilities.dylib */; };
+		BDE8A1B219691723000E3E15 /* libmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE8A1B119691723000E3E15 /* libmath.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +26,9 @@
 		BD33302D18A366060085E98A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BD33302E18A366060085E98A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
 		BD33302F18A366060085E98A /* entity_dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = entity_dictionary.h; path = ../shared/entity_dictionary.h; sourceTree = "<group>"; };
-		BDABF32A18A3638300E86A29 /* server.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = server.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDABF32A18A3638300E86A29 /* server.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = server.dylib; path = server_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDABF33318A363D900E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
+		BDE8A1B119691723000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE8A1B219691723000E3E15 /* libmath.a in Frameworks */,
 				BDABF33418A363D900E86A29 /* utilities.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +78,7 @@
 		BDABF33218A363CC00E86A29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8A1B119691723000E3E15 /* libmath.a */,
 				BDABF33318A363D900E86A29 /* utilities.dylib */,
 			);
 			name = Frameworks;
@@ -239,9 +243,12 @@
 					../../common,
 					"../../utilities/**",
 					../../math,
+					../../engine/public,
 				);
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries;
+				OBJROOT = ./intermediates/debug;
+				PRODUCT_NAME = server_d;
+				SYMROOT = ../../bin;
 			};
 			name = Debug;
 		};
@@ -261,9 +268,12 @@
 					../../common,
 					"../../utilities/**",
 					../../math,
+					../../engine/public,
 				);
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LIBRARY_SEARCH_PATHS = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries;
+				OBJROOT = ./intermediates/release;
+				PRODUCT_NAME = server;
+				SYMROOT = ../../bin;
 			};
 			name = Release;
 		};

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Ryan Sheffer. All rights reserved.
 //
 
-#include "allhead.h"
+#include "utilhead.h"
 #include "data_mappable.h"
 
 BEGIN_DATA_MAP_NO_BASE(CDataMappable)

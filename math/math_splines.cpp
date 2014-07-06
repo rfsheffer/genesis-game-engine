@@ -8,6 +8,8 @@
 
 // NOTE: These splines are based off Valve Softwares implementation of them.
 
+#include "mathhead.h"
+
 namespace MathLib
 {
     //-----------------------------------------------------------------------------

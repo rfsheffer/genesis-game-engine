@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD50B9D017209C52007FA4A7 /* CPlatform_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD50B9CF17209C52007FA4A7 /* CPlatform_mac.mm */; };
 		BDABF2F518A2E30F00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF2F318A2E30F00E86A29 /* utilities.dylib */; };
-		BDAC6FFD18AF2330008EA2E1 /* CPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDAC6FFB18AF2330008EA2E1 /* CPlatform.cpp */; };
+		BDE8A19219690EB4000E3E15 /* CPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDE8A18D19690EB4000E3E15 /* CPlatform.cpp */; };
+		BDE8A19419690ECE000E3E15 /* CPlatform_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = BDE8A19319690ECE000E3E15 /* CPlatform_mac.mm */; };
 		BDF13CB416CDD311003994AE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF13CB316CDD311003994AE /* Cocoa.framework */; };
 		BDF13CBE16CDD311003994AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDF13CBC16CDD311003994AE /* InfoPlist.strings */; };
 		BDF13CC016CDD311003994AE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = BDF13CBF16CDD311003994AE /* main.mm */; };
@@ -21,17 +21,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD14251F18A1BCFF00E3CFB3 /* IPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = ../../platform/IPlatform.h; sourceTree = "<group>"; };
 		BD14252018A1BD4700E3CFB3 /* allhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = allhead.h; path = ../../../common/allhead.h; sourceTree = "<group>"; };
 		BD4AF1D217067CC800135A3E /* foundation_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = foundation_constants.h; path = ../../../common/foundation_constants.h; sourceTree = "<group>"; };
-		BD50B9CE17209C43007FA4A7 /* CPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPlatform.h; path = ../../platform/CPlatform.h; sourceTree = "<group>"; };
-		BD50B9CF17209C52007FA4A7 /* CPlatform_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CPlatform_mac.mm; path = ../../platform/mac/CPlatform_mac.mm; sourceTree = "<group>"; };
 		BDABF2F318A2E30F00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
-		BDAC6FFB18AF2330008EA2E1 /* CPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CPlatform.cpp; path = ../../platform/CPlatform.cpp; sourceTree = "<group>"; };
-		BDAC6FFC18AF2330008EA2E1 /* platform_caps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_caps.h; path = ../../platform/platform_caps.h; sourceTree = "<group>"; };
-		BDB0EAEC170756FD007D0CEE /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.h; path = ../../../common/types.h; sourceTree = "<group>"; };
-		BDB0EAED1707573C007D0CEE /* platform_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_constants.h; path = ../../platform/platform_constants.h; sourceTree = "<group>"; };
-		BDF13CB016CDD311003994AE /* genesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = genesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE8A18D19690EB4000E3E15 /* CPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CPlatform.cpp; path = ../../utilities/platform/CPlatform.cpp; sourceTree = "<group>"; };
+		BDE8A18E19690EB4000E3E15 /* CPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPlatform.h; path = ../../utilities/platform/CPlatform.h; sourceTree = "<group>"; };
+		BDE8A18F19690EB4000E3E15 /* IPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPlatform.h; path = ../../utilities/platform/IPlatform.h; sourceTree = "<group>"; };
+		BDE8A19019690EB4000E3E15 /* platform_caps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_caps.h; path = ../../utilities/platform/platform_caps.h; sourceTree = "<group>"; };
+		BDE8A19119690EB4000E3E15 /* platform_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform_constants.h; path = ../../utilities/platform/platform_constants.h; sourceTree = "<group>"; };
+		BDE8A19319690ECE000E3E15 /* CPlatform_mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CPlatform_mac.mm; path = ../../utilities/platform/mac/CPlatform_mac.mm; sourceTree = "<group>"; };
+		BDF13CB016CDD311003994AE /* genesis_d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = genesis_d.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF13CB316CDD311003994AE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BDF13CB616CDD311003994AE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		BDF13CB716CDD311003994AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -66,12 +65,12 @@
 		BD50B9DA1720B18F007FA4A7 /* platform */ = {
 			isa = PBXGroup;
 			children = (
-				BDAC6FFB18AF2330008EA2E1 /* CPlatform.cpp */,
-				BDAC6FFC18AF2330008EA2E1 /* platform_caps.h */,
-				BD50B9CF17209C52007FA4A7 /* CPlatform_mac.mm */,
-				BD14251F18A1BCFF00E3CFB3 /* IPlatform.h */,
-				BD50B9CE17209C43007FA4A7 /* CPlatform.h */,
-				BDB0EAED1707573C007D0CEE /* platform_constants.h */,
+				BDE8A19319690ECE000E3E15 /* CPlatform_mac.mm */,
+				BDE8A18D19690EB4000E3E15 /* CPlatform.cpp */,
+				BDE8A18E19690EB4000E3E15 /* CPlatform.h */,
+				BDE8A18F19690EB4000E3E15 /* IPlatform.h */,
+				BDE8A19019690EB4000E3E15 /* platform_caps.h */,
+				BDE8A19119690EB4000E3E15 /* platform_constants.h */,
 			);
 			name = platform;
 			sourceTree = "<group>";
@@ -90,7 +89,7 @@
 		BDF13CB116CDD311003994AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDF13CB016CDD311003994AE /* genesis.app */,
+				BDF13CB016CDD311003994AE /* genesis_d.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				BD14252018A1BD4700E3CFB3 /* allhead.h */,
-				BDB0EAEC170756FD007D0CEE /* types.h */,
 				BD4AF1D217067CC800135A3E /* foundation_constants.h */,
 				BDF13CD616CDD4BE003994AE /* CCocoaWrapper.h */,
 				BDF13CD716CDD4BE003994AE /* CCocoaWrapper.mm */,
@@ -161,7 +159,7 @@
 			);
 			name = launcher;
 			productName = launcher;
-			productReference = BDF13CB016CDD311003994AE /* genesis.app */;
+			productReference = BDF13CB016CDD311003994AE /* genesis_d.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -208,10 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE8A19419690ECE000E3E15 /* CPlatform_mac.mm in Sources */,
 				BDF13CC016CDD311003994AE /* main.mm in Sources */,
 				BDF13CD816CDD4BE003994AE /* CCocoaWrapper.mm in Sources */,
-				BDAC6FFD18AF2330008EA2E1 /* CPlatform.cpp in Sources */,
-				BD50B9D017209C52007FA4A7 /* CPlatform_mac.mm in Sources */,
+				BDE8A19219690EB4000E3E15 /* CPlatform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +345,9 @@
 				);
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
 				LIBRARY_SEARCH_PATHS = ../../bin;
-				PRODUCT_NAME = genesis;
+				OBJROOT = ./intermediates/debug;
+				PRODUCT_NAME = genesis_d;
+				SYMROOT = ../../bin;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -379,7 +379,9 @@
 				);
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
 				LIBRARY_SEARCH_PATHS = ../../bin;
+				OBJROOT = ./intermediates/release;
 				PRODUCT_NAME = genesis;
+				SYMROOT = ../../bin;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
