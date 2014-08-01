@@ -1,0 +1,157 @@
+/**
+ * This is a simple structure which can also be retrieved by the
+ * scripting language. In Python it would exist as a tuple.
+ */
+struct data1
+{
+	DECLARE_SCRIPTABLE_CLASS_BASE();
+	int foo;
+	int bar;
+};
+
+SCRIPTABLE_CLASS_WRAP_BASE(data1)
+	SCRIPTWRAP_VAR(DATATYPE_INT,		foo),
+	SCRIPTWRAP_VAR(DATATYPE_INT,		bar),
+END_SCRIPTABLE_CLASS_WRAP();
+
+/**
+ * This is a script wrapped class. Functions can be called and
+ * variables can be read.
+ */
+class pyWrappedClass : someBaseClass
+{
+public:
+
+	DECLARE_SCRIPTABLE_CLASS();
+
+	static void InitScriptWrap(void);
+
+	pyWrappedClass()
+	{
+		exampleVar1 = 3;
+		exampleVar2 = 3.14f;
+		exampleVar3.foo = 20;
+		exampleVar3.bar = 50;
+	}
+
+	// Callable Methods
+	void ExampleFunc1(void)
+	{
+		printf("Hello World");
+	}
+
+	int ExampleFunc2(int i, int j)
+	{
+		return i + exampleVar1 + j;
+	}
+
+	// Accessable Methods
+	int		exampleVar1;
+	float	exampleVar2;
+	data1	exampleVar3;
+};
+
+//-----------------------------------------------------------------------------
+/**
+ * Example with macros
+ */
+SCRIPTABLE_CLASS_WRAP(pyWrappedClass, someBaseClass)
+	SCRIPTWRAP_FUNC(ExampleFunc1, 		void),
+	SCRIPTWRAP_FUNC(ExampleFunc2, 		int, int, int),
+	SCRIPTWRAP_VAR(DATATYPE_INT,		exampleVar1),
+	SCRIPTWRAP_VAR(DATATYPE_FLOAT,		exampleVar2),
+	SCRIPTWRAP_VAR(DATATYPE_VARIABLE,	exampleVar3),
+END_SCRIPTABLE_CLASS_WRAP();
+
+//-----------------------------------------------------------------------------
+/**
+ * Example without macros
+ */
+static void pyWrappedClass::InitScriptWrap(void)
+{
+	AddScriptFunctionWrap(ExampleFunc1, void);
+	AddScriptFunctionWrap(ExampleFunc2, int, int, int);
+
+	AddScriptVariableWrap(exampleVar1, DATATYPE_INT);
+	AddScriptVariableWrap(exampleVar2, DATATYPE_FLOAT);
+	AddScriptVariableWrap(exampleVar3, DATATYPE_VARIABLE);
+
+	BaseClass::InitScriptWrap();
+}
+
+
+// When the developer wants to wrap a script around this class...
+void SomeFunction(void)
+{
+	// create the class
+	pyWrappedClass pyClass();
+	ScriptWrapHandle scriptWrap = WrapScriptableClass(pyClass,
+													  SCRIPT_PYTHON,
+													  "testscript.py",
+													  "testClass");
+
+	// Call a function in the script
+	scriptWrap.CallFunction("testPyFunc", 20, 30);
+
+	// Destroy the script wrap handle before the object goes away.
+	// If you don't destroy all handles, they will stick around in memory.
+	// You can however reasign a script handle to a new class as long
+	// as the class is the same structure as the previous class.
+	scriptWrap.Destroy();
+
+	// Reassignment happens like this.
+	// scriptWrap.ReAssign(pyClass());
+}
+
+
+// When the class has been wrapped like the example above, the python
+// module would look like this or an error would occur.
+
+import sys
+
+class testClass
+	def __init__(self)
+		pass
+
+	def testPyFunc(self)
+		print exampleVar1
+		print exampleVar2
+		print exampleVar3
+
+		exampleVar1 = 20
+		print ExampleFunc2(10, 30)
+
+>> 3
+>> 3.14
+>> (20, 50)
+>> 60
+
+// Notice the class is the same name as the class choosen by the WrapScriptableClass
+// function. Also note there is a function called testPyFunc which will be called.
+// Note that testClass implicitly has three variables because it is wrapped by
+// pyWrappedClass. Those variables are always mutable, and if you want private
+// access you will need to make a function wrap which returns a copy of the variable
+// you want to access.
+// Notice the complex case of changing a member variable of pyWrappedClass and calling
+// a method which adds two input variables AND the just mutated member variable.
+
+
+/*-----------------------------------------------------------------------------
+// TASKS:
+//-----------------------------------------------------------------------------
+
+- Research calling C functions from python.
+- Look into ways of reflecting C++ functions.
+- Reflect variables and make them mutable.
+- Reflect functions. Able to call functions by name with different return types and multiple parameters.
+- Create script wrap system for loading scripts and managing connections with classes
+- load script modules
+- Inject variables into module from class
+- Inject methods which get re-directed to call C++ methods
+
+Thinks to figure out:
+- Changing variables in python script and acting upon them from called C++ functions. Might have to make
+  a special script call to mutate variables and also update the c++ variable. ex. mutate_var('exampleVar1', 20).
+- Calling methods and functions from python in general.
+
+*/

@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B7BEC5DF-8EFE-4D9C-B3BB-8D7FFD87E964</string>
+	<string>48B3CC4A-36AF-42DB-91D4-3A99124232C0</string>
 	<key>IDESourceControlProjectName</key>
-	<string>scripting</string>
+	<string>scripting_test</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E470D64C-7ABD-4485-B6BE-203F8EDEC788</key>
 		<string>https://genesis-game-engine.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>scripting/scripting.xcodeproj/project.xcworkspace</string>
+	<string>scripting/scripting_test.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E470D64C-7ABD-4485-B6BE-203F8EDEC788</key>
@@ -26,7 +26,7 @@
 		<string>https://genesis-game-engine.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://genesis-game-engine.googlecode.com/svn/trunk/scripting/scripting.xcodeproj</string>
+	<string>https://genesis-game-engine.googlecode.com/svn/trunk/scripting/scripting_test.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
