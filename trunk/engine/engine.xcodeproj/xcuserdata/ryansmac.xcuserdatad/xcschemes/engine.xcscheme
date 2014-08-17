@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BDC780081692213C00C3F72E"
-               BuildableName = "engine.dylib"
+               BuildableName = "libengine.dylib"
                BlueprintName = "engine"
                ReferencedContainer = "container:engine.xcodeproj">
             </BuildableReference>
