@@ -14,9 +14,6 @@
       location = "group:math/math.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:scripting/scripting.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:game/server/server.xcodeproj">
    </FileRef>
    <FileRef
@@ -24,5 +21,11 @@
    </FileRef>
    <FileRef
       location = "group:graphics/graphics.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:scripting/scripting.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:scripting/scripting_test.xcodeproj">
    </FileRef>
 </Workspace>

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BDC780081692213C00C3F72E"
-               BuildableName = "libgraphics.dylib"
-               BlueprintName = "graphics"
-               ReferencedContainer = "container:graphics.xcodeproj">
+               BlueprintIdentifier = "BDABF32918A3638300E86A29"
+               BuildableName = "libserver.dylib"
+               BlueprintName = "server"
+               ReferencedContainer = "container:server.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">

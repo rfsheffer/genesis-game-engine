@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BDABF30718A3596000E86A29"
-               BuildableName = "client.dylib"
+               BuildableName = "libclient.dylib"
                BlueprintName = "client"
                ReferencedContainer = "container:client.xcodeproj">
             </BuildableReference>
