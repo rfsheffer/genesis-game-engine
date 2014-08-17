@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BDABF2F518A2E30F00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF2F318A2E30F00E86A29 /* utilities.dylib */; };
 		BDE8A19219690EB4000E3E15 /* CPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDE8A18D19690EB4000E3E15 /* CPlatform.cpp */; };
 		BDE8A19419690ECE000E3E15 /* CPlatform_mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = BDE8A19319690ECE000E3E15 /* CPlatform_mac.mm */; };
 		BDF13CB416CDD311003994AE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF13CB316CDD311003994AE /* Cocoa.framework */; };
@@ -52,7 +51,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDABF2F518A2E30F00E86A29 /* utilities.dylib in Frameworks */,
 				BDF13CD316CDD471003994AE /* Carbon.framework in Frameworks */,
 				BDF13CD116CDD463003994AE /* OpenGL.framework in Frameworks */,
 				BDF13CB416CDD311003994AE /* Cocoa.framework in Frameworks */,
@@ -346,6 +344,7 @@
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
 				LIBRARY_SEARCH_PATHS = ../../bin;
 				OBJROOT = ./intermediates/debug;
+				OTHER_LDFLAGS = "-lutilities_d";
 				PRODUCT_NAME = genesis_d;
 				SYMROOT = ../../bin;
 				WRAPPER_EXTENSION = app;
@@ -380,6 +379,7 @@
 				INFOPLIST_FILE = "launcher/launcher-Info.plist";
 				LIBRARY_SEARCH_PATHS = ../../bin;
 				OBJROOT = ./intermediates/release;
+				OTHER_LDFLAGS = "-lutilities";
 				PRODUCT_NAME = genesis;
 				SYMROOT = ../../bin;
 				WRAPPER_EXTENSION = app;

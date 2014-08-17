@@ -17,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD5F9FAE198B40A700A5AC98 /* libscripting.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = libscripting.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/scripting/../bin/libscripting.dylib; sourceTree = "<absolute>"; };
 		BD5F9FB1198B417000A5AC98 /* scripthead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scripthead.h; sourceTree = "<group>"; };
 		BD5F9FB2198B417000A5AC98 /* scripting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scripting.cpp; path = private/scripting.cpp; sourceTree = "<group>"; };
 		BD5F9FB3198B417000A5AC98 /* scripting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scripting.h; path = public/scripting.h; sourceTree = "<group>"; };
@@ -27,6 +26,7 @@
 		BDCD1D961988A66E00AF00F5 /* Python */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = Python; path = /System/Library/Frameworks/Python.framework/Versions/2.7/Python; sourceTree = "<absolute>"; };
 		BDE8A1751968D421000E3E15 /* pywrap_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pywrap_main.cpp; path = languages/pywrap/pywrap_main.cpp; sourceTree = "<group>"; };
 		BDE8A1801968D6BD000E3E15 /* pywrap_main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pywrap_main.h; path = languages/pywrap/pywrap_main.h; sourceTree = SOURCE_ROOT; };
+		BDF8EC3319A140720078EE84 /* libscripting_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libscripting_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,9 @@
 				BD5F9FD8198B4E0500A5AC98 /* private */,
 				BD5F9FD7198B4DF000A5AC98 /* languages */,
 				BD5F9FD3198B4BC800A5AC98 /* system_libs */,
+				BDF8EC3019A13D0E0078EE84 /* frameworks */,
 				BD5F9FB1198B417000A5AC98 /* scripthead.h */,
+				BDF8EC3319A140720078EE84 /* libscripting_d.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +98,13 @@
 			name = public;
 			sourceTree = "<group>";
 		};
+		BDF8EC3019A13D0E0078EE84 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -126,7 +135,7 @@
 			);
 			name = scripting;
 			productName = pywrap;
-			productReference = BD5F9FAE198B40A700A5AC98 /* libscripting.dylib */;
+			productReference = BDF8EC3319A140720078EE84 /* libscripting_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -255,14 +264,17 @@
 					/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7,
 					public,
 					languages,
+					../utilities,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					../bin,
-					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7";
 				MACH_O_TYPE = mh_dylib;
 				OBJROOT = ./intermediates/debug;
-				PRODUCT_NAME = scripting;
+				OTHER_LDFLAGS = (
+					"-L../bin",
+					"-lutilities_d",
+				);
+				PRELINK_LIBS = "";
+				PRODUCT_NAME = scripting_d;
 				SYMROOT = ../bin;
 			};
 			name = Debug;
@@ -284,13 +296,16 @@
 					/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7,
 					public,
 					languages,
+					../utilities,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					../bin,
-					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7";
 				MACH_O_TYPE = mh_dylib;
 				OBJROOT = ./intermediates/release;
+				OTHER_LDFLAGS = (
+					"-L../bin",
+					"-lutilities",
+				);
+				PRELINK_LIBS = "";
 				PRODUCT_NAME = scripting;
 				SYMROOT = ../bin;
 			};

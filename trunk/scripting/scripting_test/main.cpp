@@ -21,8 +21,20 @@ struct Function : Primitive { Field return_parameter; Field *parameters; };
 struct Class : Type { Field *fields; Function *functions; };
 struct Namespace : Primitive { Enum *enums; Class *classes; Function *functions; };
 
+struct PodBase
+{
+    int x;
+};
+struct NonPodDerived : public PodBase
+{
+    virtual void f(){}
+};
+
+
 int main(int argc, const char * argv[])
 {
+    // Different offsets thanks to an 8 byte virtual table pointer
+    printf("%lu and %lu\n", offsetof(PodBase, x), offsetof(NonPodDerived, x));
     
     return 0;
 }

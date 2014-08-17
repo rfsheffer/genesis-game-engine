@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD01127B178A83E900E640C8 /* math.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = math.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD01127B178A83E900E640C8 /* libmath_d.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmath_d.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD0112BE178A856300E640C8 /* math_angle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_angle.cpp; sourceTree = "<group>"; };
 		BD0112BF178A856300E640C8 /* math_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_common.cpp; sourceTree = "<group>"; };
 		BD0112C0178A856300E640C8 /* math_frustum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = math_frustum.cpp; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		BD01127C178A83E900E640C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BD01127B178A83E900E640C8 /* math.a */,
+				BD01127B178A83E900E640C8 /* libmath_d.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 			);
 			name = math;
 			productName = math;
-			productReference = BD01127B178A83E900E640C8 /* math.a */;
+			productReference = BD01127B178A83E900E640C8 /* libmath_d.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -285,7 +285,7 @@
 					../common,
 				);
 				OBJROOT = ./intermediates/debug;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = math_d;
 				SYMROOT = ../libraries;
 			};
 			name = Debug;

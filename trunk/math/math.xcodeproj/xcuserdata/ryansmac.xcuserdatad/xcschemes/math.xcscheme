@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BD01127A178A83E900E640C8"
-               BuildableName = "math.a"
+               BuildableName = "libmath.a"
                BlueprintName = "math"
                ReferencedContainer = "container:math.xcodeproj">
             </BuildableReference>
