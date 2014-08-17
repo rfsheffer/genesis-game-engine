@@ -174,7 +174,7 @@
 		BDB9FB0318A250000049A361 /* treenodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = treenodes.h; path = container/treenodes.h; sourceTree = "<group>"; };
 		BDB9FB0418A250000049A361 /* util_vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = util_vector.h; path = container/util_vector.h; sourceTree = "<group>"; };
 		BDB9FB0818A2508C0049A361 /* utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utilities.cpp; sourceTree = "<group>"; };
-		BDE8A186196908F4000E3E15 /* utilities_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = utilities_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDE8A186196908F4000E3E15 /* libutilities_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libutilities_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE8A18719690ADF000E3E15 /* ascii_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ascii_table.h; path = common/ascii_table.h; sourceTree = "<group>"; };
 		BDE8A18819690ADF000E3E15 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = common/macros.h; sourceTree = "<group>"; };
 		BDE8A18919690ADF000E3E15 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = types.h; path = common/types.h; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 				BDE8A18719690ADF000E3E15 /* ascii_table.h */,
 				BDE8A18819690ADF000E3E15 /* macros.h */,
 				BDE8A18919690ADF000E3E15 /* types.h */,
-				BDE8A186196908F4000E3E15 /* utilities_d.dylib */,
+				BDE8A186196908F4000E3E15 /* libutilities_d.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,7 +452,7 @@
 			);
 			name = utilities;
 			productName = utilities;
-			productReference = BDE8A186196908F4000E3E15 /* utilities_d.dylib */;
+			productReference = BDE8A186196908F4000E3E15 /* libutilities_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -600,7 +600,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = ../bin;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = utilhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -621,7 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = ../bin;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = utilhead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BD31F30D18A4B70A0083E283 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD31F30C18A4B70A0083E283 /* OpenGL.framework */; };
-		BD371A9618D0272900B9873C /* graphics.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD371A9518D0272900B9873C /* graphics.dylib */; };
-		BDABF31018A3599A00E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF30F18A3599A00E86A29 /* utilities.dylib */; };
 		BDABF31418A359E400E86A29 /* clienthead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31318A359E400E86A29 /* clienthead.h */; };
 		BDABF31618A359EF00E86A29 /* IClient.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31518A359EF00E86A29 /* IClient.h */; };
 		BDABF31918A359FE00E86A29 /* CClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF31718A359FE00E86A29 /* CClient.cpp */; };
@@ -17,7 +15,6 @@
 		BDABF31E18A35C2700E86A29 /* ent_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF31B18A35C2700E86A29 /* ent_base.cpp */; };
 		BDABF31F18A35C2700E86A29 /* ent_base.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31C18A35C2700E86A29 /* ent_base.h */; };
 		BDABF32018A35C2700E86A29 /* entity_dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF31D18A35C2700E86A29 /* entity_dictionary.h */; };
-		BDE8A1B019691719000E3E15 /* libmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE8A1AF19691719000E3E15 /* libmath.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDE8A1B019691719000E3E15 /* libmath.a in Frameworks */,
-				BD371A9618D0272900B9873C /* graphics.dylib in Frameworks */,
 				BD31F30D18A4B70A0083E283 /* OpenGL.framework in Frameworks */,
-				BDABF31018A3599A00E86A29 /* utilities.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +233,7 @@
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = ../../bin;
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = clienthead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -261,6 +255,7 @@
 					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
 				);
 				OBJROOT = ./intermediates/debug;
+				OTHER_LDFLAGS = "-lutilities_d";
 				PRODUCT_NAME = client_d;
 				SYMROOT = ../../bin;
 			};
@@ -270,7 +265,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = ../../bin;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = clienthead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -291,6 +286,7 @@
 					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
 				);
 				OBJROOT = ./intermediates/release;
+				OTHER_LDFLAGS = "-lutilities";
 				PRODUCT_NAME = client;
 				SYMROOT = ../../bin;
 			};

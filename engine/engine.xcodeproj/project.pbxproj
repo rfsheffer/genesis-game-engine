@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BDABF2F118A2E25000E86A29 /* utilities.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BDABF2F018A2E25000E86A29 /* utilities.dylib */; };
 		BDB9FAB618A231FF0049A361 /* AppVarHolder.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB118A231FF0049A361 /* AppVarHolder.h */; };
 		BDB9FAB718A231FF0049A361 /* AppVariables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDB9FAB218A231FF0049A361 /* AppVariables.cpp */; };
 		BDB9FAB818A231FF0049A361 /* AppVariables.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB318A231FF0049A361 /* AppVariables.h */; };
 		BDB9FAB918A231FF0049A361 /* CEngineState.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB418A231FF0049A361 /* CEngineState.h */; };
 		BDB9FABA18A231FF0049A361 /* enginehead.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB9FAB518A231FF0049A361 /* enginehead.h */; };
-		BDE8A1B41969173F000E3E15 /* libmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE8A1B31969173F000E3E15 /* libmath.a */; };
 		BDF13C8C16CDCFD4003994AE /* CEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8816CDCFD4003994AE /* CEngine.cpp */; };
 		BDF13C8D16CDCFD4003994AE /* CEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF13C8916CDCFD4003994AE /* CEngine.h */; };
 		BDF13C8E16CDCFD4003994AE /* CEngineClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF13C8A16CDCFD4003994AE /* CEngineClient.cpp */; };
@@ -50,8 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDE8A1B41969173F000E3E15 /* libmath.a in Frameworks */,
-				BDABF2F118A2E25000E86A29 /* utilities.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +249,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../bin;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = enginehead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -272,6 +268,7 @@
 					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
 				);
 				OBJROOT = ./intermediates/debug;
+				OTHER_LDFLAGS = "-lutilities_d";
 				PRODUCT_NAME = engine_d;
 				SYMROOT = ../bin;
 			};
@@ -283,7 +280,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../bin;
-				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = enginehead.h;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -301,6 +298,7 @@
 					/Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries,
 				);
 				OBJROOT = ./intermediates/release;
+				OTHER_LDFLAGS = "-lutilities";
 				PRODUCT_NAME = engine;
 				SYMROOT = ../bin;
 			};

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BD5F9FC5198B480A00A5AC98 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5F9FC4198B480A00A5AC98 /* main.cpp */; };
 		BD5F9FC7198B480A00A5AC98 /* scripting_test.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD5F9FC6198B480A00A5AC98 /* scripting_test.1 */; };
-		BD5F9FD5198B4C1D00A5AC98 /* libscripting.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5F9FD4198B4C1D00A5AC98 /* libscripting.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,10 +25,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BD5F9FC1198B480A00A5AC98 /* scripting_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = scripting_test; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5F9FC4198B480A00A5AC98 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BD5F9FC6198B480A00A5AC98 /* scripting_test.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = scripting_test.1; sourceTree = "<group>"; };
-		BD5F9FD4198B4C1D00A5AC98 /* libscripting.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libscripting.dylib; path = ../bin/libscripting.dylib; sourceTree = "<group>"; };
+		BDF8EC3219A13FC40078EE84 /* scripting_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = scripting_test; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD5F9FD5198B4C1D00A5AC98 /* libscripting.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,18 +44,9 @@
 		BD5F9FB8198B480A00A5AC98 = {
 			isa = PBXGroup;
 			children = (
-				BD5F9FD6198B4C3600A5AC98 /* libs */,
 				BD5F9FC3198B480A00A5AC98 /* scripting_test */,
-				BD5F9FC2198B480A00A5AC98 /* Products */,
+				BDF8EC3219A13FC40078EE84 /* scripting_test */,
 			);
-			sourceTree = "<group>";
-		};
-		BD5F9FC2198B480A00A5AC98 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BD5F9FC1198B480A00A5AC98 /* scripting_test */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		BD5F9FC3198B480A00A5AC98 /* scripting_test */ = {
@@ -68,14 +56,6 @@
 				BD5F9FC6198B480A00A5AC98 /* scripting_test.1 */,
 			);
 			path = scripting_test;
-			sourceTree = "<group>";
-		};
-		BD5F9FD6198B4C3600A5AC98 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				BD5F9FD4198B4C1D00A5AC98 /* libscripting.dylib */,
-			);
-			name = libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +75,7 @@
 			);
 			name = scripting_test;
 			productName = scripting_test;
-			productReference = BD5F9FC1198B480A00A5AC98 /* scripting_test */;
+			productReference = BDF8EC3219A13FC40078EE84 /* scripting_test */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +95,7 @@
 				en,
 			);
 			mainGroup = BD5F9FB8198B480A00A5AC98;
-			productRefGroup = BD5F9FC2198B480A00A5AC98 /* Products */;
+			productRefGroup = BD5F9FB8198B480A00A5AC98;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -217,11 +197,13 @@
 					_64BIT,
 				);
 				HEADER_SEARCH_PATHS = public;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					../bin,
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OBJROOT = ./intermediates/debug;
+				OTHER_LDFLAGS = (
+					"-L../bin",
+					"-lutilities_d",
+					"-lscripting_d",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = ../bin;
 			};
@@ -237,11 +219,13 @@
 					_64BIT,
 				);
 				HEADER_SEARCH_PATHS = public;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					../bin,
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OBJROOT = ./intermediates/release;
+				OTHER_LDFLAGS = (
+					"-L../bin",
+					"-lutilities",
+					"-lscripting",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = ../bin;
 			};
