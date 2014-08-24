@@ -113,51 +113,37 @@ CStringPool::CStringPool(const char *pszPoolName, iMemoryAllocator *allocator)
  * Allocate a new string or return an already existing string
  * @param pszString The string to allocate into a string pool string.
  */
-CString CStringPool::Insert(const char *pszString, bool caseSensitive)
+CString CStringPool::Insert(const char *pszString, bool caseSensitive, unsigned int length)
 {
     ASSERTION(pszString != NULL, "Trying to allocate a NULL string!");
     
-    Node **ppWalk, *pTemp;
+    Node **ppWalk;
     
     // Get the hash
-    unsigned int hash = GetHash(pszString, UINT32_MAX);
-
-    // Determine where we will place this string wrapping the hash with
-    // the nodes array.
-    ppWalk = &m_NodeBuckets[hash % m_uiNumNodeBuckets];
+    unsigned int hash = GetHash(pszString, length);
     
-    // If the node is filled, determine if we found the same node
-    // as the string, or if we should put this string in the linked list.
-    while((pTemp = *ppWalk) != NULL)
+    // Find the node if it exists
+    ppWalk = FindInternal(hash, pszString, caseSensitive, length);
+    if(ppWalk && *ppWalk && (*ppWalk)->pString)
     {
-        // check case sensitivity
-        if(caseSensitive && strcmp(pTemp->pString, pszString) == 0)
-        {
-            return CString(pTemp->pString);
-        }
-        else if(!caseSensitive && util_stricmp(pTemp->pString, pszString) == 0)
-        {
-            return CString(pTemp->pString);
-        }
-        ppWalk = &(pTemp->pNext);
+        return CString((*ppWalk)->pString);
     }
     
     // Add the new node element
     const char *pRetStr = NULL;
-    if(!*ppWalk)
+    if(*ppWalk == NULL)
     {
         // Create a node to place in the linked list
         *ppWalk = (Node *)GetMemoryPool()->GeneralAllocation(sizeof(Node),
-                                                           __FILE__,
-                                                           __LINE__);
+                                                             __FILE__,
+                                                             __LINE__);
         
         // Allocate the new string in a bucket allocator
         // Strings are normally divisible by 2 so buckets are a sound choice,
         // and fragmentation is reduced.
-        unsigned int stringlen = (unsigned int)strlen(pszString);
-        char *pstrmem = (char *)m_allocator->Allocate(stringlen + 1, __FILE__, __LINE__);
-        strncpy(pstrmem, pszString, stringlen);
-        pstrmem[stringlen] = '\0';
+        char *pstrmem = (char *)m_allocator->Allocate(length + 1, __FILE__, __LINE__);
+        strncpy(pstrmem, pszString, length);
+        pstrmem[length] = '\0';
         
         // Setup the node
         (*ppWalk)->pNext = NULL;
@@ -183,14 +169,14 @@ CString CStringPool::Insert(const char *pszString, bool caseSensitive)
 /**
  * Finds a string in the string pool and returns its pointer container.
  */
-CString CStringPool::Find(const char *pszString, bool caseSensitive)
+CString CStringPool::Find(const char *pszString, bool caseSensitive, unsigned int length)
 {
     ASSERTION(pszString != NULL, "Trying to allocate a NULL string!");
-    unsigned int hash = GetHash(pszString, UINT32_MAX);
-    Node *pTemp;
-    if((pTemp = FindInternal(hash, pszString, caseSensitive)) != NULL)
+    unsigned int hash = GetHash(pszString, length);
+    Node **ppWalk = FindInternal(hash, pszString, caseSensitive, length);
+    if(ppWalk && *ppWalk && (*ppWalk)->pString)
     {
-        return CString(pTemp->pString);
+        return CString((*ppWalk)->pString);
     }
     return NULL_STRING;
 }
@@ -204,12 +190,12 @@ void CStringPool::Resize(unsigned int newSize)
 {
     Node *pHead = NULL, *pWalk, *pTemp;
     unsigned int i;
-    // reverse individual bucket lists
-    // we do this because new strings are added at the end of bucket
-    // lists so that case sens strings are always after their
-    // corresponding case insens strings
     
-    for (i = 0; i < m_uiNumNodeBuckets; i++) {
+    // Generate a single linked list of all buckets, and also reverse them
+    // to sort between case senstive and case insensitive strings. We will
+    // add all buckets back to the newly sized bucket list.
+    for (i = 0; i < m_uiNumNodeBuckets; i++)
+    {
         pWalk = m_NodeBuckets[i];
         while (pWalk)
         {
@@ -220,14 +206,22 @@ void CStringPool::Resize(unsigned int newSize)
         }
     }
     
-    // Reallocate and re-initialize
-    // TODO
-    //m_NodeBuckets = (Node **) dRealloc(buckets, newSize * sizeof(Node));
+    // Deallocate the old bucket list
+    GetMemoryPool()->GeneralDeallocation(m_NodeBuckets);
+    
+    // Create the new bucket list
+    m_NodeBuckets =
+    (Node **)GetMemoryPool()->GeneralAllocation(newSize * sizeof(Node *),
+                                                __FILE__,
+                                                __LINE__);
+    // Initialize buckets
     for (i = 0; i < newSize; i++)
     {
-        m_NodeBuckets[i] = 0;
+        m_NodeBuckets[i] = NULL;
     }
     
+    // Add all buckets back into the list from our saved linked list created
+    // above.
     m_uiNumNodeBuckets = newSize;
     pWalk = pHead;
     while (pWalk)
@@ -246,7 +240,7 @@ void CStringPool::Resize(unsigned int newSize)
 /**
  * Finds an already added node. This is for class usage only.
  */
-CStringPool::Node *CStringPool::FindInternal(unsigned int hash, const char *pszString, bool caseSensitive)
+CStringPool::Node **CStringPool::FindInternal(unsigned int hash, const char *pszString, bool caseSensitive, unsigned int length)
 {
     Node **ppWalk, *pTemp;
     
@@ -259,18 +253,18 @@ CStringPool::Node *CStringPool::FindInternal(unsigned int hash, const char *pszS
     while((pTemp = *ppWalk) != NULL)
     {
         // check case sensitivity
-        if(caseSensitive && strcmp(pTemp->pString, pszString) == 0)
+        if(caseSensitive && strncmp(pTemp->pString, pszString, length) == 0)
         {
-            return pTemp;
+            return ppWalk;
         }
-        else if(!caseSensitive && util_stricmp(pTemp->pString, pszString) == 0)
+        else if(!caseSensitive && util_strnicmp(pTemp->pString, pszString, length) == 0)
         {
-            return pTemp;
+            return ppWalk;
         }
         ppWalk = &(pTemp->pNext);
     }
     
-    return NULL;
+    return ppWalk;
 }
 
 } // namespace Utility

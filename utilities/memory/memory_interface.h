@@ -96,6 +96,8 @@ public:
     virtual void *GeneralAllocation(unsigned int uiNumBytes,
                                 const char *pszFileName,
                                 unsigned int uiFileLine) = 0;
+    
+    virtual void GeneralDeallocation(void *pMemory) = 0;
 };
 
 UTILITIES_FUNCTION
