@@ -20,6 +20,7 @@ class iMemoryAllocator;
 namespace Utility
 {
 
+//------------------------------------------------------------------------------
 /** Pool of strings */
 class CStringPool
 {
@@ -27,9 +28,36 @@ public:
     
     CStringPool(const char *pszPoolName, iMemoryAllocator *allocator);
     
-    CString AllocateString(const char *pszString);
     
+    CString Insert(const char *pszString, bool caseSensitive = false);
+    CString Find(const char *pszString, bool caseSensitive = false);
+    
+    
+private:
+    /** A node containing a string or a number of strings if there were collisions */
+    struct Node
+    {
+        const char *pString;
+        Node *pNext;
+    };
+    
+    Node *FindInternal(unsigned int hash, const char *pszString, bool caseSensitive = false);
+    
+    void Resize(unsigned int newSize);
+    
+    /** Nodes in buckets (linked list), see @Node */
+    Node            **m_NodeBuckets;
+    
+    /** Number of nodes allocated */
+    unsigned int    m_uiNumNodeBuckets;
+    
+    /** Number of nodes used */
+    unsigned int    m_uiNumUsedNodeBuckets;
+    
+    /** The memory allocator assigned to this string table */
     iMemoryAllocator *m_allocator;
+    
+    const unsigned int INIT_NUM_BUCKETS = 29;
 };
     
 } // namespace Utility
