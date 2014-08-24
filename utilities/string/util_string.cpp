@@ -9,6 +9,8 @@
 #include "utilhead.h"
 #include "util_string.h"
 
+namespace Utility
+{
 //-----------------------------------------------------------------------------
 // Constructor
 //-----------------------------------------------------------------------------
@@ -423,3 +425,5 @@ void CUtlString::VarArgs(char *format, ...)
 		util_strncpy(m_pszStr, str, (int)m_uiNumCharacters);
 	}
 }
+
+} // namespace Utility

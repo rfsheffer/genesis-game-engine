@@ -13,17 +13,25 @@
 #pragma once
 #endif
 
-#include "string_pointer.h"
+#include "util_string_allocation.h"
+
+class iMemoryAllocator;
+
+namespace Utility
+{
 
 /** Pool of strings */
 class CStringPool
 {
 public:
     
-    CStringPool(const char *pszPoolName);
+    CStringPool(const char *pszPoolName, iMemoryAllocator *allocator);
     
-    CStringPtr AllocateString(const char *pszString);
+    CString AllocateString(const char *pszString);
     
+    iMemoryAllocator *m_allocator;
 };
+    
+} // namespace Utility
 
 #endif // STRING_POOL_H

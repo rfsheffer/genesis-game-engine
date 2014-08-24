@@ -13,7 +13,7 @@
 #pragma once
 #endif
 
-#include "common/variant.h"
+#include "common/util_variant.h"
 
 namespace Utility
 {

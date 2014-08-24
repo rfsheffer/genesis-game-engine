@@ -1,6 +1,8 @@
 //
 //  string_helpers.h
-//  C string helpers.
+//  NOTE: These are old depricated functions from old projects. I am trying
+//        to decide if they are worth keeping for something. Please don't use
+//        them.
 //
 //  Created by Ryan Sheffer on 2012-11-18.
 //  Copyright (c) 2012 Ryan Sheffer. All rights reserved.

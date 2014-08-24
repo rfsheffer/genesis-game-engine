@@ -28,6 +28,7 @@
 		BD5F9FC4198B480A00A5AC98 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BD5F9FC6198B480A00A5AC98 /* scripting_test.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = scripting_test.1; sourceTree = "<group>"; };
 		BDF8EC3219A13FC40078EE84 /* scripting_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = scripting_test; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFD453D19A9492F0049E191 /* ideas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ideas.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +55,7 @@
 			children = (
 				BD5F9FC4198B480A00A5AC98 /* main.cpp */,
 				BD5F9FC6198B480A00A5AC98 /* scripting_test.1 */,
+				BDFD453D19A9492F0049E191 /* ideas.h */,
 			);
 			path = scripting_test;
 			sourceTree = "<group>";
@@ -196,7 +198,10 @@
 					_MAC,
 					_64BIT,
 				);
-				HEADER_SEARCH_PATHS = public;
+				HEADER_SEARCH_PATHS = (
+					public,
+					../utilities,
+				);
 				LIBRARY_SEARCH_PATHS = "";
 				OBJROOT = ./intermediates/debug;
 				OTHER_LDFLAGS = (
@@ -218,7 +223,10 @@
 					_MAC,
 					_64BIT,
 				);
-				HEADER_SEARCH_PATHS = public;
+				HEADER_SEARCH_PATHS = (
+					public,
+					../utilities,
+				);
 				LIBRARY_SEARCH_PATHS = "";
 				OBJROOT = ./intermediates/release;
 				OTHER_LDFLAGS = (

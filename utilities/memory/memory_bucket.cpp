@@ -24,7 +24,8 @@ MemoryBucketAllocator::MemoryBucketAllocator(unsigned int numBuckets,
 /**
  * Request memory from a bucket within the range of 'bytes'
  */
-void *MemoryBucketAllocator::Allocate(unsigned int bytes)
+void *MemoryBucketAllocator::Allocate(unsigned int bytes, const char *pszFileName,
+                                      unsigned int uiFileLine)
 {
     for(unsigned int i = 0; i < m_uiNumBuckets; ++i)
     {
@@ -34,6 +35,8 @@ void *MemoryBucketAllocator::Allocate(unsigned int bytes)
         }
     }
     
+    // TODO: Feature to automatically resize buckets heap for new bucket size
+    ASSERTION_ALWAYS("Unable to create a bucket allocation, no bucket found!");
     return NULL;
 }
 
@@ -50,6 +53,8 @@ void *MemoryBucketAllocator::AllocateToBucket(unsigned int index)
     unsigned int &usBlockIndex = curBucket.m_pusIndexStack[curBucket.m_pusStackIndex];
     if(usBlockIndex >= curBucket.m_uiNumBlocks)
     {
+        // TODO: Feature to automatically resize buckets heap for new buckets
+        ASSERTION_ALWAYS("Unable to create a bucket allocation, bucket is full!");
         return NULL;
     }
     

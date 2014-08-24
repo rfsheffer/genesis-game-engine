@@ -8,7 +8,7 @@
 
 #include "enginehead.h"
 #include "CExtensions.h"
-#include "keyvalues.h"
+#include "util_keyvalues.h"
 
 //------------------------------------------------------------------------------
 /**

@@ -104,6 +104,8 @@ static inline int HandleAsserting(const char *testStr,
                     fileStr,
                     line);
     
+    Logging::Warning(s_text);
+    
     static char s_errorHeader[] = "ASSERTION";
 
 	switch(MessageBox(NULL, s_text, s_errorHeader, MB_ABORTRETRYIGNORE))

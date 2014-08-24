@@ -61,7 +61,7 @@ void MemoryPool::Initialize(void)
     // Always create a general allocator
     m_pGeneralAllocator = CreateGeneralAllocator("PrimaryHeap", GENERAL_HEAP_SIZE);
     
-    bucket_info     stringBuckets[] = { { 20, 16 },
+    /*bucket_info     stringBuckets[] = { { 20, 16 },
         { 20, 32 },
         { 20, 64 },
         { 10, 128 },
@@ -69,7 +69,7 @@ void MemoryPool::Initialize(void)
         { 10, 512 } };
     
     // testing buckets
-    CreateBucketAllocator("test_buckets", ARRAYSIZE(stringBuckets), stringBuckets);
+    CreateBucketAllocator("test_buckets", ARRAYSIZE(stringBuckets), stringBuckets);*/
 }
 
 //------------------------------------------------------------------------------
@@ -175,7 +175,7 @@ iMemoryAllocator *MemoryPool::CreateGeneralAllocator(const char *pszAllocatorNam
 /**
  * Trys to make a general allocation in the general allocator.
  */
-void *MemoryPool::TryAllocation(unsigned int uiNumBytes,
+void *MemoryPool::GeneralAllocation(unsigned int uiNumBytes,
                                 const char *pszFileName,
                                 unsigned int uiFileLine)
 {
@@ -186,9 +186,7 @@ void *MemoryPool::TryAllocation(unsigned int uiNumBytes,
               "Trying to make a general allocation, but there"
               " is no general allocator!");
     
-    // TODO: Use Bucket allocator for smaller allocations
-    
-    return m_pGeneralAllocator->Allocate(uiNumBytes);
+    return m_pGeneralAllocator->Allocate(uiNumBytes, pszFileName, uiFileLine);
 }
 
 //------------------------------------------------------------------------------
@@ -235,7 +233,8 @@ bool SplitMemoryBlock(alloc_block *pBlock, unsigned int bytes)
 /**
  * General Allocation
  */
-void *GeneralAllocator::Allocate(unsigned int bytes)
+void *GeneralAllocator::Allocate(unsigned int bytes, const char *pszFileName,
+                                 unsigned int uiFileLine)
 {
     // Look for a place in the current blocks
     alloc_block *pCurBlock = m_pBlocks;
@@ -258,7 +257,7 @@ void *GeneralAllocator::Allocate(unsigned int bytes)
     // Can't fit it anyway? Out of memory!
     if(bytesLeft < (bytes + sizeof(alloc_block)))
     {
-        ASSERTION_ALWAYS("Ran out of memory for allocation in general memory pool!");
+        Logging::Error("Ran out of memory for allocation in general memory pool!");
         return NULL;
     }
     
@@ -268,6 +267,11 @@ void *GeneralAllocator::Allocate(unsigned int bytes)
     pNewBlock->bEmpty = false;
     pNewBlock->pBlockMem = (byte*)(pNewBlock + 1);
     pNewBlock->uiBlockSize = bytes;
+#ifdef _DEBUG
+    /** Information about this allocation */
+    pNewBlock->info.pszFileName = pszFileName;
+    pNewBlock->info.uiLine = uiFileLine;
+#endif
     
     if(m_pHeadBlock)
     {
@@ -289,5 +293,24 @@ void *GeneralAllocator::Allocate(unsigned int bytes)
  */
 void GeneralAllocator::Deallocate(void *pMemory)
 {
-    UNREFERENCED_PARAMETER(pMemory);
+    alloc_block *pCurBlock = m_pBlocks;
+    while(pCurBlock != NULL)
+    {
+        if(!pCurBlock->bEmpty && pCurBlock->pBlockMem == (byte *)pMemory)
+        {
+            pCurBlock->bEmpty = true;
+        }
+        pCurBlock = pCurBlock->pNext;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

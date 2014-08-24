@@ -14,6 +14,8 @@
 		BD5F9FDD198B4E8600A5AC98 /* pywrap_error.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5F9FDB198B4E8600A5AC98 /* pywrap_error.h */; };
 		BDCD1D971988A66E00AF00F5 /* Python in Frameworks */ = {isa = PBXBuildFile; fileRef = BDCD1D961988A66E00AF00F5 /* Python */; };
 		BDE8A1761968D421000E3E15 /* pywrap_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDE8A1751968D421000E3E15 /* pywrap_main.cpp */; };
+		BDFD453419A926E40049E191 /* Reflected.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDFD453219A926E40049E191 /* Reflected.cpp */; };
+		BDFD453519A926E40049E191 /* Reflected.h in Headers */ = {isa = PBXBuildFile; fileRef = BDFD453319A926E40049E191 /* Reflected.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,10 @@
 		BDE8A1751968D421000E3E15 /* pywrap_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pywrap_main.cpp; path = languages/pywrap/pywrap_main.cpp; sourceTree = "<group>"; };
 		BDE8A1801968D6BD000E3E15 /* pywrap_main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = pywrap_main.h; path = languages/pywrap/pywrap_main.h; sourceTree = SOURCE_ROOT; };
 		BDF8EC3319A140720078EE84 /* libscripting_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libscripting_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFD453219A926E40049E191 /* Reflected.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Reflected.cpp; path = tests/Reflected.cpp; sourceTree = "<group>"; };
+		BDFD453319A926E40049E191 /* Reflected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reflected.h; path = tests/Reflected.h; sourceTree = "<group>"; };
+		BDFD453619A92B030049E191 /* VariableWrappers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VariableWrappers.h; path = tests/VariableWrappers.h; sourceTree = "<group>"; };
+		BDFD453719A93D640049E191 /* ReflectEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReflectEnum.h; path = tests/ReflectEnum.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,7 @@
 		BD1FACB1188BAFAC001B76BE = {
 			isa = PBXGroup;
 			children = (
+				BDFD453119A925E70049E191 /* tests */,
 				BD5F9FD9198B4E0C00A5AC98 /* public */,
 				BD5F9FD8198B4E0500A5AC98 /* private */,
 				BD5F9FD7198B4DF000A5AC98 /* languages */,
@@ -105,6 +112,17 @@
 			name = frameworks;
 			sourceTree = "<group>";
 		};
+		BDFD453119A925E70049E191 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				BDFD453219A926E40049E191 /* Reflected.cpp */,
+				BDFD453319A926E40049E191 /* Reflected.h */,
+				BDFD453619A92B030049E191 /* VariableWrappers.h */,
+				BDFD453719A93D640049E191 /* ReflectEnum.h */,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -115,6 +133,7 @@
 				BD5F9FDD198B4E8600A5AC98 /* pywrap_error.h in Headers */,
 				BD5F9FB6198B417000A5AC98 /* scripting.h in Headers */,
 				BD5F9FB4198B417000A5AC98 /* scripthead.h in Headers */,
+				BDFD453519A926E40049E191 /* Reflected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDFD453419A926E40049E191 /* Reflected.cpp in Sources */,
 				BD5F9FDC198B4E8600A5AC98 /* pywrap_error.cpp in Sources */,
 				BD5F9FB5198B417000A5AC98 /* scripting.cpp in Sources */,
 				BDE8A1761968D421000E3E15 /* pywrap_main.cpp in Sources */,
@@ -199,8 +219,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+					_DEBUG,
+					_MAC,
+					_64BIT,
+					SCRIPTING_EXPORT,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -211,6 +233,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-L../bin",
+					"-lutilities_d",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -235,6 +261,11 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_MAC,
+					_64BIT,
+					SCRIPTING_EXPORT,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -242,6 +273,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = (
+					"-L../bin",
+					"-lutilities",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
