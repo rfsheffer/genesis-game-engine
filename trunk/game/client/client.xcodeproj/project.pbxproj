@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		BD31F30C18A4B70A0083E283 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BD371A9518D0272900B9873C /* graphics.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = graphics.dylib; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/graphics/../bin/graphics.dylib; sourceTree = "<absolute>"; };
-		BDABF30818A3596000E86A29 /* client_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = client_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDABF30818A3596000E86A29 /* libclient_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclient_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDABF30F18A3599A00E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
 		BDABF31318A359E400E86A29 /* clienthead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clienthead.h; sourceTree = "<group>"; };
 		BDABF31518A359EF00E86A29 /* IClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IClient.h; path = public/IClient.h; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		BDABF30918A3596000E86A29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDABF30818A3596000E86A29 /* client_d.dylib */,
+				BDABF30818A3596000E86A29 /* libclient_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			);
 			name = client;
 			productName = client;
-			productReference = BDABF30818A3596000E86A29 /* client_d.dylib */;
+			productReference = BDABF30818A3596000E86A29 /* libclient_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */

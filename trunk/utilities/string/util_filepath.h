@@ -1,8 +1,10 @@
-//========= Copyright � 2012-2013, Ryan Sheffers Game Utility Library ==============================//
 //
-// Purpose: A class used for parsing and changing folder paths
+//  util_filepath.h
+//  A class used for parsing and changing folder paths
 //
-//==================================================================================================//
+//  Created by Ryan Sheffer on 2013-04-21.
+//  Copyright (c) 2013 Ryan Sheffer. All rights reserved.
+//
 
 #ifndef UTIL_FILE_PATH_H
 #define UTIL_FILE_PATH_H
@@ -12,6 +14,9 @@
 #endif
 
 #include "util_string.h"
+
+namespace Utility
+{
 
 class CUtlFilePath : public CUtlString
 {
@@ -60,6 +65,7 @@ private:
 	bool			m_bHasFileName;
 	bool			m_bHasFileExtension;
 };
-
+    
+} // namespace Utility
 
 #endif // UTIL_FILE_PATH_H

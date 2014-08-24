@@ -52,7 +52,8 @@ public:
                           MemoryBucket *pBuckets);
                           
     
-    void *Allocate(unsigned int bytes);
+    void *Allocate(unsigned int bytes, const char *pszFileName,
+                   unsigned int uiFileLine);
     void Deallocate(void *pMemory);
     
 private:

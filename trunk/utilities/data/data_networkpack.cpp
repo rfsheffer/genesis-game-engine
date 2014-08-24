@@ -121,7 +121,7 @@ namespace DataPacking
         // First determine the size of this obj_block
         size_t obj_name_len = strlen( pObject->objname );
         size_t obj_block_size = (SHORT_SIZE +
-                                        CHAR_SIZE +
+                                        CHARACTER_SIZE +
                                         obj_name_len +
                                         SHORT_SIZE +
                                         SHORT_SIZE +

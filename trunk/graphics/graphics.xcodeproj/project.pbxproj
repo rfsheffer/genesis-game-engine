@@ -19,7 +19,7 @@
 		BDABF2FC18A30D1F00E86A29 /* igraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = igraphics.h; path = public/igraphics.h; sourceTree = "<group>"; };
 		BDB9FABD18A236330049A361 /* graphicshead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicshead.h; sourceTree = "<group>"; };
 		BDB9FAE218A24EAA0049A361 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		BDC780091692213C00C3F72E /* graphics_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = graphics_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC780091692213C00C3F72E /* libgraphics_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgraphics_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE8A1AD196916F9000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -47,7 +47,7 @@
 		BDC7800A1692213C00C3F72E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDC780091692213C00C3F72E /* graphics_d.dylib */,
+				BDC780091692213C00C3F72E /* libgraphics_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,7 +101,7 @@
 			);
 			name = graphics;
 			productName = graphics;
-			productReference = BDC780091692213C00C3F72E /* graphics_d.dylib */;
+			productReference = BDC780091692213C00C3F72E /* libgraphics_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */

@@ -8,11 +8,5 @@
 
 #include "scripthead.h"
 #include "scripting.h"
-#include "pywrap/pywrap_main.h"
 
 
-void TestTest(void)
-{
-    static const char * argv[] = {"arge1", "arg2"};
-    pywrap_test(1, argv);
-}

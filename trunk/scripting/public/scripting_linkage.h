@@ -13,27 +13,27 @@
 #pragma once
 #endif
 
-#ifdef PYWRAP_EXPORT
+#ifdef SCRIPTING_EXPORT
 
 // Used for dll exporting and importing
-#   define  PYWRAP_FUNCTION       DLL_EXPORT
+#   define  SCRIPTING_FUNCTION       DLL_EXPORT
 
 // Can't use extern "C" when DLL exporting a class
-#   define  PYWRAP_CLASS   DLL_CLASS_EXPORT
+#   define  SCRIPTING_CLASS   DLL_CLASS_EXPORT
 
 // Can't use extern "C" when DLL exporting a global
-#   define  PYWRAP_GLOBAL   DLL_GLOBAL_EXPORT
+#   define  SCRIPTING_GLOBAL   DLL_GLOBAL_EXPORT
 
 #else
 
 // Used for dll exporting and importing
-#   define  PYWRAP_FUNCTION   DLL_IMPORT
+#   define  SCRIPTING_FUNCTION   DLL_IMPORT
 
 // Can't use extern "C" when DLL exporting a class
-#   define  PYWRAP_CLASS   DLL_CLASS_IMPORT
+#   define  SCRIPTING_CLASS   DLL_CLASS_IMPORT
 
 // Can't use extern "C" when DLL exporting a global
-#   define  PYWRAP_GLOBAL   DLL_GLOBAL_IMPORT
+#   define  SCRIPTING_GLOBAL   DLL_GLOBAL_IMPORT
 
 #endif
 

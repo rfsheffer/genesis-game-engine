@@ -60,7 +60,7 @@ struct bucket_info
  */
 struct alloc_info
 {
-    char            *pszFileName;
+    const char      *pszFileName;
     unsigned int    uiLine;
 };
 
@@ -71,7 +71,8 @@ struct alloc_info
 class iMemoryAllocator
 {
 public:
-    virtual void *Allocate(unsigned int bytes) = 0;
+    virtual void *Allocate(unsigned int bytes, const char *pszFileName,
+                           unsigned int uiFileLine) = 0;
     virtual void Deallocate(void *pMemory) = 0;
 };
 
@@ -92,7 +93,7 @@ public:
     virtual iMemoryAllocator *CreateGeneralAllocator(const char *pszAllocatorName,
                                                      unsigned int numBytes) = 0;
     
-    virtual void *TryAllocation(unsigned int uiNumBytes,
+    virtual void *GeneralAllocation(unsigned int uiNumBytes,
                                 const char *pszFileName,
                                 unsigned int uiFileLine) = 0;
 };

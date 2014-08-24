@@ -16,6 +16,8 @@
 // Memory for the string is allocated in steps of MEM_ALLOC_STRIDE bytes
 #define MEM_ALLOC_STRIDE		4
 
+namespace Utility
+{
 //-----------------------------------------------------------------------------
 // String container class
 //-----------------------------------------------------------------------------
@@ -153,5 +155,7 @@ inline CUtlString& CUtlString::operator+=(const char *pszOther)
 	ConcatString(pszOther);
 	return *this;
 }
+    
+} // namespace Utility
 
 #endif // UTIL_STRING_H

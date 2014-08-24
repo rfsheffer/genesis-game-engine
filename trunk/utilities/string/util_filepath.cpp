@@ -8,6 +8,8 @@
 
 #include "utilhead.h"
 #include "util_filepath.h"
+namespace Utility
+{
 
 //-----------------------------------------------------------------------------
 // Constructor
@@ -256,3 +258,5 @@ void CUtlFilePath::GetFileName(char *pDest, size_t destlen, bool extension) cons
     UNREFERENCED_PARAMETER(destlen);
     UNREFERENCED_PARAMETER(extension);
 }
+    
+} // namespace Utility

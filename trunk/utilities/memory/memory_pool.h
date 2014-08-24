@@ -42,7 +42,7 @@ public:
     iMemoryAllocator *CreateGeneralAllocator(const char *pszAllocatorName,
                                              unsigned int numBytes);
     
-    void *TryAllocation(unsigned int uiNumBytes,
+    void *GeneralAllocation(unsigned int uiNumBytes,
                         const char *pszFileName,
                         unsigned int uiFileLine);
     
@@ -102,7 +102,10 @@ class GeneralAllocator : public iMemoryAllocator
 public:
     GeneralAllocator(unsigned int size, byte *pMemory);
     
-    void *Allocate(unsigned int bytes);
+    void *Allocate(unsigned int bytes,
+                   const char *pszFileName,
+                   unsigned int uiFileLine);
+    
     void Deallocate(void *pMemory);
     
     /** A pointer to a linked list of blocks */

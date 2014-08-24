@@ -52,7 +52,7 @@ public:
     AppVariable     *RegisterVariable(const char *pszVarName, const char *pszVar);
     
     // TODO: Use a better container class.
-    Container::Vector<AppVariable>    m_varStore;
+    Utility::Vector<AppVariable>    m_varStore;
 };
 
 extern AppVariableManager g_pAppVariableManager;

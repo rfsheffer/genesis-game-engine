@@ -30,7 +30,7 @@
 		BDB9FAB318A231FF0049A361 /* AppVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppVariables.h; path = source/AppVariables.h; sourceTree = "<group>"; };
 		BDB9FAB418A231FF0049A361 /* CEngineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngineState.h; path = source/CEngineState.h; sourceTree = "<group>"; };
 		BDB9FAB518A231FF0049A361 /* enginehead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enginehead.h; sourceTree = "<group>"; };
-		BDC780091692213C00C3F72E /* engine_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = engine_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC780091692213C00C3F72E /* libengine_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libengine_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE8A1B31969173F000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 		BDF13C8816CDCFD4003994AE /* CEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CEngine.cpp; path = source/CEngine.cpp; sourceTree = "<group>"; };
 		BDF13C8916CDCFD4003994AE /* CEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CEngine.h; path = source/CEngine.h; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		BDC7800A1692213C00C3F72E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDC780091692213C00C3F72E /* engine_d.dylib */,
+				BDC780091692213C00C3F72E /* libengine_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 			);
 			name = engine;
 			productName = server;
-			productReference = BDC780091692213C00C3F72E /* engine_d.dylib */;
+			productReference = BDC780091692213C00C3F72E /* libengine_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */

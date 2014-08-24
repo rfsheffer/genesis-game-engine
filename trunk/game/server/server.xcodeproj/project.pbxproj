@@ -24,7 +24,7 @@
 		BD33302D18A366060085E98A /* ent_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ent_base.cpp; path = ../shared/ent_base.cpp; sourceTree = "<group>"; };
 		BD33302E18A366060085E98A /* ent_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ent_base.h; path = ../shared/ent_base.h; sourceTree = "<group>"; };
 		BD33302F18A366060085E98A /* entity_dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = entity_dictionary.h; path = ../shared/entity_dictionary.h; sourceTree = "<group>"; };
-		BDABF32A18A3638300E86A29 /* server_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = server_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDABF32A18A3638300E86A29 /* libserver_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libserver_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDABF33318A363D900E86A29 /* utilities.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = utilities.dylib; path = ../../bin/utilities.dylib; sourceTree = SOURCE_ROOT; };
 		BDE8A1B119691723000E3E15 /* libmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmath.a; path = /Users/ryansmac/Documents/project/GenesisProject/trunk/math/../libraries/libmath.a; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 		BDABF32B18A3638300E86A29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BDABF32A18A3638300E86A29 /* server_d.dylib */,
+				BDABF32A18A3638300E86A29 /* libserver_d.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 			);
 			name = server;
 			productName = server;
-			productReference = BDABF32A18A3638300E86A29 /* server_d.dylib */;
+			productReference = BDABF32A18A3638300E86A29 /* libserver_d.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
