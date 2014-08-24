@@ -179,14 +179,20 @@ void *MemoryPool::GeneralAllocation(unsigned int uiNumBytes,
                                 const char *pszFileName,
                                 unsigned int uiFileLine)
 {
-    UNREFERENCED_PARAMETER(pszFileName);
-    UNREFERENCED_PARAMETER(uiFileLine);
-
     ASSERTION(m_pGeneralAllocator,
               "Trying to make a general allocation, but there"
               " is no general allocator!");
     
     return m_pGeneralAllocator->Allocate(uiNumBytes, pszFileName, uiFileLine);
+}
+
+//------------------------------------------------------------------------------
+/**
+ * Trys to make a general deallocation in the general allocator.
+ */
+void MemoryPool::GeneralDeallocation(void *pMemory)
+{
+    m_pGeneralAllocator->Deallocate(pMemory);
 }
 
 //------------------------------------------------------------------------------

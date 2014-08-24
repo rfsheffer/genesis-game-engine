@@ -29,8 +29,8 @@ public:
     CStringPool(const char *pszPoolName, iMemoryAllocator *allocator);
     
     
-    CString Insert(const char *pszString, bool caseSensitive = false);
-    CString Find(const char *pszString, bool caseSensitive = false);
+    CString Insert(const char *pszString, bool caseSensitive = false, unsigned int length = UINT32_MAX);
+    CString Find(const char *pszString, bool caseSensitive = false, unsigned int length = UINT32_MAX);
     
     
 private:
@@ -41,7 +41,7 @@ private:
         Node *pNext;
     };
     
-    Node *FindInternal(unsigned int hash, const char *pszString, bool caseSensitive = false);
+    Node **FindInternal(unsigned int hash, const char *pszString, bool caseSensitive, unsigned int length);
     
     void Resize(unsigned int newSize);
     

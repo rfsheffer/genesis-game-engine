@@ -46,6 +46,8 @@ public:
                         const char *pszFileName,
                         unsigned int uiFileLine);
     
+    void GeneralDeallocation(void *pMemory);
+    
     /** A pointer to the base of the memory pool */
     byte        *m_pBase;
     
