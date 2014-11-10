@@ -9,8 +9,8 @@
 #ifndef __scripting__Reflected__
 #define __scripting__Reflected__
 
-#include <iostream>
-#include "VariableWrappers.h"
+
+#include "reflection/reflectionmap.h"
 
 enum testenum
 {
@@ -21,34 +21,30 @@ enum testenum
 };
 
 //------------------------------------------------------------------------------
-struct ReflectedBase
-{
-    virtual void ReflectClass(void) = 0;
-    virtual void *GetVariable(const char *pszVariableName) = 0;
-};
-
-//------------------------------------------------------------------------------
 /**
  *
  */
-struct ReflectedComponent
+struct ReflectedComponent : public CReflected
 {
     int x;
     int y;
+    
+    ReflectClass *Init(ReflectClass *pNextClass)
+    {
+        return NULL;
+    }
 };
 
 //------------------------------------------------------------------------------
 /**
  *
  */
-class BaseReflected
+class BaseReflected : public CReflected
 {
 public:
-    int member1;
-    float member2;
+    testenum myEnum;
     
-    
-    
+    virtual ReflectClass *Init(ReflectClass *pNextClass);
 };
 
 //------------------------------------------------------------------------------
@@ -59,10 +55,9 @@ class ReflectedClass : public BaseReflected
 {
 public:
     int member3;
-    double member4;
     ReflectedComponent member5;
     
-    ReflectVariable<float, DATA_FLOAT> m_testidea;
+    ReflectClass *Init(ReflectClass *pNextClass);
 };
 
 SCRIPTING_FUNCTION void TestReflectedClasses(void);

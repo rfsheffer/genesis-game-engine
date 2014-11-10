@@ -48,6 +48,7 @@
 		BD5D1EDE18AC88F300579FB7 /* Bitslice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EDA18AC88F300579FB7 /* Bitslice.cpp */; };
 		BD5D1EDF18AC88F300579FB7 /* Bitvec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD5D1EDB18AC88F300579FB7 /* Bitvec.cpp */; };
 		BD5D1EE018AC88F300579FB7 /* Bitvec.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5D1EDC18AC88F300579FB7 /* Bitvec.h */; };
+		BD8520941A107C0F00FBD412 /* enummap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD8520931A107C0F00FBD412 /* enummap.cpp */; };
 		BDABF2D518A2CD8700E86A29 /* data_networkpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2CF18A2CD8700E86A29 /* data_networkpack.cpp */; };
 		BDABF2D618A2CD8700E86A29 /* data_networkpack.h in Headers */ = {isa = PBXBuildFile; fileRef = BDABF2D018A2CD8700E86A29 /* data_networkpack.h */; };
 		BDABF2D718A2CD8700E86A29 /* data_networkunpack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDABF2D118A2CD8700E86A29 /* data_networkunpack.cpp */; };
@@ -137,6 +138,13 @@
 		BD5D1EDA18AC88F300579FB7 /* Bitslice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bitslice.cpp; path = hashing/Bitslice.cpp; sourceTree = "<group>"; };
 		BD5D1EDB18AC88F300579FB7 /* Bitvec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bitvec.cpp; path = hashing/Bitvec.cpp; sourceTree = "<group>"; };
 		BD5D1EDC18AC88F300579FB7 /* Bitvec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bitvec.h; path = hashing/Bitvec.h; sourceTree = "<group>"; };
+		BD85208D1A10449A00FBD412 /* reflectionmap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reflectionmap.h; sourceTree = "<group>"; };
+		BD85208E1A1046AD00FBD412 /* reflectenum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reflectenum.h; sourceTree = "<group>"; };
+		BD85208F1A1046BB00FBD412 /* reflectvar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reflectvar.h; sourceTree = "<group>"; };
+		BD8520901A10555B00FBD412 /* reflectclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reflectclass.h; sourceTree = "<group>"; };
+		BD8520911A10578600FBD412 /* reflectstruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reflectstruct.h; sourceTree = "<group>"; };
+		BD8520921A107BCB00FBD412 /* enummap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = enummap.h; sourceTree = "<group>"; };
+		BD8520931A107C0F00FBD412 /* enummap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enummap.cpp; sourceTree = "<group>"; };
 		BDABF2CF18A2CD8700E86A29 /* data_networkpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_networkpack.cpp; path = data/data_networkpack.cpp; sourceTree = "<group>"; };
 		BDABF2D018A2CD8700E86A29 /* data_networkpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = data_networkpack.h; path = data/data_networkpack.h; sourceTree = "<group>"; };
 		BDABF2D118A2CD8700E86A29 /* data_networkunpack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data_networkunpack.cpp; path = data/data_networkunpack.cpp; sourceTree = "<group>"; };
@@ -200,6 +208,7 @@
 		BD1FACB1188BAFAC001B76BE = {
 			isa = PBXGroup;
 			children = (
+				BD85208C1A1043D500FBD412 /* reflection */,
 				BDAC6FFA18AF2236008EA2E1 /* Standard Lib */,
 				BDABF2EB18A2E14300E86A29 /* Interfaces */,
 				BDB9FA9018A1C7B70049A361 /* Time */,
@@ -244,6 +253,20 @@
 				BD14252418A1C0A400E3CFB3 /* util_variant.h */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		BD85208C1A1043D500FBD412 /* reflection */ = {
+			isa = PBXGroup;
+			children = (
+				BD85208D1A10449A00FBD412 /* reflectionmap.h */,
+				BD85208E1A1046AD00FBD412 /* reflectenum.h */,
+				BD85208F1A1046BB00FBD412 /* reflectvar.h */,
+				BD8520901A10555B00FBD412 /* reflectclass.h */,
+				BD8520911A10578600FBD412 /* reflectstruct.h */,
+				BD8520921A107BCB00FBD412 /* enummap.h */,
+				BD8520931A107C0F00FBD412 /* enummap.cpp */,
+			);
+			path = reflection;
 			sourceTree = "<group>";
 		};
 		BDABF2EB18A2E14300E86A29 /* Interfaces */ = {
@@ -471,7 +494,7 @@
 		BD1FACB2188BAFAC001B76BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Ryan Sheffer";
 			};
 			buildConfigurationList = BD1FACB5188BAFAC001B76BE /* Build configuration list for PBXProject "utilities" */;
@@ -501,6 +524,7 @@
 				BDB9FAAF18A1C8210049A361 /* lexer.cpp in Sources */,
 				BD5D1ED618AC888400579FB7 /* PMurHash.cpp in Sources */,
 				BD33303518A39A3E0085E98A /* logging.cpp in Sources */,
+				BD8520941A107C0F00FBD412 /* enummap.cpp in Sources */,
 				BDB9FAA718A1C8100049A361 /* util_string.cpp in Sources */,
 				BD5D1EDF18AC88F300579FB7 /* Bitvec.cpp in Sources */,
 				BD5D1ECD18AC87FE00579FB7 /* SuperFastHash.cpp in Sources */,
@@ -609,6 +633,7 @@
 		BD1FACBF188BAFAC001B76BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -630,6 +655,7 @@
 		BD1FACC0188BAFAC001B76BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -10,27 +10,27 @@
 	<string>scripting</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E470D64C-7ABD-4485-B6BE-203F8EDEC788</key>
+		<key>426e1742-4a04-eb04-0dee-b965d650e3a2++505</key>
 		<string>https://genesis-game-engine.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>scripting/scripting.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E470D64C-7ABD-4485-B6BE-203F8EDEC788</key>
+		<key>426e1742-4a04-eb04-0dee-b965d650e3a2++505</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>E470D64C-7ABD-4485-B6BE-203F8EDEC788</key>
+		<key>426e1742-4a04-eb04-0dee-b965d650e3a2++505</key>
 		<string>https://genesis-game-engine.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://genesis-game-engine.googlecode.com/svn/trunk/scripting/scripting.xcworkspace</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E470D64C-7ABD-4485-B6BE-203F8EDEC788</string>
+	<string>426e1742-4a04-eb04-0dee-b965d650e3a2++505</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -43,7 +43,7 @@
 			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
 			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E470D64C-7ABD-4485-B6BE-203F8EDEC788</string>
+			<string>426e1742-4a04-eb04-0dee-b965d650e3a2++505</string>
 			<key>IDESourceControlWCCName</key>
 			<string>trunk</string>
 		</dict>

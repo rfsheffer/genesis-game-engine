@@ -31,8 +31,6 @@
 		BDF8EC3319A140720078EE84 /* libscripting_d.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libscripting_d.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFD453219A926E40049E191 /* Reflected.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Reflected.cpp; path = tests/Reflected.cpp; sourceTree = "<group>"; };
 		BDFD453319A926E40049E191 /* Reflected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reflected.h; path = tests/Reflected.h; sourceTree = "<group>"; };
-		BDFD453619A92B030049E191 /* VariableWrappers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VariableWrappers.h; path = tests/VariableWrappers.h; sourceTree = "<group>"; };
-		BDFD453719A93D640049E191 /* ReflectEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReflectEnum.h; path = tests/ReflectEnum.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +115,6 @@
 			children = (
 				BDFD453219A926E40049E191 /* Reflected.cpp */,
 				BDFD453319A926E40049E191 /* Reflected.h */,
-				BDFD453619A92B030049E191 /* VariableWrappers.h */,
-				BDFD453719A93D640049E191 /* ReflectEnum.h */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -163,7 +159,7 @@
 		BD1FACB2188BAFAC001B76BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Ryan Sheffer";
 			};
 			buildConfigurationList = BD1FACB5188BAFAC001B76BE /* Build configuration list for PBXProject "scripting" */;
@@ -284,6 +280,7 @@
 		BD1FACBF188BAFAC001B76BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = lib;
@@ -317,6 +314,7 @@
 		BD1FACC0188BAFAC001B76BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../bin;
 				EXECUTABLE_EXTENSION = dylib;
 				EXECUTABLE_PREFIX = lib;

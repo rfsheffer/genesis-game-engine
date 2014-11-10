@@ -43,7 +43,7 @@ public:
 
 	// Constructor: Pass in an element and a number of memory slots you want created.
 	Vector();
-	Vector( T* elem, unsigned int numelements = 0 );
+	Vector( T* elem, size_t numelements = 0 );
 	~Vector();
 
 	// Operators for element access via array style.
@@ -54,39 +54,39 @@ public:
 	void RemoveAllElements();
 
 	// Gets an element by array index.
-	T& Element( unsigned int i ){ return p_elements[i]; }
+	T& Element( size_t i ){ return p_elements[i]; }
 
 	// Gets the very first element.
 	T* Base();
 
 	// Adds a new element to position.
-	unsigned int AddElement( unsigned int pos, const T& elem );
+	size_t AddElement( size_t pos, const T& elem );
 
 	// Add to position 0 in the array. Shift other elements over.
-	unsigned int AddElementToFront( const T& elem );
+	size_t AddElementToFront( const T& elem );
 
 	// Add to position m_iNumElements in the array.
-	unsigned int AddElementToBack( const T& elem );
+	size_t AddElementToBack( const T& elem );
 
 	// Gets the number of valid elements.
-	unsigned int Count() const { return m_iNumElements; }
+	size_t Count() const { return m_iNumElements; }
 
 private:
 
 	// Shifts all elements after pos to the right by one.
-	void ShiftElementsRight( unsigned int elem, unsigned int num = 1 );
+	void ShiftElementsRight( size_t elem, size_t num = 1 );
 
 	// Grows the vector by the variable amount.
-	void GrowVector( unsigned int num = 1 );
+	void GrowVector( size_t num = 4 );
 
 	// Checks and makes sure the number of slots will be free.
-	void EnsureSize( unsigned int num );
+	void EnsureSize( size_t num );
 
 	// Number of valid elements.
-	unsigned int m_iNumElements;
+	size_t m_iNumElements;
 
 	// Number of T size Memory slots allocated.
-	unsigned int m_iNumMemoryElements;
+	size_t m_iNumMemoryElements;
 
 	// Elements Array, All allocated memory is placed here.
 	T *p_elements;
@@ -103,7 +103,7 @@ Vector<T>::Vector() : p_elements( 0 ), m_iNumElements( 0 ), m_iNumMemoryElements
 }
 
 template <typename T>
-Vector<T>::Vector( T* elem, unsigned int numelements ) : p_elements( 0 ), m_iNumElements( 0 ), m_iNumMemoryElements( 0 )
+Vector<T>::Vector( T* elem, size_t numelements ) : p_elements( 0 ), m_iNumElements( 0 ), m_iNumMemoryElements( 0 )
 {
 	// Allocate a bunch of new elements if asked.
 	if ( numelements > 0 )
@@ -117,7 +117,7 @@ template <typename T>
 Vector<T>::~Vector()
 {
 	// First get rid of all the element.
-	for (int i = m_iNumElements; i >= 0; --i )
+	for (int i = 0; i < m_iNumElements; ++i )
 	{
 		MemoryDestruct(&Element(i));
 	}
@@ -153,18 +153,18 @@ void Vector<T>::RemoveAllElements()
 // Purpose: Grows Vector
 //------------------------------------------------------------
 template <typename T>
-void Vector<T>::GrowVector( unsigned int num )
+void Vector<T>::GrowVector( size_t num )
 {
 	// First time grow or not?
 	if( m_iNumMemoryElements )
 	{
-		unsigned int newsize = (m_iNumMemoryElements + num) * sizeof(T);
+		size_t newsize = (m_iNumMemoryElements + num) * sizeof(T);
 		p_elements = (T *)realloc( p_elements, newsize );
 		m_iNumMemoryElements += num;
 	}
 	else
 	{
-		unsigned int newsize = (m_iNumMemoryElements + num) * sizeof(T);
+		size_t newsize = (m_iNumMemoryElements + num) * sizeof(T);
 		p_elements = (T *)malloc( newsize );
 		m_iNumMemoryElements += num;
 	}
@@ -183,7 +183,7 @@ T* Vector<T>::Base()
 // Purpose: Returns first element.
 //------------------------------------------------------------
 template <typename T>
-void Vector<T>::ShiftElementsRight( unsigned int elem, unsigned int num )
+void Vector<T>::ShiftElementsRight( size_t elem, size_t num )
 {
 	// Num elements greater than 0, pos isn't out of bounds.
     // If element is being placed at m_iNumElements, no need to shift.
@@ -191,7 +191,7 @@ void Vector<T>::ShiftElementsRight( unsigned int elem, unsigned int num )
 	{
 		// Determine the number of elements to move.
 
-		unsigned int num_to_move = m_iNumElements - elem - num + 1; // + 1 to account for object zero.
+		size_t num_to_move = m_iNumElements - elem - num + 1; // + 1 to account for object zero.
 
 		memmove( &Element( elem+num ), &Element( elem ), num_to_move * sizeof(T) );
 	}
@@ -201,7 +201,7 @@ void Vector<T>::ShiftElementsRight( unsigned int elem, unsigned int num )
 // Purpose: Adds new element.
 //------------------------------------------------------------
 template <typename T>
-unsigned int Vector<T>::AddElement( unsigned int pos, const T& elem )
+size_t Vector<T>::AddElement( size_t pos, const T& elem )
 {
 	// Clamp this down, cant go higher than m_iNumElements.
 	if ( pos > m_iNumElements )
@@ -222,7 +222,7 @@ unsigned int Vector<T>::AddElement( unsigned int pos, const T& elem )
 // Purpose: Add to position 0 in the array. Shift other elements over.
 //------------------------------------------------------------
 template <typename T>
-unsigned int Vector<T>::AddElementToFront( const T& elem )
+size_t Vector<T>::AddElementToFront( const T& elem )
 {
 	return AddElement( 0, elem );
 }
@@ -231,7 +231,7 @@ unsigned int Vector<T>::AddElementToFront( const T& elem )
 // Purpose: Add to position m_iNumElements in the array.
 //------------------------------------------------------------
 template <typename T>
-unsigned int Vector<T>::AddElementToBack( const T& elem )
+size_t Vector<T>::AddElementToBack( const T& elem )
 {
 	return AddElement( m_iNumElements, elem );
 }
