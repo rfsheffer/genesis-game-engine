@@ -29,6 +29,7 @@
 #include <new> // For new override
 #include <vector> // TODO: Get rid of me!
 #include <map> // TODO: Get rid of me!
+#include <iostream>
 
 #if defined(_MAC) || defined(_LINUX)
 

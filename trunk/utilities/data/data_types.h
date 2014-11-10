@@ -34,6 +34,7 @@ enum data_types
     DATA_SHORT,
     DATA_CHARACTER,
     DATA_STRING,
+    DATA_ENUM,
     
     DATA_COUNT			// Number of Data Types that are mapable.
 };
